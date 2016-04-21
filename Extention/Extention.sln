@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExtention3.5", "CSharpExtention3.5\CSharpExtention3.5.csproj", "{961BB7B1-D757-4D64-A966-7277E8F03B12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExtention4.5", "CSharpExtention4.5\CSharpExtention4.5.csproj", "{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityExtention", "UnityExtention\UnityExtention.csproj", "{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{961BB7B1-D757-4D64-A966-7277E8F03B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961BB7B1-D757-4D64-A966-7277E8F03B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961BB7B1-D757-4D64-A966-7277E8F03B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961BB7B1-D757-4D64-A966-7277E8F03B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
