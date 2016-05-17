@@ -36,7 +36,7 @@ namespace Poi
         /// <param name="v">现有值</param>
         /// <param name="args">调整幅度</param>
         /// <param name="level">调整级别</param>
-        /// <returns><![CDATA[return v >= (Lower - args * level) || v <= (Upper + args * level)]]></returns>
+        /// <returns>return v >= (Lower - args * level) || v 小于= (Upper + args * level);</returns>
         public bool IsInValue(float v, int args = 0, int level = 0)
         {
             return v >= (Lower - args * level) || v <= (Upper + args * level);

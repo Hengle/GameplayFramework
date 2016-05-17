@@ -42,6 +42,10 @@
   <ItemGroup>
     <Compile Include="Class\Threshold.cs" />
     <Compile Include="Enum\Enum.cs" />
+    <Compile Include="HostPlugin\HostException.cs" />
+    <Compile Include="HostPlugin\iHost.cs" />
+    <Compile Include="HostPlugin\iPlugin.cs" />
+    <Compile Include="HostPlugin\UnitState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Environment\ScreenHelper.cs" />
   </ItemGroup>
