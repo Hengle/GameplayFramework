@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExtention3.5", "CSharpExtention3.5\CSharpExtention3.5.csproj", "{961BB7B1-D757-4D64-A966-7277E8F03B12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoiExtention3.5", "PoiExtention3.5\PoiExtention3.5.csproj", "{961BB7B1-D757-4D64-A966-7277E8F03B12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpExtention4.5", "CSharpExtention4.5\CSharpExtention4.5.csproj", "{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoiExtention4.5", "PoiExtention4.5\PoiExtention4.5.csproj", "{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityExtention", "UnityExtention\UnityExtention.csproj", "{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoiUnityExtention", "PoiUnityExtention\PoiUnityExtention.csproj", "{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

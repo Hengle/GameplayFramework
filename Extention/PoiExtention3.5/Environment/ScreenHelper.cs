@@ -9,8 +9,11 @@ namespace System
     /// <summary>
     /// 屏幕助手
     /// </summary>
-    public static  class ScreenHelper
+    public static class ScreenHelper
     {
+        /// <summary>
+        /// 屏幕参数
+        /// </summary>
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         public struct DEVMODE
         {
