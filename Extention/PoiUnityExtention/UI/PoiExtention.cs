@@ -15,6 +15,18 @@ namespace UnityEngine.UI
         /// <summary>
         /// 设置下拉选项
         /// </summary>
+        /// <typeparam name="T">一个枚举类型</typeparam>
+        /// <param name="dp"></param>
+        /// <exception cref="ArgumentException">参数不是枚举</exception>
+        public static void SetOptions<T>(this Dropdown dp)
+        {
+            var ops = Enum.GetNames(typeof(T));
+            dp.SetOptions(ops);
+        }
+
+        /// <summary>
+        /// 设置下拉选项
+        /// </summary>
         /// <param name="dp"></param>
         /// <param name="strText"></param>
         public static void SetOptions(this Dropdown dp, IList<string> strText)
