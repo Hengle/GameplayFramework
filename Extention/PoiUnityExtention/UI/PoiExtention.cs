@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace UnityEngine.UI
+{
+    /// <summary>
+    /// UI扩展
+    /// </summary>
+    public static class PoiExtention
+    {
+        #region Dropdown
+
+        /// <summary>
+        /// 设置下拉选项
+        /// </summary>
+        /// <param name="dp"></param>
+        /// <param name="strText"></param>
+        public static void SetOptions(this Dropdown dp, IList<string> strText)
+        {
+            dp.options = StringListToOptionDataList(strText);
+        }
+
+        static List<Dropdown.OptionData> StringListToOptionDataList(IList<string> strText)
+        {
+            List<Dropdown.OptionData> result = new List<Dropdown.OptionData>();
+
+            foreach (var value in strText)
+            {
+                result.Add(StringToOptionData(value));
+            }
+
+            return result;
+        }
+
+        static Dropdown.OptionData StringToOptionData(string strText)
+        {
+            return new Dropdown.OptionData(strText);
+        }
+
+        #endregion
+    }
+}
