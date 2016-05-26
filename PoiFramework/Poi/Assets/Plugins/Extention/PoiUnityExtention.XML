@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PoiUnityExtention</name>
+    </assembly>
+    <members>
+        <member name="T:UnityEngine.DontDestroyOnLoad">
+            <summary>
+            加载场景是不销毁
+            </summary>
+        </member>
+        <member name="M:UnityEngine.DontDestroyOnLoad.DestroyDontDestroyOnLoadGameObjectExceptRules(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            销毁 参数外的 之前标记过得不销毁的物体
+            </summary>
+            <param name="exceptNames">不销毁含有这些名字的物体</param>
+            <param name="exceptTags">不销毁含有这些标签的物体</param>
+        </member>
+        <member name="T:UnityEngine.PoiExtention">
+            <summary>
+            unity原生类扩展
+            </summary>
+        </member>
+        <member name="M:UnityEngine.PoiExtention.Parent(UnityEngine.HumanBodyBones)">
+            <summary>
+            骨骼的父关系
+            </summary>
+            <param name="bone"></param>
+            <returns>当参数为Hips时返回LastBone</returns>
+        </member>
+        <member name="M:UnityEngine.PoiExtention.FirstChild(UnityEngine.HumanBodyBones)">
+            <summary>
+            骨骼的第一子关系
+            </summary>
+            <param name="bone"></param>
+            <returns>没有子时返回LastBone</returns>
+        </member>
+        <member name="M:UnityEngine.PoiExtention.Children(UnityEngine.HumanBodyBones)">
+            <summary>
+            骨骼自关系
+            </summary>
+            <param name="bone"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UnityEngine.HideLockMouse">
+            <summary>
+            隐藏鼠标
+            </summary>
+        </member>
+        <member name="M:UnityEngine.HideLockMouse.ApplyCursorState">
+            <summary>
+            应用游标状态
+            </summary>
+        </member>
+        <member name="T:UnityEngine.TransformOffset">
+            <summary>
+            描述一个transform的位置和旋转偏移
+            </summary>
+        </member>
+        <member name="P:UnityEngine.TransformOffset.Position">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="P:UnityEngine.TransformOffset.Rotation">
+            <summary>
+            旋转的四元数形式
+            </summary>
+        </member>
+        <member name="P:UnityEngine.TransformOffset.RotationV3">
+            <summary>
+            旋转的欧拉角形式
+            </summary>
+        </member>
+        <member name="T:UnityEngine.UI.PoiExtention">
+            <summary>
+            UI扩展
+            </summary>
+        </member>
+        <member name="M:UnityEngine.UI.PoiExtention.SetOptions``1(UnityEngine.UI.Dropdown)">
+            <summary>
+            设置下拉选项
+            </summary>
+            <typeparam name="T">一个枚举类型</typeparam>
+            <param name="dp"></param>
+            <exception cref="T:System.ArgumentException">参数不是枚举</exception>
+        </member>
+        <member name="M:UnityEngine.UI.PoiExtention.SetOptions(UnityEngine.UI.Dropdown,System.Collections.Generic.IList{System.String})">
+            <summary>
+            设置下拉选项
+            </summary>
+            <param name="dp"></param>
+            <param name="strText"></param>
+        </member>
+    </members>
+</doc>

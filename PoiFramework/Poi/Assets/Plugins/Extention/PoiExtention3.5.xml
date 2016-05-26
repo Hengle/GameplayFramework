@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PoiExtention3.5</name>
+    </assembly>
+    <members>
+        <member name="T:Poi.ID">
+            <summary>
+            线程安全的全局ID
+            </summary>
+        </member>
+        <member name="M:Poi.ID.GetGlobalID">
+            <summary>
+            取得一个全局的ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Poi.Threshold">
+            <summary>
+            阈值
+            </summary>
+        </member>
+        <member name="F:Poi.Threshold.Upper">
+            <summary>
+            上界
+            </summary>
+        </member>
+        <member name="F:Poi.Threshold.Lower">
+            <summary>
+            下界
+            </summary>
+        </member>
+        <member name="M:Poi.Threshold.#ctor(System.Single,System.Single)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="l">下界</param>
+            <param name="u">上界</param>
+        </member>
+        <member name="M:Poi.Threshold.IsInValue(System.Single,System.Int32,System.Int32)">
+            <summary>
+            是不是在界限内
+            </summary>
+            <param name="v">现有值</param>
+            <param name="args">调整幅度</param>
+            <param name="level">调整级别</param>
+            <returns>return v >= (Lower - args * level) || v 小于= (Upper + args * level);</returns>
+        </member>
+        <member name="M:Poi.Threshold.IsLessLower(System.Single,System.Int32,System.Int32)">
+            <summary>
+            是否小于下界
+            </summary>
+            <param name="v"></param>
+            <param name="args"></param>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poi.Threshold.IsGreaterUpper(System.Single,System.Int32,System.Int32)">
+            <summary>
+            是否大于上界
+            </summary>
+            <param name="v"></param>
+            <param name="args"></param>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poi.LeftOrRight">
+            <summary>
+            左右
+            </summary>
+        </member>
+        <member name="T:Poi.HostException">
+            <summary>
+            宿主异常
+            </summary>
+        </member>
+        <member name="T:Poi.iHost">
+            <summary>
+            宿主接口
+            </summary>
+        </member>
+        <member name="T:Poi.iPlugin">
+            <summary>
+            插件接口
+            </summary>
+        </member>
+        <member name="P:Poi.iPlugin.State">
+            <summary>
+            当前插件状态
+            </summary>
+        </member>
+        <member name="T:Poi.UnitState">
+            <summary>
+            插件状态，包装一个状态类用于传入可迭代方法中
+            </summary>
+        </member>
+        <member name="T:Poi.PluginState">
+            <summary>
+            插件状态
+            </summary>
+        </member>
+        <member name="T:System.ScreenHelper">
+            <summary>
+            屏幕助手
+            </summary>
+        </member>
+        <member name="T:System.ScreenHelper.DEVMODE">
+            <summary>
+            屏幕参数
+            </summary>
+        </member>
+        <member name="T:System.Xml.Linq.PoiExtention">
+            <summary>
+            对xml.linq的扩展
+            </summary>
+        </member>
+        <member name="M:System.Xml.Linq.PoiExtention.AutoFullProperties``1(System.Xml.Linq.XElement,``0)">
+            <summary>
+            自动填充属性。将xml元素的属性自动赋值给目标的属性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_cfg"></param>
+            <param name="_instance">要填充的目标实例</param>
+        </member>
+    </members>
+</doc>
