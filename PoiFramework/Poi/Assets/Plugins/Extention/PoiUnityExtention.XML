@@ -16,6 +16,31 @@
             <param name="exceptNames">不销毁含有这些名字的物体</param>
             <param name="exceptTags">不销毁含有这些标签的物体</param>
         </member>
+        <member name="T:UnityEngine.FollowTarget">
+            <summary>
+            物体跟随
+            </summary>
+        </member>
+        <member name="P:UnityEngine.FollowTarget.Tar">
+            <summary>
+            跟随的目标
+            </summary>
+        </member>
+        <member name="P:UnityEngine.FollowTarget.Lerp">
+            <summary>
+            插值幅度
+            </summary>
+        </member>
+        <member name="F:UnityEngine.FollowTarget.UpdateType">
+            <summary>
+            刷新方法
+            </summary>
+        </member>
+        <member name="F:UnityEngine.FollowTarget.LerpType">
+            <summary>
+            插值方式
+            </summary>
+        </member>
         <member name="T:UnityEngine.PoiExtention">
             <summary>
             unity原生类扩展
@@ -91,6 +116,11 @@
             </summary>
             <param name="dp"></param>
             <param name="strText"></param>
+        </member>
+        <member name="T:UpdateType">
+            <summary>
+            刷新类型
+            </summary>
         </member>
     </members>
 </doc>

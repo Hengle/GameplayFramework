@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DontDestroyOnLoad.cs" />
+    <Compile Include="FollowTarget.cs" />
     <Compile Include="PoiExtention.cs" />
     <Compile Include="HideMouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
