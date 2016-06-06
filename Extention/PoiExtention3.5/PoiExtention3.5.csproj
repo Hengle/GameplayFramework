@@ -49,6 +49,7 @@
     <Compile Include="HostPlugin\UnitState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Environment\ScreenHelper.cs" />
+    <Compile Include="StringExtention.cs" />
     <Compile Include="Xml\Linq\PoiExtention.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

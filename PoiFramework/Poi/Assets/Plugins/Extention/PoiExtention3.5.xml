@@ -109,6 +109,18 @@
             屏幕参数
             </summary>
         </member>
+        <member name="T:System.StringExtention">
+            <summary>
+            string扩展
+            </summary>
+        </member>
+        <member name="M:System.StringExtention.ToInt(System.String)">
+            <summary>
+            使用int.Parse转换一个字符串
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
         <member name="T:System.Xml.Linq.PoiExtention">
             <summary>
             对xml.linq的扩展
