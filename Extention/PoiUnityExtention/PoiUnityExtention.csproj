@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anchor.cs" />
     <Compile Include="DontDestroyOnLoad.cs" />
     <Compile Include="FollowTarget.cs" />
     <Compile Include="PoiExtention.cs" />
