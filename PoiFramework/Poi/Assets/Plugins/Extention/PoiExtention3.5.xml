@@ -69,6 +69,66 @@
             左右
             </summary>
         </member>
+        <member name="T:Poi.Language">
+            <summary>
+            语言种类
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Chinese">
+            <summary>
+            汉语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.English">
+            <summary>
+            英语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Japanese">
+            <summary>
+            日语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Russian">
+            <summary>
+            俄语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.German">
+            <summary>
+            德语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.French">
+            <summary>
+            法语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Hangul">
+            <summary>
+            韩语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Undefined1">
+            <summary>
+            未定义语言1
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Undefined2">
+            <summary>
+            未定义语言2
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Undefined3">
+            <summary>
+            未定义语言3
+            </summary>
+        </member>
+        <member name="T:Poi.Only">
+            <summary>
+            是不是唯一的
+            </summary>
+        </member>
         <member name="T:Poi.HostException">
             <summary>
             宿主异常
