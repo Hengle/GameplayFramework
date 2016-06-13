@@ -97,6 +97,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy .\*.* $(SolutionDir)\..\PoiFramework\Poi\Assets\Plugins\Extention\ /s /y /d
+del $(SolutionDir)\..\PoiFramework\Poi\Assets\Plugins\Extention\Unity*.* /q
+del $(SolutionDir)\..\PoiFramework\Poi\Assets\Plugins\Extention\*.tmp /q</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

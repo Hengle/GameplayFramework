@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoiExtention3.5", "PoiExten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoiExtention4.5", "PoiExtention4.5\PoiExtention4.5.csproj", "{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoiUnityExtention", "PoiUnityExtention\PoiUnityExtention.csproj", "{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poi", "Poi\Poi.csproj", "{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE9B2DA3-0BC3-45B3-AB3D-D7ACF2D4E8DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
