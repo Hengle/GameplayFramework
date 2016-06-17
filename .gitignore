@@ -43,3 +43,7 @@ Extention/PoiExtention3.5/bin/Debug/
 PoiFramework/Poi/Library/
 Extention/Poi/obj/
 Extention/Poi/bin/
+PoiFramework/Poi/.vs/
+PoiFramework/Poi/Temp/
+PoiFramework/Poi/Poi.sln
+PoiFramework/Poi/Poi.CSharp.csproj

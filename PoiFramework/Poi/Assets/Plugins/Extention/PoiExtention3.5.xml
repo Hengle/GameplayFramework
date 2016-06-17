@@ -4,6 +4,11 @@
         <name>PoiExtention3.5</name>
     </assembly>
     <members>
+        <member name="T:System.EnumExtention">
+            <summary>
+            枚举类的扩展
+            </summary>
+        </member>
         <member name="T:System.StringExtention">
             <summary>
             string扩展
@@ -15,6 +20,15 @@
             </summary>
             <param name="s"></param>
             <returns></returns>
+        </member>
+        <member name="M:System.StringExtention.ToEnum``1(System.String)">
+            <summary>
+            将一个字符串转换成枚举
+            </summary>
+            <typeparam name="T">提供一个枚举类型</typeparam>
+            <param name="value"></param>
+            <returns>返回对应的枚举值</returns>
+            <exception cref="T:System.ArgumentException">所给泛型不是枚举</exception>
         </member>
         <member name="T:System.Xml.Linq.PoiExtention">
             <summary>
