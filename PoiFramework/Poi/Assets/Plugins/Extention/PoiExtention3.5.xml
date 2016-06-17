@@ -4,11 +4,6 @@
         <name>PoiExtention3.5</name>
     </assembly>
     <members>
-        <member name="T:System.EnumExtention">
-            <summary>
-            枚举类的扩展
-            </summary>
-        </member>
         <member name="T:System.StringExtention">
             <summary>
             string扩展
@@ -29,6 +24,13 @@
             <param name="value"></param>
             <returns>返回对应的枚举值</returns>
             <exception cref="T:System.ArgumentException">所给泛型不是枚举</exception>
+        </member>
+        <member name="M:System.StringExtention.ToBool(System.String)">
+            <summary>
+            将string转换成bool。
+            </summary>
+            <param name="value"></param>
+            <returns>当值为"true""TRUE""True"之一时返回true，否则返回false。</returns>
         </member>
         <member name="T:System.Xml.Linq.PoiExtention">
             <summary>

@@ -35,5 +35,15 @@ namespace System
 
             return  (T)Enum.Parse(typeof(T), value);
         }
+
+        /// <summary>
+        /// 将string转换成bool。
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>当值为"true""TRUE""True"之一时返回true，否则返回false。</returns>
+        public static bool ToBool(this string value)
+        {
+            return value == "true"|| value == "TRUE"||value == "True";
+        }
     }
 }
