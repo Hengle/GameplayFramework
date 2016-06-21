@@ -38,9 +38,10 @@ namespace System
 
         /// <summary>
         /// 将string转换成bool。
+        /// <para>当值为"true""TRUE""True"之一时返回true，否则返回false。</para>
         /// </summary>
         /// <param name="value"></param>
-        /// <returns>当值为"true""TRUE""True"之一时返回true，否则返回false。</returns>
+        /// <returns></returns>
         public static bool ToBool(this string value)
         {
             return value == "true"|| value == "TRUE"||value == "True";

@@ -28,9 +28,10 @@
         <member name="M:System.StringExtention.ToBool(System.String)">
             <summary>
             将string转换成bool。
+            <para>当值为"true""TRUE""True"之一时返回true，否则返回false。</para>
             </summary>
             <param name="value"></param>
-            <returns>当值为"true""TRUE""True"之一时返回true，否则返回false。</returns>
+            <returns></returns>
         </member>
         <member name="T:System.Xml.Linq.PoiExtention">
             <summary>
