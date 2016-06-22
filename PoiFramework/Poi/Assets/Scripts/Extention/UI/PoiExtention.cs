@@ -51,6 +51,11 @@ namespace UnityEngine.UI
             return new Dropdown.OptionData(strText);
         }
 
+        public static Dropdown.OptionData GetCurrent(this Dropdown dp)
+        {
+            return dp.options[dp.value];
+        }
+
         #endregion
     }
 }
