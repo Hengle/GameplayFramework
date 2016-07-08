@@ -56,6 +56,20 @@ namespace UnityEngine.UI
             return dp.options[dp.value];
         }
 
+        /// <summary>
+        /// 如果选项存在，设定当前选项
+        /// </summary>
+        /// <param name="dp"></param>
+        /// <param name="option"></param>
+        public static void SetCurrent(this Dropdown dp,string option)
+        {
+            var index = dp.options.FindIndex(tar => tar.text == option);
+            if (index >= 0)
+            {
+                dp.value = index;
+            }
+        }
+
         #endregion
     }
 }
