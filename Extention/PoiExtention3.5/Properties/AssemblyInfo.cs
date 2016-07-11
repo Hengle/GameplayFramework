@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("CSharpExtention3.5")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Github开源地址 https://github.com/KumoKyaku/Extention-CSharp-Unity.git")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("云却不是雀")]
 [assembly: AssemblyProduct("CSharpExtention3.5")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
