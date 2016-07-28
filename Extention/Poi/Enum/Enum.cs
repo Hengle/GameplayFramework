@@ -16,6 +16,16 @@ namespace Poi
     }
 
     /// <summary>
+    /// 轴向
+    /// </summary>
+    public enum Axial
+    {
+        X,
+        Y,
+        Z,
+    }
+
+    /// <summary>
     /// 语言种类
     /// </summary>
     public enum Language
