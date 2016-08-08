@@ -4,6 +4,42 @@
         <name>PoiExtention3.5</name>
     </assembly>
     <members>
+        <member name="M:System.Collections.Generic.DictionaryExtention.RemoveForeach``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>
+            通过线程池异步移除一个元素
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="idic"></param>
+            <param name="key"></param>
+        </member>
+        <member name="M:System.Collections.Generic.DictionaryExtention.AddForeach``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1,System.Boolean)">
+            <summary>
+            通过线程池异步添加一个元素
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="idic"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="overlay"></param>
+        </member>
+        <member name="M:System.Collections.Generic.ICollection_T_Extention.RemoveForeach``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+            通过线程池异步移除一个元素
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ic"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:System.Collections.Generic.ICollection_T_Extention.AddForeach``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+            通过线程池异步添加一个元素
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ic"></param>
+            <param name="item"></param>
+        </member>
         <member name="T:System.StringExtention">
             <summary>
             string扩展
