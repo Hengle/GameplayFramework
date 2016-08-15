@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoiExtention3.5", "PoiExtention3.5\PoiExtention3.5.csproj", "{961BB7B1-D757-4D64-A966-7277E8F03B12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoiExtention4.5", "PoiExtention4.5\PoiExtention4.5.csproj", "{8FA3DBB6-18F8-4E7E-8CE2-62011F5D4832}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poi", "Poi\Poi.csproj", "{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFunc", "TestFunc\TestFunc.csproj", "{16D94BCC-3D33-483B-A291-BD211860FAD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D94BCC-3D33-483B-A291-BD211860FAD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D94BCC-3D33-483B-A291-BD211860FAD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D94BCC-3D33-483B-A291-BD211860FAD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D94BCC-3D33-483B-A291-BD211860FAD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

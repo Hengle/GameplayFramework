@@ -69,6 +69,22 @@
             <param name="value"></param>
             <returns></returns>
         </member>
+        <member name="M:System.StringExtention.Encipher(System.String,System.Int32)">
+            <summary>
+            对字符串进行轻量的加密，使用Decrypt方法解密
+            </summary>
+            <param name="original"></param>
+            <param name="Seed">种子</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtention.Decrypt(System.String,System.Int32)">
+            <summary>
+            解密密文
+            </summary>
+            <param name="ciphertext"></param>
+            <param name="Seed">种子</param>
+            <returns></returns>
+        </member>
         <member name="T:System.Xml.Linq.PoiExtention">
             <summary>
             对xml.linq的扩展
