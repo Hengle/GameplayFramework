@@ -40,6 +40,43 @@
             <param name="ic"></param>
             <param name="item"></param>
         </member>
+        <member name="T:System.EnumExtention">
+            <summary>
+            对枚举类的扩展
+            </summary>
+        </member>
+        <member name="M:System.EnumExtention.CheckFlags``1">
+            <summary>
+            检查是否有FlagsAttribute
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:System.EnumExtention.Contain``1(``0,``0)">
+            <summary>
+            检查枚举值中是否包含另一个枚举值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="original">通常我们所使用的组标志</param>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.EnumExtention.Add``1(``0@,``0)">
+            <summary>
+            在枚举值中添加一个另一个值,会改变original自身的值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="original">通常我们所使用的组标志</param>
+            <param name="target"></param>
+        </member>
+        <member name="M:System.EnumExtention.Remove``1(``0@,``0)">
+            <summary>
+            在枚举值中移除一个另一个值,会改变original自身的值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="original">通常我们所使用的组标志</param>
+            <param name="target"></param>
+        </member>
         <member name="T:System.StringExtention">
             <summary>
             string扩展

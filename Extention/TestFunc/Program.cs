@@ -10,13 +10,25 @@ namespace TestFunc
     {
         static void Main(string[] args)
         {
-            string test = "stedssdfasfsdff2343sdf*&^&^adf";
-            Console.WriteLine(test);
-            string temp = test.Encipher();
-            Console.WriteLine(temp);
-            string original = temp.Decrypt();
-            Console.WriteLine(original);
+            Test22 t = Test22.B;
+            EnumExtention.Add(ref t, Test22.C);
+
+            bool res = t.Contain(Test22.C);
+
+            EnumExtention.Remove(ref t, Test22.C);
+
             Console.ReadLine();
         }
+
+
+
+    }
+
+    [Flags]
+    enum Test22
+    {
+        A = 0x1,
+        B = 0x2,
+        C = 0x4,
     }
 }
