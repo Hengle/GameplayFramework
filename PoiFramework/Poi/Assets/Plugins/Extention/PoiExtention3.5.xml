@@ -133,7 +133,15 @@
             </summary>
             <typeparam name="T"></typeparam>
             <param name="_cfg"></param>
-            <param name="_instance">要填充的目标实例</param>
+            <param name="_instance">要填充的目标实例。静态字段参数可为null</param>
+        </member>
+        <member name="M:System.Xml.Linq.PoiExtention.AutoFullPropertiesByElement``1(System.Xml.Linq.XElement,``0)">
+            <summary>
+            自动填充属性。将xml元素的第一个同名子元素的值自动赋值给目标的属性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_cfg"></param>
+            <param name="_instance">要填充的目标实例。静态字段参数可为null</param>
         </member>
     </members>
 </doc>
