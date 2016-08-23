@@ -16,7 +16,7 @@ namespace System.Xml.Linq
         /// <typeparam name="T"></typeparam>
         /// <param name="_cfg"></param>
         /// <param name="_instance">要填充的目标实例。静态字段参数可为null</param>
-        public static void AutoFullProperties<T>(this XElement _cfg, T _instance)
+        public static void AutoFullPropertiesByAttribute<T>(this XElement _cfg, T _instance)
         {
             var collection = typeof(T).GetProperties();
             foreach (var item in collection)
