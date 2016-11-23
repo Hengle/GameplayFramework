@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Poi
 {
-    public interface iName
+    public interface IName
     {
         string Name { get; set; }
     }

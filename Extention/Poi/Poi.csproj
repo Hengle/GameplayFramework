@@ -67,12 +67,12 @@
     <Compile Include="Enum\Enum.cs" />
     <Compile Include="Environment\ScreenHelper.cs" />
     <Compile Include="HostPlugin\HostException.cs" />
-    <Compile Include="HostPlugin\iHost.cs" />
-    <Compile Include="HostPlugin\iPlugin.cs" />
+    <Compile Include="HostPlugin\IHost.cs" />
+    <Compile Include="HostPlugin\IPlugin.cs" />
     <Compile Include="HostPlugin\UnitState.cs" />
-    <Compile Include="Interface\iID.cs" />
+    <Compile Include="Interface\IID.cs" />
     <Compile Include="Interface\ILabel.cs" />
-    <Compile Include="Interface\iName.cs" />
+    <Compile Include="Interface\IName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

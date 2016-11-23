@@ -8,7 +8,7 @@ namespace Poi
     /// <summary>
     /// 宿主接口
     /// </summary>
-    public interface iHost
+    public interface IHost
     {
         UnitState State { get; }
         void Log(object message, uint level = 0);

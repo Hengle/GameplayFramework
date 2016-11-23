@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Poi
 {
-    public interface iID
+    public interface IID
     {
         int ID { get; set; }
     }

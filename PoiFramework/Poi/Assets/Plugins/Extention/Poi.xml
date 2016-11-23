@@ -170,17 +170,17 @@
             宿主异常
             </summary>
         </member>
-        <member name="T:Poi.iHost">
+        <member name="T:Poi.IHost">
             <summary>
             宿主接口
             </summary>
         </member>
-        <member name="T:Poi.iPlugin">
+        <member name="T:Poi.IPlugin">
             <summary>
             插件接口
             </summary>
         </member>
-        <member name="P:Poi.iPlugin.State">
+        <member name="P:Poi.IPlugin.State">
             <summary>
             当前插件状态
             </summary>
@@ -195,7 +195,7 @@
             插件状态
             </summary>
         </member>
-        <member name="T:Poi.iLabel">
+        <member name="T:Poi.ILabel">
             <summary>
             标签，含有ID和Name
             </summary>

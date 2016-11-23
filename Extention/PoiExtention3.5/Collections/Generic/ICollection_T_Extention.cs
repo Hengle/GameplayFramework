@@ -13,7 +13,7 @@ namespace System.Collections.Generic
         /// <typeparam name="T"></typeparam>
         /// <param name="ic"></param>
         /// <param name="item"></param>
-        public static void RemoveForeach<T>(this ICollection<T> ic,T item)
+        public static void RemoveInForeach<T>(this ICollection<T> ic,T item)
         {
             Threading.ThreadPool.QueueUserWorkItem((obj)=> 
             {
@@ -30,7 +30,7 @@ namespace System.Collections.Generic
         /// <typeparam name="T"></typeparam>
         /// <param name="ic"></param>
         /// <param name="item"></param>
-        public static void AddForeach<T>(this ICollection<T> ic, T item)
+        public static void AddInForeach<T>(this ICollection<T> ic, T item)
         {
             Threading.ThreadPool.QueueUserWorkItem((obj) =>
             {

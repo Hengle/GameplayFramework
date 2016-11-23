@@ -24,7 +24,7 @@
             <param name="value"></param>
             <param name="overlay"></param>
         </member>
-        <member name="M:System.Collections.Generic.ICollection_T_Extention.RemoveForeach``1(System.Collections.Generic.ICollection{``0},``0)">
+        <member name="M:System.Collections.Generic.ICollection_T_Extention.RemoveInForeach``1(System.Collections.Generic.ICollection{``0},``0)">
             <summary>
             通过线程池异步移除一个元素
             </summary>
@@ -32,7 +32,7 @@
             <param name="ic"></param>
             <param name="item"></param>
         </member>
-        <member name="M:System.Collections.Generic.ICollection_T_Extention.AddForeach``1(System.Collections.Generic.ICollection{``0},``0)">
+        <member name="M:System.Collections.Generic.ICollection_T_Extention.AddInForeach``1(System.Collections.Generic.ICollection{``0},``0)">
             <summary>
             通过线程池异步添加一个元素
             </summary>
@@ -127,7 +127,7 @@
             对xml.linq的扩展
             </summary>
         </member>
-        <member name="M:System.Xml.Linq.PoiExtention.AutoFullProperties``1(System.Xml.Linq.XElement,``0)">
+        <member name="M:System.Xml.Linq.PoiExtention.AutoFullPropertiesByAttribute``1(System.Xml.Linq.XElement,``0)">
             <summary>
             自动填充属性。将xml元素的属性自动赋值给目标的属性
             </summary>

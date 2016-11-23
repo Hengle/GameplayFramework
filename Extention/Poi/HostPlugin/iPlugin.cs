@@ -8,7 +8,7 @@ namespace Poi
     /// <summary>
     /// 插件接口
     /// </summary>
-    public interface iPlugin:IDisposable
+    public interface IPlugin:IDisposable
     {
         /// <summary>
         /// 当前插件状态

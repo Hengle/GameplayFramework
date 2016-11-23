@@ -5,11 +5,11 @@ namespace Poi
     /// <summary>
     /// 标签，含有ID和Name
     /// </summary>
-    public interface iLabel:iID,iName
+    public interface ILabel:IID,IName
     {
     }
 
-    public class Label : iLabel
+    public class Label : ILabel
     {
         public int ID
         {
