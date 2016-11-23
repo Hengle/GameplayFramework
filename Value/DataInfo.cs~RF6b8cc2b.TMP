@@ -10,6 +10,5 @@ namespace Poi
     /// </summary>
     public class DataInfo
     {
-        public HP HP { get; set; }
     }
 }

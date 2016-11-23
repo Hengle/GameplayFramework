@@ -5,7 +5,14 @@ using System.Text;
 
 namespace Poi
 {
-    public class HP
+    public class HP:Property
     {
+        public override ValueChangedType ChangedType
+        {
+            get
+            {
+                return ValueChangedType.TickChanged;
+            }
+        }
     }
 }

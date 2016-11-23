@@ -6,6 +6,31 @@ using System.Text;
 namespace Poi
 {
     /// <summary>
+    /// 属性类型
+    /// </summary>
+    public enum PropertyType
+    {
+        Default = 0,
+        HP,
+        MP,
+        /// <summary>
+        /// 体力
+        /// </summary>
+        Vitality,
+        /// <summary>
+        /// 能量
+        /// </summary>
+        Energy,
+        /// <summary>
+        /// 攻击力
+        /// </summary>
+        ATK,
+    }
+
+
+
+
+    /// <summary>
     /// 数据变动类型
     /// </summary>
     public enum ValueChangedType

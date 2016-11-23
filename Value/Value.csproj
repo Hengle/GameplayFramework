@@ -44,7 +44,8 @@
     <Compile Include="DataProperty.cs" />
     <Compile Include="HP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValueChangedType.cs" />
+    <Compile Include="Property.cs" />
+    <Compile Include="ValueEnumType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
