@@ -14,7 +14,7 @@ namespace System.Collections.Generic
         /// <typeparam name="V"></typeparam>
         /// <param name="idic"></param>
         /// <param name="key"></param>
-        public static void RemoveForeach<K,V>(this IDictionary<K,V> idic, K key)
+        public static void RemoveInForeach<K,V>(this IDictionary<K,V> idic, K key)
         {
             Threading.ThreadPool.QueueUserWorkItem((obj) =>
             {
@@ -34,7 +34,7 @@ namespace System.Collections.Generic
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <param name="overlay"></param>
-        public static void AddForeach<K, V>(this IDictionary<K, V> idic, K key,V value,bool overlay = true)
+        public static void AddInForeach<K, V>(this IDictionary<K, V> idic, K key,V value,bool overlay = true)
         {
             Threading.ThreadPool.QueueUserWorkItem((obj) =>
             {
