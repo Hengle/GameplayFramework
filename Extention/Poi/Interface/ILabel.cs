@@ -9,8 +9,14 @@ namespace Poi
     {
     }
 
+    /// <summary>
+    /// 标签
+    /// </summary>
     public class Label : ILabel
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         public int ID
         {
             get
@@ -20,6 +26,9 @@ namespace Poi
             ;
         }
 
+        /// <summary>
+        /// 名字
+        /// </summary>
         public string Name
         {
             get

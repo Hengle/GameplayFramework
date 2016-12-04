@@ -5,6 +5,9 @@ using System.Text;
 
 namespace System.Collections.Generic
 {
+    /// <summary>
+    /// 字典扩展
+    /// </summary>
     public static class DictionaryExtention
     {
         /// <summary>

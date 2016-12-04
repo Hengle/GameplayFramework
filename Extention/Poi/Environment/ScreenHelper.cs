@@ -6,6 +6,9 @@ using System.Text;
 
 namespace System
 {
+
+///关闭缺少注释警告
+#pragma warning disable 1591
     /// <summary>
     /// 屏幕助手
     /// </summary>
@@ -66,6 +69,11 @@ namespace System
         public const int DMDO_180 = 2;
         public const int DMDO_270 = 3;
 
+        /// <summary>
+        /// 改变屏幕分辨率
+        /// </summary>
+        /// <param name="Width"></param>
+        /// <param name="Height"></param>
         public static void ChangeRes(int Width = 1920,int Height = 1080)
         {
 

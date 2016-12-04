@@ -4,6 +4,11 @@
         <name>PoiExtention3.5</name>
     </assembly>
     <members>
+        <member name="T:System.Collections.Generic.DictionaryExtention">
+            <summary>
+            字典扩展
+            </summary>
+        </member>
         <member name="M:System.Collections.Generic.DictionaryExtention.RemoveInForeach``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
             <summary>
             通过线程池异步移除一个元素
@@ -23,6 +28,11 @@
             <param name="key"></param>
             <param name="value"></param>
             <param name="overlay"></param>
+        </member>
+        <member name="T:System.Collections.Generic.ICollection_T_Extention">
+            <summary>
+            集合容器扩展（主要用于List）
+            </summary>
         </member>
         <member name="M:System.Collections.Generic.ICollection_T_Extention.RemoveInForeach``1(System.Collections.Generic.ICollection{``0},``0)">
             <summary>

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace System.Collections.Generic
 {
+    /// <summary>
+    /// 集合容器扩展（主要用于List）
+    /// </summary>
     public static class ICollection_T_Extention
     {
         /// <summary>
