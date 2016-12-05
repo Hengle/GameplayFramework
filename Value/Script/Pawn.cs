@@ -13,12 +13,7 @@ namespace Poi
             dataInfo = Info;
         }
 
-        public PawnInfo DataInfo
-        {
-            get
-            {
-                return dataInfo as PawnInfo;
-            }
-        }
+        public PawnInfo DataInfo => dataInfo as PawnInfo;
+        
     }
 }

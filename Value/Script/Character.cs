@@ -7,12 +7,7 @@ namespace Poi
 {
     public class Character:Pawn
     {
-        public new CharacterInfo DataInfo
-        {
-            get
-            {
-                return dataInfo as CharacterInfo;
-            }
-        }
+        public new CharacterInfo DataInfo => dataInfo as CharacterInfo;
+        
     }
 }
