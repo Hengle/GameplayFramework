@@ -10,20 +10,8 @@ namespace Poi
     /// </summary>
     public class MP:BaseProperty
     {
-        public override ValueChangedType ChangedType
-        {
-            get
-            {
-                return ValueChangedType.TickChanged;
-            }
-        }
+        public override ValueChangedType ChangedType => ValueChangedType.TickChanged;
 
-        public override PropertyType PropertyType
-        {
-            get
-            {
-                return PropertyType.MP;
-            }
-        }
+        public override PropertyType PropertyType => PropertyType.MP;
     }
 }

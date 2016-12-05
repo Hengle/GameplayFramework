@@ -10,21 +10,9 @@ namespace Poi
     /// </summary>
     public class HP:BaseProperty
     {
-        public override ValueChangedType ChangedType
-        {
-            get
-            {
-                return ValueChangedType.TickChanged;
-            }
-        }
+        public override ValueChangedType ChangedType => ValueChangedType.TickChanged;
 
 
-        public override PropertyType PropertyType
-        {
-            get
-            {
-                return PropertyType.HP;
-            }
-        }
+        public override PropertyType PropertyType => PropertyType.HP;
     }
 }
