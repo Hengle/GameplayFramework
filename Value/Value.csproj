@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Script\Character.cs" />
     <Compile Include="Info\CharacterInfo.cs" />
     <Compile Include="Info\DataInfo.cs" />
     <Compile Include="Info\NPCInfo.cs" />
-    <Compile Include="ItemInfo.cs" />
-    <Compile Include="MP.cs" />
+    <Compile Include="Info\ItemInfo.cs" />
+    <Compile Include="Script\Pawn.cs" />
+    <Compile Include="Property\MP.cs" />
     <Compile Include="Property\BaseProperty.cs" />
     <Compile Include="Property\DataProperty.cs" />
     <Compile Include="Property\HP.cs" />
