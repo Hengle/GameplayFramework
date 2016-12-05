@@ -14,5 +14,7 @@ namespace Poi
         /// 角色类型
         /// </summary>
         public virtual PawnType PawnType { get { return PawnType.Pawn; } }
+
+        public HP HP { get;private set; }
     }
 }

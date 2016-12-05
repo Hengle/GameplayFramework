@@ -9,6 +9,46 @@
             数据信息，内存模型
             </summary>
         </member>
+        <member name="T:Poi.ItemInfo">
+            <summary>
+            道具信息（内存模型）
+            </summary>
+        </member>
+        <member name="T:Poi.MP">
+            <summary>
+            魔法值
+            </summary>
+        </member>
+        <member name="P:Poi.BaseProperty.Max">
+            <summary>
+            许可的最大值
+            </summary>
+        </member>
+        <member name="P:Poi.BaseProperty.Min">
+            <summary>
+            许可的最小值
+            </summary>
+        </member>
+        <member name="P:Poi.BaseProperty.Current">
+            <summary>
+            当前值
+            </summary>
+        </member>
+        <member name="P:Poi.BaseProperty.RestorePerSecond">
+            <summary>
+            每秒恢复
+            </summary>
+        </member>
+        <member name="P:Poi.BaseProperty.RestoreCooldownTime">
+            <summary>
+            距离下次恢复时间
+            </summary>
+        </member>
+        <member name="P:Poi.BaseProperty.RestoryDisabledTime">
+            <summary>
+            禁用恢复时间
+            </summary>
+        </member>
         <member name="T:Poi.DataProperty">
             <summary>
             数值
@@ -27,6 +67,11 @@
         <member name="P:Poi.DataProperty.Current">
             <summary>
             当前值
+            </summary>
+        </member>
+        <member name="T:Poi.HP">
+            <summary>
+            生命值
             </summary>
         </member>
         <member name="T:Poi.IRestore">
@@ -54,12 +99,22 @@
             角色信息
             </summary>
         </member>
+        <member name="P:Poi.PawnInfo.PawnType">
+            <summary>
+            角色类型
+            </summary>
+        </member>
         <member name="T:Poi.PawnType">
             <summary>
             角色类型
             </summary>
         </member>
         <member name="P:Poi.Property.ChangedType">
+            <summary>
+            属性刷新类型
+            </summary>
+        </member>
+        <member name="P:Poi.Property.PropertyType">
             <summary>
             属性类型
             </summary>

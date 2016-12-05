@@ -6,9 +6,9 @@ using System.Text;
 namespace Poi
 {
     /// <summary>
-    /// 生命值
+    /// 魔法值
     /// </summary>
-    public class HP:BaseProperty
+    public class MP:BaseProperty
     {
         public override ValueChangedType ChangedType
         {
@@ -18,12 +18,11 @@ namespace Poi
             }
         }
 
-
         public override PropertyType PropertyType
         {
             get
             {
-                return PropertyType.HP;
+                return PropertyType.MP;
             }
         }
     }
