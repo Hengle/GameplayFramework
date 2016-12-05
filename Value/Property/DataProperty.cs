@@ -8,7 +8,7 @@ namespace Poi
     /// <summary>
     /// 数值
     /// </summary>
-    public class DataProperty
+    public class DataProperty:Property
     {
         /// <summary>
         /// 许可的最大值
@@ -22,20 +22,5 @@ namespace Poi
         /// 当前值
         /// </summary>
         public double Current { get; set; }
-
-        #region 恢复
-        /// <summary>
-        /// 每秒恢复
-        /// </summary>
-        public double RestorePerSecond { get; set; }
-        /// <summary>
-        /// 距离下次恢复时间
-        /// </summary>
-        public float RestoreCooldownTime { get; set; }
-        /// <summary>
-        /// 禁用恢复时间
-        /// </summary>
-        public float RestoryDisabledTime { get; set; }
-        #endregion
     }
 }

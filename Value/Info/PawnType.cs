@@ -5,11 +5,16 @@ using System.Text;
 
 namespace Poi
 {
+#pragma warning disable 1591
     /// <summary>
-    /// 数据信息
+    /// 角色类型
     /// </summary>
-    public class DataInfo
+    public enum PawnType
     {
-        public HP HP { get; set; }
+        Pawn = 0,
+        NPC,
+        Monster,
+        Charater,
+        Player,
     }
 }

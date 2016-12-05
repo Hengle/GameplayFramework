@@ -40,9 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataInfo.cs" />
+    <Compile Include="CharacterInfo.cs" />
+    <Compile Include="Info\DataInfo.cs" />
     <Compile Include="DataProperty.cs" />
     <Compile Include="HP.cs" />
+    <Compile Include="IRestore.cs" />
+    <Compile Include="Info\MonsterInfo.cs" />
+    <Compile Include="Info\PawnInfo.cs" />
+    <Compile Include="PawnType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="ValueEnumType.cs" />
