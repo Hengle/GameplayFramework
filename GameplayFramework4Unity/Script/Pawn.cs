@@ -37,6 +37,11 @@ namespace Poi
             CheckDead();
         }
 
+        public virtual void AddHP(double addValue)
+        {
+            DataInfo?.HP?.AddHP(addValue);
+        }
+
         /// <summary>
         /// 检查死亡
         /// </summary>
@@ -54,5 +59,9 @@ namespace Poi
         }
 
         public event Action OnDead;
+
+
+        
+
     }
 }

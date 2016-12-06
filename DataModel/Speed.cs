@@ -8,7 +8,7 @@ namespace Poi
     /// <summary>
     /// 
     /// </summary>
-    public class Speed : BaseProperty
+    public class Speed : BaseProperty2
     {
         public Speed(PropertyType type)
         {

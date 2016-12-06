@@ -28,6 +28,11 @@ namespace Poi
             res.current = Current;
             return res;
         }
+
+        public void AddHP(double addValue)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public struct HPOnHitResult

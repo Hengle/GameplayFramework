@@ -22,5 +22,6 @@ namespace Poi
 
         public bool IsDead => HP.Current <= 0;
         
+
     }
 }
