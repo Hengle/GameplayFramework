@@ -50,7 +50,6 @@
     <Compile Include="Property\BaseProperty.cs" />
     <Compile Include="Property\DataProperty.cs" />
     <Compile Include="Property\HP.cs" />
-    <Compile Include="Property\IRestore.cs" />
     <Compile Include="Info\MonsterInfo.cs" />
     <Compile Include="Info\PawnInfo.cs" />
     <Compile Include="Info\PawnType.cs" />

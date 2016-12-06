@@ -22,6 +22,12 @@ namespace Poi
 
         public bool IsDead => HP.Current <= 0;
         
-
+        public IList<IRestoreProperty> RestoreProperties
+        {
+            get
+            {
+                return null;
+            }
+        }
     }
 }

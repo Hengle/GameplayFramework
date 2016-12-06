@@ -67,7 +67,10 @@ namespace Poi
         /// <param name="deltatime"></param>
         public void TickDataInfo(float deltatime)
         {
-            
+            foreach (var item in DataInfo.RestoreProperties)
+            {
+                item.TickRestore(deltatime);
+            }
         }
     }
 }

@@ -34,10 +34,6 @@ namespace Poi
             throw new NotImplementedException();
         }
 
-
-
-
-
         #region 恢复
 
         /// <summary>
