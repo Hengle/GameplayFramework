@@ -61,7 +61,13 @@ namespace Poi
         public event Action OnDead;
 
 
-        
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deltatime"></param>
+        public void TickDataInfo(float deltatime)
+        {
+            
+        }
     }
 }

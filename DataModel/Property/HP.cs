@@ -8,7 +8,7 @@ namespace Poi
     /// <summary>
     /// 生命值
     /// </summary>
-    public class HP:BaseProperty
+    public class HP : BaseProperty , IRestoreProperty
     {
         public override ValueChangedType ChangedType => ValueChangedType.TickChanged;
 
@@ -33,6 +33,47 @@ namespace Poi
         {
             throw new NotImplementedException();
         }
+
+
+
+
+
+        #region 恢复
+
+        /// <summary>
+        /// 恢复时间间隔
+        /// </summary>
+        public float TimeInterval { get; set; }
+        /// <summary>
+        /// 每秒恢复
+        /// </summary>
+        public double RestorePerTime { get; set; }
+        /// <summary>
+        /// 距离下次恢复时间
+        /// </summary>
+        public float RestoreCooldownTime { get; set; }
+        /// <summary>
+        /// 禁用恢复时间
+        /// </summary>
+        public float RestoreDisableTime { get; set; }
+
+        public void TickRestore(float time)
+        {
+            RestoreCooldownTime -= time;
+            if (RestoreCooldownTime <= 0)
+            {
+                Restore();
+
+                RestoreCooldownTime += TimeInterval;
+            }
+        }
+
+        protected virtual void Restore()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 
     public struct HPOnHitResult
@@ -40,4 +81,6 @@ namespace Poi
         public double current;
         public double overflowingDamage;
     }
+
+
 }

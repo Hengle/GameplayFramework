@@ -45,6 +45,7 @@
     <Compile Include="Info\NPCInfo.cs" />
     <Compile Include="Info\ItemInfo.cs" />
     <Compile Include="Property\IRangeProperty.cs" />
+    <Compile Include="Property\IRestoreProperty.cs" />
     <Compile Include="Property\MP.cs" />
     <Compile Include="Property\BaseProperty.cs" />
     <Compile Include="Property\DataProperty.cs" />
