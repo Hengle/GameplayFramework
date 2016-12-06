@@ -54,9 +54,6 @@
     <Compile Include="Script\Pawn.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{7a810265-e2d4-43d4-a328-2864dc83274b}</Project>
       <Name>DataModel</Name>
