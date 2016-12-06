@@ -1,6 +1,6 @@
 ﻿namespace Poi
 {
-    public abstract class BaseProperty:Property
+    public abstract class BaseProperty : Property, IRangeProperty<int,double>
     {
         /// <summary>
         /// 许可的最大值
@@ -14,21 +14,5 @@
         /// 当前值
         /// </summary>
         public double Current { get; set; }
-
-
-        #region 恢复
-        /// <summary>
-        /// 每秒恢复
-        /// </summary>
-        double RestorePerSecond { get; set; }
-        /// <summary>
-        /// 距离下次恢复时间
-        /// </summary>
-        float RestoreCooldownTime { get; set; }
-        /// <summary>
-        /// 禁用恢复时间
-        /// </summary>
-        float RestoryDisabledTime { get; set; }
-        #endregion
     }
 }

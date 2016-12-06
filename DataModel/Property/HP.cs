@@ -14,5 +14,25 @@ namespace Poi
 
 
         public override PropertyType PropertyType => PropertyType.HP;
+
+        public HPOnHitResult OnHit(double damage)
+        {
+            var temp = Current - damage;
+            HPOnHitResult res = new HPOnHitResult();
+            if (temp < 0)
+            {
+                res.overflowingDamage = -temp;
+            }
+
+            Current = temp < 0 ? 0 : temp;
+            res.current = Current;
+            return res;
+        }
+    }
+
+    public struct HPOnHitResult
+    {
+        public double current;
+        public double overflowingDamage;
     }
 }

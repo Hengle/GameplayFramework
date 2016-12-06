@@ -16,17 +16,43 @@ namespace Poi
         /// </summary>
         protected DataInfo dataInfo;
         /// <summary>
-        /// 通过数据模型初始化
+        /// 通过数据模型初始化 
+        /// <para>Awake紧随AddComponet执行,Init无法在Awake前执行，但可以在Start前执行</para>
         /// </summary>
-        /// <param name="Info"></param>
-        public void Init(DataInfo Info)
+        /// <param name="info"></param>
+        public void Init(DataInfo info)
         {
-            dataInfo = Info;
+            dataInfo = info;
         }
 
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>
         public PawnInfo DataInfo => dataInfo as PawnInfo;
+
+
+        public virtual void OnHit(double damage)
+        {
+            DataInfo?.HP?.OnHit(damage);
+            CheckDead();
+        }
+
+        /// <summary>
+        /// 检查死亡
+        /// </summary>
+        private void CheckDead()
+        {
+            if (DataInfo.IsDead)
+            {
+                OnDead?.Invoke();
+            }
+        }
+
+        public void AlterPorperty<T>(PropertyType type,T changedValue)
+        {
+
+        }
+
+        public event Action OnDead;
     }
 }

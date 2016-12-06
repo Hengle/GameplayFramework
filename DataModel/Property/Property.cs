@@ -9,6 +9,6 @@
         /// <summary>
         /// 属性类型
         /// </summary>
-        public virtual PropertyType PropertyType { get; }
+        public virtual PropertyType PropertyType { get; protected set; }
     }
 }
