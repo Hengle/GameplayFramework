@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Poi
 {
     /// <summary>
     /// 角色
     /// </summary>
-    public class Pawn
+    public class Pawn:MonoBehaviour
     {
         /// <summary>
         /// 角色信息（数据模型）
@@ -27,6 +28,5 @@ namespace Poi
         /// 角色信息（数据模型）
         /// </summary>
         public PawnInfo DataInfo => dataInfo as PawnInfo;
-        
     }
 }
