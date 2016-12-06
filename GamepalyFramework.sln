@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Value", "Value\Value.csproj", "{7A810265-E2D4-43D4-A328-2864DC83274B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "Value\DataModel.csproj", "{7A810265-E2D4-43D4-A328-2864DC83274B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameplayFramework4Unity", "GameplayFramework4Unity\GameplayFramework4Unity.csproj", "{5B8E9239-54A1-4821-83DB-7C69A91850B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7A810265-E2D4-43D4-A328-2864DC83274B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A810265-E2D4-43D4-A328-2864DC83274B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A810265-E2D4-43D4-A328-2864DC83274B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B8E9239-54A1-4821-83DB-7C69A91850B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B8E9239-54A1-4821-83DB-7C69A91850B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B8E9239-54A1-4821-83DB-7C69A91850B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B8E9239-54A1-4821-83DB-7C69A91850B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

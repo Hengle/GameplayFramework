@@ -2,3 +2,6 @@
 .vs/
 .gitattributes
 Value/obj/
+GameplayFramework4Unity/obj/
+GameplayFramework4Unity/bin/
+Value/bin/
