@@ -2,7 +2,7 @@
 
 namespace Poi
 {
-    public abstract class BaseProperty : Property, IMaxLimit<int,double>,IRestoreProperty
+    public abstract class BaseProperty : DataProperty, IMaxLimit<int,double>,IRestoreProperty
     {
         /// <summary>
         /// 许可的最大值
