@@ -13,8 +13,21 @@ namespace Poi
         /// <summary>
         /// 角色类型
         /// </summary>
-        public virtual PawnType PawnType { get { return PawnType.Pawn; } }
+        public virtual PawnType PawnType => PawnType.Pawn;
 
-        public HP HP { get;private set; }
+        public HP HP { get; private set; } = new HP() { Max = 1,Current = 1};
+        public MP MP { get; private set; } = new MP();
+        public Speed WalkSpeed { get; private set; } = new Speed(PropertyType.WalkSpeed);
+        public Speed RunSpeed { get; private set; } = new Speed(PropertyType.RunSpeed);
+
+        public bool IsDead => HP.Current <= 0;
+        
+        public IList<IRestoreProperty> RestoreProperties
+        {
+            get
+            {
+                return null;
+            }
+        }
     }
 }

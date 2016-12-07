@@ -25,6 +25,8 @@ namespace Poi
         /// 攻击力
         /// </summary>
         ATK,
+        WalkSpeed,
+        RunSpeed,
     }
 
 

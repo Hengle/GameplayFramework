@@ -1,0 +1,58 @@
+********************************************************************************
+*                    Sunday, December 04, 2016 11:42:21 AM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: E:\Github\Extention\PoiFramework\Poi
+Unity 'Data' or 'Frameworks' directory: D:/Program Files/Unity5.4.2f2/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\Extention\PoiFramework\Poi\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Program Files/Unity5.4.2f2/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Program Files/Unity5.4.2f2/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Program Files/Unity5.4.2f2/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Program Files/Unity5.4.2f2/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-6aac118bb6fd4bf4883edd1390216e92 
+Exit code: 0
+Elapsed time: 5.73 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\Github\Extention\PoiFramework\Poi\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.75 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                    Sunday, December 04, 2016 11:42:28 AM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: E:\Github\Extention\PoiFramework\Poi
+Unity 'Data' or 'Frameworks' directory: D:/Program Files/Unity5.4.2f2/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\Extention\PoiFramework\Poi\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Program Files/Unity5.4.2f2/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Program Files/Unity5.4.2f2/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Program Files/Unity5.4.2f2/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Program Files/Unity5.4.2f2/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-d1f685eed92a4ba4fb2b0e22eda7b480 
+Exit code: 0
+Elapsed time: 5.08 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\Github\Extention\PoiFramework\Poi\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.41 sec
+
+- pdb2mdb.exe output (0 lines):

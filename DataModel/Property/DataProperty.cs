@@ -8,19 +8,15 @@ namespace Poi
     /// <summary>
     /// 数值
     /// </summary>
-    public class DataProperty:Property
+    public class DataProperty
     {
         /// <summary>
-        /// 许可的最大值
+        /// 属性刷新类型
         /// </summary>
-        public int Max { get; set; }
+        public virtual ValueChangedType ChangedType { get; }
         /// <summary>
-        /// 许可的最小值
+        /// 属性类型
         /// </summary>
-        public int Min { get; set; }
-        /// <summary>
-        /// 当前值
-        /// </summary>
-        public double Current { get; set; }
+        public virtual PropertyType PropertyType { get; protected set; }
     }
 }
