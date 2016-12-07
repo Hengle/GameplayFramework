@@ -1,0 +1,289 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Poi</name>
+    </assembly>
+    <members>
+        <member name="T:Poi.ID">
+            <summary>
+            线程安全的全局ID
+            </summary>
+        </member>
+        <member name="M:Poi.ID.GetGlobalID">
+            <summary>
+            取得一个全局的ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Poi.Threshold">
+            <summary>
+            阈值
+            </summary>
+        </member>
+        <member name="F:Poi.Threshold.Upper">
+            <summary>
+            上界
+            </summary>
+        </member>
+        <member name="F:Poi.Threshold.Lower">
+            <summary>
+            下界
+            </summary>
+        </member>
+        <member name="M:Poi.Threshold.#ctor(System.Single,System.Single)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="l">下界</param>
+            <param name="u">上界</param>
+        </member>
+        <member name="M:Poi.Threshold.IsInValue(System.Single,System.Int32,System.Int32)">
+            <summary>
+            是不是在界限内
+            </summary>
+            <param name="v">现有值</param>
+            <param name="args">调整幅度</param>
+            <param name="level">调整级别</param>
+            <returns>return v >= (Lower - args * level) || v 小于= (Upper + args * level);</returns>
+        </member>
+        <member name="M:Poi.Threshold.IsLessLower(System.Single,System.Int32,System.Int32)">
+            <summary>
+            是否小于下界
+            </summary>
+            <param name="v"></param>
+            <param name="args"></param>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Poi.Threshold.IsGreaterUpper(System.Single,System.Int32,System.Int32)">
+            <summary>
+            是否大于上界
+            </summary>
+            <param name="v"></param>
+            <param name="args"></param>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Poi.Writing">
+            <summary>
+            <para>多语言文本查询。</para>
+            <para>创建XML为每个text指定一个ID号并配置多种语言，方便翻译和扩展。</para>
+            <para>初始化Text需要遵从示例的格式</para>
+            <pare>使用CreatTemlate方法在指定路径下创建一个XML模版。文件名默认为：TranslatorText。</pare>
+            <para>Interpreter</para>
+            <para>XML specify an ID number for each text is created and configured in multiple languages to facilitate translation and expansion.</para>
+            <para>Initializes the Text needs to follow the example format</para>
+            <pare>Under the specified path using the CreatTemlate method to create an XML template. File name will default to: TranslatorText.</pare>
+            </summary>
+        </member>
+        <member name="P:Poi.Writing.CurrentLanguage">
+            <summary>
+            当前使用的语言
+            </summary>
+        </member>
+        <member name="M:Poi.Writing.Init(System.Xml.Linq.XElement,Poi.Language)">
+            <summary>
+            初始化方法
+            </summary>
+            <param name="textXML">指定xml</param>
+            <param name="language">设定从xml中加载的语言</param>
+        </member>
+        <member name="M:Poi.Writing.CreatTemlate(System.String,System.String)">
+            <summary>
+            创建一个xml模版，初始化Text需要遵从这个示例的格式
+            </summary>
+            <param name="xmlPath">指定一个路径</param>
+            <param name="fileName">指定文件名字，需要.xml后缀</param>
+        </member>
+        <member name="T:Poi.LeftOrRight">
+            <summary>
+            左右
+            </summary>
+        </member>
+        <member name="T:Poi.Axial">
+            <summary>
+            轴向
+            </summary>
+        </member>
+        <member name="T:Poi.Language">
+            <summary>
+            语言种类
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Chinese">
+            <summary>
+            汉语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.English">
+            <summary>
+            英语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Japanese">
+            <summary>
+            日语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Russian">
+            <summary>
+            俄语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.German">
+            <summary>
+            德语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.French">
+            <summary>
+            法语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Hangul">
+            <summary>
+            韩语
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Undefined1">
+            <summary>
+            未定义语言1
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Undefined2">
+            <summary>
+            未定义语言2
+            </summary>
+        </member>
+        <member name="F:Poi.Language.Undefined3">
+            <summary>
+            未定义语言3
+            </summary>
+        </member>
+        <member name="T:Poi.Only">
+            <summary>
+            是不是唯一的
+            </summary>
+        </member>
+        <member name="T:Poi.HostException">
+            <summary>
+            宿主异常
+            </summary>
+        </member>
+        <member name="T:Poi.IHost">
+            <summary>
+            宿主接口
+            </summary>
+        </member>
+        <member name="P:Poi.IHost.State">
+            <summary>
+            宿主状态
+            </summary>
+        </member>
+        <member name="M:Poi.IHost.Log(System.Object,System.UInt32)">
+            关闭缺少注释警告
+        </member>
+        <member name="T:Poi.IPlugin">
+            <summary>
+            插件接口
+            </summary>
+        </member>
+        <member name="P:Poi.IPlugin.State">
+            <summary>
+            当前插件状态
+            </summary>
+        </member>
+        <member name="T:Poi.UnitState">
+            <summary>
+            插件状态，包装一个状态类用于传入可迭代方法中
+            </summary>
+        </member>
+        <member name="P:Poi.UnitState.PluginState">
+            <summary>
+            插件当前状态
+            </summary>
+        </member>
+        <member name="T:Poi.PluginState">
+            <summary>
+            插件状态
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Null">
+            <summary>
+            插件为空
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Initing">
+            <summary>
+            正在初始化
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.InitErrorAndStop">
+            <summary>
+            初始化失败已停止工作
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.InitErrorAndReIniting">
+            <summary>
+            初始化失败正在重试
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.InitFinish">
+            <summary>
+            初始化完成
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Open">
+            <summary>
+            开启
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Close">
+            <summary>
+            关闭
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Dispose">
+            <summary>
+            已释放
+            </summary>
+        </member>
+        <member name="T:Poi.ILabel">
+            <summary>
+            标签，含有ID和Name
+            </summary>
+        </member>
+        <member name="T:Poi.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Poi.Label.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:Poi.Label.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="T:System.ScreenHelper">
+            <summary>
+            屏幕助手
+            </summary>
+        </member>
+        <member name="T:System.ScreenHelper.DEVMODE">
+            <summary>
+            屏幕参数
+            </summary>
+        </member>
+        <member name="M:System.ScreenHelper.ChangeRes(System.Int32,System.Int32)">
+            <summary>
+            改变屏幕分辨率
+            </summary>
+            <param name="Width"></param>
+            <param name="Height"></param>
+        </member>
+    </members>
+</doc>

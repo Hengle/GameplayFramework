@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PoiExtention3.5</name>
+    </assembly>
+    <members>
+        <member name="T:System.Collections.Generic.DictionaryExtention">
+            <summary>
+            字典扩展
+            </summary>
+        </member>
+        <member name="M:System.Collections.Generic.DictionaryExtention.RemoveInForeach``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>
+            通过线程池异步移除一个元素
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="idic"></param>
+            <param name="key"></param>
+        </member>
+        <member name="M:System.Collections.Generic.DictionaryExtention.AddInForeach``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1,System.Boolean)">
+            <summary>
+            通过线程池异步添加一个元素
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="idic"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="overlay"></param>
+        </member>
+        <member name="T:System.Collections.Generic.ICollection_T_Extention">
+            <summary>
+            集合容器扩展（主要用于List）
+            </summary>
+        </member>
+        <member name="M:System.Collections.Generic.ICollection_T_Extention.RemoveInForeach``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+            通过线程池异步移除一个元素
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ic"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:System.Collections.Generic.ICollection_T_Extention.AddInForeach``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+            通过线程池异步添加一个元素
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ic"></param>
+            <param name="item"></param>
+        </member>
+        <member name="T:System.EnumExtention">
+            <summary>
+            对枚举类的扩展
+            </summary>
+        </member>
+        <member name="M:System.EnumExtention.CheckFlags``1">
+            <summary>
+            检查是否有FlagsAttribute
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:System.EnumExtention.Contain``1(``0,``0)">
+            <summary>
+            检查枚举值中是否包含另一个枚举值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="original">通常我们所使用的组标志</param>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.EnumExtention.Add``1(``0@,``0)">
+            <summary>
+            在枚举值中添加一个另一个值,会改变original自身的值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="original">通常我们所使用的组标志</param>
+            <param name="target"></param>
+        </member>
+        <member name="M:System.EnumExtention.Remove``1(``0@,``0)">
+            <summary>
+            在枚举值中移除一个另一个值,会改变original自身的值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="original">通常我们所使用的组标志</param>
+            <param name="target"></param>
+        </member>
+        <member name="T:System.StringExtention">
+            <summary>
+            string扩展
+            </summary>
+        </member>
+        <member name="M:System.StringExtention.ToInt(System.String)">
+            <summary>
+            使用int.Parse转换一个字符串
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtention.ToEnum``1(System.String)">
+            <summary>
+            将一个字符串转换成枚举
+            </summary>
+            <typeparam name="T">提供一个枚举类型</typeparam>
+            <param name="value"></param>
+            <returns>返回对应的枚举值</returns>
+            <exception cref="T:System.ArgumentException">所给泛型不是枚举</exception>
+        </member>
+        <member name="M:System.StringExtention.ToBool(System.String)">
+            <summary>
+            将string转换成bool。
+            <para>当值为"true""TRUE""True"之一时返回true，否则返回false。</para>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtention.Encipher(System.String,System.Int32)">
+            <summary>
+            对字符串进行轻量的加密，使用Decrypt方法解密
+            </summary>
+            <param name="original"></param>
+            <param name="Seed">种子</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtention.Decrypt(System.String,System.Int32)">
+            <summary>
+            解密密文
+            </summary>
+            <param name="ciphertext"></param>
+            <param name="Seed">种子</param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Xml.Linq.PoiExtention">
+            <summary>
+            对xml.linq的扩展
+            </summary>
+        </member>
+        <member name="M:System.Xml.Linq.PoiExtention.AutoFullPropertiesByAttribute``1(System.Xml.Linq.XElement,``0)">
+            <summary>
+            自动填充属性。将xml元素的属性自动赋值给目标的属性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_cfg"></param>
+            <param name="_instance">要填充的目标实例。静态字段参数可为null</param>
+        </member>
+        <member name="M:System.Xml.Linq.PoiExtention.AutoFullPropertiesByElement``1(System.Xml.Linq.XElement,``0)">
+            <summary>
+            自动填充属性。将xml元素的第一个同名子元素的值自动赋值给目标的属性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_cfg"></param>
+            <param name="_instance">要填充的目标实例。静态字段参数可为null</param>
+        </member>
+    </members>
+</doc>

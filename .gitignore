@@ -7,3 +7,7 @@ GameplayFramework4Unity/bin/
 Value/bin/
 DataModel/obj/
 DataModel/bin/
+ValueTest/Library/
+ValueTest/ValueTest.Editor.csproj
+ValueTest/ValueTest.csproj
+ValueTest/ValueTest.sln
