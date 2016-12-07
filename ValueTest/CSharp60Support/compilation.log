@@ -165,3 +165,211 @@ Exit code: 0
 Elapsed time: 0.12 sec
 
 - pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:21:26 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: E:\Github\GamePlay\ValueTest
+Unity 'Data' or 'Frameworks' directory: d:/Program Files/Unity 5.5.0f3/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-21dca97a4e1df5a4a8366abf13f12df3 
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:21:32 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: E:\Github\GamePlay\ValueTest
+Unity 'Data' or 'Frameworks' directory: d:/Program Files/Unity 5.5.0f3/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-733e8f1d20c59554d8a6c1017f80ac92 
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:21:32 PM                    *
+********************************************************************************
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:21:33 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: E:\Github\GamePlay\ValueTest
+Unity 'Data' or 'Frameworks' directory: d:/Program Files/Unity 5.5.0f3/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-648f8ab8b887a8945916a249864b7d44 
+Exit code: 0
+Elapsed time: 5.91 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.57 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:22:47 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: E:\Github\GamePlay\ValueTest
+Unity 'Data' or 'Frameworks' directory: d:/Program Files/Unity 5.5.0f3/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-6c333732ac9c6df42af0d21acc47a82e 
+Exit code: 0
+Elapsed time: 6.09 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.49 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:22:55 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: E:\Github\GamePlay\ValueTest
+Unity 'Data' or 'Frameworks' directory: d:/Program Files/Unity 5.5.0f3/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-2e866e287bd7c28419c2a233e90273f8 
+Exit code: 0
+Elapsed time: 5.37 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 2.93 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:25:00 PM                    *
+********************************************************************************
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:25:01 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: E:\Github\GamePlay\ValueTest
+Unity 'Data' or 'Frameworks' directory: d:/Program Files/Unity 5.5.0f3/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-e50512d6619ada34984ad29370ee4165 
+Exit code: 0
+Elapsed time: 10.55 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 1.40 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:25:21 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: E:\Github\GamePlay\ValueTest
+Unity 'Data' or 'Frameworks' directory: d:/Program Files/Unity 5.5.0f3/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-4d64873b5f0145f4489d25081315abe4 
+Exit code: 0
+Elapsed time: 10.82 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.54 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                   Wednesday, December 07, 2016 9:25:35 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: E:\Github\GamePlay\ValueTest
+Unity 'Data' or 'Frameworks' directory: d:/Program Files/Unity 5.5.0f3/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"d:/Program Files/Unity 5.5.0f3/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-a8d4568835395d34c99eda1203ea6c83 
+Exit code: 0
+Elapsed time: 14.86 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: E:\Github\GamePlay\ValueTest\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.46 sec
+
+- pdb2mdb.exe output (0 lines):
