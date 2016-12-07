@@ -58,6 +58,12 @@
     <Compile Include="Property\ValueEnumType.cs" />
     <Compile Include="Speed.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EX\Extention\Poi\Poi.csproj">
+      <Project>{9fda4727-eb4e-4436-a0ba-91ac68fc2d83}</Project>
+      <Name>Poi</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
