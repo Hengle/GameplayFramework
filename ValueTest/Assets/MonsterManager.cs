@@ -23,6 +23,8 @@ public class MonsterManager : MonoBehaviour {
         MonsterInfo info = new MonsterInfo();
 
         monster.Init(info);
+
+        mon.AddComponent<Rigidbody>();
     }
 
     // Update is called once per frame
