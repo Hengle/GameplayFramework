@@ -7,5 +7,6 @@ namespace Poi
 {
     public class PlayerController:CharacterControllor
     {
+        public static readonly PlayerController Instance = new PlayerController();
     }
 }
