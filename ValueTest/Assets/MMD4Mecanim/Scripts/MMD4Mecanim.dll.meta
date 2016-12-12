@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: 237a2ace0fe23084c9cdd0d1311ed775
+timeCreated: 1467888323
+licenseType: Pro
+PluginImporter:
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder:
+    MMD4MecanimBulletPhysics: 10001
+  isPreloaded: 0
+  platformData:
+    Android:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Any:
+      enabled: 0
+      settings: {}
+    BlackBerry:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    Editor:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+        DefaultValueInitialized: true
+        OS: AnyOS
+    GLESEmu:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    Linux:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    Linux64:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    LinuxUniversal:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    N3DS:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    OSXIntel:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    OSXIntel64:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    OSXUniversal:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    PS3:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    PS4:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    PSM:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    PSP2:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    SamsungTV:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+        STV_MODEL: STANDARD_13
+    Tizen:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    WP8:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    Web:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    WebGL:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    WebStreamed:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    WiiU:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    Win:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Win64:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    WindowsStoreApps:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+        DontProcess: False
+        PlaceholderPath: 
+        SDK: AnySDK
+        ScriptingBackend: AnyScriptingBackend
+    Xbox360:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    XboxOne:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    iOS:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+        CompileFlags: 
+        FrameworkDependencies: 
+    tvOS:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+        CompileFlags: 
+        FrameworkDependencies: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

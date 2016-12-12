@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 396b5dca256269148a30d523636d6dc9
+PluginImporter:
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder: {}
+  isPreloaded: 0
+  platformData:
+    Android:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    Any:
+      enabled: 0
+      settings: {}
+    BlackBerry:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Editor:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+        DefaultValueInitialized: true
+        OS: AnyOS
+    GLESEmu:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Linux:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Linux64:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    LinuxUniversal:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    N3DS:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    OSXIntel:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    OSXIntel64:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    OSXUniversal:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    PS3:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    PS4:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    PSM:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    PSP2:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    SamsungTV:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Tizen:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    WP8:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Web:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    WebGL:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    WebStreamed:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    WiiU:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Win:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    Win64:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    WindowsStoreApps:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    Xbox360:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    XboxOne:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    iOS:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+    tvOS:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
