@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Poi;
 
 public class MonsterManager : MonoBehaviour {
 
@@ -17,6 +18,11 @@ public class MonsterManager : MonoBehaviour {
     private void CreateMonster()
     {
         GameObject mon = Instantiate(Monsters[0], pos.position, pos.rotation);
+        var monster = mon.AddComponent<Monster>();
+
+        MonsterInfo info = new MonsterInfo();
+
+        monster.Init(info);
     }
 
     // Update is called once per frame
