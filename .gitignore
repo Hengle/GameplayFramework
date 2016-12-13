@@ -14,3 +14,7 @@ ValueTest/ValueTest.sln
 ValueTest/Temp/
 ValueTest/CSharp60Support/compilation.log
 /EX
+ValueTest/test_Data/
+ValueTest/ValueTest.Editor.Plugins.csproj
+ValueTest/ValueTest.Plugins.csproj
+ValueTest/test.exe
