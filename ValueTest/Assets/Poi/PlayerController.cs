@@ -10,11 +10,15 @@ namespace Poi
     {
         public static readonly PlayerController Instance = new PlayerController();
 
+        Parameter para;
         /// <summary>
         /// 创建玩家角色
         /// </summary>
         public Pawn CreatePlayer()
         {
+            var temp_pgo = GameObject.Find("para");
+            para = temp_pgo?.GetComponent<Parameter>();
+
             GameObject go = new GameObject("Player");
             go.AddComponent<DontDestroyOnLoad>();
             var p = go.AddComponent<Character>();
