@@ -19,9 +19,14 @@ namespace Poi
             var temp_pgo = GameObject.Find("para");
             para = temp_pgo?.GetComponent<Parameter>();
 
-            GameObject go = new GameObject("Player");
-            go.AddComponent<DontDestroyOnLoad>();
+            GameObject go = GameObject.Instantiate(para.player);
+            //go.AddComponent<DontDestroyOnLoad>();
+            var controller = go.GetComponent<Animator>();
+            controller.runtimeAnimatorController = para.controller;
             var p = go.AddComponent<Character>();
+
+            //go.AddComponent<CharacterController>();
+
             Possess(p);
 
             return p;

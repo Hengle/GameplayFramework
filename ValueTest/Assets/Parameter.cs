@@ -5,6 +5,8 @@ using UnityEngine;
 public class Parameter : MonoBehaviour {
 
     public Avatar playerAvata;
+    public GameObject player;
+    public AnimatorOverrideController controller;
 	// Use this for initialization
 	void Start () {
 		
