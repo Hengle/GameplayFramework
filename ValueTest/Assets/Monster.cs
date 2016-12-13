@@ -8,6 +8,9 @@ using UnityEngine.AI;
 
 namespace Poi
 {
+    /// <summary>
+    /// 怪物
+    /// </summary>
     public class Monster :Pawn
     {
         /// <summary>

@@ -7,14 +7,15 @@ namespace Poi
 {
     public class CharacterControllor
     {
-        protected Pawn controlledPawn;
-        protected Pawn oldControlledPawn;
+        protected Pawn pawn;
+        protected Pawn oldPawn;
 
-        public Pawn ControlledPawn => controlledPawn;
+        public Pawn Pawn => pawn;
 
         public void Possess(Pawn pawn)
         {
-
+            oldPawn = this.pawn;
+            this.pawn = pawn;
         }
 
         public void UnPossess()
