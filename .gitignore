@@ -18,3 +18,17 @@ ValueTest/test_Data/
 ValueTest/ValueTest.Editor.Plugins.csproj
 ValueTest/ValueTest.Plugins.csproj
 ValueTest/test.exe
+ValueTest/Assets/Scenes/A/LightingData.asset
+ValueTest/Assets/Scenes/A/LightingData.asset.meta
+ValueTest/Assets/Scenes/A/ReflectionProbe-0.exr
+ValueTest/Assets/Scenes/A/ReflectionProbe-0.exr.meta
+ValueTest/Assets/Scenes/B.meta
+ValueTest/Assets/Scenes/B/LightingData.asset
+ValueTest/Assets/Scenes/B/LightingData.asset.meta
+ValueTest/Assets/Scenes/B/ReflectionProbe-0.exr
+ValueTest/Assets/Scenes/B/ReflectionProbe-0.exr.meta
+ValueTest/Assets/Scenes/C.meta
+ValueTest/Assets/Scenes/C/LightingData.asset
+ValueTest/Assets/Scenes/C/LightingData.asset.meta
+ValueTest/Assets/Scenes/C/ReflectionProbe-0.exr
+ValueTest/Assets/Scenes/C/ReflectionProbe-0.exr.meta
