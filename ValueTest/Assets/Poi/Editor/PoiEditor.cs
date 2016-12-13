@@ -12,36 +12,52 @@ public static partial class PoiEditor
     [InitializeOnLoadMethod]
     private static void InitializeInEditor()
     {
-
-        //EditorApplication.playmodeStateChanged += OnPlaymodeStateChanged;
+        EditorApplication.playmodeStateChanged += OnPlaymodeStateChanged;
     }
 
     private static void OnPlaymodeStateChanged()
     {
-        Debug.Log(PoiContext.Context.EditScene);
-       
-        if (!EditorApplication.isPlaying)
+        if (EditorApplication.isPlaying)
         {
+            PlayerPrefs.SetInt(PoiIsAlreadyPlayKey, 1);
+        }
+        else
+        {
+            var path = PlayerPrefs.GetString(PoiCurrentSceneKey, "");
+
+            int isPlayed = PlayerPrefs.GetInt(PoiIsAlreadyPlayKey, 0);
             ///结束游戏回到之前编辑的场景
-            if (string.IsNullOrEmpty(PoiContext.Context.EditScene))
+            
+            if (isPlayed == 1)
             {
-                try
+                if (!string.IsNullOrEmpty(path))
                 {
-                    EditorSceneManager.OpenScene(PoiContext.Context.EditScene);
+                    try
+                    {
+                        EditorSceneManager.OpenScene(path);
 
-                }
-                catch (System.Exception)
-                {
+                    }
+                    catch (System.Exception)
+                    {
 
+                    }
                 }
+
+                PlayerPrefs.SetInt(PoiIsAlreadyPlayKey, 0);
+                PlayerPrefs.SetString(PoiCurrentSceneKey, "");
             }
+
         }
     }
 
-    [MenuItem("Poi/SaveAndPlayMainScene")]
+    [MenuItem("Poi      /SaveAndPlayMainScene")]
     private static void SaveAndPlayMainScene()
     {
         Scene cur = EditorSceneManager.GetActiveScene();
+
+        PlayerPrefs.SetString(PoiCurrentSceneKey, cur.path);
+
+        //PlayerPrefs.SetInt(PoiIsCommandPlayKey, 1);
 
         EditorSceneManager.SaveOpenScenes();
         try
@@ -55,10 +71,7 @@ public static partial class PoiEditor
         EditorApplication.isPlaying = true;
     }
 
-
-    public class PoiContext: SynchronizationContext
-    {
-        public static readonly PoiContext Context = new PoiContext();
-        public string EditScene ;
-    }
+    const string PoiCurrentSceneKey  = "PoiKey0x0001";
+    const string PoiIsCommandPlayKey = "PoiKey0x0002";
+    const string PoiIsAlreadyPlayKey = "PoiKey0x0003";
 }
