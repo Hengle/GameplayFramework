@@ -16,8 +16,10 @@ namespace Poi
         public Pawn CreatePlayer()
         {
             GameObject go = new GameObject("Player");
+            go.AddComponent<DontDestroyOnLoad>();
             var p = go.AddComponent<Character>();
             Possess(p);
+
             return p;
         }
 

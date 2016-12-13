@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PoiExtention3.5</name>
+    </assembly>
+    <members>
+        <member name="T:System.StringExtention">
+            <summary>
+            string扩展
+            </summary>
+        </member>
+        <member name="M:System.StringExtention.ToInt(System.String)">
+            <summary>
+            使用int.Parse转换一个字符串
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtention.ToEnum``1(System.String)">
+            <summary>
+            将一个字符串转换成枚举
+            </summary>
+            <typeparam name="T">提供一个枚举类型</typeparam>
+            <param name="value"></param>
+            <returns>返回对应的枚举值</returns>
+            <exception cref="T:System.ArgumentException">所给泛型不是枚举</exception>
+        </member>
+        <member name="M:System.StringExtention.ToBool(System.String)">
+            <summary>
+            将string转换成bool。
+            <para>当值为"true""TRUE""True"之一时返回true，否则返回false。</para>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Xml.Linq.PoiExtention">
+            <summary>
+            对xml.linq的扩展
+            </summary>
+        </member>
+        <member name="M:System.Xml.Linq.PoiExtention.AutoFullProperties``1(System.Xml.Linq.XElement,``0)">
+            <summary>
+            自动填充属性。将xml元素的属性自动赋值给目标的属性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_cfg"></param>
+            <param name="_instance">要填充的目标实例</param>
+        </member>
+    </members>
+</doc>
