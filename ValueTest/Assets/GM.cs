@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.SceneManagement.SceneManager;
 using Poi;
+using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour {
 
@@ -18,7 +19,7 @@ public class GM : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+
         Wait(LoadSceneAsync(1),()=>
         {
             PlayerController.Instance.CreatePlayer();
@@ -32,17 +33,21 @@ public class GM : MonoBehaviour {
 
     private IEnumerator Func(AsyncOperation asyncOperation, Action callback,float waitTime = -1)
     {
-        while (!asyncOperation.isDone)
+        if (asyncOperation != null)
         {
-            if (waitTime > 0)
+            while (!asyncOperation.isDone)
             {
-                yield return new WaitForSeconds(waitTime);
-            }
-            else
-            {
-                yield return new WaitForEndOfFrame();
+                if (waitTime > 0)
+                {
+                    yield return new WaitForSeconds(waitTime);
+                }
+                else
+                {
+                    yield return new WaitForEndOfFrame();
+                }
             }
         }
+
         callback?.Invoke();
     }
 
