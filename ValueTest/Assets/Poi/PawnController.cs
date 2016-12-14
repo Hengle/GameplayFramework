@@ -31,15 +31,28 @@ namespace Poi
         /// <param name="pawn"></param>
         public bool Possess(Pawn pawn)
         {
+            ///贪婪控制器处理
             if (pawn?.Controller?.Mode == ControlMode.Greedy)
             {
                 return false;
             }
+
+            ///前控制器释放
             pawn?.Controller?.UnPossess();
+
             oldPawn = this.pawn;
             this.pawn = pawn;
 
             pawn.Controller = this;
+
+            if (IsFollowPawn)
+            {
+                ///控制器跟随
+                transform.SetParent(pawn.transform);
+
+                transform.ResetLocal();
+                
+            }
 
             return true;
         }
@@ -50,6 +63,12 @@ namespace Poi
         /// <returns></returns>
         public Pawn UnPossess()
         {
+            if (transform.parent = Pawn.transform)
+            {
+                transform.SetParent(null);
+            }
+
+
             pawn.Controller = null;
             oldPawn = Pawn;
             pawn = null;

@@ -30,8 +30,13 @@ public class GM : MonoBehaviour {
         Wait(LoadSceneAsync(1),()=>
         {
             PlayerController pc = PawnController.CreateController<PlayerController>();
+
+            pc.IsFollowPawn = true;
+
             PlayerController = pc;
-            pc.CreatePlayer();
+            var pl = pc.CreatePlayer();
+            //拥有角色
+            pc.Possess(pl);
         });
 	}
 
