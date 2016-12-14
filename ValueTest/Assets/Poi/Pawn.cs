@@ -9,7 +9,7 @@ namespace Poi
     /// <summary>
     /// 角色
     /// </summary>
-    public class Pawn : MonoBehaviour
+    public partial class Pawn : MonoBehaviour
     {
         /// <summary>
         /// 角色信息（数据模型）
@@ -74,5 +74,14 @@ namespace Poi
                 item.TickRestore(deltatime);
             }
         }
+
+        protected virtual void Start()
+        {
+            m_Animator = GetComponent<Animator>();
+            m_Rigidbody = GetComponent<Rigidbody>();
+            m_Capsule = GetComponent<CapsuleCollider>();
+        }
+
+
     }
 }

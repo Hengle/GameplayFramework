@@ -7,6 +7,6 @@ namespace Poi
 {
     public class CharacterControllor:PawnController
     {
-        
+        public Character Character => pawn as Character; 
     }
 }
