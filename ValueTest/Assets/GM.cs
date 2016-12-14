@@ -10,6 +10,12 @@ public class GM : MonoBehaviour {
 
     public static GM GMInstance;
 
+    //public static List<PlayerController> PlayerControllers { get; private set; }
+    //    = new List<PlayerController>();
+
+    public static List<Controller> Controllers { get; private set; }
+        = new List<Controller>();
+
     // 加载脚本实例时调用 Awake
     private void Awake()
     {
