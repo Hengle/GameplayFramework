@@ -38,6 +38,9 @@ namespace Poi
             pawn?.Controller?.UnPossess();
             oldPawn = this.pawn;
             this.pawn = pawn;
+
+            pawn.Controller = this;
+
             return true;
         }
 
@@ -47,6 +50,7 @@ namespace Poi
         /// <returns></returns>
         public Pawn UnPossess()
         {
+            pawn.Controller = null;
             oldPawn = Pawn;
             pawn = null;
             return OldPawn;
