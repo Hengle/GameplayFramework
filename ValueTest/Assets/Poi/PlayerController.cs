@@ -8,7 +8,7 @@ namespace Poi
 {
     public class PlayerController:CharacterControllor
     {
-        public static readonly PlayerController Instance = new PlayerController();
+
 
         Parameter para;
         /// <summary>
@@ -30,6 +30,13 @@ namespace Poi
             Possess(p);
 
             return p;
+        }
+
+        private void Start()
+        {
+            string friendlyName = "PlayerController";
+            gameObject.name = friendlyName;
+            //gameObject.tag = friendlyName;
         }
 
 

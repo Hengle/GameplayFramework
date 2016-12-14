@@ -5,22 +5,8 @@ using System.Text;
 
 namespace Poi
 {
-    public class CharacterControllor
+    public class CharacterControllor:Controller
     {
-        protected Pawn pawn;
-        protected Pawn oldPawn;
-
-        public Pawn Pawn => pawn;
-
-        public void Possess(Pawn pawn)
-        {
-            oldPawn = this.pawn;
-            this.pawn = pawn;
-        }
-
-        public void UnPossess()
-        {
-
-        }
+        
     }
 }

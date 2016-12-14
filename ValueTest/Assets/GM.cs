@@ -13,8 +13,9 @@ public class GM : MonoBehaviour {
     //public static List<PlayerController> PlayerControllers { get; private set; }
     //    = new List<PlayerController>();
 
-    public static List<Controller> Controllers { get; private set; }
-        = new List<Controller>();
+    public static List<Controller> Controllers => Controller.Controllers;
+
+    public static PlayerController PlayerController { get; private set; }
 
     // 加载脚本实例时调用 Awake
     private void Awake()
@@ -28,7 +29,9 @@ public class GM : MonoBehaviour {
 
         Wait(LoadSceneAsync(1),()=>
         {
-            PlayerController.Instance.CreatePlayer();
+            PlayerController pc = Controller.CreateController<PlayerController>();
+            PlayerController = pc;
+            pc.CreatePlayer();
         });
 	}
 
