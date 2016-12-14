@@ -25,6 +25,8 @@ namespace Poi
             dataInfo = info;
         }
 
+        public PawnController Controller { get; set; }
+
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>

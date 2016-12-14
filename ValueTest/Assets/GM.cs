@@ -13,7 +13,7 @@ public class GM : MonoBehaviour {
     //public static List<PlayerController> PlayerControllers { get; private set; }
     //    = new List<PlayerController>();
 
-    public static List<Controller> Controllers => Controller.Controllers;
+    public static List<PawnController> Controllers => PawnController.Controllers;
 
     public static PlayerController PlayerController { get; private set; }
 
@@ -29,7 +29,7 @@ public class GM : MonoBehaviour {
 
         Wait(LoadSceneAsync(1),()=>
         {
-            PlayerController pc = Controller.CreateController<PlayerController>();
+            PlayerController pc = PawnController.CreateController<PlayerController>();
             PlayerController = pc;
             pc.CreatePlayer();
         });

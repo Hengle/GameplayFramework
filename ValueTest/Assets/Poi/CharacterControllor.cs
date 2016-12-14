@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Poi
 {
-    public class CharacterControllor:Controller
+    public class CharacterControllor:PawnController
     {
         
     }

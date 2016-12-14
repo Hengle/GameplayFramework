@@ -100,6 +100,11 @@
             左右
             </summary>
         </member>
+        <member name="T:Poi.Axial">
+            <summary>
+            轴向
+            </summary>
+        </member>
         <member name="T:Poi.Language">
             <summary>
             语言种类
@@ -160,22 +165,45 @@
             是不是唯一的
             </summary>
         </member>
+        <member name="T:Poi.ControlMode">
+            <summary>
+            控制模式
+            </summary>
+        </member>
+        <member name="F:Poi.ControlMode.Lazy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Poi.ControlMode.Greedy">
+            <summary>
+            贪婪模式
+            </summary>
+        </member>
         <member name="T:Poi.HostException">
             <summary>
             宿主异常
             </summary>
         </member>
-        <member name="T:Poi.iHost">
+        <member name="T:Poi.IHost">
             <summary>
             宿主接口
             </summary>
         </member>
-        <member name="T:Poi.iPlugin">
+        <member name="P:Poi.IHost.State">
+            <summary>
+            宿主状态
+            </summary>
+        </member>
+        <member name="M:Poi.IHost.Log(System.Object,System.UInt32)">
+            关闭缺少注释警告
+        </member>
+        <member name="T:Poi.IPlugin">
             <summary>
             插件接口
             </summary>
         </member>
-        <member name="P:Poi.iPlugin.State">
+        <member name="P:Poi.IPlugin.State">
             <summary>
             当前插件状态
             </summary>
@@ -185,14 +213,74 @@
             插件状态，包装一个状态类用于传入可迭代方法中
             </summary>
         </member>
+        <member name="P:Poi.UnitState.PluginState">
+            <summary>
+            插件当前状态
+            </summary>
+        </member>
         <member name="T:Poi.PluginState">
             <summary>
             插件状态
             </summary>
         </member>
-        <member name="T:Poi.iLabel">
+        <member name="F:Poi.PluginState.Null">
+            <summary>
+            插件为空
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Initing">
+            <summary>
+            正在初始化
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.InitErrorAndStop">
+            <summary>
+            初始化失败已停止工作
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.InitErrorAndReIniting">
+            <summary>
+            初始化失败正在重试
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.InitFinish">
+            <summary>
+            初始化完成
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Open">
+            <summary>
+            开启
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Close">
+            <summary>
+            关闭
+            </summary>
+        </member>
+        <member name="F:Poi.PluginState.Dispose">
+            <summary>
+            已释放
+            </summary>
+        </member>
+        <member name="T:Poi.ILabel">
             <summary>
             标签，含有ID和Name
+            </summary>
+        </member>
+        <member name="T:Poi.Label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Poi.Label.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:Poi.Label.Name">
+            <summary>
+            名字
             </summary>
         </member>
         <member name="T:System.ScreenHelper">
@@ -204,6 +292,13 @@
             <summary>
             屏幕参数
             </summary>
+        </member>
+        <member name="M:System.ScreenHelper.ChangeRes(System.Int32,System.Int32)">
+            <summary>
+            改变屏幕分辨率
+            </summary>
+            <param name="Width"></param>
+            <param name="Height"></param>
         </member>
     </members>
 </doc>
