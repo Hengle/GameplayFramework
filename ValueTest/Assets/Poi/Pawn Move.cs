@@ -32,7 +32,7 @@ namespace Poi
         Rigidbody m_Rigidbody;
         Animator m_Animator;
         bool m_IsGrounded;
-        float m_OrigGroundCheckDistance;
+        float m_OrigGroundCheckDistance = 0.5f;
         const float k_Half = 0.5f;
         float m_TurnAmount;
         float m_ForwardAmount;
