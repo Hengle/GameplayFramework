@@ -47,26 +47,24 @@ namespace UnityEngine
         /// <summary>
         /// 刷新方法
         /// </summary>
-        public UpdateType UpdateType = UpdateType.FixedUpdate;
+        public UpdateType UpdateType = UpdateType.Update;
         /// <summary>
         /// 插值方式
         /// </summary>
-        public LerpType LerpType = LerpType.Lerp;
+        public LerpType LerpType = LerpType.Null;
         [SerializeField]
-        [Range(1, 30)]
-        private int lerpScale = 10;
-
-        private float lerp => lerpScale*Time.deltaTime;
+        [Range(1, 100)]
+        private int lerpScale = 45;
 
         public void Update()
         {
             if (Check(UpdateType.Update))
             {
-                Follow();
+                Follow(lerpScale * Time.deltaTime);
             }
         }
 
-        private void Follow()
+        private void Follow(float lerp)
         {
             if (tar)
             {
@@ -84,6 +82,12 @@ namespace UnityEngine
                         transform.localScale = Vector3.LerpUnclamped(transform.localScale, tar.localScale, lerp);
 
                         break;
+                    case LerpType.Null:
+                        transform.position = tar.position;
+                        transform.rotation = tar.rotation;
+                        transform.localScale = tar.localScale;
+
+                        break;
                     default:
                         break;
                 }
@@ -94,7 +98,7 @@ namespace UnityEngine
         {
             if (Check(UpdateType.FixedUpdate))
             {
-                Follow();
+                Follow(lerpScale * Time.fixedDeltaTime);
             }
         }
 
@@ -102,7 +106,7 @@ namespace UnityEngine
         {
             if (Check(UpdateType.LateUpdate))
             {
-                Follow();
+                Follow(lerpScale * Time.deltaTime);
             }
         }
 
@@ -116,6 +120,7 @@ namespace UnityEngine
     {
         Lerp,
         LerpUnclamped,
+        Null,
     }
 }
 
