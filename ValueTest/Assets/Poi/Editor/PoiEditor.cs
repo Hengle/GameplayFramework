@@ -53,6 +53,11 @@ public static partial class PoiEditor
     [MenuItem("Poi      /SaveAndPlayMainScene")]
     private static void SaveAndPlayMainScene()
     {
+        if (EditorApplication.isPlaying)
+        {
+            return;
+        }
+
         Scene cur = EditorSceneManager.GetActiveScene();
 
         PlayerPrefs.SetString(PoiCurrentSceneKey, cur.path);

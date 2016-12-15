@@ -39,6 +39,20 @@ namespace Poi
             return p;
         }
 
+        void UpdateCamera()
+        {
+            var cam = Camera.main;
+            if (!cam)
+            {
+                cam = new Camera();
+                cam.name = "Main Camera";
+                cam.tag = "Main Camera";
+            }
+
+
+            FollowTarget f = cam.GetComponentIfNullAdd<FollowTarget>();
+        }
+
         private void Start()
         {
             string friendlyName = "PlayerController";

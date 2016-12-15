@@ -36,7 +36,7 @@ public class GM : MonoBehaviour {
             PlayerController = pc;
             var pl = pc.CreatePlayer();
             //拥有角色
-            pc.Possess(pl);
+            //pc.Possess(pl);
         });
 	}
 
