@@ -47,7 +47,7 @@ namespace Poi
             // turn amount and forward amount required to head in the desired
             // direction.
             if (move.magnitude > 1f) move.Normalize();
-            move = transform.InverseTransformDirection(move);
+            //move = transform.InverseTransformDirection(move);
 
             CheckGroundStatus();
 
