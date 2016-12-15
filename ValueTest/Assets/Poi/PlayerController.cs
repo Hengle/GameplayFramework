@@ -69,6 +69,14 @@ namespace Poi
         private Vector3 m_Move;
         private bool m_Jump;
 
+        private void Update()
+        {
+            if (!m_Jump)
+            {
+                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            }
+        }
+
         private void FixedUpdate()
         {
             // read inputs

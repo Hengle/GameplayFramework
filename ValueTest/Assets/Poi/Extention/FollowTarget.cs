@@ -31,30 +31,32 @@ namespace UnityEngine
         /// <summary>
         /// 插值幅度
         /// </summary>
-        public float Lerp
+        public int LerpScale
         {
             get
             {
-                return lerp;
+                return lerpScale;
             }
 
             set
             {
-                lerp = value;
+                lerpScale = value;
             }
         }
 
         /// <summary>
         /// 刷新方法
         /// </summary>
-        public UpdateType UpdateType = UpdateType.Update;
+        public UpdateType UpdateType = UpdateType.FixedUpdate;
         /// <summary>
         /// 插值方式
         /// </summary>
         public LerpType LerpType = LerpType.Lerp;
         [SerializeField]
-        [Range(0.01f,1)]
-        private float lerp = 0.7f;
+        [Range(1, 30)]
+        private int lerpScale = 10;
+
+        private float lerp => lerpScale*Time.deltaTime;
 
         public void Update()
         {
