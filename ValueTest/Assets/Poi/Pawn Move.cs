@@ -37,8 +37,7 @@ namespace Poi
         float m_TurnAmount;
         float m_ForwardAmount;
         Vector3 m_GroundNormal;
-        float m_CapsuleHeight;
-        Vector3 m_CapsuleCenter;
+        Vector3 CapsuleCenter => new Vector3(0,DataInfo.Height/2,0);
         CapsuleCollider m_Capsule;
         bool m_Crouching;
 
@@ -118,7 +117,7 @@ namespace Poi
             if (!m_Crouching)
             {
                 Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-                float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
+                float crouchRayLength = DataInfo.Height - m_Capsule.radius * k_Half;
                 if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
                 {
                     m_Crouching = true;
@@ -142,15 +141,15 @@ namespace Poi
             else
             {
                 Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-                float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
+                float crouchRayLength = DataInfo.Height - m_Capsule.radius * k_Half;
                 if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
                 {
                     m_Crouching = true;
                     return;
                 }
 
-                m_Capsule.height = m_CapsuleHeight;
-                m_Capsule.center = m_CapsuleCenter;
+                m_Capsule.height = DataInfo.Height;
+                m_Capsule.center = CapsuleCenter;
 
                 m_Crouching = false;
             }

@@ -29,5 +29,10 @@ namespace Poi
                 return null;
             }
         }
+
+        /// <summary>
+        /// 身高
+        /// </summary>
+        public float Height { get; set; }
     }
 }

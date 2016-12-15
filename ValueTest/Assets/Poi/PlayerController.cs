@@ -25,7 +25,13 @@ namespace Poi
             var controller = go.GetComponent<Animator>();
             controller.runtimeAnimatorController = para.controller;
             var p = go.AddComponent<Character>();
-            
+
+            PawnInfo info = new PawnInfo()
+            {
+                Height = 1.6f,
+            };
+
+            p.Init(info);
             //go.AddComponent<CharacterController>();
 
             Possess(p);
