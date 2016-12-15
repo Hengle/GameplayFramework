@@ -36,6 +36,8 @@ namespace Poi
 
             Possess(p);
 
+            UpdateCamera();
+
             return p;
         }
 
@@ -51,6 +53,8 @@ namespace Poi
 
 
             FollowTarget f = cam.GetComponentIfNullAdd<FollowTarget>();
+
+            f.Tar = Pawn.ThirdCameraPos;
         }
 
         private void Start()

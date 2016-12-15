@@ -23,6 +23,13 @@ namespace Poi
         public void Init(DataInfo info)
         {
             dataInfo = info;
+
+            Init();
+        }
+
+        public void Init()
+        {
+            InitEyeCameraPos();
         }
 
         public PawnController Controller { get; set; }
@@ -81,7 +88,5 @@ namespace Poi
             m_Rigidbody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
         }
-
-
     }
 }

@@ -13,6 +13,6 @@ namespace Poi
     /// </summary>
     public class Character : Pawn
     {
-        
+
     }
 }
