@@ -17,8 +17,8 @@ namespace Poi
 
         public HP HP { get; private set; } = new HP() { Max = 1,Current = 1};
         public MP MP { get; private set; } = new MP();
-        public Speed WalkSpeed { get; private set; } = new Speed(PropertyType.WalkSpeed);
-        public Speed RunSpeed { get; private set; } = new Speed(PropertyType.RunSpeed);
+        public SpeedBase Walk { get; private set; } = new SpeedBase(PropertyType.WalkSpeed);
+        public SpeedBase Run { get; private set; } = new SpeedBase(PropertyType.RunSpeed);
 
         public bool IsDead => HP.Current <= 0;
         
@@ -34,5 +34,6 @@ namespace Poi
         /// 身高
         /// </summary>
         public float Height { get; set; }
+        public float JumpPower { get; set; }
     }
 }

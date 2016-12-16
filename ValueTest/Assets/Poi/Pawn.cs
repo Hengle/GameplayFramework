@@ -88,5 +88,20 @@ namespace Poi
             m_Rigidbody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
         }
+
+        private void Update()
+        {
+            
+        }
+
+        private void LateUpdate()
+        {
+            
+        }
+
+        private void FixedUpdate()
+        {
+            FixedUpdateMove();
+        }
     }
 }

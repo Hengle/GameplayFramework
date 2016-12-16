@@ -8,6 +8,8 @@ namespace Poi
 {
     /// <summary>
     /// 角色
+    /// <para>Controller将每次移动命令存在Pawn中，
+    /// pawn每次FixedUpdate应用这些命令</para>
     /// </summary>
     public partial class Pawn
     {
@@ -15,8 +17,7 @@ namespace Poi
         float m_MovingTurnSpeed = 360;
         [SerializeField]
         float m_StationaryTurnSpeed = 180;
-        [SerializeField]
-        float m_JumpPower = 12f;
+        
         [Range(1f, 4f)]
         [SerializeField]
         float m_GravityMultiplier = 2f;
@@ -40,6 +41,110 @@ namespace Poi
         Vector3 CapsuleCenter => new Vector3(0,DataInfo.Height/2,0);
         CapsuleCollider m_Capsule;
         bool m_Crouching;
+
+        public float CurrentSpeed
+        {
+            get
+            {
+                return DataInfo.Run.Speed;
+            }
+        }
+
+        /// <summary>
+        /// 相机仰角
+        /// </summary>
+        public float CameraElevation { get; private set; } = -90f;
+        /// <summary>
+        /// 相机俯角
+        /// </summary>
+        public float CameraDipAngle { get; private set; } = 90f;
+
+        /// <summary>
+        /// 人物旋转角度
+        /// </summary>
+        public Quaternion m_CharacterTargetRot { get; private set; } = Quaternion.identity;
+        /// <summary>
+        /// 相机旋转角度
+        /// </summary>
+        public Quaternion m_FirstViewSlotTargetRot { get; private set; }
+        public float CharatorAxisSmoothRatio { get; private set; } = 1;
+
+        /// <summary>
+        /// 下次移动距离
+        /// </summary>
+        public Vector3 NextMoveDistance { get; private set; }
+
+        
+
+
+        /// <summary>
+        /// 更新移动
+        /// <para>Translate移动一定要放在FixedUpdate中，有效防止物理碰撞时抖动</para>
+        /// </summary>
+        private void FixedUpdateMove()
+        {
+            ApplyMove();
+        }
+
+        #region Move
+
+        /// <summary>
+        /// 下次移动
+        /// </summary>
+        public void NextMove(Vector3 moveDir)
+        {
+            ///去掉Y值
+            moveDir = moveDir.ZeroY();
+
+            var currentSpeed = CurrentSpeed;
+            NextMoveDistance += moveDir.normalized * currentSpeed * Time.deltaTime;
+
+        }
+
+        /// <summary>
+        /// 应用移动
+        /// </summary>
+        private void ApplyMove()
+        {
+            transform.Translate(NextMoveDistance);
+            NextMoveDistance = Vector3.zero;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 超界检测
+        /// </summary>
+        /// <param name="q"></param>
+        /// <returns></returns>
+        Quaternion ClampRotationAroundXAxis(Quaternion q)
+        {
+            q.x /= q.w;
+            q.y /= q.w;
+            q.z /= q.w;
+            q.w = 1.0f;
+
+            float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
+
+            angleX = Mathf.Clamp(angleX, CameraElevation, CameraDipAngle);
+
+            q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
+
+            return q;
+        }
+
+        public void UpdateAxis(float xRot, float yRot)
+        {
+            m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+            m_FirstViewSlotTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+            m_FirstViewSlotTargetRot = ClampRotationAroundXAxis(m_FirstViewSlotTargetRot);
+
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, m_CharacterTargetRot,
+                CharatorAxisSmoothRatio);
+            //FirstViewSlot.localRotation = Quaternion.Slerp(FirstViewSlot.localRotation, m_FirstViewSlotTargetRot,
+            //    charatorManager.Host.Config.CharatorAxisSmoothRatio);
+        }
 
         public void Move(Vector3 move, bool crouch, bool jump)
         {
@@ -170,7 +275,7 @@ namespace Poi
             if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
             {
                 // jump!
-                m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
+                m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, DataInfo.JumpPower, m_Rigidbody.velocity.z);
                 m_IsGrounded = false;
                 m_Animator.applyRootMotion = false;
                 m_GroundCheckDistance = 0.1f;

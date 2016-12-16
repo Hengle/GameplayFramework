@@ -8,11 +8,13 @@ namespace Poi
     /// <summary>
     /// 
     /// </summary>
-    public class Speed : BaseProperty2
+    public class SpeedBase : BaseProperty2
     {
-        public Speed(PropertyType type)
+        public SpeedBase(PropertyType type)
         {
             this.PropertyType = type;
         }
+
+        public float Speed { get; set; }
     }
 }
