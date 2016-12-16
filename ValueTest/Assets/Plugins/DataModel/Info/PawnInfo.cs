@@ -35,5 +35,13 @@ namespace Poi
         /// </summary>
         public float Height { get; set; }
         public float JumpPower { get; set; }
+        /// <summary>
+        /// 跳跃段数
+        /// </summary>
+        public int JumpCurrentStep { get; set; }
+        /// <summary>
+        /// 允许最大跳跃段数
+        /// </summary>
+        public int JumpMaxStep { get; set; } = 1;
     }
 }

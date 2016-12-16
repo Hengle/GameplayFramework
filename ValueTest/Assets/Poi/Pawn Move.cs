@@ -8,7 +8,7 @@ namespace Poi
 {
     /// <summary>
     /// 角色
-    /// <para>Controller将每次移动命令存在Pawn中，
+    /// <para>Controller将每次移动命令存在Pawn中(根据Time.deltatime求出位移，在下次应用前叠加)，
     /// pawn每次FixedUpdate应用这些命令</para>
     /// </summary>
     public partial class Pawn
@@ -73,8 +73,9 @@ namespace Poi
         /// 下次移动距离
         /// </summary>
         public Vector3 NextMoveDistance { get; private set; }
+        public bool NextJump { get; private set; }
 
-        
+
 
 
         /// <summary>
@@ -146,38 +147,7 @@ namespace Poi
             //    charatorManager.Host.Config.CharatorAxisSmoothRatio);
         }
 
-        public void Move(Vector3 move, bool crouch, bool jump)
-        {
-            // convert the world relative moveInput vector into a local-relative
-            // turn amount and forward amount required to head in the desired
-            // direction.
-            if (move.magnitude > 1f) move.Normalize();
-            //move = transform.InverseTransformDirection(move);
-
-            CheckGroundStatus();
-
-            move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-            m_TurnAmount = Mathf.Atan2(move.x, move.z);
-            m_ForwardAmount = move.z;
-
-            ApplyExtraTurnRotation();
-
-            // control and velocity handling is different when grounded and airborne:
-            if (m_IsGrounded)
-            {
-                HandleGroundedMovement(crouch, jump);
-            }
-            else
-            {
-                HandleAirborneMovement();
-            }
-
-            ScaleCapsuleForCrouching(crouch);
-            PreventStandingInLowHeadroom();
-
-            // send input and other state parameters to the animator
-            UpdateAnimator(move);
-        }
+        
 
         void UpdateAnimator(Vector3 move)
         {
@@ -311,5 +281,47 @@ namespace Poi
                 m_Animator.applyRootMotion = false;
             }
         }
+
+
+        #region Jump
+
+        public void Jump()
+        {
+            NextJump = true;
+        }
+
+        protected void ApplyJump()
+        {
+            
+            if (DataInfo.JumpCurrentStep < 0)
+            {
+                ///防止负值导致无限跳
+                DataInfo.JumpCurrentStep = 0;
+            }
+
+            if (NextJump && DataInfo.JumpCurrentStep < DataInfo.JumpMaxStep)
+            {
+                ///清除下落速度
+                m_Rigidbody.velocity = Vector3.zero;
+                m_Rigidbody.AddForce(Vector3.up * DataInfo.JumpPower);
+                DataInfo.JumpCurrentStep++;
+                NextJump = false;
+            }
+        }
+
+        private void ResetJumpState()
+        {
+            DataInfo.JumpCurrentStep = 0;
+        }
+
+        private void TriggerEnter(Collider arg1, Collider arg2)
+        {
+            //if (arg1.tag == Tag.JumpReset)
+            //{
+            //    ResetJumpState();
+            //}
+        }
+
+        #endregion
     }
 }
