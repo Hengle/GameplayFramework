@@ -113,6 +113,9 @@ namespace Poi
 
         #endregion
 
+        #region Axis
+
+
         /// <summary>
         /// 超界检测
         /// </summary>
@@ -186,78 +189,7 @@ namespace Poi
             }
         }
 
-        void PreventStandingInLowHeadroom()
-        {
-            // prevent standing up in crouch-only zones
-            if (!m_Crouching)
-            {
-                Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-                float crouchRayLength = DataInfo.Height - m_Capsule.radius * k_Half;
-                if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-                {
-                    m_Crouching = true;
-                }
-            }
-        }
-
-        void ScaleCapsuleForCrouching(bool crouch)
-        {
-            if (!m_Capsule)
-            {
-                return;
-            }
-            if (m_IsGrounded && crouch)
-            {
-                if (m_Crouching) return;
-                m_Capsule.height = m_Capsule.height / 2f;
-                m_Capsule.center = m_Capsule.center / 2f;
-                m_Crouching = true;
-            }
-            else
-            {
-                Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-                float crouchRayLength = DataInfo.Height - m_Capsule.radius * k_Half;
-                if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-                {
-                    m_Crouching = true;
-                    return;
-                }
-
-                m_Capsule.height = DataInfo.Height;
-                m_Capsule.center = CapsuleCenter;
-
-                m_Crouching = false;
-            }
-        }
-
-        void HandleAirborneMovement()
-        {
-            // apply extra gravity from multiplier:
-            Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
-            m_Rigidbody.AddForce(extraGravityForce);
-
-            m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
-        }
-
-        void HandleGroundedMovement(bool crouch, bool jump)
-        {
-            // check whether conditions are right to allow a jump:
-            if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
-            {
-                // jump!
-                m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, DataInfo.JumpPower, m_Rigidbody.velocity.z);
-                m_IsGrounded = false;
-                m_Animator.applyRootMotion = false;
-                m_GroundCheckDistance = 0.1f;
-            }
-        }
-
-        void ApplyExtraTurnRotation()
-        {
-            // help the character turn faster (this is in addition to root rotation in the animation)
-            float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
-            transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
-        }
+        
 
         void CheckGroundStatus()
         {
@@ -282,6 +214,7 @@ namespace Poi
             }
         }
 
+        #endregion
 
         #region Jump
 
