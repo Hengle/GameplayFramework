@@ -13,9 +13,26 @@ public class GM : MonoBehaviour {
     //public static List<PlayerController> PlayerControllers { get; private set; }
     //    = new List<PlayerController>();
 
+    [SerializeField,Tooltip("游戏模式")]
+    private GameMode gameMode;
+    public GameMode GameMode
+    {
+        get
+        {
+            return gameMode;
+        }
+
+        set
+        {
+            gameMode = value;
+        }
+    }
+
     public static List<PawnController> Controllers => PawnController.Controllers;
 
     public static PlayerController PlayerController { get; private set; }
+
+
 
     // 加载脚本实例时调用 Awake
     private void Awake()

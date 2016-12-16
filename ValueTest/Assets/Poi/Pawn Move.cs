@@ -85,6 +85,8 @@ namespace Poi
         private void FixedUpdateMove()
         {
             ApplyMove();
+
+            ApplyJump();
         }
 
         #region Move
