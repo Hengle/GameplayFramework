@@ -78,7 +78,7 @@ namespace Poi
         {
             if (CrossPlatformInputManager.GetButtonDown("Jump"))
             {
-                Pawn.Jump();
+                Pawn?.Jump();
             }
 
             bool crouch = Input.GetKey(KeyCode.C);
@@ -90,10 +90,13 @@ namespace Poi
 
         private void GetAxis()
         {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X");
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y");
+            if (Input.GetMouseButton(1))
+            {
+                float yRot = CrossPlatformInputManager.GetAxis("Mouse X");
+                float xRot = CrossPlatformInputManager.GetAxis("Mouse Y");
 
-            Pawn.UpdateAxis(xRot, yRot);
+                Pawn?.UpdateAxis(xRot, yRot);
+            }    
         }
 
         /// <summary>
@@ -106,7 +109,7 @@ namespace Poi
 
 
             var moveDir = new Vector3(h, 0, v);
-            Pawn.NextMove(moveDir);
+            Pawn?.NextMove(moveDir);
         }
 
         void SetCursorLock(bool value)
