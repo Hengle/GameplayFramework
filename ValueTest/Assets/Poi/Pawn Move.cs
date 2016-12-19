@@ -238,7 +238,7 @@ namespace Poi
             {
                 ///清除下落速度
                 m_Rigidbody.velocity = Vector3.zero;
-                m_Rigidbody.AddForce(Vector3.up * DataInfo.JumpPower);
+                m_Rigidbody.velocity = (Vector3.up * DataInfo.JumpPower);
                 DataInfo.JumpCurrentStep++;
                 NextJump = false;
             }

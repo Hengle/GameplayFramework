@@ -29,7 +29,7 @@ namespace Poi
             PawnInfo info = new PawnInfo()
             {
                 Height = 1.6f,
-                JumpPower = 6f,
+                JumpPower = 12f,
             };
 
             info.Run.Speed = 3f;
