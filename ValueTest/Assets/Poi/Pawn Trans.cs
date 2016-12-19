@@ -28,7 +28,7 @@ namespace Poi
         [SerializeField]
         float m_AnimSpeedMultiplier = 1f;
         [SerializeField]
-        float m_GroundCheckDistance = 0.1f;
+        float m_GroundCheckDistance = 0.2f;
 
         Rigidbody m_Rigidbody;
         Animator m_Animator;
@@ -49,6 +49,8 @@ namespace Poi
                 return DataInfo.Run.Speed;
             }
         }
+
+        
 
         /// <summary>
         /// 相机仰角
@@ -193,34 +195,13 @@ namespace Poi
 
         
 
-        void CheckGroundStatus()
-        {
-            RaycastHit hitInfo;
-#if UNITY_EDITOR
-            // helper to visualise the ground check ray in the scene view
-            Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * m_GroundCheckDistance));
-#endif
-            // 0.1f is a small offset to start the ray from inside the character
-            // it is also good to note that the transform position in the sample assets is at the base of the character
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
-            {
-                m_GroundNormal = hitInfo.normal;
-                m_IsGrounded = true;
-                m_Animator.applyRootMotion = true;
-            }
-            else
-            {
-                m_IsGrounded = false;
-                m_GroundNormal = Vector3.up;
-                m_Animator.applyRootMotion = false;
-            }
-        }
+        
 
         #endregion
 
         #region Jump
 
-        public void Jump()
+        public void QueryJump()
         {
             NextJump = true;
         }
@@ -234,14 +215,17 @@ namespace Poi
                 DataInfo.JumpCurrentStep = 0;
             }
 
+            CheckGroundStatus();
+
             if (NextJump && DataInfo.JumpCurrentStep < DataInfo.JumpMaxStep)
             {
                 ///清除下落速度
                 m_Rigidbody.velocity = Vector3.zero;
                 m_Rigidbody.velocity = (Vector3.up * DataInfo.JumpPower);
                 DataInfo.JumpCurrentStep++;
-                NextJump = false;
             }
+
+            NextJump = false;
         }
 
         private void ResetJumpState()
@@ -255,6 +239,52 @@ namespace Poi
             //{
             //    ResetJumpState();
             //}
+        }
+
+        /// <summary>
+        /// 检测是否在地面
+        /// </summary>
+        void CheckGroundStatus()
+        {
+            RaycastHit hitInfo;
+
+#if UNITY_EDITOR
+            // helper to visualise the ground check ray in the scene view
+            Debug.DrawLine(transform.position , transform.position+ (Vector3.down * m_GroundCheckDistance));
+#endif
+            // 0.1f is a small offset to start the ray from inside the character
+            // it is also good to note that the transform position in the sample assets is at the base of the character
+            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
+            {
+                m_GroundNormal = hitInfo.normal;
+
+                var angle = Vector3.Angle(m_GroundNormal, Vector3.up);
+                if (angle < 45)
+                {
+                    ResetJumpStep();
+                    return;
+                }
+
+                if (hitInfo.collider.gameObject.layer == (int)Layer.Floor)
+                {
+                    ResetJumpStep();
+                    return;
+                }
+            }
+            else
+            {
+                //m_IsGrounded = false;
+                //m_GroundNormal = Vector3.up;
+                //m_Animator.applyRootMotion = false;
+            }
+        }
+
+        /// <summary>
+        /// 重置跳跃次数
+        /// </summary>
+        private void ResetJumpStep()
+        {
+            DataInfo.JumpCurrentStep = 0;
         }
 
         #endregion

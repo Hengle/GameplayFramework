@@ -30,6 +30,7 @@ namespace Poi
             {
                 Height = 1.6f,
                 JumpPower = 12f,
+                JumpMaxStep = 2,
             };
 
             info.Run.Speed = 3f;
@@ -78,7 +79,7 @@ namespace Poi
         {
             if (CrossPlatformInputManager.GetButtonDown("Jump"))
             {
-                Pawn?.Jump();
+                Pawn?.QueryJump();
             }
 
             bool crouch = Input.GetKey(KeyCode.C);

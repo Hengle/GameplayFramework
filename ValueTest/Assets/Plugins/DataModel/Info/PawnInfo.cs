@@ -43,5 +43,10 @@ namespace Poi
         /// 允许最大跳跃段数
         /// </summary>
         public int JumpMaxStep { get; set; } = 1;
+
+        /// <summary>
+        /// 当前人物是否在地面
+        /// </summary>
+        public bool IsGround => JumpCurrentStep == 0;
     }
 }
