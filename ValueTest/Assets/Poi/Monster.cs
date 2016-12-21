@@ -30,8 +30,10 @@ namespace Poi
 
         private NavMeshAgent agent;
         // 仅在首次调用 Update 方法之前调用 Start
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             var pos = GameObject.Find("Pos (3)");
             destinations[0] = pos.transform;
             var pos1 = GameObject.Find("Pos (1)");
@@ -52,6 +54,14 @@ namespace Poi
                 Move();
                 yield return new WaitForSeconds(10);
             }
+        }
+
+
+        protected override void Update()
+        {
+            base.Update();
+
+            Animator.SetFloat("Speed", agent.speed);
         }
     }
 }

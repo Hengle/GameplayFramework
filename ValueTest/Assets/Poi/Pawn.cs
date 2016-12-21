@@ -97,17 +97,17 @@ namespace Poi
             m_Capsule = GetComponent<CapsuleCollider>();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             
         }
 
-        private void LateUpdate()
+        protected virtual void LateUpdate()
         {
             
         }
 
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             FixedUpdateMove();
         }
