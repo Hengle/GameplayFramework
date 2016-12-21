@@ -101,6 +101,9 @@ namespace Poi
             ///去掉Y值
             moveDir = moveDir.ZeroY();
 
+            //m_Animator.SetFloat("v", moveDir.z);
+            //m_Animator.SetFloat("h", moveDir.x);
+
             var currentSpeed = CurrentSpeed;
             NextMoveDistance += moveDir.normalized * currentSpeed * Time.deltaTime;
 
@@ -112,6 +115,9 @@ namespace Poi
         private void ApplyMove()
         {
             transform.Translate(NextMoveDistance);
+
+           
+
             NextMoveDistance = Vector3.zero;
         }
 

@@ -110,6 +110,7 @@ namespace Poi
 
 
             var moveDir = new Vector3(h, 0, v);
+
             Pawn?.NextMove(moveDir);
         }
 
