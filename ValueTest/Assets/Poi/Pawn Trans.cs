@@ -101,12 +101,20 @@ namespace Poi
             ///去掉Y值
             moveDir = moveDir.ZeroY();
 
-            //m_Animator.SetFloat("v", moveDir.z);
-            //m_Animator.SetFloat("h", moveDir.x);
+            AnimUpdateMove(moveDir);
 
             var currentSpeed = CurrentSpeed;
             NextMoveDistance += moveDir.normalized * currentSpeed * Time.deltaTime;
 
+        }
+
+        private void AnimUpdateMove(Vector3 moveDir)
+        {
+            if (m_Animator)
+            {
+                m_Animator.SetFloat("Vertical", moveDir.z);
+                m_Animator.SetFloat("Horizontal", moveDir.x);
+            }
         }
 
         /// <summary>
@@ -115,8 +123,6 @@ namespace Poi
         private void ApplyMove()
         {
             transform.Translate(NextMoveDistance);
-
-           
 
             NextMoveDistance = Vector3.zero;
         }
@@ -223,13 +229,24 @@ namespace Poi
 
             CheckGroundStatus();
 
+
             if (NextJump && DataInfo.JumpCurrentStep < DataInfo.JumpMaxStep)
             {
                 ///清除下落速度
                 m_Rigidbody.velocity = Vector3.zero;
                 m_Rigidbody.velocity = (Vector3.up * DataInfo.JumpPower);
-                DataInfo.JumpCurrentStep++;
+                DataInfo.JumpCurrentStep++;   
             }
+
+            if (m_Animator)
+            {
+                m_Animator.SetBool("Crouch", m_Crouching);
+                m_Animator.SetBool("OnGround", DataInfo.IsGround);
+                if (!DataInfo.IsGround)
+                {
+                    m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+                }
+            } 
 
             NextJump = false;
         }
