@@ -82,10 +82,18 @@ namespace Poi
             }
         }
 
+        /// <summary>
+        /// 动画组件
+        /// </summary>
+        public Animator Animator { get; protected set; }
+        /// <summary>
+        /// 刚体组件
+        /// </summary>
+        public Rigidbody Rigidbody { get; protected set; }
         protected virtual void Start()
         {
-            m_Animator = GetComponent<Animator>();
-            m_Rigidbody = GetComponent<Rigidbody>();
+            Animator = GetComponent<Animator>();
+            Rigidbody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
         }
 

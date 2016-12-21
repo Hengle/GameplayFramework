@@ -30,8 +30,7 @@ namespace Poi
         [SerializeField]
         float m_GroundCheckDistance = 0.2f;
 
-        Rigidbody m_Rigidbody;
-        Animator m_Animator;
+
         bool m_IsGrounded;
         float m_OrigGroundCheckDistance = 0.5f;
         const float k_Half = 0.5f;
@@ -110,10 +109,10 @@ namespace Poi
 
         private void AnimUpdateMove(Vector3 moveDir)
         {
-            if (m_Animator)
+            if (Animator)
             {
-                m_Animator.SetFloat("Vertical", moveDir.z);
-                m_Animator.SetFloat("Horizontal", moveDir.x);
+                Animator.SetFloat("Vertical", moveDir.z);
+                Animator.SetFloat("Horizontal", moveDir.x);
             }
         }
 
@@ -171,13 +170,13 @@ namespace Poi
         void UpdateAnimator(Vector3 move)
         {
             // update the animator parameters
-            m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
-            m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-            m_Animator.SetBool("Crouch", m_Crouching);
-            m_Animator.SetBool("OnGround", m_IsGrounded);
+            Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
+            Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
+            Animator.SetBool("Crouch", m_Crouching);
+            Animator.SetBool("OnGround", m_IsGrounded);
             if (!m_IsGrounded)
             {
-                m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+                Animator.SetFloat("Jump", Rigidbody.velocity.y);
             }
 
             // calculate which leg is behind, so as to leave that leg trailing in the jump animation
@@ -185,23 +184,23 @@ namespace Poi
             // and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
             float runCycle =
                 Mathf.Repeat(
-                    m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
+                    Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
             float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
             if (m_IsGrounded)
             {
-                m_Animator.SetFloat("JumpLeg", jumpLeg);
+                Animator.SetFloat("JumpLeg", jumpLeg);
             }
 
             // the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
             // which affects the movement speed because of the root motion.
             if (m_IsGrounded && move.magnitude > 0)
             {
-                m_Animator.speed = m_AnimSpeedMultiplier;
+                Animator.speed = m_AnimSpeedMultiplier;
             }
             else
             {
                 // don't use that while airborne
-                m_Animator.speed = 1;
+                Animator.speed = 1;
             }
         }
 
@@ -233,18 +232,18 @@ namespace Poi
             if (NextJump && DataInfo.JumpCurrentStep < DataInfo.JumpMaxStep)
             {
                 ///清除下落速度
-                m_Rigidbody.velocity = Vector3.zero;
-                m_Rigidbody.velocity = (Vector3.up * DataInfo.JumpPower);
+                Rigidbody.velocity = Vector3.zero;
+                Rigidbody.velocity = (Vector3.up * DataInfo.JumpPower);
                 DataInfo.JumpCurrentStep++;   
             }
 
-            if (m_Animator)
+            if (Animator)
             {
-                m_Animator.SetBool("Crouch", m_Crouching);
-                m_Animator.SetBool("OnGround", DataInfo.IsGround);
+                Animator.SetBool("Crouch", m_Crouching);
+                Animator.SetBool("OnGround", DataInfo.IsGround);
                 if (!DataInfo.IsGround)
                 {
-                    m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+                    Animator.SetFloat("Jump", Rigidbody.velocity.y);
                 }
             } 
 
