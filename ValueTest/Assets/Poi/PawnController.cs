@@ -29,7 +29,7 @@ namespace Poi
         /// 控制角色
         /// </summary>
         /// <param name="pawn"></param>
-        public bool Possess(Pawn pawn)
+        public virtual bool Possess(Pawn pawn)
         {
             ///贪婪控制器处理
             if (pawn?.Controller?.Mode == ControlMode.Greedy)

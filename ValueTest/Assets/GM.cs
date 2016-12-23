@@ -40,20 +40,35 @@ public class GM : MonoBehaviour {
         GMInstance = this;
     }
 
-
     // Use this for initialization
     void Start () {
 
         Wait(LoadSceneAsync(1),()=>
         {
+            GameObject go = GameObject.Instantiate(GameMode.DefaultPawn);
+            //go.AddComponent<DontDestroyOnLoad>();
+            var controller = go.GetComponent<Animator>();
+
+            var p = go.AddComponent<Character>();
+
+            PawnInfo info = new PawnInfo()
+            {
+                Height = 1.6f,
+                JumpPower = 12f,
+                JumpMaxStep = 2,
+            };
+
+            info.Run.Speed = 3f;
+
+            p.Init(info);
+
             PlayerController pc = PawnController.CreateController<PlayerController>();
 
             pc.IsFollowPawn = true;
 
             PlayerController = pc;
-            var pl = pc.CreatePlayer();
-            //拥有角色
-            //pc.Possess(pl);
+            
+            pc.Possess(p);
         });
 	}
 

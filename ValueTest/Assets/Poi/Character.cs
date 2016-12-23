@@ -11,7 +11,7 @@ namespace Poi
     /// <para>你可以任意的继承扩展，但是不建议单独为Player继承一个类，Player应该和其他网络玩家类型保持一致，
     /// 用PlayerController区别功能。</para>
     /// </summary>
-    public class Character : Pawn
+    public partial class Character : Pawn
     {
 
     }

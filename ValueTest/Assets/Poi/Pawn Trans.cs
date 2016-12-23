@@ -39,7 +39,7 @@ namespace Poi
         Vector3 m_GroundNormal;
         Vector3 CapsuleCenter => new Vector3(0,DataInfo.Height/2,0);
         CapsuleCollider m_Capsule;
-        bool m_Crouching;
+        public bool IsCrouching { get; protected set; }
 
         public float CurrentSpeed
         {
@@ -73,8 +73,8 @@ namespace Poi
         /// <summary>
         /// 下次移动距离
         /// </summary>
-        public Vector3 NextMoveDistance { get; private set; }
-        public bool NextJump { get; private set; }
+        public Vector3 NextMoveDistance { get; protected set; }
+        public bool NextJump { get; protected set; }
 
 
 
@@ -107,7 +107,7 @@ namespace Poi
 
         }
 
-        private void AnimUpdateMove(Vector3 moveDir)
+        protected virtual void AnimUpdateMove(Vector3 moveDir)
         {
             if (Animator)
             {
@@ -119,11 +119,9 @@ namespace Poi
         /// <summary>
         /// 应用移动
         /// </summary>
-        private void ApplyMove()
+        protected virtual void ApplyMove()
         {
-            transform.Translate(NextMoveDistance);
-
-            NextMoveDistance = Vector3.zero;
+            
         }
 
         #endregion
@@ -172,7 +170,7 @@ namespace Poi
             // update the animator parameters
             Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
             Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-            Animator.SetBool("Crouch", m_Crouching);
+            Animator.SetBool("Crouch", IsCrouching);
             Animator.SetBool("OnGround", m_IsGrounded);
             if (!m_IsGrounded)
             {
@@ -217,37 +215,10 @@ namespace Poi
             NextJump = true;
         }
 
-        protected void ApplyJump()
+        protected virtual void ApplyJump()
         {
             
-            if (DataInfo.JumpCurrentStep < 0)
-            {
-                ///防止负值导致无限跳
-                DataInfo.JumpCurrentStep = 0;
-            }
-
-            CheckGroundStatus();
-
-
-            if (NextJump && DataInfo.JumpCurrentStep < DataInfo.JumpMaxStep)
-            {
-                ///清除下落速度
-                Rigidbody.velocity = Vector3.zero;
-                Rigidbody.velocity = (Vector3.up * DataInfo.JumpPower);
-                DataInfo.JumpCurrentStep++;   
-            }
-
-            if (Animator)
-            {
-                Animator.SetBool("Crouch", m_Crouching);
-                Animator.SetBool("OnGround", DataInfo.IsGround);
-                if (!DataInfo.IsGround)
-                {
-                    Animator.SetFloat("Jump", Rigidbody.velocity.y);
-                }
-            } 
-
-            NextJump = false;
+            
         }
 
         private void ResetJumpState()
@@ -266,7 +237,7 @@ namespace Poi
         /// <summary>
         /// 检测是否在地面
         /// </summary>
-        void CheckGroundStatus()
+        protected void CheckGroundStatus()
         {
             RaycastHit hitInfo;
 
