@@ -115,11 +115,4 @@ namespace UnityEngine
             return (UpdateType & t) == t;
         }
     }
-
-    public enum LerpType
-    {
-        Lerp,
-        LerpUnclamped,
-        Null,
-    }
 }

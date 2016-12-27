@@ -15,4 +15,16 @@ namespace UnityEngine
         LateUpdate = 0x2,
         FixedUpdate = 0x4,
     }
+
+    /// <summary>
+    /// 插值类型
+    /// </summary>
+    public enum LerpType
+    {
+        Lerp,
+        LerpUnclamped,
+        Slerp,
+        SlerpUnclamped,
+        Null,
+    }
 }
