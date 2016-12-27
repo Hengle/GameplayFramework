@@ -15,7 +15,14 @@ namespace Poi
         public Transform EnemyTarget1;
         public Transform EnemyTarget2;
 
-        public Vector3 CenterRectOffset = new Vector3(0,0,7.5f);
+        public Vector3 speed = new Vector3(1, 2, 1);
+        public Vector3 CenterRectOffset = new Vector3(0,0,-7.5f);
+
+
+        public UpdateType UpdateType = UpdateType.LateUpdate;
+        public LerpType LerpType = LerpType.Null;
+        public float MaxSpeed = 15f;
+        private float SmoothTime = 0.3f;
 
         // 仅在首次调用 Update 方法之前调用 Start
         private void Start()
@@ -37,5 +44,23 @@ namespace Poi
 
             Selfiestick = transform.parent;
         }
+
+        /// <summary>
+        /// 如果启用 Behaviour，则在每一帧都将调用 LateUpdate
+        /// </summary>
+        private void LateUpdate()
+        {
+            if (UpdateType == UpdateType.LateUpdate)
+            {
+                if (FollowTarget && Selfiestick)
+                {
+                    Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
+                        ref speed, SmoothTime, MaxSpeed);
+
+                }
+            }
+        }
+
+
     }
 }
