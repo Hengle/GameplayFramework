@@ -19,10 +19,16 @@ public abstract class ShowPropertyEditor<T>:Editor
     /// </summary>
     protected static List<PropertyInfo> PropertyCollection { get; set; } = new List<PropertyInfo>();
 
+    /// <summary>
+    /// 是否显示属性/ShowProperties?
+    /// </summary>
+    protected bool IsShowProperties { get; set; } = true;
+
     public override void OnInspectorGUI()
     {
         lock (PropertyCollection)
         {
+            ///初始化属性列表
             if (!IsGetProp)
             {
                 var collection = typeof(T).GetProperties();
@@ -39,12 +45,18 @@ public abstract class ShowPropertyEditor<T>:Editor
             }
         }
 
-        foreach (var item in PropertyCollection)
+        IsShowProperties = EditorGUILayout.Toggle("显示属性/ShowProperties?", IsShowProperties);
+
+        if (IsShowProperties)
         {
-            if (item.CanRead)
+            ///显示属性
+            foreach (var item in PropertyCollection)
             {
-                var res = item.GetValue(target, null);
-                EditorGUILayout.LabelField($"{item.Name}: {res.ToString()}");
+                if (item.CanRead)
+                {
+                    var res = item.GetValue(target, null);
+                    EditorGUILayout.LabelField($"{item.Name}: {res?.ToString()}");
+                }
             }
         }
 

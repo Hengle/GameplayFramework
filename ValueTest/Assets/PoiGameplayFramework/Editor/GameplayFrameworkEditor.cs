@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Poi;
 using UnityEditor;
 using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
@@ -27,3 +28,10 @@ internal class DoCreateGameMode : EndNameEditAction
         ProjectWindowUtil.ShowCreatedAsset(gamemode);
     }
 }
+
+[CustomEditor(typeof(Pawn))]
+public class PawnEditor : ShowPropertyEditor<Pawn> { }
+[CustomEditor(typeof(Character))]
+public class CharacterEditor : ShowPropertyEditor<Character> { }
+[CustomEditor(typeof(Monster))]
+public class MonsterEditor : ShowPropertyEditor<Monster> { }
