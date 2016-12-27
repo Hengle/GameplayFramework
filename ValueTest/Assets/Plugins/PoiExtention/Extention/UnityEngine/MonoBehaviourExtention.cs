@@ -27,5 +27,20 @@ namespace UnityEngine
 
             return com;
         }
+
+        /// <summary>
+        /// MonoBehaviour自身和继承的属性名字列表
+        /// </summary>
+        public static List<string> PropertiesNames => new List<string>()
+        {
+            "gameObject","tag","name","hideFlags","transform",
+
+            "useGUILayout","enabled","isActiveAndEnabled","runInEditMode",
+            
+
+            "animation","audio","camera","collider","collider2D","constantForce","guiElement",
+            "guiText","guiTexture","hingeJoint","light","networkView","particleEmitter",
+            "particleSystem","renderer","rigidbody","rigidbody2D",
+        };
     }
 }
