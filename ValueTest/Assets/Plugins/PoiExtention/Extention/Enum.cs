@@ -27,4 +27,25 @@ namespace UnityEngine
         SlerpUnclamped,
         Null,
     }
+
+    public enum Layer
+    {
+        Default = 0,
+        TransparentFX,
+        IgnoreRaycast,
+
+        Water = 4,
+        UI = 5,
+
+        Character = 10,
+        Monster,
+        Floor = 21,
+
+        Edior = 31,
+    }
+
+    public enum PoiTag
+    {
+        PlayerStart,
+    }
 }

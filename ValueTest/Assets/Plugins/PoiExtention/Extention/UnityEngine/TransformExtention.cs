@@ -24,5 +24,20 @@ namespace UnityEngine
             trans.localRotation = Quaternion.identity;
             trans.localScale = csale;
         }
+
+        /// <summary>
+        /// 位置重合
+        /// </summary>
+        /// <param name="trans"></param>
+        /// <param name="tar"></param>
+        public static void Apply(this Transform trans, Transform tar)
+        {
+            if (tar)
+            {
+                trans.position = tar.position;
+                trans.rotation = tar.rotation;
+                trans.localScale = tar.localScale;
+            } 
+        }
     }
 }

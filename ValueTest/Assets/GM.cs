@@ -46,6 +46,10 @@ public class GM : MonoBehaviour {
         Wait(LoadSceneAsync(1),()=>
         {
             GameObject go = GameObject.Instantiate(GameMode.DefaultPawn);
+
+            GameObject start = GameObject.FindGameObjectWithTag($"{PoiTag.PlayerStart.ToString()}");
+            go.transform.Apply(start?.transform);
+
             //go.AddComponent<DontDestroyOnLoad>();
             var controller = go.GetComponent<Animator>();
 
