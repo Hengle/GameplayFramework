@@ -16,7 +16,7 @@ namespace Poi
         public Transform EnemyTarget2;
 
         public Vector3 speed = new Vector3(1, 2, 1);
-        public Vector3 CenterRectOffset = new Vector3(0,0,-7.5f);
+        public Vector3 CenterRectOffset = new Vector3(0,0,-3.5f);
 
 
         public UpdateType UpdateType = UpdateType.LateUpdate;
