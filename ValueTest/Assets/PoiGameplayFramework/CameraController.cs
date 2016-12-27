@@ -10,7 +10,7 @@ namespace Poi
         /// 相机的父（自拍杆）
         /// </summary>
         public Transform Selfiestick;
-
+        public Vector3 SelfiestickRotationOffset = new Vector3(20, 0, 0);
 
         public Transform EnemyTarget1;
         public Transform EnemyTarget2;
@@ -43,6 +43,9 @@ namespace Poi
             }
 
             Selfiestick = transform.parent;
+
+            Selfiestick.Rotate(SelfiestickRotationOffset.x, 0, 0);
+            Selfiestick.Rotate(0, SelfiestickRotationOffset.y, 0,Space.World);
         }
 
         /// <summary>
