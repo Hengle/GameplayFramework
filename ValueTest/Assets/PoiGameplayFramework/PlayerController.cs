@@ -8,18 +8,15 @@ using UnityStandardAssets.CrossPlatformInput;
 namespace Poi
 {
     public class PlayerController:CharacterControllor
-    {       
-        public override bool Possess(Pawn pawn)
+    {
+        public CameraController CamCtrl { get; protected set; }
+
+        protected override void Start()
         {
-            var res = base.Possess(pawn);
+            string friendlyName = "PlayerController";
+            gameObject.name = friendlyName;
+            //gameObject.tag = friendlyName;
 
-            UpdateCamera();
-
-            return res;
-        }
-
-        void UpdateCamera()
-        {
             var cam = Camera.main;
             if (!cam)
             {
@@ -27,18 +24,9 @@ namespace Poi
                 cam.name = "Main Camera";
                 cam.tag = "Main Camera";
             }
+            CamCtrl = cam.GetComponentIfNullAdd<CameraController>();
 
-
-            FollowTarget f = cam.GetComponentIfNullAdd<FollowTarget>();
-
-            f.Tar = Pawn.ThirdCameraPos;
-        }
-
-        private void Start()
-        {
-            string friendlyName = "PlayerController";
-            gameObject.name = friendlyName;
-            //gameObject.tag = friendlyName;
+            CamCtrl.FollowTarget = transform;
         }
 
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
@@ -60,6 +48,11 @@ namespace Poi
             GetMoveDirection();
 
             GetAxis();
+        }
+
+        public override void Init()
+        {
+            
         }
 
         private void GetAxis()

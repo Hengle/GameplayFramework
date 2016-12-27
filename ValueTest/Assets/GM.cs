@@ -64,6 +64,8 @@ public class GM : MonoBehaviour {
 
             PlayerController pc = PawnController.CreateController<PlayerController>();
 
+            pc.Init();
+
             pc.IsFollowPawn = true;
 
             PlayerController = pc;
