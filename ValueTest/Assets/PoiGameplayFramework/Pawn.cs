@@ -32,43 +32,22 @@ namespace Poi
             InitEyeCameraPos();
         }
 
-        public PawnController Controller { get; set; }
+        PawnController controller;
+        public PawnController Controller { get { return controller; } set { controller = value; } }
+        public AIController AIController { get { return controller as AIController; } set { controller = value; } }
+        public PlayerController PlayerController { get { return controller as PlayerController; } set { controller = value; } }
+
+        public Stack<Command> NextCmd { get; } = new Stack<Command>();
 
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>
         public PawnInfo DataInfo => dataInfo as PawnInfo;
 
-
-        public virtual void OnHit(double damage)
-        {
-            DataInfo?.HP?.OnHit(damage);
-            CheckDead();
-        }
-
-        public virtual void AddHP(double addValue)
-        {
-            DataInfo?.HP?.AddHP(addValue);
-        }
-
-        /// <summary>
-        /// 检查死亡
-        /// </summary>
-        private void CheckDead()
-        {
-            if (DataInfo.IsDead)
-            {
-                OnDead?.Invoke();
-            }
-        }
-
         public void AlterPorperty<T>(PropertyType type, T changedValue)
         {
 
         }
-
-        public event Action OnDead;
-
 
         /// <summary>
         /// 

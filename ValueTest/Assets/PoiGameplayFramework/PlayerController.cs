@@ -9,9 +9,17 @@ namespace Poi
 {
     public class PlayerController:CharacterControllor
     {
+        public enum TestCtrlType
+        {
+            A,B
+        }
+        public TestCtrlType CtrlType = TestCtrlType.B;
+
         public CameraController CamCtrl { get; protected set; }
 
         Stack<Command> cmd = new Stack<Command>();
+
+        public int Delaytime = 0;
 
         protected override void Start()
         {
@@ -34,27 +42,53 @@ namespace Poi
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
-        private bool m_Jump;
 
         public bool LockCursor { get; private set; }
 
         private void Update()
         {
-            if (CrossPlatformInputManager.GetButtonDown("Jump"))
+            if (CtrlType == TestCtrlType.A)
             {
-                Pawn?.QueryJump();
+                if (CrossPlatformInputManager.GetButtonDown("Jump"))
+                {
+                    Pawn?.QueryJump();
+                }
+
+                bool crouch = Input.GetKey(KeyCode.C);
+
+                GetMoveDirection();
+
+                GetAxis();
             }
-
-            bool crouch = Input.GetKey(KeyCode.C);
-
-            GetMoveDirection();
-
-            GetAxis();
         }
 
-        public override void Init()
+        protected override void FixedUpdate()
         {
+            //base.FixedUpdate();
+            if (CtrlType != TestCtrlType.B) return;
             
+
+            Command next = new Command();
+            next.Horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+            next.Vertical = CrossPlatformInputManager.GetAxis("Vertical");
+
+            next.Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+
+            next.MouseX = CrossPlatformInputManager.GetAxis("Mouse X");
+            next.MouseY = CrossPlatformInputManager.GetAxis("Mouse Y");
+
+            if (Delaytime == 0)
+            {
+                Pawn.NextCmd.Push(next);
+            }
+            else
+            {
+                cmd.Push(next);
+                if (cmd.Count > Delaytime)
+                {
+                    Pawn.NextCmd.Push(cmd.Pop());
+                }
+            }
         }
 
         private void GetAxis()
@@ -91,8 +125,5 @@ namespace Poi
                 Cursor.visible = true;
             }
         }
-
-
-
     }
 }
