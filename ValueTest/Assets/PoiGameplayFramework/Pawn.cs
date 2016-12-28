@@ -37,8 +37,9 @@ namespace Poi
         public AIController AIController { get { return controller as AIController; } set { controller = value; } }
         public PlayerController PlayerController { get { return controller as PlayerController; } set { controller = value; } }
 
-        public Stack<Command> NextCmd { get; } = new Stack<Command>();
+        public List<Command> NextCmdList { get; } = new List<Command>();
 
+        protected Command NextCmd { get;private set; }
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>
@@ -88,6 +89,12 @@ namespace Poi
 
         protected virtual void FixedUpdate()
         {
+            lock (NextCmdList)
+            {
+                NextCmd = NextCmdList.Count > 0 ? NextCmdList.First() : null;
+                NextCmdList.Clear();
+            }
+
             FixedUpdateTransform();
         }
     }

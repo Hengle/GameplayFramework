@@ -50,9 +50,31 @@ namespace Poi
 
         protected override void ApplyMove()
         {
-            transform.Translate(NextMoveDistance);
+            if (PlayerController?.CtrlType == PlayerController.TestCtrlType.A)
+            {
+                transform.Translate(NextMoveDistance);
 
-            NextMoveDistance = Vector3.zero;
+                NextMoveDistance = Vector3.zero;
+            }
+            else
+            {
+                if (NextCmd)
+                {
+                    Vector2 arrow = new Vector2(NextCmd.Horizontal, NextCmd.Vertical);
+
+                    if (arrow != Vector2.zero)
+                    {
+                        float angle = Vector2.Angle(Vector2.up, arrow);
+                        if (arrow.x < 0)
+                        {
+                            angle = 360 - angle;
+                        }
+
+                        transform.eulerAngles = new Vector3(transform.eulerAngles.x, angle, transform.eulerAngles.z);
+                    }
+                    
+                }
+            }    
         }
     }
 }

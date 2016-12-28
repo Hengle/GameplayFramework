@@ -79,14 +79,14 @@ namespace Poi
 
             if (Delaytime == 0)
             {
-                Pawn.NextCmd.Push(next);
+                Pawn.NextCmdList.Add(next);
             }
             else
             {
                 cmd.Push(next);
                 if (cmd.Count > Delaytime)
                 {
-                    Pawn.NextCmd.Push(cmd.Pop());
+                    Pawn.NextCmdList.Add(cmd.Pop());
                 }
             }
         }
