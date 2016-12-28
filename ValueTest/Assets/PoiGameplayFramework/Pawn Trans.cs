@@ -83,7 +83,7 @@ namespace Poi
         /// 更新移动
         /// <para>Translate移动一定要放在FixedUpdate中，有效防止物理碰撞时抖动</para>
         /// </summary>
-        private void FixedUpdateMove()
+        private void FixedUpdateTransform()
         {
             ApplyMove();
 

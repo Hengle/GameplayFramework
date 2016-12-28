@@ -88,7 +88,7 @@ namespace Poi
 
         protected virtual void FixedUpdate()
         {
-            FixedUpdateMove();
+            FixedUpdateTransform();
         }
     }
 }
