@@ -72,6 +72,23 @@ namespace Poi
             next.Horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             next.Vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
+            Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
+
+            if (arrow != Vector2.zero)
+            {
+                float angle = Vector2.Angle(Vector2.up, arrow);
+                if (arrow.x < 0)
+                {
+                    angle = 360 - angle;
+                }
+
+                next.Angle = angle;
+            }
+            else
+            {
+                next.Angle = null;
+            }
+
             next.Jump = CrossPlatformInputManager.GetButtonDown("Jump");
 
             next.MouseX = CrossPlatformInputManager.GetAxis("Mouse X");

@@ -85,10 +85,19 @@ namespace Poi
         /// </summary>
         private void FixedUpdateTransform()
         {
-            ApplyMove();
+            if (PlayerController?.CtrlType == PlayerController.TestCtrlType.A)
+            {
+                ApplyMove();
 
-            ApplyJump();
+                ApplyJump();
+            }
+            else
+            {
+                ApplyTurn();
+            }
         }
+
+        
 
         #region Move
 
@@ -281,5 +290,31 @@ namespace Poi
         }
 
         #endregion
+
+        public float NextTurnToAngle { get; protected set; }
+
+        /// <summary>
+        /// 自身渲染到目标角度
+        /// </summary>
+        protected virtual void ApplyTurn()
+        {
+            if (NextCmd)
+            {
+                if (NextCmd.Angle != null)
+                {
+                    NextTurnToAngle = (float)NextCmd.Angle;
+                }
+            }
+
+            var delta = NextTurnToAngle - transform.localEulerAngles.y;
+
+            if (delta == 0) return;
+
+            var tempSpeed = DataInfo.TurnSpeed * Time.fixedDeltaTime;
+
+            
+            
+            transform.Rotate(0, delta, 0,Space.World);
+        }
     }
 }

@@ -48,5 +48,7 @@ namespace Poi
         /// 当前人物是否在地面
         /// </summary>
         public bool IsGround => JumpCurrentStep == 0;
+
+        public float TurnSpeed { get; set; } = 1;
     }
 }

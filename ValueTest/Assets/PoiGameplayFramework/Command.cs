@@ -2,6 +2,7 @@
 {
     public class Command
     {
+        public float? Angle { get;  set; }
         public float Horizontal { get;  set; }
         public bool Jump { get;  set; }
         public float MouseX { get; internal set; }
