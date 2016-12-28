@@ -11,6 +11,8 @@ namespace Poi
     {
         public CameraController CamCtrl { get; protected set; }
 
+        Stack<Command> cmd = new Stack<Command>();
+
         protected override void Start()
         {
             string friendlyName = "PlayerController";
@@ -89,5 +91,8 @@ namespace Poi
                 Cursor.visible = true;
             }
         }
+
+
+
     }
 }

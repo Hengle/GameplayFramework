@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class test2 : MonoBehaviour {
 
+    public Vector2 Arrow = new Vector2(0, 1);
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(Tiao());
+        //StartCoroutine(Tiao());
 
 	}
 
@@ -19,6 +20,7 @@ public class test2 : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+        var jiao = Vector2.Angle(Vector2.up, Arrow);
+        Debug.Log(jiao);
 	}
 }
