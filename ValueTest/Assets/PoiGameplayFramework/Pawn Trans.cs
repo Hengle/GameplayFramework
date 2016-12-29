@@ -298,11 +298,11 @@ namespace Poi
         /// </summary>
         protected virtual void ApplyTurn()
         {
-            if (NextCmd)
+            if (CurrentCmd)
             {
-                if (NextCmd.Angle != null)
+                if (CurrentCmd.Angle != null)
                 {
-                    NextTurnToAngle = (float)NextCmd.Angle;
+                    NextTurnToAngle = (float)CurrentCmd.Angle;
                 }
             }
 

@@ -7,6 +7,16 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace Poi
 {
+    /// <summary>
+    /// 玩家控制器
+    /// <para>控制器思路：</para>
+    /// <para>1,取得当前操作InputCommand，存入cmd 命令列表</para>
+    /// <para>2,模拟延迟（单机为0），取得前N帧的操作 和当前时刻人物状态进行解析</para>
+    /// <para>3,解析InputCommand。AI怪物使用行为树和AIPawn状态解析，联机角色服务器网间解析</para>
+    /// <para>4,解析过得Command送入Pawn，类型为直接对Pawn的控制，例如转到某个角度，开始Run，结束Run，Run持续，
+    /// 释放Skill等。
+    /// </para>
+    /// </summary>
     public class PlayerController:CharacterControllor
     {
         public enum TestCtrlType
@@ -17,9 +27,12 @@ namespace Poi
 
         public CameraController CamCtrl { get; protected set; }
 
-        Stack<Command> cmd = new Stack<Command>();
+        Stack<InputCommand> cmd = new Stack<InputCommand>();
 
-        public int Delaytime = 0;
+        /// <summary>
+        /// 延迟fixedtime数
+        /// </summary>
+        public int DelayFixedtime = 0;
 
         protected override void Start()
         {
@@ -66,14 +79,50 @@ namespace Poi
         {
             //base.FixedUpdate();
             if (CtrlType != TestCtrlType.B) return;
-            
 
-            Command next = new Command();
+            ///取得输入命令
+            InputCommand next = new InputCommand();
             next.Horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             next.Vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
-            Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
+            next.Jump = CrossPlatformInputManager.GetButtonDown("Jump");
 
+            next.MouseX = CrossPlatformInputManager.GetAxis("Mouse X");
+            next.MouseY = CrossPlatformInputManager.GetAxis("Mouse Y");
+
+            InputCommand tempcmd = null;
+
+            ///应用模拟延迟
+            if (DelayFixedtime == 0)
+            {
+                tempcmd = next;
+            }
+            else
+            {
+                cmd.Push(next);
+                if (cmd.Count > DelayFixedtime)
+                {
+                    tempcmd = cmd.Pop();
+                }
+            }
+
+            if (tempcmd)
+            {
+                ///解析操作
+                Pawn.NextCmdList.Add(ParseInputCommand(tempcmd));
+            }
+        }
+
+        /// <summary>
+        /// 将输入命令解析为对Pawn命令（AI中使用行为树或状态机解析）
+        /// </summary>
+        /// <param name="next">输入的命令</param>
+        /// <returns></returns>
+        private Command ParseInputCommand(InputCommand next)
+        {
+            ///解析所转向的角度
+            Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
+            Command cmd = new Command();
             if (arrow != Vector2.zero)
             {
                 float angle = Vector2.Angle(Vector2.up, arrow);
@@ -82,30 +131,14 @@ namespace Poi
                     angle = 360 - angle;
                 }
 
-                next.Angle = angle;
+                cmd.Angle = angle;
             }
             else
             {
-                next.Angle = null;
+                cmd.Angle = null;
             }
 
-            next.Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-
-            next.MouseX = CrossPlatformInputManager.GetAxis("Mouse X");
-            next.MouseY = CrossPlatformInputManager.GetAxis("Mouse Y");
-
-            if (Delaytime == 0)
-            {
-                Pawn.NextCmdList.Add(next);
-            }
-            else
-            {
-                cmd.Push(next);
-                if (cmd.Count > Delaytime)
-                {
-                    Pawn.NextCmdList.Add(cmd.Pop());
-                }
-            }
+            return cmd;
         }
 
         private void GetAxis()
