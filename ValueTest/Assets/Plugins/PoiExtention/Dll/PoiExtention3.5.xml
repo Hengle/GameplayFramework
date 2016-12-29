@@ -132,6 +132,30 @@
             <param name="Seed">种子</param>
             <returns></returns>
         </member>
+        <member name="T:System.StructExtention">
+            <summary>
+            值扩展
+            </summary>
+        </member>
+        <member name="M:System.StructExtention.ClampIn(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            返回不出界的一个值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cur"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StructExtention.ClampIn(System.Single,System.Single,System.Single)">
+            <summary>
+            返回不出界的一个值
+            </summary>
+            <param name="cur"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
         <member name="T:System.Xml.Linq.PoiExtention">
             <summary>
             对xml.linq的扩展
