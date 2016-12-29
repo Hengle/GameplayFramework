@@ -49,6 +49,9 @@ namespace Poi
         /// </summary>
         public bool IsGround => JumpCurrentStep == 0;
 
-        public float TurnSpeed { get; set; } = 1;
+        /// <summary>
+        /// 转动速度
+        /// </summary>
+        public float TurnSpeed { get; set; } = 450;
     }
 }
