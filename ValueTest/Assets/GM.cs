@@ -62,8 +62,6 @@ public class GM : MonoBehaviour {
                 JumpMaxStep = 2,
             };
 
-            info.Run.Speed = 3f;
-
             p.Init(info);
 
             PlayerController pc = PawnController.CreateController<PlayerController>();

@@ -46,13 +46,5 @@ namespace Poi
 
             NextJump = false;
         }
-
-
-        protected override void ApplyMove()
-        {
-            transform.Translate(NextMoveDistance);
-
-            NextMoveDistance = Vector3.zero; 
-        }
     }
 }

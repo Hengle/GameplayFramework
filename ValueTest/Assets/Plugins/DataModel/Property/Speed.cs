@@ -15,6 +15,9 @@ namespace Poi
             this.PropertyType = type;
         }
 
-        public float Speed { get; set; }
+        /// <summary>
+        /// 启动速率
+        /// </summary>
+        public float StartScale { get; set; } = 0.3f;
     }
 }

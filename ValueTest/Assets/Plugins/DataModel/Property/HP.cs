@@ -15,7 +15,7 @@ namespace Poi
 
         public override PropertyType PropertyType => PropertyType.HP;
 
-        public HPOnHitResult OnHit(double damage)
+        public HPOnHitResult OnHit(float damage)
         {
             var temp = Current - damage;
             HPOnHitResult res = new HPOnHitResult();
@@ -29,7 +29,7 @@ namespace Poi
             return res;
         }
 
-        public void AddHP(double addValue)
+        public void AddHP(float addValue)
         {
             throw new NotImplementedException();
         }

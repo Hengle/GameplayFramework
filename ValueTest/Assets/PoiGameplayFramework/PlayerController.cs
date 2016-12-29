@@ -60,25 +60,12 @@ namespace Poi
 
         private void Update()
         {
-            if (CtrlType == TestCtrlType.A)
-            {
-                if (CrossPlatformInputManager.GetButtonDown("Jump"))
-                {
-                    Pawn?.QueryJump();
-                }
-
-                bool crouch = Input.GetKey(KeyCode.C);
-
-                GetMoveDirection();
-
-                GetAxis();
-            }
+            
         }
 
         protected override void FixedUpdate()
         {
             //base.FixedUpdate();
-            if (CtrlType != TestCtrlType.B) return;
 
             ///取得输入命令
             InputCommand next = new InputCommand();
@@ -108,8 +95,15 @@ namespace Poi
 
             if (tempcmd)
             {
-                ///解析操作
-                Pawn.NextCmdList.Add(ParseInputCommand(tempcmd));
+                if (Pawn == null)
+                {
+
+                }
+                else
+                {
+                    ///解析操作
+                    Pawn.NextCmdList.Add(ParseInputCommand(tempcmd));
+                }     
             }
         }
 
@@ -119,10 +113,11 @@ namespace Poi
         /// <param name="next">输入的命令</param>
         /// <returns></returns>
         private Command ParseInputCommand(InputCommand next)
-        {
+        { 
+            Command cmd = new Command();
+
             ///解析所转向的角度
             Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
-            Command cmd = new Command();
             if (arrow != Vector2.zero)
             {
                 float angle = Vector2.Angle(Vector2.up, arrow);
@@ -138,32 +133,27 @@ namespace Poi
                 cmd.Angle = null;
             }
 
-            return cmd;
-        }
-
-        private void GetAxis()
-        {
-            if (Input.GetMouseButton(1))
+            ///计算移动
+            if (arrow.sqrMagnitude > 0.09)
             {
-                float yRot = CrossPlatformInputManager.GetAxis("Mouse X");
-                float xRot = CrossPlatformInputManager.GetAxis("Mouse Y");
+                switch (Pawn.State)
+                {
+                    case PawnState.Idle:
+                        cmd.MoveState = PawnState.RunStart;
+                        break;
+                    case PawnState.RunStart:
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
 
-                Pawn?.UpdateAxis(xRot, yRot);
-            }    
-        }
-
-        /// <summary>
-        /// 获取玩家移动方向
-        /// </summary>
-        private void GetMoveDirection()
-        {
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
+            }
 
 
-            var moveDir = new Vector3(h, 0, v);
-
-            Pawn?.NextMove(moveDir);
+            return cmd;
         }
 
         void SetCursorLock(bool value)

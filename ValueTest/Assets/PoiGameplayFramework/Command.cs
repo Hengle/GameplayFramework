@@ -23,6 +23,7 @@
     public class Command
     {
         public float? Angle { get; set; }
+        public PawnState MoveState { get; internal set; }
 
         public static implicit operator bool(Command c)
         {

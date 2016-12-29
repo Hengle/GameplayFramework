@@ -78,6 +78,12 @@ namespace Poi
         /// 刚体组件
         /// </summary>
         public Rigidbody Rigidbody { get; protected set; }
+
+        /// <summary>
+        /// 玩家当前状态
+        /// </summary>
+        public PawnState State { get; private set; } = PawnState.Idle;
+
         protected virtual void Start()
         {
             Animator = GetComponent<Animator>();
