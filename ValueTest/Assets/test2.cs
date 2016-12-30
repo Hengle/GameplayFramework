@@ -6,10 +6,11 @@ using UnityEngine;
 public class test2 : MonoBehaviour {
 
     public Vector2 Arrow = new Vector2(0, 1);
+    public Vector3 t;
 	// Use this for initialization
 	void Start () {
         //StartCoroutine(Tiao());
-
+        t = Vector3.MoveTowards(Vector3.zero, Vector3.up, 0.5f);
 	}
 
     private IEnumerator Tiao()

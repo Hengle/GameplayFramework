@@ -63,65 +63,16 @@ namespace Poi
         /// <summary>
         /// 下次移动距离
         /// </summary>
-        public Vector3 NextMoveDistance { get; protected set; }
+        public Stack<Vector3> NextMoveDistance { get; } = new Stack<Vector3>();
         public bool NextJump { get; protected set; }
 
-
-
-
-        /// <summary>
-        /// 更新移动
-        /// <para>Translate移动一定要放在FixedUpdate中，有效防止物理碰撞时抖动</para>
-        /// </summary>
-        private void FixedUpdateTransform()
-        {
-            ApplyTurn();
-
-            ApplyMove();
-        }
-
-
-
+        
         #region Move
 
         /// <summary>
         /// 在当前状态持续的时间
         /// </summary>
         public float DurationTimeInCurrentState { get; protected set; } = 0;
-        /// <summary>
-        /// 应用移动
-        /// </summary>
-        protected virtual void ApplyMove()
-        {
-            if (CurrentCmd)
-            {
-                ///持续时间变化
-                if (CurrentCmd.MoveState == State)
-                {
-                    DurationTimeInCurrentState += Time.fixedDeltaTime;
-                }
-                else
-                {
-                    DurationTimeInCurrentState = 0;
-                }
-
-
-                switch (CurrentCmd.MoveState)
-                {
-                    case PawnState.Idle:
-                        break;
-                    case PawnState.RunStart:
-                        RunStart();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-
-            }
-        }
 
         private void RunStart()
         {
@@ -136,24 +87,61 @@ namespace Poi
             transform.Translate(0, 0, speed*Time.fixedDeltaTime, Space.Self);
         }
 
+        /// <summary>
+        /// move
+        /// </summary>
+        public void Move()
+        {
+            if (NextMoveDistance.Count == 0)
+            {
+                return;
+            }
+            else if (NextMoveDistance.Count == 1)
+            {
+                ///最后一个位移
+
+            }
+            else
+            {
+                ///中间位移
+
+                ///读取下个目标点
+                var next = NextMoveDistance.Peek();
+                ///位移
+                var tempdis = Vector3.MoveTowards(transform.position, next, 
+                                                    DataInfo.Run.Current * Time.fixedDeltaTime);
+
+                ///执行位移
+                transform.Translate(tempdis, Space.Self);
+
+                if ((transform.position - next).sqrMagnitude < 0.008)
+                {
+                    ///认为到达
+                    NextMoveDistance.Pop();
+                }
+            }
+            
+            
+        }
+
         #endregion
 
         #region Axis
 
-        public float NextTurnToAngle { get; protected set; }
+        public float NextTurnToAngle { get; set; }
 
         /// <summary>
         /// 自身旋转到目标角度
         /// </summary>
-        protected virtual void ApplyTurn()
+        public virtual void Turn()
         {
-            if (CurrentCmd)
-            {
-                if (CurrentCmd.Angle != null)
-                {
-                    NextTurnToAngle = (float)CurrentCmd.Angle;
-                }
-            }
+            //if (CurrentCmd)
+            //{
+            //    if (CurrentCmd.Angle != null)
+            //    {
+            //        NextTurnToAngle = (float)CurrentCmd.Angle;
+            //    }
+            //}
 
             var delta = NextTurnToAngle - transform.localEulerAngles.y;
 

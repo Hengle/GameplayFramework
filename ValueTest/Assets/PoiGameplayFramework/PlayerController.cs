@@ -102,58 +102,9 @@ namespace Poi
                 else
                 {
                     ///解析操作
-                    Pawn.NextCmdList.Add(ParseInputCommand(tempcmd));
+                    TempAIClass.Deal(this,tempcmd);
                 }     
             }
-        }
-
-        /// <summary>
-        /// 将输入命令解析为对Pawn命令（AI中使用行为树或状态机解析）
-        /// </summary>
-        /// <param name="next">输入的命令</param>
-        /// <returns></returns>
-        private Command ParseInputCommand(InputCommand next)
-        { 
-            Command cmd = new Command();
-
-            ///解析所转向的角度
-            Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
-            if (arrow != Vector2.zero)
-            {
-                float angle = Vector2.Angle(Vector2.up, arrow);
-                if (arrow.x < 0)
-                {
-                    angle = 360 - angle;
-                }
-
-                cmd.Angle = angle;
-            }
-            else
-            {
-                cmd.Angle = null;
-            }
-
-            ///计算移动
-            if (arrow.sqrMagnitude > 0.09)
-            {
-                switch (Pawn.State)
-                {
-                    case PawnState.Idle:
-                        cmd.MoveState = PawnState.RunStart;
-                        break;
-                    case PawnState.RunStart:
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-
-            }
-
-
-            return cmd;
         }
 
         void SetCursorLock(bool value)

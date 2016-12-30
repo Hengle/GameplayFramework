@@ -16,18 +16,4 @@
             return c != null;
         }
     }
-
-    /// <summary>
-    /// 对Pawn的命令
-    /// </summary>
-    public class Command
-    {
-        public float? Angle { get; set; }
-        public PawnState MoveState { get; internal set; }
-
-        public static implicit operator bool(Command c)
-        {
-            return c != null;
-        }
-    }
 }
