@@ -6,13 +6,17 @@ using UnityEngine;
 
 namespace Poi
 {
+
     /// <summary>
     /// 角色
     /// <para>Controller将每次移动命令存在Pawn中(根据Time.deltatime求出位移，在下次应用前叠加)，
     /// pawn每次FixedUpdate应用这些命令</para>
     /// </summary>
-    public partial class Pawn
+    public partial class Pawn:IMove
     {
+
+        public MoveState CurrentState { get; set; }
+
         [SerializeField]
         float m_MovingTurnSpeed = 360;
         [SerializeField]
@@ -72,7 +76,7 @@ namespace Poi
         /// <summary>
         /// 在当前状态持续的时间
         /// </summary>
-        public float DurationTimeInCurrentState { get; protected set; } = 0;
+        public float DurationTimeInCurrentState { get;set; } = 0;
 
         private void RunStart()
         {
@@ -90,38 +94,80 @@ namespace Poi
         /// <summary>
         /// move
         /// </summary>
-        public void Move()
+        public virtual void Move()
         {
-            if (NextMoveDistance.Count == 0)
-            {
-                return;
-            }
-            else if (NextMoveDistance.Count == 1)
-            {
-                ///最后一个位移
+            PawnMoveFSM.OnUpdate(this,Time.deltaTime);
+        }
 
-            }
-            else
-            {
-                ///中间位移
+        /// <summary>
+        /// 开始移动
+        /// </summary>
+        public void MoveStart(float deltaTime)
+        {
+            float speed = DataInfo.Run.Current;
+            Move(deltaTime, speed);
+        }
 
-                ///读取下个目标点
-                var next = NextMoveDistance.Peek();
-                ///位移
-                var tempdis = Vector3.MoveTowards(transform.position, next, 
-                                                    DataInfo.Run.Current * Time.fixedDeltaTime);
+        
 
-                ///执行位移
-                transform.Translate(tempdis, Space.Self);
+        public void MoveStop(float deltaTime)
+        {
+            float speed = DataInfo.Run.Current;
+            Move(deltaTime, speed);
+        }
 
-                if ((transform.position - next).sqrMagnitude < 0.008)
-                {
-                    ///认为到达
-                    NextMoveDistance.Pop();
-                }
-            }
+        public void Moving(float deltaTime)
+        {
+            float speed = DataInfo.Run.Current;
+            Move(deltaTime, speed);
+        }
+
+
+        protected virtual void Move(float deltaTime, float speed)
+        {
             
-            
+
+            ///读取下个目标点
+            var next = NextMoveDistance.Peek();
+            ///位移
+            var tempdis = Vector3.MoveTowards(transform.position, next,
+                                                speed * deltaTime);
+
+            ///执行位移
+            transform.Translate(tempdis, Space.Self);
+
+            if (CheckArrive(next, 0.2f))
+            {
+                ///认为到达 移除坐标点
+                NextMoveDistance.Pop();
+            }
+        }
+
+        /// <summary>
+        /// 检测是否到达目标点（移动中测试）
+        /// </summary>
+        /// <param name="next"></param>
+        /// <param name="allowH">允许的高度差</param>
+        /// <returns></returns>
+        private bool CheckArrive(Vector3 next, float allowH)
+        {
+            ///检测平面位置
+            var current = new Vector2(transform.position.x, transform.position.z);
+            var target = new Vector2(next.x, next.z);
+
+            if ((target - current).sqrMagnitude > 0.04)
+            {
+                return false;
+            }
+
+            ///检测高度
+            float deltaH = transform.position.y - next.y;
+            if (Math.Abs(deltaH) > allowH)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         #endregion
@@ -231,8 +277,15 @@ namespace Poi
             DataInfo.JumpCurrentStep = 0;
         }
 
+        public void PlayAnim(MoveState state, MoveState lastState)
+        {
+            Debug.Log(state + "---" + lastState);
+        }
+
+
         #endregion
 
-        
+
     }
 }
+

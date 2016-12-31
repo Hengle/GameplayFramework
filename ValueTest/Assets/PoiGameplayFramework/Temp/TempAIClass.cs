@@ -18,6 +18,12 @@ namespace Poi
             ///解析所转向的角度
             TASKState res1 = ActionTurn(playerController, next);
 
+            ///计算移动
+            Vector3 arrow = new Vector3(next.Horizontal,0, next.Vertical);
+            if (arrow != Vector3.zero)
+            {
+                playerController.Character.JiaSudu = arrow.magnitude - 0.5f;
+            }
 
             if (playerController.Pawn.IsArriveDistanation)
             {
@@ -27,12 +33,6 @@ namespace Poi
             {
                 playerController.Pawn.Idle();
             }
-
-            ///计算移动
-            Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
-            
-
-
 
         }
 

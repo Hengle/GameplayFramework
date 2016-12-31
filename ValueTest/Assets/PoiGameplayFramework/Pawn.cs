@@ -18,7 +18,7 @@ namespace Poi
 
         internal void Idle()
         {
-            throw new NotImplementedException();
+
         }
 
         
@@ -80,7 +80,11 @@ namespace Poi
         /// 玩家当前状态
         /// </summary>
         public PawnState State { get; private set; } = PawnState.Idle;
-        public bool IsArriveDistanation { get; internal set; }
+
+        /// <summary>
+        /// 是否到达目标点
+        /// </summary>
+        public bool IsArriveDistanation => NextMoveDistance.Count == 0;
 
         protected virtual void Start()
         {

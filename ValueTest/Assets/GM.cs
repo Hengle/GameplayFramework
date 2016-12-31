@@ -43,6 +43,9 @@ public class GM : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        PawnMoveFSM.Init();
+        PlayerMoveFSM.Init();
+
         Wait(LoadSceneAsync(1),()=>
         {
             GameObject go = GameObject.Instantiate(GameMode.DefaultPawn);
