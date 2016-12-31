@@ -23,16 +23,17 @@ namespace Poi
             if (arrow != Vector3.zero)
             {
                 playerController.Character.JiaSudu = arrow.magnitude - 0.5f;
-            }
-
-            if (playerController.Pawn.IsArriveDistanation)
-            {
                 playerController.Pawn.Move();
             }
-            else
-            {
-                playerController.Pawn.Idle();
-            }
+
+            //if (playerController.Pawn.IsArriveDistanation)
+            //{
+                
+            //}
+            //else
+            //{
+            //    playerController.Pawn.Idle();
+            //}
 
         }
 
