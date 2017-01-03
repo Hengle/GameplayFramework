@@ -29,16 +29,17 @@ namespace Poi
     {
         public override MoveState State => MoveState.Idle;
 
-        public override void OnUpdate(IPlayerMove agent, float deltaTime)
+        public override bool CheckChangedState(IPlayerMove agent, float deltaTime)
         {
             if (agent.JiaSudu == 0)
             {
                 ///没有目标保持Idle
-                return;
+                return false;
             }
             else
             {
-                PlayerMoveFSM.ChangeState(agent, State, MoveState.MoveStart, deltaTime);
+                agent.CurrentState = MoveState.MoveStart;
+                return true;
             }
         }
     }
@@ -53,35 +54,33 @@ namespace Poi
             agent.PlayAnim(State, lastState);
         }
 
-        public override void OnUpdate(IPlayerMove agent, float deltaTime)
+        public override bool CheckChangedState(IPlayerMove agent, float deltaTime)
         {
-            base.OnUpdate(agent, deltaTime);
-
             const float V = 0.5f;
 
             if (agent.JiaSudu < 0)
             {
                 if (agent.CurrentMoveStateSpeed < V)
                 {
-                    PlayerMoveFSM.ChangeState(agent, State, MoveState.MoveStop, deltaTime);
-                }
-                else
-                {
-                    agent.MoveStart(deltaTime);
+                    agent.CurrentState = MoveState.MoveStop;
+                    return true;
                 }
             }
             else
             {
                 if (agent.CurrentMoveStateSpeed > V)
                 {
-                    PlayerMoveFSM.ChangeState(agent, State, MoveState.Moving, deltaTime);
-                }
-                else
-                {
-                    agent.MoveStart(deltaTime);
+                    agent.CurrentState = MoveState.Moving;
+                    return true;
                 }
             }
 
+            return false;
+        }
+
+        public override void DoUpdate(IPlayerMove agent, float deltaTime)
+        {
+            agent.MoveStart(deltaTime);
         }
     }
 
@@ -95,19 +94,22 @@ namespace Poi
             agent.PlayAnim(State, lastState);
         }
 
-        public override void OnUpdate(IPlayerMove agent, float deltaTime)
+        public override bool CheckChangedState(IPlayerMove agent, float deltaTime)
         {
-            base.OnUpdate(agent, deltaTime);
 
             if (agent.JiaSudu < 0 && agent.CurrentMoveStateSpeed < 0.5f)
             {
-                PlayerMoveFSM.ChangeState(agent, State, MoveState.MoveStop, deltaTime);
+                agent.CurrentState = MoveState.MoveStop;
+                return true;
             }
-            else
-            {
-                agent.Moving(deltaTime);
-            }
+            return false;
         }
+
+        public override void DoUpdate(IPlayerMove agent, float deltaTime)
+        {
+            agent.Moving(deltaTime);
+        }
+        
     }
 
     public class PlayerMoveStopState : BaseState<MoveState, IPlayerMove>
@@ -120,18 +122,19 @@ namespace Poi
             agent.PlayAnim(State, lastState);
         }
 
-        public override void OnUpdate(IPlayerMove agent, float deltaTime)
+        public override bool CheckChangedState(IPlayerMove agent, float deltaTime)
         {
-            base.OnUpdate(agent, deltaTime);
-
             if (agent.CurrentMoveStateSpeed < 0.02f)
             {
-                PlayerMoveFSM.ChangeState(agent, State, MoveState.MoveStop, deltaTime);
+                agent.CurrentState = MoveState.MoveStop;
+                return true;
             }
-            else
-            {
-                agent.MoveStop(deltaTime);
-            }
+            return false;
+        }
+
+        public override void DoUpdate(IPlayerMove agent, float deltaTime)
+        {
+            agent.MoveStop(deltaTime);
         }
     }
 }

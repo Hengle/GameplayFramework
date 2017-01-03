@@ -11,7 +11,8 @@ namespace Poi
     /// </summary>
     /// <typeparam name="TState"></typeparam>
     /// <typeparam name="IAgent"></typeparam>
-    public abstract class StateMachine<T,TState, IAgent> where TState : struct where IAgent : IStateMachineAgent<TState>
+    public abstract class StateMachine<T,TState, IAgent> where TState : struct 
+        where IAgent : IStateMachineAgent<TState>
     {
         protected static readonly Dictionary<TState, IState<TState, IAgent>> StateList
             = new Dictionary<TState, IState<TState, IAgent>>();
@@ -43,18 +44,18 @@ namespace Poi
             IState<TState, IAgent> state = StateList[currentState];
 
             ///更新状态机
-            state.OnUpdate(agent, deltaTime);
-        }
+            bool res = state.OnUpdate(agent, deltaTime);
+            if (res)
+            {
+                TState next = agent.CurrentState;
 
-        public static void ChangeState(IAgent agent, TState state, TState nextState, float deltaTime)
-        {
-            StateList[state].OnExit(agent, nextState);
-            var next = StateList[nextState];
-            next.OnEnter(agent, state);
-            agent.CurrentState = nextState;
+                StateList[currentState].OnExit(agent, next);
+                var nextstate = StateList[next];
+                nextstate.OnEnter(agent, currentState);
+                OnUpdate(agent, deltaTime);
+            }
 
-            ///????暂定 切换状态所消耗的时间不计
-            next.OnUpdate(agent, deltaTime);
+            ///TState 无法使用== .equal会导致装箱
         }
     }
 
@@ -62,7 +63,13 @@ namespace Poi
     {
         TState State { get; }
         void OnEnter(IAgent agent, TState lastState);
-        void OnUpdate(IAgent agent, float deltaTime);
+        /// <summary>
+        /// 返回是否改变状态
+        /// </summary>
+        /// <param name="agent"></param>
+        /// <param name="deltaTime"></param>
+        /// <returns></returns>
+        bool OnUpdate(IAgent agent, float deltaTime);
         void OnExit(IAgent agent, TState nextState);
     }
 
@@ -91,6 +98,8 @@ namespace Poi
     {
         public abstract TState State { get; }
 
+        public abstract bool CheckChangedState(IAgent agent, float deltaTime);
+
         public virtual void OnEnter(IAgent agent, TState lastState)
         {
             agent.DurationTimeInCurrentState = 0f;
@@ -99,11 +108,27 @@ namespace Poi
 
         public virtual void OnExit(IAgent agent, TState nextState) { }
 
-        public virtual void OnUpdate(IAgent agent, float deltaTime)
+        /// <summary>
+        /// 返回是否改变状态
+        /// </summary>
+        /// <param name="agent"></param>
+        /// <param name="deltaTime"></param>
+        /// <returns></returns>
+        public bool OnUpdate(IAgent agent, float deltaTime)
         {
-            agent.DurationTimeInCurrentState += deltaTime;
+            if (CheckChangedState(agent,deltaTime))
+            {
+                return true;
+            }
+            else
+            {
+                agent.DurationTimeInCurrentState += deltaTime;
+                DoUpdate(agent, deltaTime);
+                return false;
+            }
         }
 
+        public virtual void DoUpdate(IAgent agent, float deltaTime) { }
     }
 
 
@@ -124,16 +149,17 @@ namespace Poi
     {
         public override MoveState State => MoveState.Idle;
 
-        public override void OnUpdate(IMove agent, float deltaTime)
+        public override bool CheckChangedState(IMove agent, float deltaTime)
         {
             if (agent.NextMoveDistance.Count == 0)
             {
                 ///没有目标保持Idle
-                return;
+                return false;
             }
             else
             {
-                PawnMoveFSM.ChangeState(agent, State, MoveState.MoveStart,deltaTime);
+                agent.CurrentState = MoveState.MoveStart;
+                return true;
             }
         }
     }
@@ -142,23 +168,15 @@ namespace Poi
     {
         public override MoveState State => MoveState.MoveStart;
 
-        public override void OnEnter(IMove agent, MoveState lastState)
+        public override bool CheckChangedState(IMove agent, float deltaTime)
         {
-            base.OnEnter(agent, lastState);
-            agent.PlayAnim(State, lastState);
-        }
-
-        public override void OnUpdate(IMove agent, float deltaTime)
-        {
-            base.OnUpdate(agent, deltaTime);
-
             ///至少持续的时间
             const float ShortestTime = 0.1f;
 
             if (agent.NextMoveDistance.Count == 0)
             {
-                PawnMoveFSM.ChangeState(agent, State, MoveState.Idle, deltaTime);
-                return;
+                agent.CurrentState = MoveState.Idle;
+                return true;
             }
 
             if (agent.NextMoveDistance.Count == 1)
@@ -174,38 +192,28 @@ namespace Poi
 
                     if (length > 0.5f)
                     {
-                        agent.MoveStart(deltaTime);
+                        
                     }
                     else
                     {
-                        PawnMoveFSM.ChangeState(agent, State, MoveState.MoveStop, deltaTime);
+                        agent.CurrentState = MoveState.MoveStop;
+                        return true;
                     }
-                }
-                else
-                {
-                    agent.MoveStart(deltaTime);
                 }
             }
             else
             {
                 ///中间位移
-                
                 if (agent.DurationTimeInCurrentState > ShortestTime)
                 {
-                    PawnMoveFSM.ChangeState(agent, State, MoveState.Moving, deltaTime);
+                    agent.CurrentState = MoveState.Moving;
+                    return true;
                 }
-                else
-                {
-                    agent.MoveStart(deltaTime);
-                }
-                
             }
-        }
-    }
 
-    public class MoveStopState : BaseState<MoveState, IMove>
-    {
-        public override MoveState State => MoveState.MoveStop;
+
+            return false;
+        }
 
         public override void OnEnter(IMove agent, MoveState lastState)
         {
@@ -213,12 +221,22 @@ namespace Poi
             agent.PlayAnim(State, lastState);
         }
 
-        public override void OnUpdate(IMove agent, float deltaTime)
+        public override void DoUpdate(IMove agent, float deltaTime)
+        {
+            agent.MoveStart(deltaTime);
+        }
+    }
+
+    public class MoveStopState : BaseState<MoveState, IMove>
+    {
+        public override MoveState State => MoveState.MoveStop;
+
+        public override bool CheckChangedState(IMove agent, float deltaTime)
         {
             if (agent.NextMoveDistance.Count == 0)
             {
-                PawnMoveFSM.ChangeState(agent, State, MoveState.Idle, deltaTime);
-                return;
+                agent.CurrentState = MoveState.Idle;
+                return true;
             }
 
             if (agent.NextMoveDistance.Count == 1)
@@ -237,26 +255,17 @@ namespace Poi
 
                     if (length > 0.5f)
                     {
-                        agent.MoveStart(deltaTime);
                     }
                     else
                     {
-                        PawnMoveFSM.ChangeState(agent, State, MoveState.MoveStop, deltaTime);
+                        agent.CurrentState = MoveState.MoveStop;
+                        return true;
                     }
-                }
-                else
-                {
-                    agent.MoveStop(deltaTime);
                 }
             }
 
-
+            return false;
         }
-    }
-
-    public class MoveMovingState : BaseState<MoveState, IMove>
-    {
-        public override MoveState State => MoveState.Moving;
 
         public override void OnEnter(IMove agent, MoveState lastState)
         {
@@ -264,14 +273,22 @@ namespace Poi
             agent.PlayAnim(State, lastState);
         }
 
-        public override void OnUpdate(IMove agent, float deltaTime)
+        public override void DoUpdate(IMove agent, float deltaTime)
         {
-            base.OnUpdate(agent, deltaTime);
+            agent.MoveStop(deltaTime);
+        }
+    }
 
+    public class MoveMovingState : BaseState<MoveState, IMove>
+    {
+        public override MoveState State => MoveState.Moving;
+
+        public override bool CheckChangedState(IMove agent, float deltaTime)
+        {
             if (agent.NextMoveDistance.Count == 0)
             {
-                PawnMoveFSM.ChangeState(agent, State, MoveState.Idle, deltaTime);
-                return;
+                agent.CurrentState = MoveState.Idle;
+                return true;
             }
 
             if (agent.NextMoveDistance.Count == 1)
@@ -283,17 +300,26 @@ namespace Poi
 
                 if (length > 0.5f)
                 {
-                    agent.Moving(deltaTime);
                 }
                 else
                 {
-                    PawnMoveFSM.ChangeState(agent, State, MoveState.MoveStop, deltaTime);
+                    agent.CurrentState = MoveState.MoveStop;
+                    return true;
                 }
             }
-            else
-            {
-                agent.Moving(deltaTime);
-            }
+
+            return false;
+        }
+
+        public override void OnEnter(IMove agent, MoveState lastState)
+        {
+            base.OnEnter(agent, lastState);
+            agent.PlayAnim(State, lastState);
+        }
+
+        public override void DoUpdate(IMove agent, float deltaTime)
+        {
+            agent.Moving(deltaTime);
         }
     }
 
