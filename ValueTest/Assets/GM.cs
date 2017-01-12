@@ -42,8 +42,8 @@ public class GM : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
-        Wait(LoadSceneAsync(1),()=>
+        
+        this.Wait(LoadSceneAsync(1), () =>
         {
             GameObject go = GameObject.Instantiate(GameMode.DefaultPawn);
 
@@ -71,35 +71,10 @@ public class GM : MonoBehaviour {
             pc.IsFollowPawn = true;
 
             PlayerController = pc;
-            
+
             pc.Possess(p);
         });
 	}
-
-    private void Wait(AsyncOperation asyncOperation, Action Callback)
-    {
-        StartCoroutine(Func(asyncOperation, Callback));
-    }
-
-    private IEnumerator Func(AsyncOperation asyncOperation, Action callback,float waitTime = -1)
-    {
-        if (asyncOperation != null)
-        {
-            while (!asyncOperation.isDone)
-            {
-                if (waitTime > 0)
-                {
-                    yield return new WaitForSeconds(waitTime);
-                }
-                else
-                {
-                    yield return new WaitForEndOfFrame();
-                }
-            }
-        }
-
-        callback?.Invoke();
-    }
 
     // Update is called once per frame
     void Update () {

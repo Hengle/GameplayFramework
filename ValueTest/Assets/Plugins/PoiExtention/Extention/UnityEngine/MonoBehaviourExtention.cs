@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,5 +43,42 @@ namespace UnityEngine
             "guiText","guiTexture","hingeJoint","light","networkView","particleEmitter",
             "particleSystem","renderer","rigidbody","rigidbody2D",
         };
+
+        public static void Wait(this MonoBehaviour monoscript,AsyncOperation asyncOperation, Action Callback)
+        {
+            monoscript.StartCoroutine(Func(asyncOperation, Callback));
+        }
+
+        static IEnumerator Func(AsyncOperation asyncOperation, Action callback, float waitTime = -1)
+        {
+            if (asyncOperation != null)
+            {
+                while (!asyncOperation.isDone)
+                {
+                    if (waitTime > 0)
+                    {
+                        yield return new WaitForSeconds(waitTime);
+                    }
+                    else
+                    {
+                        yield return new WaitForEndOfFrame();
+                    }
+                }
+            }
+
+            callback?.Invoke();
+        }
+
+        public static void Wait(this MonoBehaviour monoscript, float waitTime, Action Callback)
+        {
+            monoscript.StartCoroutine(Func(waitTime, Callback));
+        }
+
+        static IEnumerator Func(float waitTime, Action callback)
+        {
+            yield return new WaitForSeconds(waitTime);
+
+            callback?.Invoke();
+        }
     }
 }
