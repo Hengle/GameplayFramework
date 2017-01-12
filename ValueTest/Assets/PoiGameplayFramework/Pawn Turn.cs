@@ -11,13 +11,7 @@ namespace Poi
         /// <summary>
         /// 下一步需要旋转到的角度
         /// </summary>
-        public float NextTurnToAngle { get;protected set; }
-
-
-        public void TurnToAngle(float angle)
-        {
-            NextTurnToAngle = angle;
-        }
+        public float NextTurnToAngle { get; set; }
 
         /// <summary>
         /// 自身旋转到目标角度

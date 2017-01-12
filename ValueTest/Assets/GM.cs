@@ -55,7 +55,7 @@ public class GM : MonoBehaviour {
 
             var p = go.AddComponent<Player>();
 
-            PawnInfo info = new PawnInfo()
+            PlayerInfo info = new PlayerInfo()
             {
                 Height = 1.6f,
                 JumpPower = 12f,

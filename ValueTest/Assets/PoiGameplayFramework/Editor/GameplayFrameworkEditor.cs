@@ -33,5 +33,7 @@ internal class DoCreateGameMode : EndNameEditAction
 public class PawnEditor : ShowPropertyEditor<Pawn> { }
 [CustomEditor(typeof(Character))]
 public class CharacterEditor : ShowPropertyEditor<Character> { }
+[CustomEditor(typeof(Player))]
+public class PlayerEditor : ShowPropertyEditor<Player> { }
 [CustomEditor(typeof(Monster))]
 public class MonsterEditor : ShowPropertyEditor<Monster> { }

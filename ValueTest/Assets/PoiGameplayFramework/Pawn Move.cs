@@ -12,20 +12,18 @@ namespace Poi
     public partial class Pawn
     {
         /// <summary>
+        /// 加速度
+        /// </summary>
+        public float Acceleration { get; set; }
+
+        /// <summary>
         /// 应用移动
         /// </summary>
         protected virtual void ApplyMove()
         {
-            
-        }
-        /// <summary>
-        /// 加速度
-        /// </summary>
-        public float Acceleration { get; protected set; }
+            float speed = DataInfo.Run.Current + Acceleration + Time.fixedTime;
 
-        internal void MoveAcceleration(float acceleration)
-        {
-            Acceleration = acceleration;
+            DataInfo.Run.Current = speed.ClampIn(0, DataInfo.Run.Max);  
         }
 
         private void RunStart()

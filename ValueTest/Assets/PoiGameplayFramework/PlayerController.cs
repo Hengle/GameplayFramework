@@ -124,17 +124,17 @@ namespace Poi
                     angle = 360 - angle;
                 }
 
-                Pawn.TurnToAngle(angle);
+                Pawn.NextTurnToAngle = angle;
             }
 
             ///计算移动
             if (arrow != Vector2.zero)
             {
-                Pawn.MoveAcceleration(arrow.magnitude);
+                Pawn.Acceleration = arrow.magnitude;
             }
             else
             {
-                
+                Pawn.Acceleration = -0.1f;
             }
         }
 
