@@ -80,8 +80,6 @@ namespace Poi
             ApplyMove();
         }
 
-        #region Move
-
         /// <summary>
         /// 在当前状态持续的时间
         /// </summary>

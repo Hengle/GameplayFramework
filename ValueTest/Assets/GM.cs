@@ -53,7 +53,7 @@ public class GM : MonoBehaviour {
             //go.AddComponent<DontDestroyOnLoad>();
             var controller = go.GetComponent<Animator>();
 
-            var p = go.AddComponent<Character>();
+            var p = go.AddComponent<Player>();
 
             PawnInfo info = new PawnInfo()
             {
