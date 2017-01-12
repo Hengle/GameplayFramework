@@ -80,67 +80,12 @@ namespace Poi
             ApplyMove();
         }
 
-
-
         #region Move
 
         /// <summary>
         /// 在当前状态持续的时间
         /// </summary>
         public float DurationTimeInCurrentState { get; protected set; } = 0;
-        /// <summary>
-        /// 应用移动
-        /// </summary>
-        protected virtual void ApplyMove()
-        {
-            
-        }
-
-        private void RunStart()
-        {
-            State = PawnState.RunStart;
-
-            float speed = DataInfo.Run.Current * DataInfo.Run.StartScale;
-            Move(speed);
-        }
-
-        private void Move(float speed)
-        {
-            transform.Translate(0, 0, speed*Time.fixedDeltaTime, Space.Self);
-        }
-
-        #endregion
-
-        #region Axis
-
-        public float NextTurnToAngle { get;protected set; }
-
-        public void TurnToAngle(float angle)
-        {
-            NextTurnToAngle = angle;
-        }
-
-        /// <summary>
-        /// 自身旋转到目标角度
-        /// </summary>
-        protected virtual void ApplyTurn()
-        {
-
-            var delta = NextTurnToAngle - transform.localEulerAngles.y;
-
-            if (delta == 0) return;
-
-            if (delta > 180) delta -= 360;
-            if (delta < -180) delta += 360;
-
-            var tempSpeed = DataInfo.TurnSpeed * Time.fixedDeltaTime;
-
-            delta = delta.ClampIn(-tempSpeed, tempSpeed);
-
-            transform.Rotate(0, delta, 0, Space.World);
-        }
-
-        #endregion
 
         #region Jump
 

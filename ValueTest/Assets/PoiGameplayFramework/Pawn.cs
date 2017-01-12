@@ -96,6 +96,7 @@ namespace Poi
             ///必须计算当前使用的命令FixedUpdate中必须最优先
             FixedUpdateTransform();
         }
-          
+
+        
     }
 }

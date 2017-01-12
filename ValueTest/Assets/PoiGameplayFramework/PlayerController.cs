@@ -128,18 +128,9 @@ namespace Poi
             }
 
             ///计算移动
-            if (arrow.sqrMagnitude > 0.09)
+            if (arrow != Vector2.zero)
             {
-                switch (Pawn.State)
-                {
-                    case PawnState.Idle:
-                        
-                        break;
-                    case PawnState.RunStart:
-                        break;
-                    default:
-                        break;
-                }
+                Pawn.MoveAcceleration(arrow.magnitude);
             }
             else
             {
