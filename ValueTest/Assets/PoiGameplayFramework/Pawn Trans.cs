@@ -93,34 +93,7 @@ namespace Poi
         /// </summary>
         protected virtual void ApplyMove()
         {
-            if (CurrentCmd)
-            {
-                ///持续时间变化
-                if (CurrentCmd.MoveState == State)
-                {
-                    DurationTimeInCurrentState += Time.fixedDeltaTime;
-                }
-                else
-                {
-                    DurationTimeInCurrentState = 0;
-                }
-
-
-                switch (CurrentCmd.MoveState)
-                {
-                    case PawnState.Idle:
-                        break;
-                    case PawnState.RunStart:
-                        RunStart();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-
-            }
+            
         }
 
         private void RunStart()
@@ -140,20 +113,18 @@ namespace Poi
 
         #region Axis
 
-        public float NextTurnToAngle { get; protected set; }
+        public float NextTurnToAngle { get;protected set; }
+
+        public void TurnToAngle(float angle)
+        {
+            NextTurnToAngle = angle;
+        }
 
         /// <summary>
         /// 自身旋转到目标角度
         /// </summary>
         protected virtual void ApplyTurn()
         {
-            if (CurrentCmd)
-            {
-                if (CurrentCmd.Angle != null)
-                {
-                    NextTurnToAngle = (float)CurrentCmd.Angle;
-                }
-            }
 
             var delta = NextTurnToAngle - transform.localEulerAngles.y;
 

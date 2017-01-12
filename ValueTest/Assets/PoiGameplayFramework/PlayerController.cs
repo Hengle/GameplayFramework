@@ -102,7 +102,7 @@ namespace Poi
                 else
                 {
                     ///解析操作
-                    Pawn.NextCmdList.Add(ParseInputCommand(tempcmd));
+                    ParseInputCommand(tempcmd);
                 }     
             }
         }
@@ -112,10 +112,8 @@ namespace Poi
         /// </summary>
         /// <param name="next">输入的命令</param>
         /// <returns></returns>
-        private Command ParseInputCommand(InputCommand next)
+        private void ParseInputCommand(InputCommand next)
         { 
-            Command cmd = new Command();
-
             ///解析所转向的角度
             Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
             if (arrow != Vector2.zero)
@@ -126,11 +124,7 @@ namespace Poi
                     angle = 360 - angle;
                 }
 
-                cmd.Angle = angle;
-            }
-            else
-            {
-                cmd.Angle = null;
+                Pawn.TurnToAngle(angle);
             }
 
             ///计算移动
@@ -139,7 +133,7 @@ namespace Poi
                 switch (Pawn.State)
                 {
                     case PawnState.Idle:
-                        cmd.MoveState = PawnState.RunStart;
+                        
                         break;
                     case PawnState.RunStart:
                         break;
@@ -151,9 +145,6 @@ namespace Poi
             {
 
             }
-
-
-            return cmd;
         }
 
         void SetCursorLock(bool value)
