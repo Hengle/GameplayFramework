@@ -61,10 +61,6 @@ namespace Poi
         }
 
         /// <summary>
-        /// 动画组件
-        /// </summary>
-        public Animator Animator { get; protected set; }
-        /// <summary>
         /// 刚体组件
         /// </summary>
         public Rigidbody Rigidbody { get; protected set; }

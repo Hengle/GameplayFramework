@@ -60,8 +60,9 @@ public class GM : MonoBehaviour {
                 Height = 1.6f,
                 JumpPower = 12f,
                 JumpMaxStep = 2,
+                
             };
-
+            info.Run.Max = 10;
             p.Init(info);
 
             PlayerController pc = PawnController.CreateController<PlayerController>();
