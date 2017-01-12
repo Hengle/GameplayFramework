@@ -64,6 +64,20 @@ namespace Poi
             }
         }
 
+        private void Update()
+        {
+            if (UpdateType == UpdateType.Update)
+            {
+                if (FollowTarget && Selfiestick)
+                {
+                    Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
+                        ref speed, SmoothTime, MaxSpeed);
+
+                }
+            }
+        }
+
+
 
     }
 }
