@@ -134,7 +134,7 @@ namespace Poi
             }
             else
             {
-                Pawn.Acceleration = -0.1f;
+                Pawn.Acceleration = -1f;
             }
         }
 

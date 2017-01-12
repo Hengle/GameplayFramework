@@ -862,7 +862,7 @@ ModelImporter:
       name: HumanoidRunStop
       takeName: Take 001
       firstFrame: 496
-      lastFrame: 558
+      lastFrame: 526
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
