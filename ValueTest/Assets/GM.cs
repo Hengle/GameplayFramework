@@ -58,7 +58,7 @@ public class GM : MonoBehaviour {
             PlayerInfo info = new PlayerInfo()
             {
                 Height = 1.6f,
-                JumpPower = 12f,
+                JumpPower = 9f,
                 JumpMaxStep = 2,
                 
             };

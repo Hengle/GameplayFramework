@@ -21,10 +21,13 @@ namespace Poi
         /// </summary>
         protected virtual void ApplyMove()
         {
-            float speed = DataInfo.Run.Current + Acceleration * Time.fixedTime;
+            if (DataInfo.IsGround)
+            {
+                float speed = DataInfo.Run.Current + Acceleration * Time.fixedTime;
 
-            DataInfo.Run.Current = speed.ClampIn(0, DataInfo.Run.Max);
-
+                DataInfo.Run.Current = speed.ClampIn(0, DataInfo.Run.Max);
+            }
+            
             Animator.SetFloat("Acceleration", Acceleration);
             Animator.SetFloat("Speed", DataInfo.Run.Current);
         }
