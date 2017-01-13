@@ -64,10 +64,6 @@ namespace Poi
         /// 下次移动距离
         /// </summary>
         public Vector3 NextMoveDistance { get; protected set; }
-        public bool NextJump { get; protected set; }
-
-
-
 
         /// <summary>
         /// 更新移动
@@ -75,6 +71,8 @@ namespace Poi
         /// </summary>
         private void FixedUpdateTransform()
         {
+            ApplyJump();
+
             ApplyTurn();
 
             ApplyMove();
@@ -83,82 +81,6 @@ namespace Poi
         /// <summary>
         /// 在当前状态持续的时间
         /// </summary>
-        public float DurationTimeInCurrentState { get; protected set; } = 0;
-
-        #region Jump
-
-        public void QueryJump()
-        {
-            NextJump = true;
-        }
-
-        protected virtual void ApplyJump()
-        {
-            
-            
-        }
-
-        private void ResetJumpState()
-        {
-            DataInfo.JumpCurrentStep = 0;
-        }
-
-        private void TriggerEnter(Collider arg1, Collider arg2)
-        {
-            //if (arg1.tag == Tag.JumpReset)
-            //{
-            //    ResetJumpState();
-            //}
-        }
-
-        /// <summary>
-        /// 检测是否在地面
-        /// </summary>
-        protected void CheckGroundStatus()
-        {
-            RaycastHit hitInfo;
-
-#if UNITY_EDITOR
-            // helper to visualise the ground check ray in the scene view
-            Debug.DrawLine(transform.position , transform.position+ (Vector3.down * m_GroundCheckDistance));
-#endif
-            // 0.1f is a small offset to start the ray from inside the character
-            // it is also good to note that the transform position in the sample assets is at the base of the character
-            if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
-            {
-                m_GroundNormal = hitInfo.normal;
-
-                var angle = Vector3.Angle(m_GroundNormal, Vector3.up);
-                if (angle < 45)
-                {
-                    ResetJumpStep();
-                    return;
-                }
-
-                if (hitInfo.collider.gameObject.layer == (int)Layer.Floor)
-                {
-                    ResetJumpStep();
-                    return;
-                }
-            }
-            else
-            {
-                //m_IsGrounded = false;
-                //m_GroundNormal = Vector3.up;
-                //m_Animator.applyRootMotion = false;
-            }
-        }
-
-        /// <summary>
-        /// 重置跳跃次数
-        /// </summary>
-        private void ResetJumpStep()
-        {
-            DataInfo.JumpCurrentStep = 0;
-        }
-
-        #endregion
-
-        
+        public float DurationTimeInCurrentState { get; protected set; } = 0;      
     }
 }

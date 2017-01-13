@@ -21,7 +21,7 @@ namespace Poi
             CheckGroundStatus();
 
 
-            if (NextJump && DataInfo.JumpCurrentStep < DataInfo.JumpMaxStep)
+            if (QueryJump && DataInfo.JumpCurrentStep < DataInfo.JumpMaxStep)
             {
                 ///清除下落速度
                 Rigidbody.velocity = Vector3.zero;
@@ -29,17 +29,9 @@ namespace Poi
                 DataInfo.JumpCurrentStep++;
             }
 
-            if (Animator)
-            {
-                Animator.SetBool("Crouch", IsCrouching);
-                Animator.SetBool("OnGround", DataInfo.IsGround);
-                if (!DataInfo.IsGround)
-                {
-                    Animator.SetFloat("Jump", Rigidbody.velocity.y);
-                }
-            }
+            Animator?.SetFloat("SpeedY", Rigidbody.velocity.y);
 
-            NextJump = false;
+            QueryJump = false;
         }
     }
 }

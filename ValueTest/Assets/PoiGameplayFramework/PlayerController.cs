@@ -113,7 +113,13 @@ namespace Poi
         /// <param name="next">输入的命令</param>
         /// <returns></returns>
         private void ParseInputCommand(InputCommand next)
-        { 
+        {
+            if (next.Jump)
+            {
+                Pawn.Jump();
+            }
+
+
             ///解析所转向的角度
             Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
             if (arrow != Vector2.zero)
