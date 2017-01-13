@@ -35,7 +35,7 @@ namespace Poi
             }
 
             Animator?.SetFloat("SpeedY", Rigidbody.velocity.y);
-
+            Animator?.SetBool("IsGround", DataInfo.IsGround);
             QueryJump = false;
         }
 
