@@ -24,10 +24,10 @@ namespace Poi
         public float MaxSpeed = 15f;
         private float SmoothTime = 0.3f;
 
-        // 仅在首次调用 Update 方法之前调用 Start
-        private void Start()
+        private void Follow()
         {
-
+            Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
+                                    ref speed, SmoothTime, MaxSpeed);
         }
 
         // 加载脚本实例时调用 Awake
@@ -45,7 +45,13 @@ namespace Poi
             Selfiestick = transform.parent;
 
             Selfiestick.Rotate(SelfiestickRotationOffset.x, 0, 0);
-            Selfiestick.Rotate(0, SelfiestickRotationOffset.y, 0,Space.World);
+            Selfiestick.Rotate(0, SelfiestickRotationOffset.y, 0, Space.World);
+        }
+
+        // 仅在首次调用 Update 方法之前调用 Start
+        private void Start()
+        {
+
         }
 
         /// <summary>
@@ -57,9 +63,7 @@ namespace Poi
             {
                 if (FollowTarget && Selfiestick)
                 {
-                    Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
-                        ref speed, SmoothTime, MaxSpeed);
-
+                    Follow();
                 }
             }
         }
@@ -70,14 +74,20 @@ namespace Poi
             {
                 if (FollowTarget && Selfiestick)
                 {
-                    Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
-                        ref speed, SmoothTime, MaxSpeed);
-
+                    Follow();
                 }
             }
         }
 
-
-
+        private void FixedUpdate()
+        {
+            if (UpdateType == UpdateType.FixedUpdate)
+            {
+                if (FollowTarget && Selfiestick)
+                {
+                    Follow();
+                }
+            }
+        }
     }
 }
