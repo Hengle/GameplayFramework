@@ -101,5 +101,10 @@ namespace Poi
             Selfiestick.Rotate(-move.y, 0, 0, Space.Self);
             Selfiestick.Rotate(0, move.x,0,Space.World);
         }
+
+        public float GetCurrentForward()
+        {
+            return Selfiestick.transform.eulerAngles.y;
+        }
     }
 }

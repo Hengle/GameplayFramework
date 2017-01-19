@@ -132,10 +132,17 @@ namespace Poi
             if (arrow != Vector2.zero)
             {
                 float angle = Vector2.Angle(Vector2.up, arrow);
+
+                ///angle只有正直
                 if (arrow.x < 0)
                 {
+                    ///当逆时针旋转时，将角度转换为顺时针
                     angle = 360 - angle;
                 }
+
+                float cur = CamCtrl.GetCurrentForward();
+
+                angle += cur;
 
                 Pawn.NextTurnToAngle = angle;
             }
