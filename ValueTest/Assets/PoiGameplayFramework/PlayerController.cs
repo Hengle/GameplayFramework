@@ -13,7 +13,7 @@ namespace Poi
     /// <para>1,取得当前操作InputCommand，存入cmd 命令列表</para>
     /// <para>2,模拟延迟（单机为0），取得前N帧的操作 和当前时刻人物状态进行解析</para>
     /// <para>3,解析InputCommand。AI怪物使用行为树和AIPawn状态解析，联机角色服务器网间解析</para>
-    /// <para>4,解析过得Command送入Pawn，类型为直接对Pawn的控制，例如转到某个角度，开始Run，结束Run，Run持续，
+    /// <para>4,解析过得Command直接操作Pawn，类型为直接对Pawn的控制，例如转到某个角度，开始Run，结束Run，Run持续，
     /// 释放Skill等。
     /// </para>
     /// </summary>
@@ -58,15 +58,13 @@ namespace Poi
 
         public bool LockCursor { get; private set; }
 
-        private void Update()
+        /// <summary>
+        /// 按帧取得外设输入，因为输入不能受TimeScale影响
+        /// <para>某些输入的操作在Pawn中按FixedUpdate执行</para>
+        /// <para>相机的操作按LateUpdate执行</para>
+        /// </summary>
+        protected override void Update()
         {
-            
-        }
-
-        protected override void FixedUpdate()
-        {
-            //base.FixedUpdate();
-
             ///取得输入命令
             InputCommand next = new InputCommand();
             next.Horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -103,7 +101,7 @@ namespace Poi
                 {
                     ///解析操作
                     ParseInputCommand(tempcmd);
-                }     
+                }
             }
         }
 

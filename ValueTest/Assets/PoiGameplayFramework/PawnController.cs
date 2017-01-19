@@ -54,17 +54,6 @@ namespace Poi
 
         public virtual void Init() { }
 
-        // 如果启用 MonoBehaviour，则每个固定帧速率的帧都将调用此函数
-        protected virtual void FixedUpdate()
-        {
-
-        }
-
-        // 如果启用 Behaviour，则在每一帧都将调用 LateUpdate
-        protected virtual void LateUpdate()
-        {
-
-        }
 
         // 仅在首次调用 Update 方法之前调用 Start
         protected virtual void Start()
@@ -76,6 +65,12 @@ namespace Poi
         protected virtual void OnDestroy()
         {
             Controllers.Remove(this);
+        }
+
+        // 如果 MonoBehaviour 已启用，则在每一帧都调用 Update
+        protected virtual void Update()
+        {
+
         }
 
     }
