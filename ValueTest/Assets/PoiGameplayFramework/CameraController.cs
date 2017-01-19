@@ -25,12 +25,15 @@ namespace Poi
         public float MaxSpeed = 15f;
         private float SmoothTime = 0.3f;
 
+        public const float FollowSpeed = 1.65f;
+
         private void Follow()
         {
             //Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
             //                        ref speed, SmoothTime, MaxSpeed);
 
-            Selfiestick.position = Vector3.Lerp(Selfiestick.position, FollowTarget.position,Time.deltaTime);
+            Selfiestick.position = Vector3.Lerp(Selfiestick.position, FollowTarget.position,
+                                            Time.deltaTime*FollowSpeed);
         }
 
         // 加载脚本实例时调用 Awake
@@ -95,8 +98,8 @@ namespace Poi
 
         public void Turn(Vector2 move)
         {
-            Selfiestick.RotateAround(FollowTarget.position, Vector3.up, move.x);
-            Selfiestick.RotateAround(FollowTarget.position, Vector3.right, -move.y);
+            Selfiestick.Rotate(-move.y, 0, 0, Space.Self);
+            Selfiestick.Rotate(0, move.x,0,Space.World);
         }
     }
 }
