@@ -7,6 +7,7 @@
     {
         public float Horizontal { get;  set; }
         public bool Jump { get;  set; }
+        public bool Mouse1 { get; internal set; }
         public float MouseX { get; internal set; }
         public float MouseY { get; internal set; }
         public float Vertical { get;  set; }

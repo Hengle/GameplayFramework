@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Poi
 {
@@ -90,6 +91,12 @@ namespace Poi
                     Follow();
                 }
             }
+        }
+
+        public void Turn(Vector2 move)
+        {
+            Selfiestick.RotateAround(FollowTarget.position, Vector3.up, move.x);
+            Selfiestick.RotateAround(FollowTarget.position, Vector3.right, -move.y);
         }
     }
 }

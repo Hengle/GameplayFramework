@@ -57,6 +57,7 @@ namespace Poi
         private Vector3 m_Move;
 
         public bool LockCursor { get; private set; }
+        public Vector2 lastMousePosition { get; private set; }
 
         /// <summary>
         /// 按帧取得外设输入，因为输入不能受TimeScale影响
@@ -74,6 +75,14 @@ namespace Poi
 
             next.MouseX = CrossPlatformInputManager.GetAxis("Mouse X");
             next.MouseY = CrossPlatformInputManager.GetAxis("Mouse Y");
+            next.Mouse1 = Input.GetMouseButton(1);
+            var mousePos = new Vector2(next.MouseX, next.MouseY);
+            if (next.Mouse1)
+            {
+                CamCtrl.Turn(mousePos);
+            }
+
+            
 
             InputCommand tempcmd = null;
 
