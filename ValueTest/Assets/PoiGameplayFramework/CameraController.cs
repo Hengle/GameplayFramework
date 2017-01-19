@@ -26,8 +26,10 @@ namespace Poi
 
         private void Follow()
         {
-            Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
-                                    ref speed, SmoothTime, MaxSpeed);
+            //Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
+            //                        ref speed, SmoothTime, MaxSpeed);
+
+            Selfiestick.position = Vector3.Lerp(Selfiestick.position, FollowTarget.position,Time.deltaTime);
         }
 
         // 加载脚本实例时调用 Awake
