@@ -63,8 +63,8 @@ public partial class GM : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-
+    void Start ()
+    {
         Init();
 
         this.Wait(LoadSceneAsync(1), () =>
@@ -79,33 +79,39 @@ public partial class GM : MonoBehaviour {
 
             var p = go.AddComponent<Player>();
 
-
-
             PlayerInfo info = new PlayerInfo()
             {
                 Height = 1.6f,
                 JumpPower = 9f,
                 JumpMaxStep = 2,
-                
+
             };
             info.Run.Max = 10;
             p.Init(info);
 
-            PlayerController pc = PawnController.CreateController<PlayerController>();
-
-            pc.Init();
-
-            pc.IsFollowPawn = true;
-
-            PlayerController = pc;
-
-            pc.Possess(p);
+            PlayerController.Possess(p);
         });
-	}
+    }
 
     void Init()
     {
         InitUI();
+
+        ///初始化角色控制器
+        InitPlayerController();
+    }
+
+    private void InitPlayerController()
+    {
+        PlayerController pc = PawnController.CreateController<PlayerController>();
+
+        pc.gameObject.AddComponent<DontDestroyOnLoad>();
+
+        pc.Init();
+
+        pc.IsFollowPawn = true;
+
+        PlayerController = pc;
     }
 
     // Update is called once per frame

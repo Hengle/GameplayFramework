@@ -84,10 +84,10 @@ namespace Poi
 
             if (next.Mouse1)
             {
-                CamCtrl.Turn(mousePos);
+                CamCtrl?.Turn(mousePos);
             }
 
-            CamCtrl.ScaleDistance(next.mouseScrollDelta);
+            CamCtrl?.ScaleDistance(next.mouseScrollDelta);
 
             #endregion
 

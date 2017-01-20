@@ -46,6 +46,8 @@ namespace Poi
                 GameObject go = new GameObject(name + "-Selfiestick");
                 transform.SetParent(go.transform);
 
+                go.AddComponent<DontDestroyOnLoad>();
+
                 transform.localPosition = CenterRectOffset;
                 transform.rotation = Quaternion.identity;
             }
