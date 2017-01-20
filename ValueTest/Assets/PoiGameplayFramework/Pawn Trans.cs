@@ -30,6 +30,7 @@ namespace Poi
         [SerializeField]
         float m_GroundCheckDistance = 0.2f;
 
+        public Transform Chest;
 
         bool m_IsGrounded;
         float m_OrigGroundCheckDistance = 0.5f;
@@ -40,6 +41,15 @@ namespace Poi
         Vector3 CapsuleCenter => new Vector3(0,DataInfo.Height/2,0);
         CapsuleCollider m_Capsule;
         public bool IsCrouching { get; protected set; }
+
+        public void InitTransform()
+        {
+            EyeCamaraPos = transform.FindChild("EyeCamaraPos");
+            ThirdCameraPos = transform.FindChild("ThirdCameraPos");
+        }
+
+
+
 
         /// <summary>
         /// 相机仰角

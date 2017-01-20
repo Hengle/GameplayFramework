@@ -29,7 +29,7 @@ namespace Poi
 
         public void Init()
         {
-            InitEyeCameraPos();
+            InitTransform();
         }
 
         PawnController controller;
@@ -75,6 +75,17 @@ namespace Poi
             Animator = GetComponent<Animator>();
             Rigidbody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
+
+
+            ///初始模型中心点
+            Chest = Animator.GetBoneTransform(HumanBodyBones.Chest);
+            if (!Chest)
+            {
+                GameObject go = new GameObject("Chest");
+                go.transform.SetParent(transform);
+                go.transform.ResetLocal();
+                go.transform.localPosition = new Vector3(0, DataInfo.Height / 2, 0);
+            }
         }
 
         protected virtual void Update()

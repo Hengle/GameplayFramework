@@ -35,9 +35,19 @@ namespace UnityEngine
             if (tar)
             {
                 trans.position = tar.position;
-                trans.rotation = tar.rotation;
+                trans.eulerAngles = tar.eulerAngles;
                 trans.localScale = tar.localScale;
             } 
+        }
+
+        public static void ApplyRY(this Transform trans, Transform tar)
+        {
+            if (tar)
+            {
+                trans.eulerAngles = new Vector3(trans.eulerAngles.x,
+                    tar.eulerAngles.y,
+                    trans.eulerAngles.z);
+            }
         }
     }
 }

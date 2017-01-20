@@ -23,15 +23,6 @@ namespace Poi
         /// </summary>
         public Transform ThirdCameraPos;
 
-        /// <summary>
-        /// 初始相机视角位置
-        /// </summary>
-        protected void InitEyeCameraPos()
-        {
-            EyeCamaraPos = transform.FindChild("EyeCamaraPos");
-            ThirdCameraPos = transform.FindChild("ThirdCameraPos");
-        }
-
         #endregion
     }
 }

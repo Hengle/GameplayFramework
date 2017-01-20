@@ -73,7 +73,7 @@ public partial class GM : MonoBehaviour {
 
             GameObject start = GameObject.FindGameObjectWithTag($"{PoiTag.PlayerStart.ToString()}");
             go.transform.Apply(start?.transform);
-
+            go.transform.ApplyRY(start?.transform);
             //go.AddComponent<DontDestroyOnLoad>();
             var controller = go.GetComponent<Animator>();
 
