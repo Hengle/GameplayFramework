@@ -1,4 +1,6 @@
-﻿namespace Poi
+﻿using UnityEngine;
+
+namespace Poi
 {
     /// <summary>
     /// 输入命令
@@ -8,6 +10,7 @@
         public float Horizontal { get;  set; }
         public bool Jump { get;  set; }
         public bool Mouse1 { get; internal set; }
+        public Vector2 mouseScrollDelta { get; internal set; }
         public float MouseX { get; internal set; }
         public float MouseY { get; internal set; }
         public float Vertical { get;  set; }

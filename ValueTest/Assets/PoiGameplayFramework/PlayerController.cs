@@ -76,13 +76,22 @@ namespace Poi
             next.MouseX = CrossPlatformInputManager.GetAxis("Mouse X");
             next.MouseY = CrossPlatformInputManager.GetAxis("Mouse Y");
             next.Mouse1 = Input.GetMouseButton(1);
+            next.mouseScrollDelta = Input.mouseScrollDelta;
+
+            #region MyRegion
+
             var mousePos = new Vector2(next.MouseX, next.MouseY);
+
             if (next.Mouse1)
             {
                 CamCtrl.Turn(mousePos);
             }
 
-            
+            CamCtrl.ScaleDistance(next.mouseScrollDelta);
+
+            #endregion
+
+
 
             InputCommand tempcmd = null;
 

@@ -27,6 +27,8 @@ namespace Poi
 
         public const float FollowSpeed = 1.65f;
 
+        public float ScaleDistanceSpeed { get; private set; } = 1.0f;
+
         private void Follow()
         {
             //Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
@@ -105,6 +107,19 @@ namespace Poi
         public float GetCurrentForward()
         {
             return Selfiestick.transform.eulerAngles.y;
+        }
+
+        public void ScaleDistance(Vector2 mouseScrollDelta)
+        {
+            if (mouseScrollDelta != Vector2.zero)
+            {
+                ///判断非0，节省运算
+                float zDistance = transform.localPosition.z + mouseScrollDelta.y * ScaleDistanceSpeed;
+                zDistance = zDistance.ClampIn(-10, -1f);
+
+                transform.localPosition =
+                    new Vector3(0, 0, zDistance);
+            }      
         }
     }
 }
