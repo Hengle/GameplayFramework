@@ -50,5 +50,6 @@ namespace UnityEngine
         Pawn,
         Monster,
         Character,
+        Map,
     }
 }

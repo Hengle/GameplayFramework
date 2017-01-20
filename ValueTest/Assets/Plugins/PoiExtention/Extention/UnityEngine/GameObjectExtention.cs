@@ -14,7 +14,7 @@ namespace UnityEngine
         /// <param name="go"></param>
         /// <returns>目标组件</returns>
         public static T GetComponentIfNullAdd<T>(this GameObject go)
-            where T : MonoBehaviour
+            where T : Component
         {
             var com = go.GetComponent<T>();
             if (com == null)

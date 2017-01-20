@@ -73,7 +73,7 @@ namespace Poi
         protected virtual void Start()
         {
             Animator = GetComponent<Animator>();
-            Rigidbody = GetComponent<Rigidbody>();
+            Rigidbody = this.GetComponentIfNullAdd<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
 
 
@@ -84,7 +84,11 @@ namespace Poi
                 GameObject go = new GameObject("Chest");
                 go.transform.SetParent(transform);
                 go.transform.ResetLocal();
-                go.transform.localPosition = new Vector3(0, DataInfo.Height / 2, 0);
+
+                if (DataInfo)
+                {
+                    go.transform.localPosition = new Vector3(0, DataInfo.Height / 2, 0);
+                }
             }
         }
 

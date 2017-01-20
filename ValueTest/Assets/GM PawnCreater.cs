@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public partial class GM
 {
-    
-    
+    private GameObject CreatePawnGameObject()
+    {
+        return GameObject.Instantiate(GameMode.DefaultPawn);
+    }
 }

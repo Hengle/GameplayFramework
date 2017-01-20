@@ -34,17 +34,18 @@ namespace Poi
         {
             base.Start();
 
-            var pos = GameObject.Find("Pos (3)");
-            destinations[0] = pos.transform;
-            var pos1 = GameObject.Find("Pos (1)");
-            destinations[1] = pos1.transform;
-            var pos2 = GameObject.Find("Pos (2)");
-            destinations[2] = pos2.transform;
+            Rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            //var pos = GameObject.Find("Pos (3)");
+            //destinations[0] = pos.transform;
+            //var pos1 = GameObject.Find("Pos (1)");
+            //destinations[1] = pos1.transform;
+            //var pos2 = GameObject.Find("Pos (2)");
+            //destinations[2] = pos2.transform;
 
 
-            agent = GetComponent<NavMeshAgent>();
+            //agent = GetComponent<NavMeshAgent>();
 
-            StartCoroutine(RandomMove());
+            //StartCoroutine(RandomMove());
         }
 
         private IEnumerator RandomMove()
@@ -57,11 +58,6 @@ namespace Poi
         }
 
 
-        protected override void Update()
-        {
-            base.Update();
-
-            Animator.SetFloat("Speed", agent.speed);
-        }
+        
     }
 }

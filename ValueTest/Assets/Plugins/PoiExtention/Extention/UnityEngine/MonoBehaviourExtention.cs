@@ -18,7 +18,7 @@ namespace UnityEngine
         /// <param name="monoBehaviour"></param>
         /// <returns>目标组件</returns>
         public static T GetComponentIfNullAdd<T>(this Behaviour monoBehaviour)
-            where T:MonoBehaviour
+            where T:Component
         {
             var com = monoBehaviour.GetComponent<T>();
             if (com == null)

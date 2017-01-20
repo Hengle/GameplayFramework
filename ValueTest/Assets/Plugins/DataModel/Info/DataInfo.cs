@@ -11,6 +11,9 @@ namespace Poi
     /// </summary>
     public class DataInfo
     {
-        
+        public static implicit operator bool(DataInfo data)
+        {
+            return data != null;
+        }
     }
 }

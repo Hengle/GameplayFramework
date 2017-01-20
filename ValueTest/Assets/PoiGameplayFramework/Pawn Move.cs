@@ -27,9 +27,12 @@ namespace Poi
 
                 DataInfo.Run.Current = speed.ClampIn(0, DataInfo.Run.Max);
             }
-            
-            Animator.SetFloat("Acceleration", Acceleration);
-            Animator.SetFloat("Speed", DataInfo.Run.Current);
+
+            if (Animator)
+            {
+                Animator.SetFloat("Acceleration", Acceleration);
+                Animator.SetFloat("Speed", DataInfo.Run.Current);
+            }
         }
 
         private void RunStart()
