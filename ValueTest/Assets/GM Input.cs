@@ -6,8 +6,6 @@ using UnityEngine;
 
 public partial class GM
 {
-    private void InitUI()
-    {
-        
-    }
+
+
 }

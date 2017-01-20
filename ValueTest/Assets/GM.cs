@@ -64,7 +64,9 @@ public partial class GM : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+
+        Init();
+
         this.Wait(LoadSceneAsync(1), () =>
         {
             GameObject go = GameObject.Instantiate(GameMode.DefaultPawn);
@@ -98,6 +100,11 @@ public partial class GM : MonoBehaviour {
             pc.Possess(p);
         });
 	}
+
+    void Init()
+    {
+        InitUI();
+    }
 
     // Update is called once per frame
     void Update () {
