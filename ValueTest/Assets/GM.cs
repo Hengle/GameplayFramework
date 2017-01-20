@@ -37,7 +37,29 @@ public class GM : MonoBehaviour {
     // 加载脚本实例时调用 Awake
     private void Awake()
     {
-        GMInstance = this;
+        if (CheckInitFinish())
+        {
+            ///不允许GM重复创建
+            Destroy(gameObject);
+        }
+        else
+        {
+            ///第一次创建GM赋值给Instance；
+            GMInstance = this;
+        }
+    }
+
+    /// <summary>
+    /// 防止误创建
+    /// </summary>
+    /// <returns></returns>
+    private bool CheckInitFinish()
+    {
+        if (GMInstance && GameObject.Find("GM"))
+        {
+            return true;
+        }
+        return false;
     }
 
     // Use this for initialization
