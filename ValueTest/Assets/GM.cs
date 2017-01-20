@@ -79,6 +79,8 @@ public partial class GM : MonoBehaviour {
 
             var p = go.AddComponent<Player>();
 
+
+
             PlayerInfo info = new PlayerInfo()
             {
                 Height = 1.6f,

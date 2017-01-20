@@ -37,9 +37,9 @@ namespace UnityEngine
         Water = 4,
         UI = 5,
 
-        Character = 10,
-        Monster,
-        Floor = 21,
+        CanStand = 20,
+        Pawn = 21,
+
 
         Edior = 31,
     }
@@ -47,5 +47,8 @@ namespace UnityEngine
     public enum PoiTag
     {
         PlayerStart,
+        Pawn,
+        Monster,
+        Character,
     }
 }

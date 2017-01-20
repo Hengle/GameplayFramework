@@ -24,5 +24,27 @@ namespace UnityEngine
 
             return com;
         }
+
+        /// <summary>
+        /// 更改包括子的层级
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="layer"></param>
+        public static void SetLayerOnAll(this GameObject obj, int layer)
+        {
+            if (null == obj)
+                return;
+
+            foreach (Transform trans in obj.GetComponentsInChildren<Transform>(true))
+            {
+                ///据说GetComponentsInChildren更快
+                trans.gameObject.layer = layer;
+            }
+        }
+
+        public static void SetLayerOnAll(this GameObject obj, Layer layer)
+        {
+            obj.SetLayerOnAll((int)layer);
+        }
     }
 }
