@@ -37,3 +37,22 @@ public class CharacterEditor : ShowPropertyEditor<Character> { }
 public class PlayerEditor : ShowPropertyEditor<Player> { }
 [CustomEditor(typeof(Monster))]
 public class MonsterEditor : ShowPropertyEditor<Monster> { }
+
+[CustomEditor(typeof(GM),true)]
+public class GMEditor : Editor
+{
+    //SerializedProperty gameMode;
+    //SerializedProperty m_Script;
+    //private void OnEnable()
+    //{
+
+    //    m_Script = serializedObject.FindProperty("m_Script");
+    //    gameMode = serializedObject.FindProperty("gameMode");
+    //}
+
+    //public override void OnInspectorGUI()
+    //{
+    //    base.OnInspectorGUI();
+    //    EditorGUILayout.PropertyField(gameMode);
+    //}
+}

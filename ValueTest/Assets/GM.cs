@@ -6,6 +6,7 @@ using static UnityEngine.SceneManagement.SceneManager;
 using Poi;
 using UnityEngine.SceneManagement;
 
+
 public partial class GM : MonoBehaviour {
 
     public static GM GMInstance;
