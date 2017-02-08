@@ -87,6 +87,62 @@
             <param name="original">通常我们所使用的组标志</param>
             <param name="target"></param>
         </member>
+        <member name="M:System.Net.IPAddressExtention.GetIntPart(System.Net.IPAddress)">
+            <summary>
+            取得IP的各个部分
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Net.IPAddressExtention.GetStringParts(System.Net.IPAddress)">
+            <summary>
+            取得IP的各个部分
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Net.IPAddressExtention.IsA(System.Net.IPAddress)">
+            <summary>
+            是不是A类地址
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Net.IPAddressExtention.IsB(System.Net.IPAddress)">
+            <summary>
+            是不是B类地址
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Net.IPAddressExtention.IsC(System.Net.IPAddress)">
+            <summary>
+            是不是C类地址
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Net.IPAddressExtention.IsD(System.Net.IPAddress)">
+            <summary>
+            是不是D类地址（多点广播）
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Net.IPAddressExtention.IsE(System.Net.IPAddress)">
+            <summary>
+            是不是E类地址（广播）
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Net.IPAddressExtention.IsLocalAddress(System.Net.IPAddress)">
+            <summary>
+            判断地址是不是局域网地址
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
         <member name="T:System.StringExtention">
             <summary>
             string扩展
