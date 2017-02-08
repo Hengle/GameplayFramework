@@ -77,7 +77,7 @@ namespace Poi
             next.MouseY = CrossPlatformInputManager.GetAxis("Mouse Y");
             next.Mouse1 = Input.GetMouseButton(1);
             next.mouseScrollDelta = Input.mouseScrollDelta;
-
+            next.Mouse0 = Input.GetMouseButton(0);
             #region MyRegion
 
             var mousePos = new Vector2(next.MouseX, next.MouseY);
@@ -164,6 +164,11 @@ namespace Poi
             else
             {
                 Pawn.Acceleration = -1f;
+            }
+
+            if (next.Mouse0)
+            {
+                Pawn.Attack();
             }
         }
 

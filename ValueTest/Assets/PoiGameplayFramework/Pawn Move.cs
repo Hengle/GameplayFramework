@@ -46,6 +46,7 @@ namespace Poi
         private void Move(float speed)
         {
             transform.Translate(0, 0, speed*Time.fixedDeltaTime, Space.Self);
-        }        
+        }
+        
     }
 }

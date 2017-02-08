@@ -9,6 +9,7 @@ namespace Poi
     {
         public float Horizontal { get;  set; }
         public bool Jump { get;  set; }
+        public bool Mouse0 { get; internal set; }
         public bool Mouse1 { get; internal set; }
         public Vector2 mouseScrollDelta { get; internal set; }
         public float MouseX { get; internal set; }
