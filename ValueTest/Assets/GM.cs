@@ -86,6 +86,9 @@ public partial class GM : MonoBehaviour {
 
             };
             info.Run.Max = 10;
+            info.AttackCooldown.Max = 0.3f;
+
+
             p.Init(info);
 
             GameObject start = GameObject.FindGameObjectWithTag($"{PoiTag.PlayerStart.ToString()}");
