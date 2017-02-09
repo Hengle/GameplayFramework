@@ -15,19 +15,22 @@ namespace Poi
 
         internal void Attack()
         {
-            var targetpos = transform.localToWorldMatrix.MultiplyPoint3x4(
+            var startpos = transform.localToWorldMatrix.MultiplyPoint3x4(
                 new Vector3(0, DataInfo.Height*2/3, 0.5f));
+            var targetpos = transform.localToWorldMatrix.MultiplyPoint3x4(
+                new Vector3(0, DataInfo.Height * 2 / 3, 10f));
 
             GameObject proj = new GameObject(name + "-Projectile");
-            proj.transform.position = targetpos;
+            proj.transform.position = startpos;
             proj.transform.rotation = transform.rotation;
 
 
             var go = Resources.Load<GameObject>("Projectile/projectile");
-            GameObject.Instantiate(go, proj.transform,false);
+            var temp = GameObject.Instantiate(go, proj.transform,false);
+            temp.name = "ProjectileModel";
 
             var p =  proj.AddComponent<Projectile>();
-            p.Target = new ArrowTarget();
+            p.Target = new PointTarget() { TargetWorldPosotion = targetpos};
             p.Speed = 1.0f;
 
             DataInfo.AttackCooldown.EnterCooling();
