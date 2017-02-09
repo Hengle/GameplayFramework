@@ -78,7 +78,8 @@ namespace Poi
             next.Mouse1 = Input.GetMouseButton(1);
             next.mouseScrollDelta = Input.mouseScrollDelta;
             next.Mouse0 = Input.GetMouseButton(0);
-            #region MyRegion
+
+            #region 相机控制是即时的
 
             var mousePos = new Vector2(next.MouseX, next.MouseY);
 
@@ -168,7 +169,10 @@ namespace Poi
 
             if (next.Mouse0)
             {
-                Pawn.Attack();
+                if (Pawn.AttackCooldown <= 0f)
+                {
+                    Pawn.Attack();
+                }
             }
         }
 

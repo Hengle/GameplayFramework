@@ -8,7 +8,7 @@ namespace Poi
     /// <summary>
     /// 魔法值
     /// </summary>
-    public class MP:BaseProperty
+    public class MP:MaxDataProperty
     {
         public override ValueChangedType ChangedType => ValueChangedType.TickChanged;
 

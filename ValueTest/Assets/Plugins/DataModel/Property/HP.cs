@@ -8,7 +8,7 @@ namespace Poi
     /// <summary>
     /// 生命值
     /// </summary>
-    public class HP : BaseProperty 
+    public class HP : MaxDataProperty 
     {
         public override ValueChangedType ChangedType => ValueChangedType.TickChanged;
 

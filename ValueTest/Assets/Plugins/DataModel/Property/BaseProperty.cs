@@ -2,12 +2,12 @@
 
 namespace Poi
 {
-    public abstract class BaseProperty : DataProperty, IMaxLimit<int,float>,IRestoreProperty
+    public abstract class MaxDataProperty : DataProperty, IMaxLimit<float,float>,IRestoreProperty
     {
         /// <summary>
         /// 许可的最大值
         /// </summary>
-        public int Max { get; set; }
+        public float Max { get; set; }
         
         /// <summary>
         /// 当前值
@@ -53,11 +53,11 @@ namespace Poi
         #endregion
     }
 
-    public abstract class BaseProperty2 : BaseProperty, IRangeProperty<int, float>
+    public abstract class RangeDataProperty : MaxDataProperty, IRangeProperty<float, float>
     {
         /// <summary>
         /// 许可的最小值
         /// </summary>
-        public int Min { get; set; }
+        public float Min { get; set; }
     }
 }

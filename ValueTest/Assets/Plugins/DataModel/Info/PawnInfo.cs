@@ -53,5 +53,7 @@ namespace Poi
         /// 转动速度
         /// </summary>
         public float TurnSpeed { get; set; } = 450;
+
+        public Cooldown AttackCooldown { get; private set; } = new Cooldown(1);
     }
 }

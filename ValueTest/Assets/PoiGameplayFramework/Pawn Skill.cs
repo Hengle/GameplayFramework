@@ -11,6 +11,8 @@ namespace Poi
     /// </summary>
     public partial class Pawn
     {
+        public float AttackCooldown => DataInfo.AttackCooldown.Current;
+
         internal void Attack()
         {
             var targetpos = transform.localToWorldMatrix.MultiplyPoint3x4(
@@ -24,7 +26,10 @@ namespace Poi
             var go = Resources.Load<GameObject>("Projectile/projectile");
             GameObject.Instantiate(go, proj.transform,false);
 
-            proj.AddComponent<Projectile>();
+            var p =  proj.AddComponent<Projectile>();
+            p.Target = new ArrowTarget();
+
+            DataInfo.AttackCooldown.EnterCooling();
         }
     }
 }

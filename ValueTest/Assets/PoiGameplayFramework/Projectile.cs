@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 弹道
+/// </summary>
 public class Projectile : MonoBehaviour {
 
+    public Target Target { get; set; }
 	// Use this for initialization
 	void Start () {
 		

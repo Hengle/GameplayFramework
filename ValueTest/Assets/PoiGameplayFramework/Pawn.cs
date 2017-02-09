@@ -106,8 +106,16 @@ namespace Poi
         {
             ///必须计算当前使用的命令FixedUpdate中必须最优先
             FixedUpdateTransform();
+
+            FixedUpdateCooldown();
         }
 
-        
+        private void FixedUpdateCooldown()
+        {
+            if (DataInfo.AttackCooldown.Current >= 0)
+            {
+                DataInfo.AttackCooldown.Current -= Time.fixedDeltaTime;
+            }
+        }
     }
 }
