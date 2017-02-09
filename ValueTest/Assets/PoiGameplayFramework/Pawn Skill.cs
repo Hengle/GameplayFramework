@@ -13,7 +13,18 @@ namespace Poi
     {
         internal void Attack()
         {
-            
+            var targetpos = transform.localToWorldMatrix.MultiplyPoint3x4(
+                new Vector3(0, DataInfo.Height*2/3, 3));
+
+            GameObject proj = new GameObject(name + "-Projectile");
+            proj.transform.position = targetpos;
+            proj.transform.rotation = transform.rotation;
+
+
+            var go = Resources.Load<GameObject>("Projectile/projectile");
+            GameObject.Instantiate(go, proj.transform,false);
+
+            proj.AddComponent<Projectile>();
         }
     }
 }
