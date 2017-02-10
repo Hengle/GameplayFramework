@@ -12,10 +12,17 @@ namespace UnityEngine
         private bool hide = false;
         [SerializeField]
         private bool locked = false;
+        [SerializeField,Tooltip("如果不为空，会替换鼠标指针")]
+        private Texture2D texture;
+
         // Use this for initialization
         void Start()
         {
             ApplyCursorState();
+            if (texture)
+            {
+                Cursor.SetCursor(texture,Vector2.zero,CursorMode.Auto);
+            }
         }
         /// <summary>
         /// 应用游标状态
