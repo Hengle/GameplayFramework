@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CursorPanel : MonoBehaviour
 {
-    public float accelerationLimit = 0.8f;
+    public float accelerationLimit = 0.75f;
     public float acceleration = 0.13f;
 
     Canvas canvas;
@@ -14,8 +14,8 @@ public class CursorPanel : MonoBehaviour
     /// <summary>
     /// 使用软件鼠标加速
     /// </summary>
-    [Tooltip("使用软件鼠标加速")]
-    public bool useMouseAccelerate = true;
+    [Tooltip("使用软件鼠标加速,会引起抖动")]
+    public bool useMouseAccelerate = false;
 
     public bool useFixedUpdate = true;
 
@@ -31,9 +31,14 @@ public class CursorPanel : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKey(KeyCode.F3))
+        if (Input.GetKeyUp(KeyCode.F3))
         {
             useMouseAccelerate = !useMouseAccelerate;
+            Debug.LogError(useMouseAccelerate);
+        }
+        if (Input.GetKeyUp(KeyCode.F4))
+        {
+            Cursor.visible = !Cursor.visible;
         }
         RefreshMyCursorPosition();
     }
