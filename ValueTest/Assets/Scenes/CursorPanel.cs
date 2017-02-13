@@ -31,15 +31,6 @@ public class CursorPanel : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyUp(KeyCode.F3))
-        {
-            useMouseAccelerate = !useMouseAccelerate;
-            Debug.LogError(useMouseAccelerate);
-        }
-        if (Input.GetKeyUp(KeyCode.F4))
-        {
-            Cursor.visible = !Cursor.visible;
-        }
         RefreshMyCursorPosition();
     }
     
