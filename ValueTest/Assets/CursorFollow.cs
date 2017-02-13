@@ -6,7 +6,7 @@ public class CursorFollow : MonoBehaviour {
 
     public Camera cam;
     public GameObject cursorsprite;
-
+    public GameObject MEshcursor;
     [Range(0,1f)]
     public float rotate = .1f;
 
@@ -21,7 +21,7 @@ public class CursorFollow : MonoBehaviour {
 	void Update () {
         var pos = cam.ScreenToWorldPoint(Input.mousePosition);
         cursorsprite.transform.localPosition = pos + v;
-
+        MEshcursor.transform.localPosition = pos + v;
         cursorsprite.transform.Rotate(new Vector3(0, 0, rotate), Space.Self);
 	}
 }
