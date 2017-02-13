@@ -57,7 +57,6 @@ public class CursorPanel : MonoBehaviour
                 if (moveteype)
                 {
                     tempPos.Scale(screen);
-
                     pos += tempPos * acceleration * acceleration;   
                 }
             }
