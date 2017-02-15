@@ -5,7 +5,8 @@ using UnityEngine;
 public class MyCursor : CursorPanel
 {
     public GameObject CenterCursor;
-	// Use this for initialization
+    // Use this for initialization
+    public GameObject[] LockTargetUIModel;
 
     public void UseMyCursor()
     {
