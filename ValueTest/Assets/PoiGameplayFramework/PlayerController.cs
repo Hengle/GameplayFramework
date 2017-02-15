@@ -122,13 +122,17 @@ namespace Poi
                     ParseInputCommand(tempcmd);
                 }
             }
-            if (Input.GetMouseButtonDown(0))
+
+            if (Input.GetMouseButton(0))
             {
-                RaycastHit res;
-                var hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out res);
-                if (hit)
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                Debug.DrawLine(ray.origin, ray.GetPoint(1000), Color.red,Time.deltaTime);
+
+                var collection = Physics.RaycastAll(ray);
+                foreach (var item in collection)
                 {
-                    Debug.Log(res.point);
+                    
                 }
             }
             
