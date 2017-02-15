@@ -20,7 +20,7 @@ public class CursorPanel : MonoBehaviour
     public bool useFixedUpdate = true;
 
     // Use this for initialization
-    void Start () {
+    protected virtual void Start () {
         canvas = GetComponentInParent<Canvas>();
         rect = transform as RectTransform;
         var test = new Vector2(3, 4);
@@ -29,7 +29,7 @@ public class CursorPanel : MonoBehaviour
     }
 	
 	// Update is called once per frame
-	void Update ()
+	protected virtual void Update ()
     {
         RefreshMyCursorPosition();
     }
@@ -65,7 +65,7 @@ public class CursorPanel : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (useFixedUpdate)
         {
