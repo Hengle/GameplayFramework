@@ -29,7 +29,17 @@ namespace Poi
 
         public void Init()
         {
+            InitInstanceID();
+
             InitTransform();
+        }
+
+        private void InitInstanceID()
+        {
+            if (DataInfo)
+            {
+                DataInfo.ID = ID.GetGlobalID();
+            }
         }
 
         PawnController controller;
@@ -117,5 +127,13 @@ namespace Poi
                 DataInfo.AttackCooldown.Current -= Time.fixedDeltaTime;
             }
         }
+
+        // 当 MonoBehaviour 将被销毁时调用此函数
+        protected virtual void OnDestroy()
+        {
+            UI.RemovePawn(this);
+        }
+
+
     }
 }

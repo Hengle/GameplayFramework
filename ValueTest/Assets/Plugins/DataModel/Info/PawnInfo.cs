@@ -55,5 +55,6 @@ namespace Poi
         public float TurnSpeed { get; set; } = 450;
 
         public Cooldown AttackCooldown { get; private set; } = new Cooldown(1);
+        public int ID { get; set; }
     }
 }
