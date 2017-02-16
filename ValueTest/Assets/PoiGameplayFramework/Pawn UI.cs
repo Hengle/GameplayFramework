@@ -11,22 +11,29 @@ namespace Poi
     /// </summary>
     public partial class Pawn
     {
+        public Vector3 ViewPos { get; private set; }
+        public bool IsInCamera { get; private set; } = false;
 
-        // 当呈现器在任何照相机上都不可见时调用 OnBecameInvisible
-        private void OnBecameInvisible()
-        {
-            UI.RemovePawn(this);
-        }
-
-        // 当呈现器在任何照相机上可见时调用 OnBecameVisible
-        private void OnBecameVisible()
-        {
-            UI.AddPawn(this);
-        }
-
+        /// <summary>
+        /// 判断是否在相机内
+        /// </summary>
         public void UpdateInCamera()
         {
-
+            Vector3 viewPos;
+            bool res = Camera.main.IsAPointInACamera(transform.position, out viewPos);
+            ViewPos = viewPos;
+            if (res != IsInCamera)
+            {
+                IsInCamera = !IsInCamera;
+                if (IsInCamera)
+                {
+                    UI.AddPawn(this);
+                }
+                else
+                {
+                    UI.RemovePawn(this);
+                }
+            }
         }
     }
 }

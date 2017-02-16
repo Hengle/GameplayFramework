@@ -88,7 +88,8 @@ public class MyCursor : CursorPanel
                 }
 
                 lockPawnUIDic.Clear();
-                lockPawnUIDic.ExchangeTo(newDic);
+
+                DictionaryExtention.Exchange(ref lockPawnUIDic,ref newDic);
             }
             else
             {
@@ -108,6 +109,9 @@ public class MyCursor : CursorPanel
         else
         {
             var res = GameObject.Instantiate(LockTargetUITemplate[0]);
+            res.transform.SetParent(transform);
+            res.transform.localScale = Vector3.one;
+            res.SetActive(true);
             return res;
         }
     }
@@ -116,8 +120,8 @@ public class MyCursor : CursorPanel
     {
         ///如果UI已经存在
         var pos = item.Value.transform.position;
-        var pos2 = RectTransformUtility.WorldToScreenPoint(null, pos);
-        lockPawnUIDic[item.Key].transform.localPosition = pos2;
+        var pos2 = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
+        lockPawnUIDic[item.Key].transform.position = pos2;
         newDic[item.Key] = lockPawnUIDic[item.Key];
         lockPawnUIDic.Remove(item.Key);
     }

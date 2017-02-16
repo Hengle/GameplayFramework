@@ -104,7 +104,7 @@ namespace Poi
 
         protected virtual void Update()
         {
-            
+            UpdateInCamera();
         }
 
         protected virtual void LateUpdate()
