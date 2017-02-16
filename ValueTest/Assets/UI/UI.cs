@@ -7,18 +7,21 @@ using Poi;
 public class UI
 {
     public static UI Instance { get; private set; } = new UI();
+
+    public static Dictionary<int, Pawn> PawnDic => Instance.pawnDic;
+
     private UI() { }
-    Dictionary<int, Pawn> PawnDic = new Dictionary<int, Pawn>();
+    Dictionary<int, Pawn> pawnDic = new Dictionary<int, Pawn>();
     internal static void AddPawn(Pawn pawn)
     {
         int id = pawn.DataInfo.ID;
-        if (Instance.PawnDic.ContainsKey(id))
+        if (Instance.pawnDic.ContainsKey(id))
         {
-            Instance.PawnDic[id] = pawn;
+            Instance.pawnDic[id] = pawn;
         }
         else
         {
-            Instance.PawnDic.Add(id, pawn);
+            Instance.pawnDic.Add(id, pawn);
         }
 
     }
@@ -26,6 +29,6 @@ public class UI
     internal static void RemovePawn(Pawn pawn)
     {
         int id = pawn.DataInfo.ID;
-        Instance.PawnDic.Remove(id);
+        Instance.pawnDic.Remove(id);
     }
 }
