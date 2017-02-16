@@ -8,13 +8,13 @@ public class UI
 {
     public static UI Instance { get; private set; } = new UI();
 
-    public static Dictionary<int, Pawn> PawnDic => Instance.pawnDic;
+    public static Dictionary<int, ITarget> PawnDic => Instance.pawnDic;
 
     private UI() { }
-    Dictionary<int, Pawn> pawnDic = new Dictionary<int, Pawn>();
-    internal static void AddPawn(Pawn pawn)
+    Dictionary<int, ITarget> pawnDic = new Dictionary<int, ITarget>();
+    internal static void AddPawn(ITarget pawn)
     {
-        int id = pawn.DataInfo.ID;
+        int id = pawn.ID;
         if (Instance.pawnDic.ContainsKey(id))
         {
             Instance.pawnDic[id] = pawn;
@@ -26,9 +26,9 @@ public class UI
 
     }
 
-    internal static void RemovePawn(Pawn pawn)
+    internal static void RemovePawn(ITarget pawn)
     {
-        int id = pawn.DataInfo.ID;
+        int id = pawn.ID;
         Instance.pawnDic.Remove(id);
     }
 }

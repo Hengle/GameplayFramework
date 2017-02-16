@@ -38,7 +38,7 @@ namespace Poi
         {
             if (DataInfo)
             {
-                DataInfo.ID = ID.GetGlobalID();
+                DataInfo.ID = Poi.ID.GetGlobalID();
             }
         }
 
@@ -99,6 +99,7 @@ namespace Poi
                 {
                     go.transform.localPosition = new Vector3(0, DataInfo.Height / 2, 0);
                 }
+                Chest = go.transform;
             }
         }
 

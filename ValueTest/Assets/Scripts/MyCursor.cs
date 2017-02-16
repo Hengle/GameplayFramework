@@ -139,12 +139,19 @@ public class MyCursor : MonoBehaviour
         }
     }
 
-    private void UpdateUIPos(KeyValuePair<int, Poi.Pawn> item)
+    private void UpdateUIPos(KeyValuePair<int, ITarget> item)
     {
-        ///如果UI已经存在
-        var pos = item.Value.transform.position;
-        var pos2 = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
-        lockPawnUIDic[item.Key].transform.position = pos2;
+        Vector2 pos;
+
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(transform as RectTransform,
+            item.Value.ScreenPosition, Canvas.worldCamera, out pos))
+        {
+            CenterCursor.transform.localPosition = pos;
+        }
+
+        //var pos2 = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
+
+        lockPawnUIDic[item.Key].transform.localPosition = pos;
         newDic[item.Key] = lockPawnUIDic[item.Key];
         lockPawnUIDic.Remove(item.Key);
     }

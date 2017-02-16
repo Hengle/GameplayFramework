@@ -30,6 +30,9 @@ namespace Poi
         [SerializeField]
         float m_GroundCheckDistance = 0.2f;
 
+        /// <summary>
+        /// 模型中心
+        /// </summary>
         public Transform Chest;
 
         bool m_IsGrounded;
@@ -41,11 +44,19 @@ namespace Poi
         Vector3 CapsuleCenter => new Vector3(0,DataInfo.Height/2,0);
         CapsuleCollider m_Capsule;
         public bool IsCrouching { get; protected set; }
-
+        public Transform LocalCenter { get; protected set; }
         public void InitTransform()
         {
             EyeCamaraPos = transform.FindChild("EyeCamaraPos");
             ThirdCameraPos = transform.FindChild("ThirdCameraPos");
+            //LocalCenter = transform.FindChild("LocalCenter");
+            //if (!LocalCenter)
+            //{
+            //    GameObject go = new GameObject("LocalCenter");
+            //    go.transform.SetParent(transform);
+            //    go.transform.ResetLocal();
+            //    go.transform.localPosition = new Vector3(0, DataInfo.Height * 2 / 3, 0);
+            //}
         }
 
 
