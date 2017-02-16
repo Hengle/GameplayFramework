@@ -8,7 +8,7 @@ public class MyCursor : MonoBehaviour
     /// <summary>
     /// 主鼠标
     /// </summary>
-    public GameObject CenterCursor;
+    public CenterCursor CenterCursor;
 
     /// <summary>
     /// 锁定图标模板
@@ -26,14 +26,14 @@ public class MyCursor : MonoBehaviour
     public void UseMyCursor()
     {
         useMycursor = true;
-        CenterCursor.SetActive(true);
+        CenterCursor.gameObject.SetActive(true);
         Cursor.visible = false;
     }
 
     public void UseSyetemCursor()
     {
         useMycursor = false;
-        CenterCursor.SetActive(false);
+        CenterCursor.gameObject.SetActive(false);
         Cursor.visible = true;
     }
 
