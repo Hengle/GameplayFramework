@@ -23,5 +23,10 @@ namespace Poi
         {
             UI.AddPawn(this);
         }
+
+        public void UpdateInCamera()
+        {
+
+        }
     }
 }
