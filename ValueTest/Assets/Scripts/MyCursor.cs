@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyCursor : CursorPanel
+public class MyCursor : MonoBehaviour
 {
     /// <summary>
     /// 主鼠标
@@ -37,6 +37,16 @@ public class MyCursor : CursorPanel
         Cursor.visible = true;
     }
 
+
+    Canvas Canvas;
+
+    private void Start()
+    {
+        Canvas = this.GetComponentInParent<Canvas>();
+    }
+
+
+
     /// <summary>
     /// 冷却时间
     /// </summary>
@@ -54,11 +64,24 @@ public class MyCursor : CursorPanel
     /// </summary>
     Stack<GameObject> lockPawnUIPool = new Stack<GameObject>();
 
-    protected override void FixedUpdate()
+    public Camera UICamera => Camera.main;
+
+    void FixedUpdate()
     {
-        base.FixedUpdate();
+        UpdateCenterUI();
 
         UpdateLockPawnUI(Time.fixedDeltaTime);
+    }
+
+    private void UpdateCenterUI()
+    {
+        Vector2 pos;
+
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(transform as RectTransform,
+            Input.mousePosition, Canvas.worldCamera, out pos))
+        {
+            CenterCursor.transform.localPosition = pos;
+        }
     }
 
     /// <summary>
@@ -126,9 +149,10 @@ public class MyCursor : CursorPanel
         lockPawnUIDic.Remove(item.Key);
     }
 
-    protected override void Update()
+    void Update()
     {
-        base.Update();
+        UpdateCenterUI();
+
         if (UpdateInsteadFixedUpdatePawnLock)
         {
             UpdateLockPawnUI(Time.deltaTime);
