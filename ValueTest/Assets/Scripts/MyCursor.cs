@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MyCursor : MonoBehaviour
 {
+    
     /// <summary>
     /// 主鼠标
     /// </summary>
@@ -14,6 +15,9 @@ public class MyCursor : MonoBehaviour
     /// 锁定图标模板
     /// </summary>
     public GameObject[] LockTargetUITemplate;
+
+    [SerializeField]
+    private float LockDistance = 1;
 
     [Tooltip("更新锁定UI的方式，false为Fixed")]
     public bool UpdateInsteadFixedUpdatePawnLock = false;
@@ -96,12 +100,16 @@ public class MyCursor : MonoBehaviour
             {
                 foreach (var item in UI.PawnDic)
                 {
-                    if (!lockPawnUIDic.ContainsKey(item.Key))
+                    ConfirmUI(item.Key);
+
+                    Vector2 tarpos = item.Value.ScreenPosition;
+                    Vector2 center = Input.mousePosition;
+
+                    if ((tarpos - center).magnitude < LockDistance)
                     {
-                        lockPawnUIDic[item.Key] = GetLockPawnUI();
+                        UpdateUIPos(item);
                     }
 
-                    UpdateUIPos(item);
                 }
 
                 foreach (var item in lockPawnUIDic)
@@ -118,6 +126,18 @@ public class MyCursor : MonoBehaviour
             {
                 cooldownTime4LockPawnUI -= deltaTime;
             }
+        }
+    }
+
+    /// <summary>
+    /// 确认UI存在
+    /// </summary>
+    /// <param name="id"></param>
+    private void ConfirmUI(int id)
+    {
+        if (!lockPawnUIDic.ContainsKey(id))
+        {
+            lockPawnUIDic[id] = GetLockPawnUI();
         }
     }
 
