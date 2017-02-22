@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public interface ITarget
+public interface IUITarget
 {
     int ID { get; }
     Vector3 ScreenPosition { get; }

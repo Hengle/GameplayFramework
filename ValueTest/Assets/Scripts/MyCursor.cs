@@ -159,7 +159,7 @@ public class MyCursor : MonoBehaviour
         }
     }
 
-    private void UpdateUIPos(KeyValuePair<int, ITarget> item)
+    private void UpdateUIPos(KeyValuePair<int, IUITarget> item)
     {
         Vector2 pos;
 

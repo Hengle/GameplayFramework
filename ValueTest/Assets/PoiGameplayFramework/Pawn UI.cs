@@ -9,7 +9,7 @@ namespace Poi
     /// <summary>
     /// 角色
     /// </summary>
-    public partial class Pawn:ITarget
+    public partial class Pawn:IUITarget
     {
         /// <summary>
         /// 相机空间坐标
