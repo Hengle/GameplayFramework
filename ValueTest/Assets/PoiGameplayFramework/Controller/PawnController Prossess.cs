@@ -81,6 +81,6 @@ namespace Poi
             oldPawn = Pawn;
             pawn = null;
             return OldPawn;
-        }      
+        }
     }
 }

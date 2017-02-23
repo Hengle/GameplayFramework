@@ -93,6 +93,7 @@ namespace Poi
             #endregion
 
 
+            GetTarget();
 
             InputCommand tempcmd = null;
 
@@ -123,19 +124,35 @@ namespace Poi
                 }
             }
 
+
+        }
+
+        /// <summary>
+        /// 选定目标
+        /// </summary>
+        private void GetTarget()
+        {
+
+
+
+
+
+
+
+
+
             if (Input.GetMouseButton(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                Debug.DrawLine(ray.origin, ray.GetPoint(1000), Color.red,Time.deltaTime);
+                Debug.DrawLine(ray.origin, ray.GetPoint(1000), Color.red, Time.deltaTime);
 
                 var collection = Physics.RaycastAll(ray);
                 foreach (var item in collection)
                 {
-                    
+
                 }
             }
-            
         }
 
         /// <summary>
