@@ -41,10 +41,5 @@ namespace UnityEngine
                 trans.gameObject.layer = layer;
             }
         }
-
-        public static void SetLayerOnAll(this GameObject obj, Layer layer)
-        {
-            obj.SetLayerOnAll((int)layer);
-        }
     }
 }

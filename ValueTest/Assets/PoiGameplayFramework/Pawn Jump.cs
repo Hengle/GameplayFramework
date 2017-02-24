@@ -74,7 +74,7 @@ namespace Poi
                     return;
                 }
 
-                if (hitInfo.collider.gameObject.layer == (int)Layer.CanStand)
+                if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("CanStand"))
                 {
                     ResetJumpStep();
                     return;

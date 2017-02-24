@@ -28,22 +28,6 @@ namespace UnityEngine
         Null,
     }
 
-    public enum Layer
-    {
-        Default = 0,
-        TransparentFX,
-        IgnoreRaycast,
-
-        Water = 4,
-        UI = 5,
-
-        CanStand = 20,
-        Pawn = 21,
-
-
-        Edior = 31,
-    }
-
     public enum PoiTag
     {
         PlayerStart,
