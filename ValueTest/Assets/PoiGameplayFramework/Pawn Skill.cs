@@ -18,12 +18,14 @@ namespace Poi
             var startpos = transform.localToWorldMatrix.MultiplyPoint3x4(
                 new Vector3(0, DataInfo.Height * 2 / 3, 0.5f));
 
-            CustomAttactProj proj = CreateProjectile<CustomAttactProj>("projectile");
+            //string projName = "projectile";
+            string projName = "proj2";
+            CustomAttactProj proj = CreateProjectile<CustomAttactProj>(projName);
 
             proj.Owner = this;
             proj.transform.position = startpos;
             proj.Target = Controller.Target;
-            proj.Speed = 1.0f;
+            proj.Speed = 0.8f;
 
             DataInfo.AttackCooldown.EnterCooling();
         }
