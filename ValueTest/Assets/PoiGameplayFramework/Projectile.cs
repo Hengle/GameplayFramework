@@ -69,6 +69,7 @@ public class CustomAttactProj : Projectile
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        
         Debug.Log(other.name + "-----------"+ transform.position);
 
         Destroy(gameObject);
