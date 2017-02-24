@@ -33,9 +33,7 @@ namespace Poi
                 Rigidbody.velocity = (Vector3.up * DataInfo.JumpPower);
                 DataInfo.JumpCurrentStep++;
             }
-
-            Animator?.SetFloat("SpeedY", Rigidbody.velocity.y);
-            Animator?.SetBool("IsGround", DataInfo.IsGround);
+            
             QueryJump = false;
         }
 
