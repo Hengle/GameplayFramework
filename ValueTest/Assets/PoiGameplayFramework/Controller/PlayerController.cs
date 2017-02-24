@@ -66,6 +66,8 @@ namespace Poi
         /// </summary>
         protected override void Update()
         {
+            UpdateTarget(Time.deltaTime);
+
             ///取得输入命令
             InputCommand next = new InputCommand();
             next.Horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -128,31 +130,36 @@ namespace Poi
         }
 
         /// <summary>
+        /// 更新目标
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        protected override void UpdateTarget(float deltaTime)
+        {
+            var tempTarget = new Target();
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawLine(ray.origin, ray.GetPoint(1000), Color.red, Time.deltaTime);
+
+            RaycastHit res;
+            if (Physics.Raycast(ray, out res, 1000, LayerMask.GetMask("CanStand")))
+            {
+                tempTarget.Point = res.point;
+            }
+            else
+            {
+                tempTarget.Point = Target == null ? Vector3.zero : Target.Point;
+            }
+
+            Target = tempTarget;
+        }
+
+        /// <summary>
         /// 选定目标
         /// </summary>
         private void GetTarget()
         {
 
-
-
-
-
-
-
-
-
-            if (Input.GetMouseButton(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                Debug.DrawLine(ray.origin, ray.GetPoint(1000), Color.red, Time.deltaTime);
-
-                var collection = Physics.RaycastAll(ray);
-                foreach (var item in collection)
-                {
-
-                }
-            }
+            
         }
 
         /// <summary>

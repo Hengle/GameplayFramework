@@ -12,6 +12,15 @@ namespace Poi
     public partial class PawnController
     {
 
-        public ITarget Target { get; }
+        public ITarget Target { get; protected set; }
+
+        /// <summary>
+        /// 更新目标
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        protected virtual void UpdateTarget(float deltaTime)
+        {
+
+        }
     }
 }

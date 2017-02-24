@@ -9,6 +9,11 @@ using UnityEngine;
 /// </summary>
 public class Projectile : MonoBehaviour {
 
+    /// <summary>
+    /// 弹道归属
+    /// </summary>
+    public Pawn Owner { get; internal set; }
+
     public ITarget Target { get; set; }
     /// <summary>
     /// 是不是跟踪型弹道
@@ -64,7 +69,7 @@ public class CustomAttactProj : Projectile
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.name);
+        Debug.Log(other.name + "-----------"+ transform.position);
 
         Destroy(gameObject);
     }

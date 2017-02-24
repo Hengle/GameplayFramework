@@ -104,6 +104,7 @@ public partial class GM : MonoBehaviour {
             var monster = monsterObj.AddComponent<Monster>();
             MonsterInfo minfo = new MonsterInfo()
             {
+                Height = 1,
             };
             monster.Init(minfo);
 
