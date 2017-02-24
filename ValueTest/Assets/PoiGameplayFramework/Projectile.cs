@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Poi;
 using UnityEngine;
 
 /// <summary>
@@ -8,53 +9,73 @@ using UnityEngine;
 /// </summary>
 public class Projectile : MonoBehaviour {
 
-    public Target Target { get; set; }
+    public ITarget Target { get; set; }
     /// <summary>
     /// 是不是跟踪型弹道
     /// </summary>
-    public bool IsTracking => Target is TransformTarget;
+    public bool IsTracking { get; set; } = true;
 
     public float Speed { get; internal set; } = 1.0f;
 
-    Rigidbody Rig;
+    protected Rigidbody Rig;
     
 
     // Use this for initialization
-    void Start () {
+    protected virtual void Start () {
         Rig = this.GetComponentIfNullAdd<Rigidbody>();
         Rig.useGravity = false;
-
-        if (Target is PointTarget)
-        {
-            transform.LookAt(Target.TargetWorldPosotion);
-        }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Target is TransformTarget)
-        {
-            transform.LookAt(Target.TargetWorldPosotion);
-        }
-        transform.Translate(new Vector3(0,0,Speed),Space.Self);
-	}
+}
 
-    private void OnTriggerEnter(Collider other)
+/// <summary>
+/// 普通攻击弹道
+/// </summary>
+public class CustomAttactProj : Projectile
+{
+    protected override void Start()
+    {
+        base.Start();
+        if (Target.First)
+        {
+            transform.LookAt(Target.First); 
+        }
+        else
+        {
+            transform.LookAt(Target.Point);
+        }
+    }
+
+    void Update()
+    {
+        if (IsTracking)
+        {
+            if (Target.First)
+            {
+                transform.LookAt(Target.First);
+            }
+            else
+            {
+                transform.LookAt(Target.Point);
+            }
+        }        
+        
+        transform.Translate(new Vector3(0, 0, Speed), Space.Self);
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.name);
 
         Destroy(gameObject);
     }
 
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
 
     }
 
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
 
     }
-
-
 }

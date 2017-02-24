@@ -16,24 +16,38 @@ namespace Poi
         internal void Attack()
         {
             var startpos = transform.localToWorldMatrix.MultiplyPoint3x4(
-                new Vector3(0, DataInfo.Height*2/3, 0.5f));
-            var targetpos = transform.localToWorldMatrix.MultiplyPoint3x4(
-                new Vector3(0, DataInfo.Height * 2 / 3, 10f));
+                new Vector3(0, DataInfo.Height * 2 / 3, 0.5f));
 
-            GameObject proj = new GameObject(name + "-Projectile");
+            CustomAttactProj proj = CreateProjectile<CustomAttactProj>("ProjectileModel");
+
             proj.transform.position = startpos;
-            proj.transform.rotation = transform.rotation;
 
+            proj.Target = Controller.Target;
 
-            var go = Resources.Load<GameObject>("Projectile/projectile");
-            var temp = GameObject.Instantiate(go, proj.transform,false);
-            temp.name = "ProjectileModel";
-
-            var p =  proj.AddComponent<Projectile>();
-            p.Target = new PointTarget() { TargetWorldPosotion = targetpos};
-            p.Speed = 1.0f;
+            proj.Speed = 1.0f;
 
             DataInfo.AttackCooldown.EnterCooling();
+        }
+
+        /// <summary>
+        /// 使用指定弹道模型创建一个弹道
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="projModelName"></param>
+        /// <returns></returns>
+        public T CreateProjectile<T>(string projModelName)
+            where T:Projectile
+        {
+            GameObject proj = new GameObject(name + "-Projectile");
+
+            if (!string.IsNullOrEmpty(projModelName))
+            {
+                var go = Resources.Load<GameObject>("Projectile/" + projModelName);
+                var temp = Instantiate(go, proj.transform, false);
+                temp.name = projModelName;
+            }
+
+            return proj.AddComponent<T>();
         }
     }
 }
