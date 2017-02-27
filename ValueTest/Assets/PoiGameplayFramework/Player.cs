@@ -15,5 +15,7 @@ namespace Poi
         /// 角色信息（数据模型）
         /// </summary>
         public new PlayerInfo DataInfo => dataInfo as PlayerInfo;
+
+        
     }
 }

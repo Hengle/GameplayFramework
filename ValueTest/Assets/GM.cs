@@ -94,6 +94,8 @@ public partial class GM : MonoBehaviour {
             GameObject start = GameObject.Find($"{PoiTag.PlayerStart.ToString()}");
             go.transform.Apply(start?.transform);
             go.transform.ApplyRotationY(start?.transform);
+            ///朝向初始化
+            p.NextTurnToAngle = start?.transform.eulerAngles.y??0;
 
             PlayerController.Possess(p);
 
