@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour {
     /// <summary>
     /// float.PositiveInfinity表示不受时间约束
     /// </summary>
-    public float lifeTime = float.PositiveInfinity;
+    public float lifeTime = 100f;
     // Use this for initialization
     protected virtual void Start () {
         Rig = this.GetComponentIfNullAdd<Rigidbody>();
