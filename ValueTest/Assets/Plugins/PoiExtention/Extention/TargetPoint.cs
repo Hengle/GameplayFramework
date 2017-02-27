@@ -4,6 +4,10 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 public class TargetPoint : MonoBehaviour {
+    public bool isShowInGame = false;
+
+
+
     public Mesh PlayerStartMesh;
     // Use this for initialization
     public Color PlayerStartColor  = new Color32(105,227,116,41);
