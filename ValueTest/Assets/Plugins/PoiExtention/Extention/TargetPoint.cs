@@ -6,26 +6,19 @@ using UnityEngine;
 public class TargetPoint : MonoBehaviour {
     public Mesh PlayerStartMesh;
     // Use this for initialization
-    public Color PlayerStartColor  = Color.HSVToRGB(125,137,277);
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Color PlayerStartColor  = new Color32(105,227,116,41);
 
     private void OnDrawGizmos()
     {
-        //Gizmos.DrawSphere(transform.position, 1);
-        //Gizmos.DrawWireMesh(Mesh.)
+        DrawPlayerStart();
+    }
+
+    private void DrawPlayerStart()
+    {
         Gizmos.color = PlayerStartColor;
-        Gizmos.DrawWireMesh(PlayerStartMesh,transform.position + Vector3.up,transform.rotation);
+        Gizmos.DrawWireMesh(PlayerStartMesh, transform.position + Vector3.up, transform.rotation);
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position + Vector3.up,
             transform.position + Vector3.up + transform.forward * 1.5f);
     }
-
-
 }

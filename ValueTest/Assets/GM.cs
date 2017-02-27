@@ -91,9 +91,9 @@ public partial class GM : MonoBehaviour {
 
             p.Init(info);
 
-            GameObject start = GameObject.FindGameObjectWithTag($"{PoiTag.PlayerStart.ToString()}");
+            GameObject start = GameObject.Find($"{PoiTag.PlayerStart.ToString()}");
             go.transform.Apply(start?.transform);
-            go.transform.ApplyRY(start?.transform);
+            go.transform.ApplyRotationY(start?.transform);
 
             PlayerController.Possess(p);
 

@@ -40,7 +40,7 @@ namespace UnityEngine
             } 
         }
 
-        public static void ApplyRY(this Transform trans, Transform tar)
+        public static void ApplyRotationY(this Transform trans, Transform tar)
         {
             if (tar)
             {
