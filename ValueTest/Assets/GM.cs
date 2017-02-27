@@ -93,20 +93,6 @@ public partial class GM : MonoBehaviour {
             p.NextTurnToAngle = p.transform.eulerAngles.y;
 
             PlayerController.Possess(p);
-
-            ///临时创建怪物
-            var mapObj = GameObject.FindGameObjectWithTag(nameof(PoiTag.Map));
-            Map map = mapObj.GetComponent<Map>();
-            GameObject monsterObj = GameObject.Instantiate(map.MonsterList[0]);
-            var monster = monsterObj.AddComponent<Monster>();
-            MonsterInfo minfo = new MonsterInfo()
-            {
-                Height = 1,
-            };
-            monster.Init(minfo);
-
-
-            monster.transform.position = p.transform.position + new Vector3(-2, 0, 3);
         });
     }
 
