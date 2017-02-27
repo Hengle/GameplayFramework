@@ -23,13 +23,31 @@ public class Projectile : MonoBehaviour {
     public float Speed { get; internal set; } = 1.0f;
 
     protected Rigidbody Rig;
-    
 
+    /// <summary>
+    /// float.PositiveInfinity表示不受时间约束
+    /// </summary>
+    public float lifeTime = float.PositiveInfinity;
     // Use this for initialization
     protected virtual void Start () {
         Rig = this.GetComponentIfNullAdd<Rigidbody>();
         Rig.useGravity = false;
+        
+        StartCoroutine(lifeDelay());
 	}
+
+    protected IEnumerator lifeDelay()
+    {
+        while (lifeTime > 0)
+        {
+            if (!float.IsPositiveInfinity(lifeTime))
+            {
+                lifeTime -= Time.fixedDeltaTime;
+            }   
+            yield return new WaitForFixedUpdate();
+        }
+        Destroy(gameObject);
+    }
 }
 
 /// <summary>

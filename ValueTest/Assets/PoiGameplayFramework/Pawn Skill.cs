@@ -23,7 +23,10 @@ namespace Poi
             CustomAttactProj proj = CreateProjectile<CustomAttactProj>(projName,startpos);
 
             proj.Owner = this;
-            
+
+            proj.lifeTime = 10f;
+
+            proj.IsTracking = false;
             proj.Target = Controller.Target;
             proj.Speed = 0.8f;
 

@@ -94,9 +94,6 @@ namespace Poi
 
             #endregion
 
-
-            GetTarget();
-
             InputCommand tempcmd = null;
 
             ///应用模拟延迟
@@ -147,19 +144,10 @@ namespace Poi
             }
             else
             {
-                tempTarget.Point = Target == null ? Vector3.zero : Target.Point;
+                tempTarget.Point = ray.GetPoint(1000);
             }
 
             Target = tempTarget;
-        }
-
-        /// <summary>
-        /// 选定目标
-        /// </summary>
-        private void GetTarget()
-        {
-
-            
         }
 
         /// <summary>
