@@ -57,6 +57,9 @@ namespace Poi
             //    go.transform.ResetLocal();
             //    go.transform.localPosition = new Vector3(0, DataInfo.Height * 2 / 3, 0);
             //}
+
+            ///保持创建时默认旋转
+            NextTurnToAngle = transform.eulerAngles.y;
         }
 
 

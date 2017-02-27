@@ -12,4 +12,13 @@ public partial class GM
     {
         return GameObject.Instantiate(GameMode.DefaultPawn);
     }
+
+    private GameObject CreatePlayer()
+    {
+        var go = CreatePawnGameObject();
+        var start = GameObject.Find($"{PoiTag.PlayerStart.ToString()}");
+        go.transform.Apply(start?.transform);
+        go.transform.ApplyRotationY(start?.transform);
+        return go;
+    }
 }

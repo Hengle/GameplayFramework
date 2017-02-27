@@ -71,10 +71,7 @@ public partial class GM : MonoBehaviour {
 
         this.Wait(LoadSceneAsync(1), () =>
         {
-            GameObject go = CreatePawnGameObject();
-
-            //go.AddComponent<DontDestroyOnLoad>();
-            var controller = go.GetComponent<Animator>();
+            GameObject go = CreatePlayer();
 
             var p = go.AddComponent<Player>();
 
@@ -91,11 +88,9 @@ public partial class GM : MonoBehaviour {
 
             p.Init(info);
 
-            GameObject start = GameObject.Find($"{PoiTag.PlayerStart.ToString()}");
-            go.transform.Apply(start?.transform);
-            go.transform.ApplyRotationY(start?.transform);
+
             ///朝向初始化
-            p.NextTurnToAngle = start?.transform.eulerAngles.y??0;
+            p.NextTurnToAngle = p.transform.eulerAngles.y;
 
             PlayerController.Possess(p);
 
@@ -111,7 +106,7 @@ public partial class GM : MonoBehaviour {
             monster.Init(minfo);
 
 
-            monster.transform.position = start.transform.position + new Vector3(-2, 0, 3);
+            monster.transform.position = p.transform.position + new Vector3(-2, 0, 3);
         });
     }
 
