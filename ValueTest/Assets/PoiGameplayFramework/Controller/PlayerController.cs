@@ -146,6 +146,7 @@ namespace Poi
             {
                 tempTarget.Point = ray.GetPoint(1000);
             }
+            tempTarget.LockedTargets = UI.GetLockedTargets();
 
             Target = tempTarget;
         }

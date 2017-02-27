@@ -45,6 +45,11 @@ public class MyCursor : MonoBehaviour
 
     Canvas Canvas;
 
+    private void Awake()
+    {
+
+    }
+
     private void Start()
     {
         Canvas = this.GetComponentInParent<Canvas>();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Poi;
+using UnityEngine;
 
 public class UI
 {
@@ -30,5 +31,10 @@ public class UI
     {
         int id = pawn.ID;
         Instance.pawnDic.Remove(id);
+    }
+
+    internal static List<Transform> GetLockedTargets()
+    {
+        throw new NotImplementedException();
     }
 }
