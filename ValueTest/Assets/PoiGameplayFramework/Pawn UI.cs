@@ -21,6 +21,10 @@ namespace Poi
         /// 屏幕位置
         /// </summary>
         public Vector3 ScreenPosition { get; protected set; }
+        /// <summary>
+        /// 在屏幕中距离鼠标的距离
+        /// </summary>
+        public float magnitudeToMouse { get; protected set; }
 
         public int ID => DataInfo.ID;
 
@@ -33,6 +37,9 @@ namespace Poi
             bool res = Camera.main.IsAPointInACamera(Chest.position, out viewPos);
             ViewPos = viewPos;
             ScreenPosition = Camera.main.ViewportToScreenPoint(viewPos);
+
+            ///求在屏幕住和游标的距离
+            magnitudeToMouse = ((Vector2)ScreenPosition - (Vector2)Input.mousePosition).magnitude;
 
             if (res != IsInCamera)
             {

@@ -8,7 +8,17 @@ namespace Poi
 {
     public interface IUITarget
     {
+        /// <summary>
+        /// 目标ID
+        /// </summary>
         int ID { get; }
+        /// <summary>
+        /// 在屏幕中和鼠标的距离
+        /// </summary>
+        float magnitudeToMouse { get; }
+        /// <summary>
+        /// 在屏幕中的坐标
+        /// </summary>
         Vector3 ScreenPosition { get; }
     }
 

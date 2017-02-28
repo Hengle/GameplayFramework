@@ -6,12 +6,12 @@ namespace Poi
         /// <summary>
         /// 
         /// </summary>
-        Transform First { get; }
+        ISkillTarget First { get; }
         Vector3 Point { get; }
     }
 
-    public interface IPawnTarget
+    public interface ISkillTarget
     {
-
+        Transform transform { get; }
     }
 }

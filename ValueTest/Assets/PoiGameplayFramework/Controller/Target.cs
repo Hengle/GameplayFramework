@@ -8,8 +8,8 @@ namespace Poi
 {
     public class Target : ITarget
     {
-        public Transform First => LockedTargets?.FirstOrDefault();
-        public List<Transform> LockedTargets { get; internal set; }
+        public ISkillTarget First => LockedTargets?.FirstOrDefault();
+        public List<ISkillTarget> LockedTargets { get; internal set; }
         public Vector3 Point { get; set; }
     }
 }

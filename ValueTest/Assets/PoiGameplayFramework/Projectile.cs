@@ -58,9 +58,9 @@ public class CustomAttactProj : Projectile
     protected override void Start()
     {
         base.Start();
-        if (Target.First)
+        if (Target.First != null)
         {
-            transform.LookAt(Target.First); 
+            transform.LookAt(Target.First.transform); 
         }
         else
         {
@@ -72,9 +72,9 @@ public class CustomAttactProj : Projectile
     {
         if (IsTracking)
         {
-            if (Target.First)
+            if (Target.First != null)
             {
-                transform.LookAt(Target.First);
+                transform.LookAt(Target.First.transform);
             }
             else
             {

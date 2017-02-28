@@ -9,6 +9,9 @@ public class UI
 {
     public static UI Instance { get; private set; } = new UI();
 
+    /// <summary>
+    /// 视野中的目标
+    /// </summary>
     public static Dictionary<int, IUITarget> PawnDic => Instance.pawnDic;
 
     public static MyCursor Cursor { get; internal set; }
@@ -35,7 +38,7 @@ public class UI
         Instance.pawnDic.Remove(id);
     }
 
-    internal static List<Transform> GetLockedTargets()
+    internal static List<ISkillTarget> GetLockedTargets()
     {
         return Cursor.GetLockedTargets();
     }

@@ -22,7 +22,7 @@ public class MyCursor : MonoBehaviour
 
     [Tooltip("更新锁定UI的方式，false为Fixed")]
     public bool UpdateInsteadFixedUpdatePawnLock = false;
-    public float LockPawnUIUpdateTime = 0.2f;
+    public float LockPawnUIUpdateTime = 0.1f;
     /// <summary>
     /// 使用游戏内鼠标
     /// </summary>
@@ -42,10 +42,7 @@ public class MyCursor : MonoBehaviour
         Cursor.visible = true;
     }
 
-    internal List<Transform> GetLockedTargets()
-    {
-        throw new NotImplementedException();
-    }
+    
 
     Canvas Canvas;
 
@@ -68,15 +65,16 @@ public class MyCursor : MonoBehaviour
     /// <summary>
     /// UI集合
     /// </summary>
-    Dictionary<int, GameObject> lockPawnUIDic = new Dictionary<int, GameObject>();
+    Dictionary<int, LockTargetUI> lockPawnUIDic = new Dictionary<int, LockTargetUI>();
     /// <summary>
     /// 交换集合
     /// </summary>
-    Dictionary<int, GameObject> newDic = new Dictionary<int, GameObject>();
+    Dictionary<int, LockTargetUI> newDic = new Dictionary<int, LockTargetUI>();
     /// <summary>
     /// UI池
     /// </summary>
-    Stack<GameObject> lockPawnUIPool = new Stack<GameObject>();
+    Stack<LockTargetUI> lockPawnUIPool = new Stack<LockTargetUI>();
+    private List<ISkillTarget> skillTargetList = new List<ISkillTarget>();
 
     public Camera UICamera => Camera.main;
 
@@ -98,6 +96,11 @@ public class MyCursor : MonoBehaviour
         }
     }
 
+    public List<ISkillTarget> GetLockedTargets()
+    {
+        return skillTargetList;
+    }
+
     /// <summary>
     /// 更新锁定PawnUI
     /// </summary>
@@ -108,29 +111,43 @@ public class MyCursor : MonoBehaviour
         {
             if (cooldownTime4LockPawnUI <= 0)
             {
+                var tempskillTargetList = new List<ISkillTarget>();
                 foreach (var item in UI.PawnDic)
                 {
                     ConfirmUI(item.Key);
 
-                    Vector2 tarpos = item.Value.ScreenPosition;
-                    Vector2 center = Input.mousePosition;
-
-                    if ((tarpos - center).magnitude < LockDistance)
+                    ///从视野中的目标中选出被游标锁定的目标
+                    if (item.Value.magnitudeToMouse < LockDistance)
                     {
-                        UpdateUIPos(item);
+                        Vector2 pos;
+
+                        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform as RectTransform,
+                            item.Value.ScreenPosition, Canvas.worldCamera, out pos);
+                        
+
+                        lockPawnUIDic[item.Key].NextLocalPosition = pos;
+                        newDic[item.Key] = lockPawnUIDic[item.Key];
+                        lockPawnUIDic.Remove(item.Key);
+
+
+                        ///加入技能目标集合
+                        tempskillTargetList.Add(item.Value as ISkillTarget);
                     }
 
                 }
 
+                ///清除视野中未锁定的目标
                 foreach (var item in lockPawnUIDic)
                 {
-                    item.Value.SetActive(false);
+                    item.Value.gameObject.SetActive(false);
                     lockPawnUIPool.Push(item.Value);
                 }
-
                 lockPawnUIDic.Clear();
 
                 DictionaryExtention.Exchange(ref lockPawnUIDic,ref newDic);
+
+                ///重置时间
+                cooldownTime4LockPawnUI = LockPawnUIUpdateTime;
             }
             else
             {
@@ -151,39 +168,29 @@ public class MyCursor : MonoBehaviour
         }
     }
 
-    private GameObject GetLockPawnUI()
+    /// <summary>
+    /// 取得一个或者创建一个新的锁定UI
+    /// </summary>
+    /// <returns></returns>
+    private LockTargetUI GetLockPawnUI()
     {
         if (lockPawnUIPool.Count > 0)
         {
             var res = lockPawnUIPool.Pop();
-            res.SetActive(true);
+            res.gameObject.SetActive(true);
+            res.ReActive = true;
             return res;
         }
         else
         {
-            var res = GameObject.Instantiate(LockTargetUITemplate[0]);
-            res.transform.SetParent(transform);
-            res.transform.localScale = Vector3.one;
-            res.SetActive(true);
+            var lockedUI = GameObject.Instantiate(LockTargetUITemplate[0]);
+            lockedUI.transform.SetParent(transform);
+            lockedUI.transform.localScale = Vector3.one;
+            lockedUI.SetActive(true);
+            var res = lockedUI.GetComponent<LockTargetUI>();
+            res.ReActive = true;
             return res;
         }
-    }
-
-    private void UpdateUIPos(KeyValuePair<int, IUITarget> item)
-    {
-        Vector2 pos;
-
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(transform as RectTransform,
-            item.Value.ScreenPosition, Canvas.worldCamera, out pos))
-        {
-            CenterCursor.transform.localPosition = pos;
-        }
-
-        //var pos2 = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
-
-        lockPawnUIDic[item.Key].transform.localPosition = pos;
-        newDic[item.Key] = lockPawnUIDic[item.Key];
-        lockPawnUIDic.Remove(item.Key);
     }
 
     void Update()

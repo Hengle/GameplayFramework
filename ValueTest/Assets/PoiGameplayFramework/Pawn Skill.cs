@@ -9,8 +9,16 @@ namespace Poi
     /// <summary>
     /// 角色移动
     /// </summary>
-    public partial class Pawn
+    public partial class Pawn:ISkillTarget
     {
+        #region ISkillTarget
+
+        #endregion
+
+
+
+        #region CastSkill
+
         public float AttackCooldown => DataInfo.AttackCooldown.Current;
 
         internal void Attack()
@@ -80,5 +88,7 @@ namespace Poi
                 return CreateProjectile<T>(projModelName, start.position);
             }
         }
+
+        #endregion
     }
 }
