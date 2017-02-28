@@ -42,12 +42,16 @@ public class MyCursor : MonoBehaviour
         Cursor.visible = true;
     }
 
+    internal List<Transform> GetLockedTargets()
+    {
+        throw new NotImplementedException();
+    }
 
     Canvas Canvas;
 
     private void Awake()
     {
-
+        UI.Cursor = this;
     }
 
     private void Start()

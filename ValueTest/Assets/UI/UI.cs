@@ -11,6 +11,8 @@ public class UI
 
     public static Dictionary<int, IUITarget> PawnDic => Instance.pawnDic;
 
+    public static MyCursor Cursor { get; internal set; }
+
     private UI() { }
     Dictionary<int, IUITarget> pawnDic = new Dictionary<int, IUITarget>();
     internal static void AddPawn(IUITarget pawn)
@@ -35,6 +37,6 @@ public class UI
 
     internal static List<Transform> GetLockedTargets()
     {
-        throw new NotImplementedException();
+        return Cursor.GetLockedTargets();
     }
 }

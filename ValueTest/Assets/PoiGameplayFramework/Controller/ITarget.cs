@@ -9,4 +9,9 @@ namespace Poi
         Transform First { get; }
         Vector3 Point { get; }
     }
+
+    public interface IPawnTarget
+    {
+
+    }
 }
