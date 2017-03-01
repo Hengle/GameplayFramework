@@ -32,7 +32,9 @@ public class Projectile : MonoBehaviour {
     protected virtual void Start () {
         Rig = this.GetComponentIfNullAdd<Rigidbody>();
         Rig.useGravity = false;
-        
+
+        //Rig.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
         StartCoroutine(lifeDelay());
 	}
 

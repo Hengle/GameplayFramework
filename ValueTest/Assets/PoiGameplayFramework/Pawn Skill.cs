@@ -32,11 +32,11 @@ namespace Poi
 
             proj.Owner = this;
 
-            proj.lifeTime = 10f;
+            proj.lifeTime = 30f;
 
             proj.IsTracking = false;
             proj.Target = Controller.Target;
-            proj.Speed = 0.8f;
+            proj.Speed = 0.2f;
 
             DataInfo.AttackCooldown.EnterCooling();
         }
