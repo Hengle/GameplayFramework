@@ -22,15 +22,15 @@ public class LockTargetUI : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        if (ReActive)
-        {
-            rectTrans.localPosition = NextLocalPosition;
-            ReActive = false;
-        }
-        else
-        {
-            rectTrans.localPosition = 
-                Vector2.LerpUnclamped(rectTrans.localPosition, NextLocalPosition, Time.deltaTime/moveTime);   
-        }
+        //if (ReActive)
+        //{
+        //    rectTrans.localPosition = NextLocalPosition;
+        //    ReActive = false;
+        //}
+        //else
+        //{
+        //    rectTrans.localPosition = 
+        //        Vector2.LerpUnclamped(rectTrans.localPosition, NextLocalPosition, Time.deltaTime/moveTime);   
+        //}
     }
 }

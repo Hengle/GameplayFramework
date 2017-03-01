@@ -42,4 +42,11 @@ public class UI
     {
         return Cursor.GetLockedTargets();
     }
+
+    internal static void CameraLateUpdateCall()
+    {
+        CameraLateUpdate?.Invoke();
+    }
+
+    public static event Action CameraLateUpdate;
 }

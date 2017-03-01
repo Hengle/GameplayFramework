@@ -21,7 +21,7 @@ namespace Poi
 
 
         public UpdateType UpdateType = UpdateType.LateUpdate;
-        public LerpType LerpType = LerpType.Null;
+        public LerpType LerpType = LerpType.SlerpUnclamped;
         public float MaxSpeed = 15f;
         private float SmoothTime = 0.3f;
 
@@ -33,9 +33,33 @@ namespace Poi
         {
             //Selfiestick.position = Vector3.SmoothDamp(Selfiestick.position, FollowTarget.position,
             //                        ref speed, SmoothTime, MaxSpeed);
+            switch (LerpType)
+            {
+                case LerpType.Lerp:
+                    Selfiestick.position = Vector3.Lerp(Selfiestick.position, FollowTarget.position,
+                                            Time.deltaTime * FollowSpeed);
+                    break;
+                case LerpType.LerpUnclamped:
+                    Selfiestick.position = Vector3.LerpUnclamped(Selfiestick.position, FollowTarget.position,
+                                            Time.deltaTime * FollowSpeed);
+                    break;
+                case LerpType.Slerp:
+                    Selfiestick.position = Vector3.Slerp(Selfiestick.position, FollowTarget.position,
+                                            Time.deltaTime * FollowSpeed);
+                    break;
+                case LerpType.SlerpUnclamped:
+                    Selfiestick.position = Vector3.SlerpUnclamped(Selfiestick.position, FollowTarget.position,
+                                            Time.deltaTime * FollowSpeed);
+                    break;
+                case LerpType.Null:
+                    Selfiestick.position = FollowTarget.position;
+                    break;
+                default:
+                    break;
+            }
 
-            Selfiestick.position = Vector3.Lerp(Selfiestick.position, FollowTarget.position,
-                                            Time.deltaTime*FollowSpeed);
+
+            //UI.CameraLateUpdateCall();
         }
 
         // 加载脚本实例时调用 Awake
