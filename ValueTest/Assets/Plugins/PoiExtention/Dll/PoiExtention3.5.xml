@@ -4,6 +4,25 @@
         <name>PoiExtention3.5</name>
     </assembly>
     <members>
+        <member name="T:System.ByteArrayExtention">
+            <summary>
+            字节数据扩展
+            </summary>
+        </member>
+        <member name="M:System.ByteArrayExtention.StartWithBOM(System.Byte[])">
+            <summary>
+            这个数组是不是以BOM头开始的
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ByteArrayExtention.SkipBOMIfHave(System.Byte[])">
+            <summary>
+            如果含有BOM头则去掉，不含有返回原数组
+            </summary>
+            <param name="buffer"></param>
+            <returns></returns>
+        </member>
         <member name="T:System.Collections.Generic.DictionaryExtention">
             <summary>
             字典扩展
@@ -165,6 +184,16 @@
             <summary>
             string扩展
             </summary>
+        </member>
+        <member name="M:System.StringExtention.Split(System.String,System.Int32,System.Boolean)">
+            <summary>
+            按指定长度分割字符串
+            </summary>
+            <param name="s"></param>
+            <param name="perLength">每段长度</param>
+            <param name="allowLastOneShortCount">是够允许最后一段长度小于每段长度，
+            如果为false，不足的末尾将被舍弃。默认为false。</param>
+            <returns></returns>
         </member>
         <member name="M:System.StringExtention.ToInt(System.String)">
             <summary>
