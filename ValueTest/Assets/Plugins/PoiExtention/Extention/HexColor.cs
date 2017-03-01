@@ -6,7 +6,7 @@ using System.Text;
 namespace UnityEngine
 {
     /// <summary>
-    /// 16进制颜色
+    /// 16进制颜色 (长度为8的RGBA16进制字符串)
     /// </summary>
     public struct HexColor
     {
