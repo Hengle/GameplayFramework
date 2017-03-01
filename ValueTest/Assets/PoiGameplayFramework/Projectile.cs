@@ -60,7 +60,7 @@ public class CustomAttactProj : Projectile
         base.Start();
         if (Target.First != null)
         {
-            transform.LookAt(Target.First.transform); 
+            transform.LookAt(Target.First.Chest); 
         }
         else
         {
@@ -74,7 +74,7 @@ public class CustomAttactProj : Projectile
         {
             if (Target.First != null)
             {
-                transform.LookAt(Target.First.transform);
+                transform.LookAt(Target.First.Chest);
             }
             else
             {

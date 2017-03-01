@@ -33,7 +33,7 @@ namespace Poi
         /// <summary>
         /// 模型中心
         /// </summary>
-        public Transform Chest;
+        public Transform Chest { get; protected set; }
 
         bool m_IsGrounded;
         float m_OrigGroundCheckDistance = 0.5f;

@@ -13,5 +13,6 @@ namespace Poi
     public interface ISkillTarget
     {
         Transform transform { get; }
+        Transform Chest { get; }
     }
 }
