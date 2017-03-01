@@ -17,12 +17,8 @@ public class MyCursor : MonoBehaviour
     /// </summary>
     public GameObject[] LockTargetUITemplate;
 
-    [SerializeField]
-    private float LockDistance = 1;
+    public float LockDistance { get; set; } = 100;
 
-    [Tooltip("更新锁定UI的方式，false为Fixed")]
-    public bool UpdateInsteadFixedUpdatePawnLock = false;
-    public float LockPawnUIUpdateTime = 0.1f;
     /// <summary>
     /// 使用游戏内鼠标
     /// </summary>
@@ -109,50 +105,42 @@ public class MyCursor : MonoBehaviour
     {
         if (useMycursor)
         {
-            if (cooldownTime4LockPawnUI <= 0)
+            var tempskillTargetList = new List<ISkillTarget>();
+            foreach (var item in UI.PawnDic)
             {
-                var tempskillTargetList = new List<ISkillTarget>();
-                foreach (var item in UI.PawnDic)
+                ConfirmUI(item.Key);
+
+                ///从视野中的目标中选出被游标锁定的目标
+                if (item.Value.magnitudeToMouse < LockDistance)
                 {
-                    ConfirmUI(item.Key);
+                    //Vector3 temppos =  Camera.main.WorldToScreenPoint(item.Value.transform.position);
 
-                    ///从视野中的目标中选出被游标锁定的目标
-                    if (item.Value.magnitudeToMouse < LockDistance)
-                    {
-                        Vector2 pos;
+                    Vector2 pos;
 
-                        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform as RectTransform,
-                            item.Value.ScreenPosition, Canvas.worldCamera, out pos);
+                    RectTransformUtility.ScreenPointToLocalPointInRectangle(transform as RectTransform,
+                        item.Value.ScreenPosition, Canvas.worldCamera, out pos);
                         
 
-                        lockPawnUIDic[item.Key].NextLocalPosition = pos;
-                        newDic[item.Key] = lockPawnUIDic[item.Key];
-                        lockPawnUIDic.Remove(item.Key);
+                    lockPawnUIDic[item.Key].transform.localPosition = pos;
+                    newDic[item.Key] = lockPawnUIDic[item.Key];
+                    lockPawnUIDic.Remove(item.Key);
 
 
-                        ///加入技能目标集合
-                        tempskillTargetList.Add(item.Value as ISkillTarget);
-                    }
-
+                    ///加入技能目标集合
+                    tempskillTargetList.Add(item.Value as ISkillTarget);
                 }
 
-                ///清除视野中未锁定的目标
-                foreach (var item in lockPawnUIDic)
-                {
-                    item.Value.gameObject.SetActive(false);
-                    lockPawnUIPool.Push(item.Value);
-                }
-                lockPawnUIDic.Clear();
-
-                DictionaryExtention.Exchange(ref lockPawnUIDic,ref newDic);
-
-                ///重置时间
-                cooldownTime4LockPawnUI = LockPawnUIUpdateTime;
             }
-            else
+
+            ///清除视野中未锁定的目标
+            foreach (var item in lockPawnUIDic)
             {
-                cooldownTime4LockPawnUI -= deltaTime;
+                item.Value.gameObject.SetActive(false);
+                lockPawnUIPool.Push(item.Value);
             }
+            lockPawnUIDic.Clear();
+
+            DictionaryExtention.Exchange(ref lockPawnUIDic,ref newDic);            
         }
     }
 
@@ -196,10 +184,6 @@ public class MyCursor : MonoBehaviour
     void Update()
     {
         UpdateCenterUI();
-
-        if (UpdateInsteadFixedUpdatePawnLock)
-        {
-            UpdateLockPawnUI(Time.deltaTime);
-        }
+        UpdateLockPawnUI(Time.deltaTime);
     }
 }

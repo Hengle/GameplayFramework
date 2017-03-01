@@ -20,6 +20,7 @@ namespace Poi
         /// 在屏幕中的坐标
         /// </summary>
         Vector3 ScreenPosition { get; }
+        Transform transform { get; }
     }
 
 }
