@@ -129,8 +129,9 @@ public class MyCursor : MonoBehaviour
                     ///加入技能目标集合
                     tempskillTargetList.Add(item.Value as ISkillTarget);
                 }
-
             }
+
+            skillTargetList = tempskillTargetList;
 
             ///清除视野中未锁定的目标
             foreach (var item in lockPawnUIDic)
