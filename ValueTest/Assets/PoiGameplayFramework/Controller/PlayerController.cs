@@ -66,6 +66,10 @@ namespace Poi
         /// </summary>
         protected override void Update()
         {
+            if (CommandTool.IsShow)
+            {
+                return;
+            }
             UpdateTarget(Time.deltaTime);
 
             ///取得输入命令

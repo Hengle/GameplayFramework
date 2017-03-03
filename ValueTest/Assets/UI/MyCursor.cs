@@ -184,6 +184,15 @@ public class MyCursor : MonoBehaviour
 
     void Update()
     {
+        if (CommandTool.IsShow && useMycursor)
+        {
+            UseSyetemCursor();
+        }
+
+        if (!CommandTool.IsShow && !useMycursor)
+        {
+            UseMyCursor();
+        }
         UpdateCenterUI();
         UpdateLockPawnUI(Time.deltaTime);
     }
