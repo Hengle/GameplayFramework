@@ -6,8 +6,12 @@ using UnityEngine;
 
 public partial class GM
 {
-    public void CMD(string cmdtest)
+    public void CMD(string cmdtext)
     {
-
+        if (cmdtext == "clear")
+        {
+            CommandTool.Clear();
+            return;
+        }
     }
 }
