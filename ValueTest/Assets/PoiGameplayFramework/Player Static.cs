@@ -11,10 +11,11 @@ namespace Poi
     /// </summary>
     public partial class Player : Character
     {
-        /// <summary>
-        /// 角色信息（数据模型）
-        /// </summary>
-        public new PlayerInfo DataInfo => dataInfo as PlayerInfo;
+        public static Player Instance { get; set; }
 
+        internal static void SetName(string name)
+        {
+            Instance.DataInfo.Name = name;
+        }
     }
 }

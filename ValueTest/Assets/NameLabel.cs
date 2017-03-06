@@ -14,6 +14,10 @@ public class NameLabel : MonoBehaviour
     public Stack<Text> UIPool { get; private set; } = new Stack<Text>();
 
     Canvas Canvas;
+    /// <summary>
+    /// 重置名字
+    /// </summary>
+    private bool isReset;
 
     private void Awake()
     {
@@ -25,12 +29,17 @@ public class NameLabel : MonoBehaviour
         Canvas = this.GetComponentInParent<Canvas>();
     }
 
+    internal void Reset()
+    {
+        isReset = true;
+    }
+
     // Update is called once per frame
     void Update () {
         foreach (var item in UI.PawnDic)
         {
             var isNew = ConfirmUI(item.Key);
-            if (isNew)
+            if (isNew || isReset)
             {
                 UIDic[item.Key].text = item.Value.Name;
             }
@@ -46,6 +55,8 @@ public class NameLabel : MonoBehaviour
             newDic[item.Key] = UIDic[item.Key];
             UIDic.Remove(item.Key);
         }
+
+        isReset = false;
 
         ///清除视野中未锁定的目标
         foreach (var item in UIDic)
