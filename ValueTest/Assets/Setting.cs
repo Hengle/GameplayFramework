@@ -14,6 +14,7 @@ public class Setting : MonoBehaviour {
     private void Awake()
     {
         UI.Setting = this;
+        onoff.SetActive(false);
     }
 
     // Use this for initialization
