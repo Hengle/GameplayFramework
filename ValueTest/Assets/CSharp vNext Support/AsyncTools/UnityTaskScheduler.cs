@@ -21,7 +21,7 @@ public class UnityTaskScheduler : TaskScheduler
 		SynchronizationContext.SetSynchronizationContext(Context);
 		Context.Activate();
 
-		ExecutedPendingTasks();
+		ExecutePendingTasks();
 		Context.ExecutePendingContinuations();
 	}
 
@@ -59,7 +59,7 @@ public class UnityTaskScheduler : TaskScheduler
 		return TryExecuteTask(task);
 	}
 
-	private void ExecutedPendingTasks()
+	private void ExecutePendingTasks()
 	{
 		while (true)
 		{
