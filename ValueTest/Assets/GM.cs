@@ -96,7 +96,6 @@ public partial class GM : MonoBehaviour {
 
             PlayerController.Possess(p);
         });
-        yield return null;
     }
 
     /// <summary>

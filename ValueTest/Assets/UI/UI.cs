@@ -16,6 +16,7 @@ public class UI
 
     public static MyCursor Cursor { get; internal set; }
     public static NameLabel NameLabel { get; internal set; }
+    public static HelpMsg HelpMsg { get; internal set; }
 
     private UI() { }
     Dictionary<int, IUITarget> pawnDic = new Dictionary<int, IUITarget>();

@@ -13,5 +13,6 @@ public partial class GM
         MyCursor.UseMyCursor();
 
         //Cursor.lockState = CursorLockMode.None;
+        UI.HelpMsg.Text.text = helpMsg;
     }
 }

@@ -16,9 +16,8 @@ public partial class GM
         if (string.IsNullOrEmpty(www.error))
         {
             var buffer = www.bytes.SkipBOMIfHave();
-
-            XElement XE = XElement.Parse(System.Text.Encoding.UTF8.GetString(buffer));
-            helpMsg = XE.Element("Help").Value;
+            XElement XE = XElement.Parse(Encoding.UTF8.GetString(buffer));
+            helpMsg = XE.Value;
         }
         else
         {
