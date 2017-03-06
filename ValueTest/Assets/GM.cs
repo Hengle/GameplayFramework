@@ -64,8 +64,9 @@ public partial class GM : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start ()
+    IEnumerator Start ()
     {
+        yield return StartCoroutine(LoadXML());
         ///游戏主入口
         Init();
 
@@ -95,6 +96,7 @@ public partial class GM : MonoBehaviour {
 
             PlayerController.Possess(p);
         });
+        yield return null;
     }
 
     /// <summary>
