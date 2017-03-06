@@ -147,38 +147,30 @@ public class MyCursor : MonoBehaviour
 
     /// <summary>
     /// 确认UI存在
+    /// <para>取得一个或者创建一个新的锁定UI</para>
     /// </summary>
     /// <param name="id"></param>
     private void ConfirmUI(int id)
     {
         if (!lockPawnUIDic.ContainsKey(id))
         {
-            lockPawnUIDic[id] = GetLockPawnUI();
-        }
-    }
-
-    /// <summary>
-    /// 取得一个或者创建一个新的锁定UI
-    /// </summary>
-    /// <returns></returns>
-    private LockTargetUI GetLockPawnUI()
-    {
-        if (lockPawnUIPool.Count > 0)
-        {
-            var res = lockPawnUIPool.Pop();
-            res.gameObject.SetActive(true);
-            res.ReActive = true;
-            return res;
-        }
-        else
-        {
-            var lockedUI = GameObject.Instantiate(LockTargetUITemplate[0]);
-            lockedUI.transform.SetParent(transform);
-            lockedUI.transform.localScale = Vector3.one;
-            lockedUI.SetActive(true);
-            var res = lockedUI.GetComponent<LockTargetUI>();
-            res.ReActive = true;
-            return res;
+            LockTargetUI res;
+            if (lockPawnUIPool.Count > 0)
+            {
+                res = lockPawnUIPool.Pop();
+                res.gameObject.SetActive(true);
+                res.ReActive = true;
+            }
+            else
+            {
+                var lockedUI = GameObject.Instantiate(LockTargetUITemplate[0]);
+                lockedUI.transform.SetParent(transform);
+                lockedUI.transform.localScale = Vector3.one;
+                lockedUI.SetActive(true);
+                res = lockedUI.GetComponent<LockTargetUI>();
+                res.ReActive = true;
+            }
+            lockPawnUIDic[id] = res;
         }
     }
 

@@ -56,5 +56,6 @@ namespace Poi
 
         public Cooldown AttackCooldown { get; private set; } = new Cooldown(1);
         public int ID { get; set; }
+        public string Name { get; set; }
     }
 }

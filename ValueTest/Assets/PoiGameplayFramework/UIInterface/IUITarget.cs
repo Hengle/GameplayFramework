@@ -16,6 +16,9 @@ namespace Poi
         /// 在屏幕中和鼠标的距离
         /// </summary>
         float magnitudeToMouse { get; }
+        string Name { get; }
+        Vector3 NamePosition { get; }
+
         /// <summary>
         /// 在屏幕中的坐标
         /// </summary>

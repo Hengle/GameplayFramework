@@ -80,6 +80,7 @@ public partial class GM : MonoBehaviour {
                 Height = 1.6f,
                 JumpPower = 9f,
                 JumpMaxStep = 2,
+                Name = "初音未来",
 
             };
             info.Run.Max = 10;

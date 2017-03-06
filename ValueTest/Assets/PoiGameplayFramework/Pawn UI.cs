@@ -28,6 +28,10 @@ namespace Poi
 
         public int ID => DataInfo.ID;
 
+        public string Name => DataInfo.Name;
+
+        public Vector3 NamePosition { get; protected set; }
+
         /// <summary>
         /// 判断是否在相机内
         /// </summary>
@@ -37,6 +41,9 @@ namespace Poi
             bool res = Camera.main.IsAPointInACamera(Chest.position, out viewPos);
             ViewPos = viewPos;
             ScreenPosition = Camera.main.ViewportToScreenPoint(viewPos);
+
+            var vector3 = new Vector3(0, DataInfo.Height + 0.1f, 0);
+            NamePosition = Camera.main.WorldToScreenPoint(transform.position + vector3);
 
             ///求在屏幕住和游标的距离
             magnitudeToMouse = ((Vector2)ScreenPosition - (Vector2)Input.mousePosition).magnitude;

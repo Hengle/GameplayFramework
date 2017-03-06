@@ -22,6 +22,7 @@ public class Map : MonoBehaviour
             MonsterInfo minfo = new MonsterInfo()
             {
                 Height = 1,
+                Name = "小熊",
             };
             monster.Init(minfo);
         }
