@@ -24,11 +24,11 @@ namespace Poi
         internal void Attack()
         {
             var startpos = transform.localToWorldMatrix.MultiplyPoint3x4(
-                new Vector3(0, DataInfo.Height * 2 / 3, 0.5f));
+                new Vector3(0, DataInfo.Height * 3 / 4, 0.4f));
 
             //string projName = "projectile";
             string projName = "proj2";
-            CustomAttactProj proj = CreateProjectile<CustomAttactProj>(projName,startpos);
+            CustomAttactProj proj = CreateProjectile<CustomAttactProj>(projName, startpos);
 
             proj.Owner = this;
 
@@ -36,7 +36,7 @@ namespace Poi
 
             proj.IsTracking = false;
             proj.Target = Controller.Target;
-            proj.Speed = 0.2f;
+            proj.Speed = 0.3f;
 
             DataInfo.AttackCooldown.EnterCooling();
         }
@@ -59,6 +59,7 @@ namespace Poi
             {
                 var go = Resources.Load<GameObject>("Projectile/" + projModelName);
                 var temp = Instantiate(go, proj.transform, false);
+                temp.transform.ResetPosAndRot();
                 temp.name = projModelName;
             }
 

@@ -18,6 +18,16 @@ namespace UnityEngine
             trans.localScale = Vector3.one;
         }
 
+        /// <summary>
+        /// 重置位置和旋转
+        /// </summary>
+        /// <param name="trans"></param>
+        public static void ResetPosAndRot(this Transform trans)
+        {
+            trans.localPosition = Vector3.zero;
+            trans.localRotation = Quaternion.identity;
+        }
+
         public static void ResetLocal(this Transform trans, Vector3 csale)
         {
             trans.localPosition = Vector3.zero;
