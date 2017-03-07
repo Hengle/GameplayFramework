@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ChatServerProgram
@@ -11,15 +12,18 @@ namespace ChatServerProgram
         static void Main(string[] args)
         {
             ChatServer.Server s = new ChatServer.Server();
-            
+            var t = new Thread(s.Run);
+            t.Start();
             while (true)
             {
                 var key = Console.ReadKey();
                 if (key.Key == ConsoleKey.Escape)
                 {
+                    t.Abort();
+                    t.DisableComObjectEagerCleanup();
                     break;
                 }
-                System.Threading.Thread.Sleep(50);
+                Thread.Sleep(50);
             }
         }
     }

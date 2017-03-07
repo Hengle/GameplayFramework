@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace MMONet
 {
-    public class Class1
+    public class MMOServer
     {
     }
 }

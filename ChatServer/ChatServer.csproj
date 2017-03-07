@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,10 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EX\Extention\Poi\Poi.csproj">
+      <Project>{9fda4727-eb4e-4436-a0ba-91ac68fc2d83}</Project>
+      <Name>Poi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MMONet\MMONet.csproj">
       <Project>{6a580a9f-cec9-4037-b39a-b750b307638f}</Project>
       <Name>MMONet</Name>
@@ -56,6 +65,9 @@
       <Project>{b3b7814b-3b96-4e9b-b317-e9fe1cb5b938}</Project>
       <Name>ProtocolMessage</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

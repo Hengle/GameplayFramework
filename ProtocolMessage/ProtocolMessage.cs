@@ -9,7 +9,7 @@ namespace ProtoBuf
     /// <summary>
     /// 聊天消息
     /// </summary>
-    [ProtoContract,ProtoID(10000)]
+    [ProtoContract, ProtoID(10000)]
     public class ChatMsg
     {
         /// <summary>
@@ -24,7 +24,7 @@ namespace ProtoBuf
         public string Context { get; set; }
     }
 
-    [ProtoID(10000)]
+    [ProtoID(10001)]
     public class Test
     {
 

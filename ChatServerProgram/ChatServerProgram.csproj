@@ -54,6 +54,10 @@
       <Project>{2c04d0cd-6f6c-4b63-8b23-ba8bb2ca8645}</Project>
       <Name>ChatServer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MMONet\MMONet.csproj">
+      <Project>{6A580A9F-CEC9-4037-B39A-B750B307638F}</Project>
+      <Name>MMONet</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
