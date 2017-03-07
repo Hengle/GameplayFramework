@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A810265-E2D4-43D4-A328-2864DC83274B}</ProjectGuid>
+    <ProjectGuid>{B3B7814B-3B96-4E9B-B317-E9FE1CB5B938}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Poi</RootNamespace>
-    <AssemblyName>Value</AssemblyName>
+    <RootNamespace>ProtoBuf</RootNamespace>
+    <AssemblyName>ProtocolMessage</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Value.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net35\protobuf-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProtocolMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -47,19 +51,15 @@
       <Project>{9fda4727-eb4e-4436-a0ba-91ac68fc2d83}</Project>
       <Name>Poi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MMONet\MMONet.csproj">
-      <Project>{6a580a9f-cec9-4037-b39a-b750b307638f}</Project>
-      <Name>MMONet</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProtocolMessage\ProtocolMessage.csproj">
-      <Project>{b3b7814b-3b96-4e9b-b317-e9fe1cb5b938}</Project>
-      <Name>ProtocolMessage</Name>
+    <ProjectReference Include="..\ProtoBufExtention\ProtoBufExtention.csproj">
+      <Project>{4c539aa9-77ab-4648-862b-5ba0a4986282}</Project>
+      <Name>ProtoBufExtention</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy .\*.* $(SolutionDir)ValueTest\Assets\Plugins\PoiExtention\Dll /s /y /d</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
