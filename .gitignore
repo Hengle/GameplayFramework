@@ -53,3 +53,8 @@ ProtocolMessage/bin/
 ChatServer/obj/
 MMONet/bin/
 ProtoBufExtention/bin/
+ValueTest/Assembly-CSharp-Editor-firstpass.csproj
+ValueTest/Assembly-CSharp-Editor.csproj
+ValueTest/Assembly-CSharp-firstpass.csproj
+ValueTest/Assembly-CSharp.csproj
+ValueTest/ValueTest.userprefs

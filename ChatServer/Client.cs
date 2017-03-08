@@ -162,7 +162,7 @@ namespace ChatServer
 
         private void OnChatMsg(MemoryStream value)
         {
-            throw new NotImplementedException();
+            ChatMsg msg = Serializer.Deserialize<ChatMsg>(value);
         }
 
         public void Write<T>(T msg)   
