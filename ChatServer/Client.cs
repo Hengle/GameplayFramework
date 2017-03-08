@@ -7,7 +7,7 @@ using ProtoBuf;
 
 namespace ChatServer
 {
-    internal class Client : MMOClient
+    public partial class Client : MMOClient
     {
         /// <summary>
         /// 描述消息包长度字节所占的字节数
@@ -152,19 +152,7 @@ namespace ChatServer
                 OnResponse(msg.Key, msg.Value);
             }
         }
-
-
-        private void OnResponse(ushort key, MemoryStream value)
-        {
-            if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
-            else if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
-        }
-
-        private void OnChatMsg(MemoryStream value)
-        {
-            ChatMsg msg = Serializer.Deserialize<ChatMsg>(value);
-        }
-
+       
         public void Write<T>(T msg)   
         {
             Write(msg, ProtoID.GetID<T>());
