@@ -9,7 +9,7 @@ namespace ChatServer
 {
     public partial class Client
     {
-        private void OnResponse(ushort key, MemoryStream value)
+        protected override void OnResponse(ushort key, MemoryStream value)
         {
             if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
             else if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
@@ -18,6 +18,9 @@ namespace ChatServer
         private void OnChatMsg(MemoryStream value)
         {
             ChatMsg msg = Serializer.Deserialize<ChatMsg>(value);
+            DateTime time = DateTime.Now;
+            Heart msg2 = new Heart();
+            msg2.Time = time.ToBinary();
             BroadCast(msg);
         }
     }

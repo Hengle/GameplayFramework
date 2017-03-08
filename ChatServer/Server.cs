@@ -38,7 +38,7 @@ namespace ChatServer
                 while (accepedSocket.Count > 0)
                 {
                     Client client = new Client(accepedSocket.Dequeue());
-              
+                    clientList.Add(client);
                 }
 
                 foreach (var item in clientList)

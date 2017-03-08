@@ -107,6 +107,8 @@ public partial class GM : MonoBehaviour {
     {
         InitUI();
 
+        InitNet();
+
         ///初始化角色控制器
         InitPlayerController();
     }
