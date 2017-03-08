@@ -156,7 +156,13 @@ namespace ChatServer
 
         private void OnResponse(ushort key, MemoryStream value)
         {
-            
+            if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
+            else if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
+        }
+
+        private void OnChatMsg(MemoryStream value)
+        {
+            throw new NotImplementedException();
         }
 
         public void Write<T>(T msg)   

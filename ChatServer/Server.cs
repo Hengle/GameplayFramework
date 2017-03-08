@@ -14,14 +14,13 @@ namespace ChatServer
 {
     public class Server:MMOServer
     {
-        public int ListenPort { get; private set; }
+        public int ListenPort { get; private set; } = 40000;
         List<Client> clientList = new List<Client>();
 
 
         public void Run()
         {
-            ChatMsg msg = new ChatMsg();
-            ProtoBuf.ProtoID.Init();
+            ProtoID.Init();
 
             ///开始监听
             IPEndPoint ipep = new IPEndPoint(IPAddress.Any, ListenPort);
@@ -29,7 +28,7 @@ namespace ChatServer
             listener.Start();
             listener.BeginAcceptSocket(AcceptCallback, listener);
 
-            var time = new Time();
+            var time = new UtilTime();
 
             while (true)
             {

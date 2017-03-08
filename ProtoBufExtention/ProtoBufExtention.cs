@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime;
 using System.Reflection;
+using System.IO;
 
 namespace ProtoBuf
 {
@@ -38,23 +39,39 @@ namespace ProtoBuf
     {
         public static ushort GetID<T>()
         {
+            Guid guid = typeof(T).GUID;
+            if (map.ContainsKey(guid))
+            {
+                return map[guid];
+            }
             return 0;
         }
 
+        /// <summary>
+        /// 映射协议程序集内类型和协议ID
+        /// </summary>
+        /// <param name="assemblyName"></param>
         public static void Init(string assemblyName = "ProtocolMessage")
-        {
-            var ssss = Assembly.GetCallingAssembly();
-            var assList = AppDomain.CurrentDomain.GetAssemblies();
+        { 
             if (string.IsNullOrEmpty(assemblyName))
             {
                 assemblyName = "ProtocolMessage";
             }
 
+            var assList = AppDomain.CurrentDomain.GetAssemblies();
             ///定义消息的程序集
             var MSGassembly = assList.FirstOrDefault(res => res.GetName().Name == assemblyName);
             if (MSGassembly == null)
             {
-                MSGassembly = Assembly.Load(assemblyName);
+                var curAssembly = Assembly.GetExecutingAssembly();
+                string path = Path.Combine(Path.GetDirectoryName(curAssembly.Location), assemblyName);
+                var ext= Path.GetExtension(path);
+                const string dll = ".dll";
+                if (ext != dll)
+                {
+                    path = Path.ChangeExtension(path, dll);
+                }
+                MSGassembly = Assembly.LoadFrom(path);
             }
 
             Init(MSGassembly);
@@ -73,6 +90,10 @@ namespace ProtoBuf
                     ProtoIDAttribute attribute = (ProtoIDAttribute)item.GetCustomAttributes(idtype, true)?[0];
                     if (attribute != null)
                     {
+                        if (map.ContainsValue(attribute.ID))
+                        {
+                            throw new ArgumentException(item.ToString() + "协议ID发生冲突");
+                        }
                         map.Add(item.GUID, attribute.ID);
                     }
                 }
@@ -81,6 +102,5 @@ namespace ProtoBuf
         }
 
         static Dictionary<Guid, ushort> map = new Dictionary<Guid, ushort>();
-        //static Dictionary<>
     }
 }

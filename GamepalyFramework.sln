@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "DataModel\DataModel.csproj", "{7A810265-E2D4-43D4-A328-2864DC83274B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyToClient", "DataModel\CopyToClient.csproj", "{7A810265-E2D4-43D4-A328-2864DC83274B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poi", "EX\Extention\Poi\Poi.csproj", "{9FDA4727-EB4E-4436-A0BA-91AC68FC2D83}"
 EndProject

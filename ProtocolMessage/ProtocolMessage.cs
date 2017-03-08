@@ -24,7 +24,7 @@ namespace ProtoBuf
         public string Context { get; set; }
     }
 
-    [ProtoID(10001)]
+    [ProtoContract,ProtoID(10001)]
     public class Test
     {
 
