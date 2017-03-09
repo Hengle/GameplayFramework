@@ -21,7 +21,8 @@ namespace ChatServer
             DateTime time = DateTime.Now;
             Heart msg2 = new Heart();
             msg2.Time = time.ToBinary();
-            BroadCast(msg);
+            Console.WriteLine(msg.Context);
+            //BroadCast(msg);
         }
     }
 }

@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net;
+using System.Net.Sockets;
+using MMONet;
+using ProtoBuf;
+using System.Diagnostics;
 
 namespace ChatServerProgram
 {
@@ -14,6 +19,9 @@ namespace ChatServerProgram
             ChatServer.Server s = new ChatServer.Server();
             var t = new Thread(s.Run);
             t.Start();
+
+            MMONet.MMOClient client = new MMONet.MMOClient();
+            client.BeginConnect(IPAddress.Loopback, 40000, callback, client);
             while (true)
             {
                 var key = Console.ReadKey();
@@ -25,6 +33,21 @@ namespace ChatServerProgram
                 }
                 Thread.Sleep(50);
             }
+        }
+
+        private static void callback(IAsyncResult ar)
+        {
+            MMOClient cl = ar.AsyncState as MMOClient;
+            cl.EndConnect(ar);
+            Stopwatch s = new Stopwatch();
+            s.Start();
+            ChatMsg msg = new ChatMsg() { CharacterID = 1, Context = "test" };
+            for (int i = 0; i < 100000; i++)
+            {
+                cl.Write(msg);
+            }
+            s.Stop();
+            Console.WriteLine("-----------" + s.ElapsedMilliseconds);
         }
     }
 }

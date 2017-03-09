@@ -58,6 +58,10 @@
       <Project>{6A580A9F-CEC9-4037-B39A-B750B307638F}</Project>
       <Name>MMONet</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProtocolMessage\ProtocolMessage.csproj">
+      <Project>{b3b7814b-3b96-4e9b-b317-e9fe1cb5b938}</Project>
+      <Name>ProtocolMessage</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

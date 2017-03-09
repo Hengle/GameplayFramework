@@ -34,11 +34,25 @@ namespace MMONet
         public MMOClient()
         {
             Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            InitEventArgs();
+        }
+
+        public void InitEventArgs()
+        {
+            lock (this)
+            {
+                if (!isInitEventArgs)
+                {
+                    sendEventArgs.Completed += Send_Completed;
+                    isInitEventArgs = true;
+                }
+            }
         }
 
         public MMOClient(Socket socket)
         {
             Socket = socket;
+            InitEventArgs();
         }
 
         public Socket Socket { get; protected set; }
@@ -69,23 +83,79 @@ namespace MMONet
         public void Write<T>(T msg, ushort msgID)
         {
             MemoryStream body = new MemoryStream();
-            Serializer.Serialize(body, msg);
-            MemoryStream header = new MemoryStream(MsgDesLength + MsgIDLength);
+            ProtoBuf.Serializer.Serialize(body, msg);
+            MemoryStream sendmsg = new MemoryStream(MsgDesLength + MsgIDLength);
             ushort length = (ushort)body.Length;
-            header.Write(BitConverter.GetBytes(length), 0, MsgDesLength);
-            header.Write(BitConverter.GetBytes(msgID), 0, MsgIDLength);
+            sendmsg.Write(BitConverter.GetBytes(length), 0, MsgDesLength);
+            sendmsg.Write(BitConverter.GetBytes(msgID), 0, MsgIDLength);
 
-            body.WriteTo(header);
+            body.WriteTo(sendmsg);
 
             ///对齐流数据
-            header.Seek(0, SeekOrigin.Begin);
+            sendmsg.Seek(0, SeekOrigin.Begin);
 
-            Write(header);
+            Write(sendmsg);
         }
 
-        public void Write(MemoryStream header)
-        {
+        IList<ArraySegment<byte>> sendList = new List<ArraySegment<byte>>();
+        IList<ArraySegment<byte>> waitList = new List<ArraySegment<byte>>();
+        SocketAsyncEventArgs sendEventArgs = new SocketAsyncEventArgs();
 
+        public void Write(MemoryStream sendmsg)
+        {
+            ArraySegment<byte> sendbytes = new ArraySegment<byte>(sendmsg.ToArray(), 0, (int)sendmsg.Length);
+            Write(sendbytes);
+        }
+
+        public void Write(ArraySegment<byte> sendbytes)
+        {
+            lock (sendList)
+            {
+                if (sendList.Count == 0)
+                {
+                    sendList.Add(sendbytes);
+                    Send();
+                }
+                else
+                {
+                    waitList.Add(sendbytes);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 套接字开始发送数据
+        /// </summary>
+        private void Send()
+        {
+            sendEventArgs.BufferList = sendList;
+
+            if (!Socket.SendAsync(sendEventArgs))
+            {
+                if (sendEventArgs.SocketError == SocketError.Success)
+                {
+                    Send_Completed(Socket, sendEventArgs);
+                }
+            }
+        }
+
+        private void Send_Completed(object sender, SocketAsyncEventArgs e)
+        {
+            if (e.SocketError == SocketError.Success)
+            {
+                lock (sendList)
+                {
+                    sendList.Clear();
+                    var temp = sendList;
+                    sendList = waitList;
+                    waitList = temp;
+
+                    if (sendList.Count > 0)
+                    {
+                        Send();
+                    }
+                }
+            }
         }
 
         #endregion
@@ -207,6 +277,8 @@ namespace MMONet
         /// </summary>
         protected Queue<KeyValuePair<ushort, MemoryStream>> msgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
         protected Queue<KeyValuePair<ushort, MemoryStream>> dealMsgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
+        private bool isInitEventArgs = false;
+
         private void Disconnect()
         {
             throw new NotImplementedException();
