@@ -37,17 +37,30 @@ namespace ChatServerProgram
 
         private static void callback(IAsyncResult ar)
         {
-            MMOClient cl = ar.AsyncState as MMOClient;
-            cl.EndConnect(ar);
-            Stopwatch s = new Stopwatch();
-            s.Start();
-            ChatMsg msg = new ChatMsg() { CharacterID = 1, Context = "test" };
-            for (int i = 0; i < 100000; i++)
+            try
             {
-                cl.Write(msg);
+                MMOClient cl = ar.AsyncState as MMOClient;
+                cl.EndConnect(ar);
+
+                //Stopwatch s = new Stopwatch();
+                //s.Start();
+
+                ChatMsg msg = new ChatMsg() { CharacterID = 1, Context = "test" };
+                for (int i = 0; i < 10000; i++)
+                {
+                    msg = new ChatMsg();
+                    msg.CharacterID = i;
+                    cl.Write(msg);
+                }
+                //s.Stop();
+                //Console.WriteLine("-----------" + s.ElapsedMilliseconds);
             }
-            s.Stop();
-            Console.WriteLine("-----------" + s.ElapsedMilliseconds);
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

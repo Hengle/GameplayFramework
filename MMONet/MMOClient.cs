@@ -19,6 +19,12 @@ namespace MMONet
         /// 消息包类型ID 字节长度
         /// </summary>
         public const int MsgIDLength = ProtoIDAttribute.Length;
+
+        /// <summary>
+        /// 最大暂存消息个数
+        /// </summary>
+        public int MaxMsgCount { get; private set; } = 102400;
+
         /// <summary>
         /// 接受数组偏移量
         /// </summary>
@@ -26,10 +32,15 @@ namespace MMONet
         /// <summary>
         /// 接受缓冲区大小
         /// </summary>
-        public int ReceiveBufferSize { get; private set; } = 8092;
+        public int ReceiveBufferSize { get; private set; } = 16 * 1024;
 
-        private IPAddress loopback;
-        private int v;
+        IList<ArraySegment<byte>> sendList = new List<ArraySegment<byte>>();
+        IList<ArraySegment<byte>> waitList = new List<ArraySegment<byte>>();
+        /// <summary>
+        /// 发送使用的异步套接字操作
+        /// </summary>
+        SocketAsyncEventArgs sendEventArgs = new SocketAsyncEventArgs();
+        SocketAsyncEventArgs receiveEventArgs = new SocketAsyncEventArgs();
 
         public MMOClient()
         {
@@ -44,6 +55,7 @@ namespace MMONet
                 if (!isInitEventArgs)
                 {
                     sendEventArgs.Completed += Send_Completed;
+                    receiveEventArgs.Completed += ReceiveEventArgs_Completed;
                     isInitEventArgs = true;
                 }
             }
@@ -73,8 +85,6 @@ namespace MMONet
 
         #region Write
 
-
-
         public void Write<T>(T msg)
         {
             Write(msg, ProtoID.GetID<T>());
@@ -97,9 +107,6 @@ namespace MMONet
             Write(sendmsg);
         }
 
-        IList<ArraySegment<byte>> sendList = new List<ArraySegment<byte>>();
-        IList<ArraySegment<byte>> waitList = new List<ArraySegment<byte>>();
-        SocketAsyncEventArgs sendEventArgs = new SocketAsyncEventArgs();
 
         public void Write(MemoryStream sendmsg)
         {
@@ -109,7 +116,7 @@ namespace MMONet
 
         public void Write(ArraySegment<byte> sendbytes)
         {
-            lock (sendList)
+            lock (sendEventArgs)
             {
                 if (sendList.Count == 0)
                 {
@@ -139,16 +146,18 @@ namespace MMONet
             }
         }
 
+        int sendCount;
+
         private void Send_Completed(object sender, SocketAsyncEventArgs e)
         {
-            if (e.SocketError == SocketError.Success)
+            if (sendEventArgs.SocketError == SocketError.Success)
             {
-                lock (sendList)
+                lock (sendEventArgs)
                 {
-                    sendList.Clear();
-                    var temp = sendList;
+                    sendCount += sendList.Count;
+                    Console.WriteLine(sendCount);
                     sendList = waitList;
-                    waitList = temp;
+                    waitList = new List<ArraySegment<byte>>();
 
                     if (sendList.Count > 0)
                     {
@@ -156,24 +165,99 @@ namespace MMONet
                     }
                 }
             }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         #endregion
 
         #region Read
+        /// <summary>
+        /// 结束数据模式
+        /// </summary>
+        protected enum ReceiveFuncMode
+        {
+            UseAsyncEventArgs,
+            BeginReceive,
+        }
+
+        protected ReceiveFuncMode ReceiveMode { get; set; } = ReceiveFuncMode.UseAsyncEventArgs;
 
         public void BeginReceive()
         {
             IsReceive = true;
+            offset = 0;
             byte[] buffer = new byte[ReceiveBufferSize];
-            Socket.BeginReceive(buffer, offset, ReceiveBufferSize, SocketFlags.None, ReceiveCallback, buffer);
-        }
+
+            if (ReceiveMode == ReceiveFuncMode.UseAsyncEventArgs)
+            {
+                receiveEventArgs.SetBuffer(buffer, offset, ReceiveBufferSize - offset);
+                if (!Socket.ReceiveAsync(receiveEventArgs))
+                {
+                    ReceiveEventArgs_Completed(Socket, receiveEventArgs);
+                }
+            }
+            else
+            {
+                Socket.BeginReceive(buffer, offset, ReceiveBufferSize - offset,
+                    SocketFlags.None, ReceiveCallback, buffer);
+            }
+        } 
 
         public void EndReceive()
         {
             IsReceive = false;
         }
 
+        private void ReceiveEventArgs_Completed(object sender, SocketAsyncEventArgs e)
+        {
+            if (receiveEventArgs.SocketError == SocketError.Success)
+            {
+                int length = receiveEventArgs.BytesTransferred;
+                if (length <= 0)
+                {
+                    ///ERROR
+                    Disconnect();
+                }
+
+                var buffer = receiveEventArgs.Buffer;
+                ///现有数据长度 = 为本次接收长度 + 上次数据剩余长度
+                length += offset;
+
+                int readLength = 0;
+                if (OnParse != null)
+                {
+                    readLength = OnParse(buffer,length);
+                }
+                else
+                {
+                    readLength = DefaultParse(buffer,length);
+                }
+
+                ///数据剩余长度 = 现有数据长度 - 已经读取长度
+                offset = length - readLength;
+
+                byte[] newbuffer = new byte[ReceiveBufferSize];
+                ///将剩余数据拷贝到新的 接收缓存中
+                if (offset > 0)
+                {
+                    Array.Copy(buffer, readLength, newbuffer, 0, offset);
+                }
+
+                if (IsReceive)
+                {
+                    receiveEventArgs.SetBuffer(buffer, offset, ReceiveBufferSize - offset);
+                    Socket.ReceiveAsync(receiveEventArgs);
+                }
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+         
         private void ReceiveCallback(IAsyncResult ar)
         {
             SocketError err;
@@ -194,83 +278,168 @@ namespace MMONet
                 ///现有数据长度 = 为本次接收长度 + 上次数据剩余长度
                 length += offset;
 
-                MemoryStream transferred = new MemoryStream(buffer, 0, length, true, true);
-
                 int readLength = 0;
-                if (OnRead != null)
+                if (OnParse != null)
                 {
-                    readLength = OnRead(transferred);
+                    readLength = OnParse(buffer, length);
                 }
                 else
                 {
-                    readLength = DefaultOnRead(transferred);
+                    readLength = DefaultParse(buffer, length);
                 }
 
                 ///数据剩余长度 = 现有数据长度 - 已经读取长度
                 offset = length - readLength;
-
                 byte[] newbuffer = new byte[ReceiveBufferSize];
-                ///将剩余数据拷贝到新的 接收缓存中 (readLength + 1?)
-                Array.Copy(buffer, readLength, newbuffer, 0, offset);
+                ///将剩余数据拷贝到新的 接收缓存中
+                if (offset > 0)
+                {
+                    Array.Copy(buffer, readLength, newbuffer, 0, offset);
+                }
                 if (IsReceive)
                 {
-                    Socket.BeginReceive(newbuffer, offset, ReceiveBufferSize - offset, 
+                    Socket.BeginReceive(newbuffer, offset, ReceiveBufferSize - offset,
                         SocketFlags.None, ReceiveCallback, newbuffer);
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
+        int receiveCount;
+
         /// <summary>
-        /// 默认的读取流方法，处理粘包
+        /// 默认的解析方法，处理粘包
         /// </summary>
-        /// <param name="transferred"></param>
+        /// <param name="buffer">接收数据包（可能大于有效数据长度）</param>
+        /// <param name="length">有效数据长度</param>
         /// <returns>返回已经读取的整包的总长度</returns>
-        private int DefaultOnRead(MemoryStream transferred)
+        private int DefaultParse(byte[] buffer, int length)
         {
             ///已经完整读取消息包的长度
             int tempoffset = 0;
 
-            byte[] buffer = transferred.GetBuffer();
-
-            lock (this)
+            lock (msgQueue)
             {
                 ///流长度至少要大于2（2个字节也就是一个消息包长度的描述）
-                while ((transferred.Length - tempoffset) > MsgDesLength)
+                while ((length - tempoffset) > MsgDesLength)
                 {
                     ///取得当前消息包正文的长度
                     ushort size = BitConverter.ToUInt16(buffer, tempoffset);
 
-                    if (size > transferred.Length - tempoffset - MsgDesLength - MsgIDLength)
+                    if (size > length - tempoffset - MsgDesLength - MsgIDLength)
                     {
                         ///剩余流长度没有完整包含一个消息包
                         break;
                     }
+                    receiveCount++;
+                    Console.WriteLine("-----------------" + receiveCount);
+                    if (msgQueue.Count >= MaxMsgCount && KeepMode == KeepMsgMode.New)
+                    {
+                        ///消息过多直接舍弃
+                        msgQueue.Dequeue();
+                        DropMsgCount++;
+                    }
 
-                    ///消息包格式依次为 消息包长度2 ，消息报类型2 ，消息正文，此处解析出消息类型
-                    ushort msg_id = BitConverter.ToUInt16(buffer, tempoffset + MsgDesLength);
+                    if (msgQueue.Count < MaxMsgCount || KeepMode == KeepMsgMode.Old)
+                    {
+                        ///消息包格式依次为 消息包长度2 ，消息报类型2 ，消息正文，此处解析出消息类型
+                        ushort msg_id = BitConverter.ToUInt16(buffer, tempoffset + MsgDesLength);
 
-                    ///取得消息正文，起始偏移为tempoffset + 2 + 2；
-                    MemoryStream msg = new MemoryStream(buffer, tempoffset + MsgDesLength + MsgIDLength, size, true, true);
-                    msgQueue.Enqueue(new KeyValuePair<ushort, MemoryStream>(msg_id, msg));
+                        ///取得消息正文，起始偏移为tempoffset + 2 + 2；
+                        MemoryStream msg = new MemoryStream(buffer, tempoffset + MsgDesLength + MsgIDLength, size, true, true);
 
+                        msgQueue.Enqueue(new KeyValuePair<ushort, MemoryStream>(msg_id, msg));
+                    }
+
+                    ///识别的消息包，移动流起始位置
                     tempoffset += (size + MsgDesLength + MsgIDLength);
                 }
             }
 
-            transferred.Seek(tempoffset, SeekOrigin.Begin);
-
             return tempoffset;
         }
 
+        protected enum KeepMsgMode
+        {
+            /// <summary>
+            /// 保留最新收到的消息
+            /// </summary>
+            New,
+            /// <summary>
+            /// 保留之前收到的消息
+            /// </summary>
+            Old,
+        }
+
         /// <summary>
-        /// 流读取方法
+        /// 上个处理消息轮询期间因为接收到消息溢出而舍弃的消息数量
         /// </summary>
-        public Func<MemoryStream, int> OnRead;
+        public int DropMsgCount { get; protected set; } = 0;
+        /// <summary>
+        /// 当接收到的消息大约消息缓冲池是如何保留消息
+        /// </summary>
+        protected KeepMsgMode KeepMode { get; set; } = KeepMsgMode.New;
+        ///// <summary>
+        ///// 默认的读取流方法，处理粘包
+        ///// </summary>
+        ///// <param name="transferred"></param>
+        ///// <returns>返回已经读取的整包的总长度</returns>
+        //private int DefaultParse(MemoryStream transferred)
+        //{
+        //    ///已经完整读取消息包的长度
+        //    int tempoffset = 0;
+
+        //    byte[] buffer = transferred.GetBuffer();
+
+        //    lock (msgQueue)
+        //    {
+        //        ///流长度至少要大于2（2个字节也就是一个消息包长度的描述）
+        //        while ((transferred.Length - tempoffset) > MsgDesLength)
+        //        {
+        //            ///取得当前消息包正文的长度
+        //            ushort size = BitConverter.ToUInt16(buffer, tempoffset);
+
+        //            if (size > transferred.Length - tempoffset - MsgDesLength - MsgIDLength)
+        //            {
+        //                ///剩余流长度没有完整包含一个消息包
+        //                break;
+        //            }
+
+        //            if (msgQueue.Count >= MaxMsgCount && KeepMode == KeepMsgMode.New)
+        //            {
+        //                ///消息过多直接舍弃
+        //                msgQueue.Dequeue();
+        //                DropMsgCount++;
+        //            }
+
+        //            if (msgQueue.Count < MaxMsgCount || KeepMode == KeepMsgMode.Old)
+        //            {
+        //                ///消息包格式依次为 消息包长度2 ，消息报类型2 ，消息正文，此处解析出消息类型
+        //                ushort msg_id = BitConverter.ToUInt16(buffer, tempoffset + MsgDesLength);
+
+        //                ///取得消息正文，起始偏移为tempoffset + 2 + 2；
+        //                MemoryStream msg = new MemoryStream(buffer, tempoffset + MsgDesLength + MsgIDLength, size, true, true);
+
+        //                msgQueue.Enqueue(new KeyValuePair<ushort, MemoryStream>(msg_id, msg));
+        //            }
+
+        //            ///识别的消息包，移动流起始位置
+        //            tempoffset += (size + MsgDesLength + MsgIDLength);
+        //        }
+        //    }
+
+        //    transferred.Seek(tempoffset, SeekOrigin.Begin);
+
+        //    return tempoffset;
+        //}
+
+        /// <summary>
+        /// 数据解析方法
+        /// </summary>
+        public Func<byte[],int, int> OnParse;
 
         /// <summary>
         /// 已经读取到的消息
@@ -284,7 +453,7 @@ namespace MMONet
             throw new NotImplementedException();
         }
 
-
+        long total = 0;
         /// <summary>
         /// 处理接收到的消息队列
         /// </summary>
@@ -293,16 +462,19 @@ namespace MMONet
             lock (msgQueue)
             {
                 ///交换消息队列
-                var temp = msgQueue;
-                msgQueue = dealMsgQueue;
+                //var temp = msgQueue;
+                //msgQueue = dealMsgQueue; //这种写法或导致Lock等待，原因待查
                 dealMsgQueue = msgQueue;
+                msgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
+                total += DropMsgCount;
+                DropMsgCount = 0;
             }
-
+            
             while (dealMsgQueue.Count > 0)
             {
                 var msg = dealMsgQueue.Dequeue();
                 OnResponse(msg.Key, msg.Value);
-            }
+            }            
         }
 
         protected virtual void OnResponse(ushort key, MemoryStream value)

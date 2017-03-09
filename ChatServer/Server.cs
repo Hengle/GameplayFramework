@@ -32,21 +32,29 @@ namespace ChatServer
 
             while (true)
             {
-                time.Update();
-                double delta = time.DeltaTime;
+                //try
+                //{
+                    time.Update();
+                    double delta = time.DeltaTime;
 
-                while (accepedSocket.Count > 0)
-                {
-                    Client client = new Client(accepedSocket.Dequeue());
-                    clientList.Add(client);
-                }
+                    while (accepedSocket.Count > 0)
+                    {
+                        Client client = new Client(accepedSocket.Dequeue());
+                        clientList.Add(client);
+                    }
 
-                foreach (var item in clientList)
-                {
-                    item.Update(delta);
-                }
+                    foreach (var item in clientList)
+                    {
+                        item.Update(delta);
+                    }
 
-                Thread.Sleep(0);
+                    //Thread.Sleep(0);
+                //}
+                //catch (Exception)
+                //{
+
+                //    throw;
+                //}  
             }
         }
 

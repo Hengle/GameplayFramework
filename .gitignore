@@ -58,3 +58,4 @@ ValueTest/Assembly-CSharp-Editor.csproj
 ValueTest/Assembly-CSharp-firstpass.csproj
 ValueTest/Assembly-CSharp.csproj
 ValueTest/ValueTest.userprefs
+*.vspx
