@@ -22,23 +22,24 @@ public class MyCursor : MonoBehaviour
     /// <summary>
     /// 使用游戏内鼠标
     /// </summary>
-    private bool useMycursor;
+    public bool UseMycursor { get; private set; }
 
-    public void UseMyCursor()
+    public void UseMyCursor(bool myOrSystem)
     {
-        useMycursor = true;
-        CenterCursor.gameObject.SetActive(true);
-        Cursor.visible = false;
+        if (myOrSystem)
+        {
+            UseMycursor = true;
+            CenterCursor.gameObject.SetActive(true);
+            Cursor.visible = false;
+        }
+        else
+        {
+            UseMycursor = false;
+            CenterCursor.gameObject.SetActive(false);
+            Cursor.visible = true;
+        }
+        
     }
-
-    public void UseSyetemCursor()
-    {
-        useMycursor = false;
-        CenterCursor.gameObject.SetActive(false);
-        Cursor.visible = true;
-    }
-
-    
 
     Canvas Canvas;
 
@@ -74,6 +75,7 @@ public class MyCursor : MonoBehaviour
 
     public Camera UICamera => Camera.main;
 
+
     void FixedUpdate()
     {
         UpdateCenterUI();
@@ -103,7 +105,7 @@ public class MyCursor : MonoBehaviour
     /// <param name="deltaTime"></param>
     private void UpdateLockPawnUI(float deltaTime)
     {
-        if (useMycursor)
+        if (UseMycursor)
         {
             var tempskillTargetList = new List<ISkillTarget>();
             foreach (var item in UI.PawnDic)
@@ -176,15 +178,6 @@ public class MyCursor : MonoBehaviour
 
     void Update()
     {
-        if (CommandTool.IsShow && useMycursor)
-        {
-            UseSyetemCursor();
-        }
-
-        if (!CommandTool.IsShow && !useMycursor)
-        {
-            UseMyCursor();
-        }
         UpdateCenterUI();
         UpdateLockPawnUI(Time.deltaTime);
     }

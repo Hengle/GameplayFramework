@@ -128,7 +128,7 @@ public partial class GM : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+        UI.Update(Time.deltaTime);
 	}
 
     private void FixedUpdate()

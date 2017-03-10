@@ -8,7 +8,7 @@ public class HelpMsg : MonoBehaviour {
 
     [SerializeField]
     private Text msgText;
-
+    public bool IsShow => Text?.enabled ?? false;
     public Text Text
     {
         get

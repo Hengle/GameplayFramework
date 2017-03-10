@@ -11,6 +11,8 @@ public class Setting : MonoBehaviour {
     [SerializeField]
     private InputField nameInput;
 
+    public bool IsShow { get; set; }
+
     private void Awake()
     {
         UI.Setting = this;
@@ -24,9 +26,9 @@ public class Setting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (IsShow != onoff.activeSelf)
         {
-            onoff.SetActive(!onoff.activeSelf);
+            onoff.SetActive(IsShow);
         }
 	}
 

@@ -18,6 +18,7 @@ public class UI
     public static NameLabel NameLabel { get; internal set; }
     public static HelpMsg HelpMsg { get; internal set; }
     public static Setting Setting { get; internal set; }
+    public static bool UseUICursor { get; set; }
 
     private UI() { }
     Dictionary<int, IUITarget> pawnDic = new Dictionary<int, IUITarget>();
@@ -52,4 +53,21 @@ public class UI
     }
 
     public static event Action CameraLateUpdate;
+
+    public static void Update(float deltaTime)
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Setting.IsShow = !Setting.IsShow;
+            UseUICursor = !Setting.IsShow;
+        }
+
+        ///显示任何非战斗UI，则使用系统鼠标
+        UseUICursor = !(CommandTool.IsShow || Setting.IsShow || HelpMsg.IsShow);
+
+        if (Cursor && Cursor.UseMycursor != UseUICursor)
+        {
+            Cursor.UseMyCursor(UseUICursor);
+        } 
+    }
 }

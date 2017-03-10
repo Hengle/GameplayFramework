@@ -10,7 +10,8 @@ public partial class GM
     private void InitUI()
     {
         MyCursor = GameObject.Find("Canvas").GetComponentInChildren<MyCursor>();
-        MyCursor.UseMyCursor();
+
+        UI.UseUICursor = true;
 
         //Cursor.lockState = CursorLockMode.None;
         UI.HelpMsg.Text.text = helpMsg;
