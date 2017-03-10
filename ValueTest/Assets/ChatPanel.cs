@@ -20,6 +20,7 @@ public class ChatPanel : MonoBehaviour,IMonoBehaviour,IShow
     void Start () {
         UI.ChatPanel = this;
         onoff.SetActive(false);
+        TextArea.supportRichText = true;
 	}
 	
 	// Update is called once per frame
