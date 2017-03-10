@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MMONet
 {
-    public class MMOServer
+    public class Server
     {
     }
 }

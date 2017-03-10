@@ -69,6 +69,22 @@
             <param name="level"></param>
             <returns></returns>
         </member>
+        <member name="T:Poi.UtilTime">
+            <summary>
+            计时（服务器用）
+            </summary>
+        </member>
+        <member name="P:Poi.UtilTime.DeltaTime">
+            <summary>
+            上一个时间间隔长度（毫秒）
+            </summary>
+        </member>
+        <member name="M:Poi.UtilTime.Update">
+            <summary>
+            更新时间间隔
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Poi.Writing">
             <summary>
             <para>多语言文本查询。</para>

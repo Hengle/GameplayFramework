@@ -12,7 +12,7 @@ using ProtoBuf;
 
 namespace ChatServer
 {
-    public class Server:MMOServer
+    public class Server: MMONet.Server
     {
         public int ListenPort { get; private set; } = 40000;
         List<Client> clientList = new List<Client>();

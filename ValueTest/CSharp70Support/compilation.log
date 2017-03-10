@@ -1,5 +1,8 @@
 ********************************************************************************
-*                     Wednesday, March 08, 2017 3:04:53 PM                     *
+*                      Friday, March 10, 2017 8:18:53 AM                       *
+********************************************************************************
+********************************************************************************
+*                      Friday, March 10, 2017 8:18:53 AM                       *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.3.30
 Platform: Windows
@@ -12,210 +15,9 @@ Compiler: Microsoft C# 7.0
 - Compilation -----------------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-281b14ef62ed07541a924521bdaceac5 
-Exit code: 0
-Elapsed time: 3.27 sec
-
-- Compiler output (0 lines):
-
-- Compiler errors (56 lines):
-0: Assets\Plugins\RootMotion\FinalIK\_DEMOS\Virtual Reality\Scripts\WeaponRifle.cs(48,4): warning CS0618: 'ParticleSystem.EmissionModule.rate' is obsolete: 'rate property is deprecated. Use rateOverTime or rateOverDistance instead.'
-1: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(29,4): warning CS0618: 'ParticleSystem.EmissionModule.rate' is obsolete: 'rate property is deprecated. Use rateOverTime or rateOverDistance instead.'
-2: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,4): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
-3: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,38): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
-4: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,62): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
-5: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,86): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
-6: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(15,40): warning CS0649: Field 'FirstPersonController.m_RunSpeed' is never assigned to, and will always have its default value 0
-7: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(24,39): warning CS0649: Field 'PlatformSpecificContent.m_ChildrenOfThisObject' is never assigned to, and will always have its default value false
-8: Assets\Standard Assets\Utility\SmoothFollow.cs(21,17): warning CS0649: Field 'SmoothFollow.heightDamping' is never assigned to, and will always have its default value 0
-9: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterThirdPerson.cs(56,30): warning CS0649: Field 'CharacterThirdPerson.wallRunLayers' is never assigned to, and will always have its default value
-10: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(24,26): warning CS0649: Field 'FPSAiming.gunAim' is never assigned to, and will always have its default value null
-11: Assets\Standard Assets\Utility\SmoothFollow.cs(10,21): warning CS0649: Field 'SmoothFollow.target' is never assigned to, and will always have its default value null
-12: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(28,44): warning CS0649: Field 'FirstPersonController.m_JumpSound' is never assigned to, and will always have its default value null
-13: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(12,41): warning CS0649: Field 'CharacterAnimationSimple.characterController' is never assigned to, and will always have its default value null
-14: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(18,37): warning CS0649: Field 'SimpleLocomotion.cameraController' is never assigned to, and will always have its default value null
-15: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(28,30): warning CS0649: Field 'PendulumExample.leftFootTarget' is never assigned to, and will always have its default value null
-16: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(31,30): warning CS0649: Field 'PendulumExample.bodyTarget' is never assigned to, and will always have its default value null
-17: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(18,40): warning CS0649: Field 'FirstPersonController.m_StickToGroundForce' is never assigned to, and will always have its default value 0
-18: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(25,30): warning CS0649: Field 'PendulumExample.target' is never assigned to, and will always have its default value null
-19: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(17,40): warning CS0649: Field 'FirstPersonController.m_JumpSpeed' is never assigned to, and will always have its default value 0
-20: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(14,40): warning CS0649: Field 'FirstPersonController.m_WalkSpeed' is never assigned to, and will always have its default value 0
-21: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(14,35): warning CS0649: Field 'CharacterAnimationSimple.moveSpeed' is never assigned to, and will always have its default value null
-22: Assets\Plugins\PoiExtention\Extention\HideLockMouse.cs(16,27): warning CS0649: Field 'HideLockMouse.texture' is never assigned to, and will always have its default value null
-23: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(22,30): warning CS0649: Field 'FPSAiming.gunTarget' is never assigned to, and will always have its default value null
-24: Assets\Standard Assets\Utility\WaypointProgressTracker.cs(14,50): warning CS0649: Field 'WaypointProgressTracker.circuit' is never assigned to, and will always have its default value null
-25: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(27,30): warning CS0649: Field 'PendulumExample.rightHandTarget' is never assigned to, and will always have its default value null
-26: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(12,41): warning CS0649: Field 'UserControlInteractions.character' is never assigned to, and will always have its default value null
-27: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(16,44): warning CS0649: Field 'InteractionSystemTestGUI.effectors' is never assigned to, and will always have its default value null
-28: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(21,51): warning CS0649: Field 'PlatformSpecificContent.m_BuildTargetGroup' is never assigned to, and will always have its default value
-29: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(27,46): warning CS0649: Field 'FirstPersonController.m_FootstepSounds' is never assigned to, and will always have its default value null
-30: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(14,38): warning CS0649: Field 'InteractionSystemTestGUI.interactionObject' is never assigned to, and will always have its default value null
-31: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(23,39): warning CS0649: Field 'FirstPersonController.m_UseHeadBob' is never assigned to, and will always have its default value false
-32: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(26,40): warning CS0649: Field 'FirstPersonController.m_StepInterval' is never assigned to, and will always have its default value 0
-33: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(23,36): warning CS0649: Field 'FPSAiming.ik' is never assigned to, and will always have its default value null
-34: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\CharacterController3rdPerson.cs(12,37): warning CS0649: Field 'CharacterController3rdPerson.cam' is never assigned to, and will always have its default value null
-35: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(32,30): warning CS0649: Field 'PendulumExample.headTarget' is never assigned to, and will always have its default value null
-36: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(29,44): warning CS0649: Field 'FirstPersonController.m_LandSound' is never assigned to, and will always have its default value null
-37: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(30,30): warning CS0649: Field 'PendulumExample.pelvisTarget' is never assigned to, and will always have its default value null
-38: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(29,30): warning CS0649: Field 'PendulumExample.rightFootTarget' is never assigned to, and will always have its default value null
-39: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(26,27): warning CS0649: Field 'FPSAiming.recoil' is never assigned to, and will always have its default value null
-40: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(21,39): warning CS0649: Field 'FirstPersonController.m_UseFovKick' is never assigned to, and will always have its default value false
-41: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(13,26): warning CS0649: Field 'CharacterAnimationSimple.pivotOffset' is never assigned to, and will always have its default value 0
-42: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(13,38): warning CS0649: Field 'UserControlInteractions.interactionSystem' is never assigned to, and will always have its default value null
-43: Assets\Standard Assets\Utility\SmoothFollow.cs(19,17): warning CS0649: Field 'SmoothFollow.rotationDamping' is never assigned to, and will always have its default value 0
-44: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(13,25): warning CS0649: Field 'SlowMo.mouse1' is never assigned to, and will always have its default value false
-45: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(25,40): warning CS0649: Field 'FPSAiming.cam' is never assigned to, and will always have its default value null
-46: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(11,30): warning CS0649: Field 'SlowMo.keyCodes' is never assigned to, and will always have its default value null
-47: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(16,56): warning CS0649: Field 'FirstPersonController.m_RunstepLenghten' is never assigned to, and will always have its default value 0
-48: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(12,25): warning CS0649: Field 'SlowMo.mouse0' is never assigned to, and will always have its default value false
-49: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(26,30): warning CS0649: Field 'PendulumExample.leftHandTarget' is never assigned to, and will always have its default value null
-50: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(19,40): warning CS0649: Field 'FirstPersonController.m_GravityMultiplier' is never assigned to, and will always have its default value 0
-51: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(20,44): warning CS0649: Field 'FirstPersonController.m_MouseLook' is never assigned to, and will always have its default value null
-52: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(21,30): warning CS0649: Field 'FPSAiming.gun' is never assigned to, and will always have its default value null
-53: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\HitReactionTrigger.cs(12,32): warning CS0649: Field 'HitReactionTrigger.hitReaction' is never assigned to, and will always have its default value null
-54: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(20,25): warning CS0649: Field 'FPSAiming.animatePhysics' is never assigned to, and will always have its default value false
-55: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(30,33): warning CS0649: Field 'SimpleLocomotion.rotationMode' is never assigned to, and will always have its default value
-
-- PDB to MDB conversion --------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\pdb2mdb.exe
-Arguments: Temp\Assembly-CSharp-firstpass.dll
-Exit code: 0
-Elapsed time: 0.25 sec
-
-- pdb2mdb.exe output (0 lines):
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-78dced7e2719493498612805afbb14c6 
 ********************************************************************************
-*                     Wednesday, March 08, 2017 3:04:57 PM                     *
-********************************************************************************
-CSharpCompilerWrapper.exe version: 2.0.3.30
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: V:\GitHub\GameplayFramework\ValueTest
-Target profile directory: D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0
-Unity 'Data' or 'Frameworks' directory: D:/Program Files/Unity 5.5.1f1/Editor/Data
-Compiler: Microsoft C# 7.0
-
-- Compilation -----------------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-5f1f52c3837c6af40a0dc2ad9cddc560 
-Exit code: 0
-Elapsed time: 3.58 sec
-
-- Compiler output (0 lines):
-
-- Compiler errors (40 lines):
-0: Assets\Fighter Pack Bundle\Code\CameraControl.cs(83,5): warning CS0618: 'Screen.lockCursor' is obsolete: 'Property lockCursor has been deprecated. Use Cursor.lockState and Cursor.visible instead.'
-1: Assets\Behavior Designer\Runtime\Composites\RandomSequence.cs(32,17): warning CS0618: 'Random.seed' is obsolete: 'Deprecated. Use InitState() function or Random.state property instead.'
-2: Assets\Behavior Designer\Runtime\Composites\RandomSelector.cs(31,17): warning CS0618: 'Random.seed' is obsolete: 'Deprecated. Use InitState() function or Random.state property instead.'
-3: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetDuration.cs(34,33): warning CS0618: 'ParticleSystem.duration' is obsolete: 'duration property is deprecated. Use main.duration instead.'
-4: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartSpeed.cs(33,13): warning CS0618: 'ParticleSystem.startSpeed' is obsolete: 'startSpeed property is deprecated. Use main.startSpeed or main.startSpeedMultiplier instead.'
-5: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartSize.cs(33,13): warning CS0618: 'ParticleSystem.startSize' is obsolete: 'startSize property is deprecated. Use main.startSize or main.startSizeMultiplier instead.'
-6: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartRotation.cs(33,13): warning CS0618: 'ParticleSystem.startRotation' is obsolete: 'startRotation property is deprecated. Use main.startRotation or main.startRotationMultiplier instead.'
-7: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetGravityModifier.cs(34,33): warning CS0618: 'ParticleSystem.gravityModifier' is obsolete: 'gravityModifier property is deprecated. Use main.gravityModifier or main.gravityModifierMultiplier instead.'
-8: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartLifetime.cs(33,13): warning CS0618: 'ParticleSystem.startLifetime' is obsolete: 'startLifetime property is deprecated. Use main.startLifetime or main.startLifetimeMultiplier instead.'
-9: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetLoop.cs(34,33): warning CS0618: 'ParticleSystem.loop' is obsolete: 'loop property is deprecated. Use main.loop instead.'
-10: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetMaxParticles.cs(34,33): warning CS0618: 'ParticleSystem.maxParticles' is obsolete: 'maxParticles property is deprecated. Use main.maxParticles instead.'
-11: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartDelay.cs(33,13): warning CS0618: 'ParticleSystem.startDelay' is obsolete: 'startDelay property is deprecated. Use main.startDelay or main.startDelayMultiplier instead.'
-12: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetPlaybackSpeed.cs(34,33): warning CS0618: 'ParticleSystem.playbackSpeed' is obsolete: 'playbackSpeed property is deprecated. Use main.simulationSpeed instead.'
-13: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartColor.cs(33,13): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
-14: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetPlaybackSpeed.cs(33,13): warning CS0618: 'ParticleSystem.playbackSpeed' is obsolete: 'playbackSpeed property is deprecated. Use main.simulationSpeed instead.'
-15: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetMaxParticles.cs(33,13): warning CS0618: 'ParticleSystem.maxParticles' is obsolete: 'maxParticles property is deprecated. Use main.maxParticles instead.'
-16: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetLoop.cs(33,13): warning CS0618: 'ParticleSystem.loop' is obsolete: 'loop property is deprecated. Use main.loop instead.'
-17: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetGravityModifier.cs(33,13): warning CS0618: 'ParticleSystem.gravityModifier' is obsolete: 'gravityModifier property is deprecated. Use main.gravityModifier or main.gravityModifierMultiplier instead.'
-18: Assets\Resources\CommandTool\CommandTool.cs(18,24): warning CS0649: Field 'CommandTool.template' is never assigned to, and will always have its default value null
-19: Assets\Resources\CommandTool\CmdCanvas.cs(11,24): warning CS0649: Field 'CmdCanvas.cmdInputField' is never assigned to, and will always have its default value null
-20: Assets\PoiGameplayFramework\Monster.cs(31,30): warning CS0649: Field 'Monster.agent' is never assigned to, and will always have its default value null
-21: Assets\Resources\CommandTool\CmdCanvas.cs(17,27): warning CS0649: Field 'CmdCanvas.showContent' is never assigned to, and will always have its default value null
-22: Assets\HelpMsg.cs(10,18): warning CS0649: Field 'HelpMsg.msgText' is never assigned to, and will always have its default value null
-23: Assets\Resources\CommandTool\CmdCanvas.cs(14,18): warning CS0649: Field 'CmdCanvas.cmdShowText' is never assigned to, and will always have its default value null
-24: Assets\Resources\CommandTool\CmdCanvas.cs(8,20): warning CS0649: Field 'CmdCanvas.canvas' is never assigned to, and will always have its default value null
-25: Assets\Resources\CommandTool\CmdCanvas.cs(20,23): warning CS0649: Field 'CmdCanvas.showBar' is never assigned to, and will always have its default value null
-26: Assets\Setting.cs(12,24): warning CS0649: Field 'Setting.nameInput' is never assigned to, and will always have its default value null
-27: Assets\Setting.cs(10,24): warning CS0649: Field 'Setting.onoff' is never assigned to, and will always have its default value null
-28: Assets\NameLabel.cs(10,24): warning CS0649: Field 'NameLabel.template' is never assigned to, and will always have its default value null
-29: Assets\PoiGameplayFramework\Pawn Trans.cs(23,15): warning CS0414: The field 'Pawn.m_GravityMultiplier' is assigned but its value is never used
-30: Assets\PoiGameplayFramework\Pawn Trans.cs(19,15): warning CS0414: The field 'Pawn.m_StationaryTurnSpeed' is assigned but its value is never used
-31: Assets\PoiGameplayFramework\Pawn Trans.cs(17,15): warning CS0414: The field 'Pawn.m_MovingTurnSpeed' is assigned but its value is never used
-32: Assets\PoiGameplayFramework\Controller\CameraController.cs(26,23): warning CS0414: The field 'CameraController.SmoothTime' is assigned but its value is never used
-33: Assets\Resources\CommandTool\CommandTool.cs(66,18): warning CS0414: The field 'CommandTool.isChange' is assigned but its value is never used
-34: Assets\PoiGameplayFramework\Pawn Trans.cs(25,15): warning CS0414: The field 'Pawn.m_RunCycleLegOffset' is assigned but its value is never used
-35: Assets\PoiGameplayFramework\Pawn Trans.cs(29,15): warning CS0414: The field 'Pawn.m_AnimSpeedMultiplier' is assigned but its value is never used
-36: Assets\LockTargetUI.cs(16,19): warning CS0414: The field 'LockTargetUI.moveTime' is assigned but its value is never used
-37: Assets\PoiGameplayFramework\Pawn Trans.cs(39,15): warning CS0414: The field 'Pawn.m_OrigGroundCheckDistance' is assigned but its value is never used
-38: Assets\UI\MyCursor.cs(60,11): warning CS0414: The field 'MyCursor.cooldownTime4LockPawnUI' is assigned but its value is never used
-39: Assets\PoiGameplayFramework\Pawn Trans.cs(27,15): warning CS0414: The field 'Pawn.m_MoveSpeedMultiplier' is assigned but its value is never used
-
-- PDB to MDB conversion --------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\pdb2mdb.exe
-Arguments: Temp\Assembly-CSharp.dll
-Exit code: 0
-Elapsed time: 0.16 sec
-
-- pdb2mdb.exe output (0 lines):
-********************************************************************************
-*                     Wednesday, March 08, 2017 3:04:57 PM                     *
-********************************************************************************
-CSharpCompilerWrapper.exe version: 2.0.3.30
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor-firstpass.dll
-Project directory: V:\GitHub\GameplayFramework\ValueTest
-Target profile directory: D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0
-Unity 'Data' or 'Frameworks' directory: D:/Program Files/Unity 5.5.1f1/Editor/Data
-Compiler: Microsoft C# 7.0
-
-- Compilation -----------------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-24b0660e23da07c4a8164ba2c3ec99be 
-Exit code: 0
-Elapsed time: 3.25 sec
-
-- Compiler output (0 lines):
-
-- Compiler errors (0 lines):
-
-- PDB to MDB conversion --------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\pdb2mdb.exe
-Arguments: Temp\Assembly-CSharp-Editor-firstpass.dll
-Exit code: 0
-Elapsed time: 0.12 sec
-
-- pdb2mdb.exe output (0 lines):
-********************************************************************************
-*                     Wednesday, March 08, 2017 3:05:02 PM                     *
-********************************************************************************
-CSharpCompilerWrapper.exe version: 2.0.3.30
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: V:\GitHub\GameplayFramework\ValueTest
-Target profile directory: D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0
-Unity 'Data' or 'Frameworks' directory: D:/Program Files/Unity 5.5.1f1/Editor/Data
-Compiler: Microsoft C# 7.0
-
-- Compilation -----------------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-7a0941ad38ee596458cc619c7ca1b7c6 
-Exit code: 0
-Elapsed time: 2.50 sec
-
-- Compiler output (0 lines):
-
-- Compiler errors (0 lines):
-
-- PDB to MDB conversion --------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\pdb2mdb.exe
-Arguments: Temp\Assembly-CSharp-Editor.dll
-Exit code: 0
-Elapsed time: 0.09 sec
-
-- pdb2mdb.exe output (0 lines):
-********************************************************************************
-*                     Wednesday, March 08, 2017 3:08:26 PM                     *
+*                      Friday, March 10, 2017 8:18:57 AM                       *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.3.30
 Platform: Windows
@@ -228,39 +30,9 @@ Compiler: Microsoft C# 7.0
 - Compilation -----------------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-bbd34d2564cca3440858b1bb3eb8ed81 
-********************************************************************************
-*                     Wednesday, March 08, 2017 3:08:29 PM                     *
-********************************************************************************
-CSharpCompilerWrapper.exe version: 2.0.3.30
-Platform: Windows
-Target assembly: Assembly-CSharp-firstpass.dll
-Project directory: V:\GitHub\GameplayFramework\ValueTest
-Target profile directory: D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0
-Unity 'Data' or 'Frameworks' directory: D:/Program Files/Unity 5.5.1f1/Editor/Data
-Compiler: Microsoft C# 7.0
-
-- Compilation -----------------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-586a2a1ed3181a04f8c172c33f2c4946 
-********************************************************************************
-*                     Wednesday, March 08, 2017 3:08:32 PM                     *
-********************************************************************************
-CSharpCompilerWrapper.exe version: 2.0.3.30
-Platform: Windows
-Target assembly: Assembly-CSharp-firstpass.dll
-Project directory: V:\GitHub\GameplayFramework\ValueTest
-Target profile directory: D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0
-Unity 'Data' or 'Frameworks' directory: D:/Program Files/Unity 5.5.1f1/Editor/Data
-Compiler: Microsoft C# 7.0
-
-- Compilation -----------------------------------------------
-
-Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-e3beb8da1c1d59f40b4f508e971e71ae 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-c87da537f705b574b98b32d47e33b25b 
 Exit code: 0
-Elapsed time: 3.08 sec
+Elapsed time: 2.91 sec
 
 - Compiler output (0 lines):
 
@@ -271,67 +43,67 @@ Elapsed time: 3.08 sec
 3: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,62): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
 4: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,86): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
 5: Assets\Plugins\RootMotion\FinalIK\_DEMOS\Virtual Reality\Scripts\WeaponRifle.cs(48,4): warning CS0618: 'ParticleSystem.EmissionModule.rate' is obsolete: 'rate property is deprecated. Use rateOverTime or rateOverDistance instead.'
-6: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(12,41): warning CS0649: Field 'CharacterAnimationSimple.characterController' is never assigned to, and will always have its default value null
-7: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(13,25): warning CS0649: Field 'SlowMo.mouse1' is never assigned to, and will always have its default value false
-8: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(27,46): warning CS0649: Field 'FirstPersonController.m_FootstepSounds' is never assigned to, and will always have its default value null
-9: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(14,38): warning CS0649: Field 'InteractionSystemTestGUI.interactionObject' is never assigned to, and will always have its default value null
-10: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(26,30): warning CS0649: Field 'PendulumExample.leftHandTarget' is never assigned to, and will always have its default value null
-11: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(24,26): warning CS0649: Field 'FPSAiming.gunAim' is never assigned to, and will always have its default value null
-12: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(16,44): warning CS0649: Field 'InteractionSystemTestGUI.effectors' is never assigned to, and will always have its default value null
-13: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(23,39): warning CS0649: Field 'FirstPersonController.m_UseHeadBob' is never assigned to, and will always have its default value false
-14: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(29,44): warning CS0649: Field 'FirstPersonController.m_LandSound' is never assigned to, and will always have its default value null
-15: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(20,25): warning CS0649: Field 'FPSAiming.animatePhysics' is never assigned to, and will always have its default value false
-16: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(14,35): warning CS0649: Field 'CharacterAnimationSimple.moveSpeed' is never assigned to, and will always have its default value null
-17: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(28,30): warning CS0649: Field 'PendulumExample.leftFootTarget' is never assigned to, and will always have its default value null
-18: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(16,56): warning CS0649: Field 'FirstPersonController.m_RunstepLenghten' is never assigned to, and will always have its default value 0
-19: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(12,25): warning CS0649: Field 'SlowMo.mouse0' is never assigned to, and will always have its default value false
-20: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(32,30): warning CS0649: Field 'PendulumExample.headTarget' is never assigned to, and will always have its default value null
-21: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(23,36): warning CS0649: Field 'FPSAiming.ik' is never assigned to, and will always have its default value null
-22: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(25,40): warning CS0649: Field 'FPSAiming.cam' is never assigned to, and will always have its default value null
-23: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(13,26): warning CS0649: Field 'CharacterAnimationSimple.pivotOffset' is never assigned to, and will always have its default value 0
-24: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(22,30): warning CS0649: Field 'FPSAiming.gunTarget' is never assigned to, and will always have its default value null
-25: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(18,37): warning CS0649: Field 'SimpleLocomotion.cameraController' is never assigned to, and will always have its default value null
-26: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(29,30): warning CS0649: Field 'PendulumExample.rightFootTarget' is never assigned to, and will always have its default value null
-27: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(19,40): warning CS0649: Field 'FirstPersonController.m_GravityMultiplier' is never assigned to, and will always have its default value 0
-28: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(24,39): warning CS0649: Field 'PlatformSpecificContent.m_ChildrenOfThisObject' is never assigned to, and will always have its default value false
-29: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(21,51): warning CS0649: Field 'PlatformSpecificContent.m_BuildTargetGroup' is never assigned to, and will always have its default value
-30: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(30,33): warning CS0649: Field 'SimpleLocomotion.rotationMode' is never assigned to, and will always have its default value
-31: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(17,40): warning CS0649: Field 'FirstPersonController.m_JumpSpeed' is never assigned to, and will always have its default value 0
+6: Assets\Standard Assets\Utility\SmoothFollow.cs(19,17): warning CS0649: Field 'SmoothFollow.rotationDamping' is never assigned to, and will always have its default value 0
+7: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(14,38): warning CS0649: Field 'InteractionSystemTestGUI.interactionObject' is never assigned to, and will always have its default value null
+8: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\CharacterController3rdPerson.cs(12,37): warning CS0649: Field 'CharacterController3rdPerson.cam' is never assigned to, and will always have its default value null
+9: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(24,26): warning CS0649: Field 'FPSAiming.gunAim' is never assigned to, and will always have its default value null
+10: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(25,30): warning CS0649: Field 'PendulumExample.target' is never assigned to, and will always have its default value null
+11: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(17,40): warning CS0649: Field 'FirstPersonController.m_JumpSpeed' is never assigned to, and will always have its default value 0
+12: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(24,39): warning CS0649: Field 'PlatformSpecificContent.m_ChildrenOfThisObject' is never assigned to, and will always have its default value false
+13: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(25,40): warning CS0649: Field 'FPSAiming.cam' is never assigned to, and will always have its default value null
+14: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(31,30): warning CS0649: Field 'PendulumExample.bodyTarget' is never assigned to, and will always have its default value null
+15: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(29,44): warning CS0649: Field 'FirstPersonController.m_LandSound' is never assigned to, and will always have its default value null
+16: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(28,30): warning CS0649: Field 'PendulumExample.leftFootTarget' is never assigned to, and will always have its default value null
+17: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(29,30): warning CS0649: Field 'PendulumExample.rightFootTarget' is never assigned to, and will always have its default value null
+18: Assets\Plugins\PoiExtention\Extention\HideLockMouse.cs(16,27): warning CS0649: Field 'HideLockMouse.texture' is never assigned to, and will always have its default value null
+19: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(16,56): warning CS0649: Field 'FirstPersonController.m_RunstepLenghten' is never assigned to, and will always have its default value 0
+20: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(14,35): warning CS0649: Field 'CharacterAnimationSimple.moveSpeed' is never assigned to, and will always have its default value null
+21: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(15,40): warning CS0649: Field 'FirstPersonController.m_RunSpeed' is never assigned to, and will always have its default value 0
+22: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(26,27): warning CS0649: Field 'FPSAiming.recoil' is never assigned to, and will always have its default value null
+23: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(32,30): warning CS0649: Field 'PendulumExample.headTarget' is never assigned to, and will always have its default value null
+24: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(27,30): warning CS0649: Field 'PendulumExample.rightHandTarget' is never assigned to, and will always have its default value null
+25: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(12,41): warning CS0649: Field 'UserControlInteractions.character' is never assigned to, and will always have its default value null
+26: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(30,33): warning CS0649: Field 'SimpleLocomotion.rotationMode' is never assigned to, and will always have its default value
+27: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(21,39): warning CS0649: Field 'FirstPersonController.m_UseFovKick' is never assigned to, and will always have its default value false
+28: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(12,25): warning CS0649: Field 'SlowMo.mouse0' is never assigned to, and will always have its default value false
+29: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(23,36): warning CS0649: Field 'FPSAiming.ik' is never assigned to, and will always have its default value null
+30: Assets\Standard Assets\Utility\SmoothFollow.cs(21,17): warning CS0649: Field 'SmoothFollow.heightDamping' is never assigned to, and will always have its default value 0
+31: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(13,25): warning CS0649: Field 'SlowMo.mouse1' is never assigned to, and will always have its default value false
 32: Assets\Standard Assets\Utility\WaypointProgressTracker.cs(14,50): warning CS0649: Field 'WaypointProgressTracker.circuit' is never assigned to, and will always have its default value null
-33: Assets\Standard Assets\Utility\SmoothFollow.cs(21,17): warning CS0649: Field 'SmoothFollow.heightDamping' is never assigned to, and will always have its default value 0
-34: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(12,41): warning CS0649: Field 'UserControlInteractions.character' is never assigned to, and will always have its default value null
-35: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(30,30): warning CS0649: Field 'PendulumExample.pelvisTarget' is never assigned to, and will always have its default value null
-36: Assets\Standard Assets\Utility\SmoothFollow.cs(10,21): warning CS0649: Field 'SmoothFollow.target' is never assigned to, and will always have its default value null
-37: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(20,44): warning CS0649: Field 'FirstPersonController.m_MouseLook' is never assigned to, and will always have its default value null
-38: Assets\Plugins\PoiExtention\Extention\HideLockMouse.cs(16,27): warning CS0649: Field 'HideLockMouse.texture' is never assigned to, and will always have its default value null
-39: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\HitReactionTrigger.cs(12,32): warning CS0649: Field 'HitReactionTrigger.hitReaction' is never assigned to, and will always have its default value null
-40: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\CharacterController3rdPerson.cs(12,37): warning CS0649: Field 'CharacterController3rdPerson.cam' is never assigned to, and will always have its default value null
-41: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterThirdPerson.cs(56,30): warning CS0649: Field 'CharacterThirdPerson.wallRunLayers' is never assigned to, and will always have its default value
-42: Assets\Standard Assets\Utility\SmoothFollow.cs(19,17): warning CS0649: Field 'SmoothFollow.rotationDamping' is never assigned to, and will always have its default value 0
-43: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(14,40): warning CS0649: Field 'FirstPersonController.m_WalkSpeed' is never assigned to, and will always have its default value 0
-44: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(18,40): warning CS0649: Field 'FirstPersonController.m_StickToGroundForce' is never assigned to, and will always have its default value 0
-45: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(26,27): warning CS0649: Field 'FPSAiming.recoil' is never assigned to, and will always have its default value null
-46: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(13,38): warning CS0649: Field 'UserControlInteractions.interactionSystem' is never assigned to, and will always have its default value null
-47: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(31,30): warning CS0649: Field 'PendulumExample.bodyTarget' is never assigned to, and will always have its default value null
-48: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(27,30): warning CS0649: Field 'PendulumExample.rightHandTarget' is never assigned to, and will always have its default value null
-49: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(11,30): warning CS0649: Field 'SlowMo.keyCodes' is never assigned to, and will always have its default value null
-50: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(26,40): warning CS0649: Field 'FirstPersonController.m_StepInterval' is never assigned to, and will always have its default value 0
-51: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(25,30): warning CS0649: Field 'PendulumExample.target' is never assigned to, and will always have its default value null
-52: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(21,30): warning CS0649: Field 'FPSAiming.gun' is never assigned to, and will always have its default value null
-53: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(28,44): warning CS0649: Field 'FirstPersonController.m_JumpSound' is never assigned to, and will always have its default value null
-54: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(21,39): warning CS0649: Field 'FirstPersonController.m_UseFovKick' is never assigned to, and will always have its default value false
-55: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(15,40): warning CS0649: Field 'FirstPersonController.m_RunSpeed' is never assigned to, and will always have its default value 0
+33: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(14,40): warning CS0649: Field 'FirstPersonController.m_WalkSpeed' is never assigned to, and will always have its default value 0
+34: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\HitReactionTrigger.cs(12,32): warning CS0649: Field 'HitReactionTrigger.hitReaction' is never assigned to, and will always have its default value null
+35: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(22,30): warning CS0649: Field 'FPSAiming.gunTarget' is never assigned to, and will always have its default value null
+36: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(11,30): warning CS0649: Field 'SlowMo.keyCodes' is never assigned to, and will always have its default value null
+37: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(13,26): warning CS0649: Field 'CharacterAnimationSimple.pivotOffset' is never assigned to, and will always have its default value 0
+38: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(21,30): warning CS0649: Field 'FPSAiming.gun' is never assigned to, and will always have its default value null
+39: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(23,39): warning CS0649: Field 'FirstPersonController.m_UseHeadBob' is never assigned to, and will always have its default value false
+40: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(18,37): warning CS0649: Field 'SimpleLocomotion.cameraController' is never assigned to, and will always have its default value null
+41: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(12,41): warning CS0649: Field 'CharacterAnimationSimple.characterController' is never assigned to, and will always have its default value null
+42: Assets\Standard Assets\Utility\SmoothFollow.cs(10,21): warning CS0649: Field 'SmoothFollow.target' is never assigned to, and will always have its default value null
+43: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(21,51): warning CS0649: Field 'PlatformSpecificContent.m_BuildTargetGroup' is never assigned to, and will always have its default value
+44: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(13,38): warning CS0649: Field 'UserControlInteractions.interactionSystem' is never assigned to, and will always have its default value null
+45: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(19,40): warning CS0649: Field 'FirstPersonController.m_GravityMultiplier' is never assigned to, and will always have its default value 0
+46: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(30,30): warning CS0649: Field 'PendulumExample.pelvisTarget' is never assigned to, and will always have its default value null
+47: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(27,46): warning CS0649: Field 'FirstPersonController.m_FootstepSounds' is never assigned to, and will always have its default value null
+48: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(20,25): warning CS0649: Field 'FPSAiming.animatePhysics' is never assigned to, and will always have its default value false
+49: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(26,40): warning CS0649: Field 'FirstPersonController.m_StepInterval' is never assigned to, and will always have its default value 0
+50: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(26,30): warning CS0649: Field 'PendulumExample.leftHandTarget' is never assigned to, and will always have its default value null
+51: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(20,44): warning CS0649: Field 'FirstPersonController.m_MouseLook' is never assigned to, and will always have its default value null
+52: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(16,44): warning CS0649: Field 'InteractionSystemTestGUI.effectors' is never assigned to, and will always have its default value null
+53: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterThirdPerson.cs(56,30): warning CS0649: Field 'CharacterThirdPerson.wallRunLayers' is never assigned to, and will always have its default value
+54: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(18,40): warning CS0649: Field 'FirstPersonController.m_StickToGroundForce' is never assigned to, and will always have its default value 0
+55: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(28,44): warning CS0649: Field 'FirstPersonController.m_JumpSound' is never assigned to, and will always have its default value null
 
 - PDB to MDB conversion --------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-firstpass.dll
 Exit code: 0
-Elapsed time: 0.20 sec
+Elapsed time: 0.23 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                     Wednesday, March 08, 2017 3:08:36 PM                     *
+*                      Friday, March 10, 2017 8:19:06 AM                       *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.3.30
 Platform: Windows
@@ -344,9 +116,9 @@ Compiler: Microsoft C# 7.0
 - Compilation -----------------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-cd7ae36e5a2401f4ab8ab2da84a18483 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-aa437d3bff6d6f14a9a339056d491157 
 Exit code: 0
-Elapsed time: 3.06 sec
+Elapsed time: 2.87 sec
 
 - Compiler output (0 lines):
 
@@ -357,67 +129,67 @@ Elapsed time: 3.06 sec
 3: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,38): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
 4: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,62): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
 5: Assets\Plugins\RootMotion\FinalIK\_DEMOS\CCD IK\Scripts\MechSpiderParticles.cs(32,86): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
-6: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(18,37): warning CS0649: Field 'SimpleLocomotion.cameraController' is never assigned to, and will always have its default value null
-7: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(29,30): warning CS0649: Field 'PendulumExample.rightFootTarget' is never assigned to, and will always have its default value null
-8: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(19,40): warning CS0649: Field 'FirstPersonController.m_GravityMultiplier' is never assigned to, and will always have its default value 0
-9: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(25,30): warning CS0649: Field 'PendulumExample.target' is never assigned to, and will always have its default value null
-10: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(20,44): warning CS0649: Field 'FirstPersonController.m_MouseLook' is never assigned to, and will always have its default value null
-11: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(12,41): warning CS0649: Field 'CharacterAnimationSimple.characterController' is never assigned to, and will always have its default value null
-12: Assets\Standard Assets\Utility\SmoothFollow.cs(21,17): warning CS0649: Field 'SmoothFollow.heightDamping' is never assigned to, and will always have its default value 0
-13: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(13,25): warning CS0649: Field 'SlowMo.mouse1' is never assigned to, and will always have its default value false
-14: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(24,39): warning CS0649: Field 'PlatformSpecificContent.m_ChildrenOfThisObject' is never assigned to, and will always have its default value false
-15: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(25,40): warning CS0649: Field 'FPSAiming.cam' is never assigned to, and will always have its default value null
-16: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(17,40): warning CS0649: Field 'FirstPersonController.m_JumpSpeed' is never assigned to, and will always have its default value 0
-17: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(13,26): warning CS0649: Field 'CharacterAnimationSimple.pivotOffset' is never assigned to, and will always have its default value 0
-18: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(30,33): warning CS0649: Field 'SimpleLocomotion.rotationMode' is never assigned to, and will always have its default value
-19: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(11,30): warning CS0649: Field 'SlowMo.keyCodes' is never assigned to, and will always have its default value null
-20: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(28,30): warning CS0649: Field 'PendulumExample.leftFootTarget' is never assigned to, and will always have its default value null
-21: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(24,26): warning CS0649: Field 'FPSAiming.gunAim' is never assigned to, and will always have its default value null
-22: Assets\Plugins\PoiExtention\Extention\HideLockMouse.cs(16,27): warning CS0649: Field 'HideLockMouse.texture' is never assigned to, and will always have its default value null
-23: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(21,30): warning CS0649: Field 'FPSAiming.gun' is never assigned to, and will always have its default value null
-24: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(14,40): warning CS0649: Field 'FirstPersonController.m_WalkSpeed' is never assigned to, and will always have its default value 0
-25: Assets\Standard Assets\Utility\SmoothFollow.cs(10,21): warning CS0649: Field 'SmoothFollow.target' is never assigned to, and will always have its default value null
-26: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(27,46): warning CS0649: Field 'FirstPersonController.m_FootstepSounds' is never assigned to, and will always have its default value null
-27: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(26,40): warning CS0649: Field 'FirstPersonController.m_StepInterval' is never assigned to, and will always have its default value 0
-28: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(31,30): warning CS0649: Field 'PendulumExample.bodyTarget' is never assigned to, and will always have its default value null
-29: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(21,51): warning CS0649: Field 'PlatformSpecificContent.m_BuildTargetGroup' is never assigned to, and will always have its default value
-30: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(32,30): warning CS0649: Field 'PendulumExample.headTarget' is never assigned to, and will always have its default value null
-31: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(30,30): warning CS0649: Field 'PendulumExample.pelvisTarget' is never assigned to, and will always have its default value null
-32: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(23,36): warning CS0649: Field 'FPSAiming.ik' is never assigned to, and will always have its default value null
-33: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(16,56): warning CS0649: Field 'FirstPersonController.m_RunstepLenghten' is never assigned to, and will always have its default value 0
-34: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(18,40): warning CS0649: Field 'FirstPersonController.m_StickToGroundForce' is never assigned to, and will always have its default value 0
-35: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterThirdPerson.cs(56,30): warning CS0649: Field 'CharacterThirdPerson.wallRunLayers' is never assigned to, and will always have its default value
-36: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(27,30): warning CS0649: Field 'PendulumExample.rightHandTarget' is never assigned to, and will always have its default value null
-37: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(21,39): warning CS0649: Field 'FirstPersonController.m_UseFovKick' is never assigned to, and will always have its default value false
-38: Assets\Standard Assets\Utility\WaypointProgressTracker.cs(14,50): warning CS0649: Field 'WaypointProgressTracker.circuit' is never assigned to, and will always have its default value null
-39: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(13,38): warning CS0649: Field 'UserControlInteractions.interactionSystem' is never assigned to, and will always have its default value null
-40: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(26,27): warning CS0649: Field 'FPSAiming.recoil' is never assigned to, and will always have its default value null
-41: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(28,44): warning CS0649: Field 'FirstPersonController.m_JumpSound' is never assigned to, and will always have its default value null
-42: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(26,30): warning CS0649: Field 'PendulumExample.leftHandTarget' is never assigned to, and will always have its default value null
-43: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(16,44): warning CS0649: Field 'InteractionSystemTestGUI.effectors' is never assigned to, and will always have its default value null
-44: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\CharacterController3rdPerson.cs(12,37): warning CS0649: Field 'CharacterController3rdPerson.cam' is never assigned to, and will always have its default value null
-45: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(22,30): warning CS0649: Field 'FPSAiming.gunTarget' is never assigned to, and will always have its default value null
-46: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(15,40): warning CS0649: Field 'FirstPersonController.m_RunSpeed' is never assigned to, and will always have its default value 0
-47: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(14,35): warning CS0649: Field 'CharacterAnimationSimple.moveSpeed' is never assigned to, and will always have its default value null
-48: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(12,25): warning CS0649: Field 'SlowMo.mouse0' is never assigned to, and will always have its default value false
-49: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(12,41): warning CS0649: Field 'UserControlInteractions.character' is never assigned to, and will always have its default value null
-50: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(14,38): warning CS0649: Field 'InteractionSystemTestGUI.interactionObject' is never assigned to, and will always have its default value null
-51: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(20,25): warning CS0649: Field 'FPSAiming.animatePhysics' is never assigned to, and will always have its default value false
-52: Assets\Standard Assets\Utility\SmoothFollow.cs(19,17): warning CS0649: Field 'SmoothFollow.rotationDamping' is never assigned to, and will always have its default value 0
-53: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(23,39): warning CS0649: Field 'FirstPersonController.m_UseHeadBob' is never assigned to, and will always have its default value false
-54: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\HitReactionTrigger.cs(12,32): warning CS0649: Field 'HitReactionTrigger.hitReaction' is never assigned to, and will always have its default value null
-55: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(29,44): warning CS0649: Field 'FirstPersonController.m_LandSound' is never assigned to, and will always have its default value null
+6: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(28,44): warning CS0649: Field 'FirstPersonController.m_JumpSound' is never assigned to, and will always have its default value null
+7: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(12,41): warning CS0649: Field 'CharacterAnimationSimple.characterController' is never assigned to, and will always have its default value null
+8: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(13,26): warning CS0649: Field 'CharacterAnimationSimple.pivotOffset' is never assigned to, and will always have its default value 0
+9: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(24,39): warning CS0649: Field 'PlatformSpecificContent.m_ChildrenOfThisObject' is never assigned to, and will always have its default value false
+10: Assets\Standard Assets\Utility\SmoothFollow.cs(10,21): warning CS0649: Field 'SmoothFollow.target' is never assigned to, and will always have its default value null
+11: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(13,25): warning CS0649: Field 'SlowMo.mouse1' is never assigned to, and will always have its default value false
+12: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(26,30): warning CS0649: Field 'PendulumExample.leftHandTarget' is never assigned to, and will always have its default value null
+13: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(25,30): warning CS0649: Field 'PendulumExample.target' is never assigned to, and will always have its default value null
+14: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(20,44): warning CS0649: Field 'FirstPersonController.m_MouseLook' is never assigned to, and will always have its default value null
+15: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(14,40): warning CS0649: Field 'FirstPersonController.m_WalkSpeed' is never assigned to, and will always have its default value 0
+16: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(25,40): warning CS0649: Field 'FPSAiming.cam' is never assigned to, and will always have its default value null
+17: Assets\Standard Assets\Utility\SmoothFollow.cs(21,17): warning CS0649: Field 'SmoothFollow.heightDamping' is never assigned to, and will always have its default value 0
+18: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(23,39): warning CS0649: Field 'FirstPersonController.m_UseHeadBob' is never assigned to, and will always have its default value false
+19: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(18,37): warning CS0649: Field 'SimpleLocomotion.cameraController' is never assigned to, and will always have its default value null
+20: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\SimpleLocomotion.cs(30,33): warning CS0649: Field 'SimpleLocomotion.rotationMode' is never assigned to, and will always have its default value
+21: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(12,41): warning CS0649: Field 'UserControlInteractions.character' is never assigned to, and will always have its default value null
+22: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(26,40): warning CS0649: Field 'FirstPersonController.m_StepInterval' is never assigned to, and will always have its default value 0
+23: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(12,25): warning CS0649: Field 'SlowMo.mouse0' is never assigned to, and will always have its default value false
+24: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(28,30): warning CS0649: Field 'PendulumExample.leftFootTarget' is never assigned to, and will always have its default value null
+25: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(30,30): warning CS0649: Field 'PendulumExample.pelvisTarget' is never assigned to, and will always have its default value null
+26: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(27,30): warning CS0649: Field 'PendulumExample.rightHandTarget' is never assigned to, and will always have its default value null
+27: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\HitReactionTrigger.cs(12,32): warning CS0649: Field 'HitReactionTrigger.hitReaction' is never assigned to, and will always have its default value null
+28: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(14,38): warning CS0649: Field 'InteractionSystemTestGUI.interactionObject' is never assigned to, and will always have its default value null
+29: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(20,25): warning CS0649: Field 'FPSAiming.animatePhysics' is never assigned to, and will always have its default value false
+30: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterAnimationSimple.cs(14,35): warning CS0649: Field 'CharacterAnimationSimple.moveSpeed' is never assigned to, and will always have its default value null
+31: Assets\Standard Assets\Utility\PlatformSpecificContent.cs(21,51): warning CS0649: Field 'PlatformSpecificContent.m_BuildTargetGroup' is never assigned to, and will always have its default value
+32: Assets\Plugins\PoiExtention\Extention\HideLockMouse.cs(16,27): warning CS0649: Field 'HideLockMouse.texture' is never assigned to, and will always have its default value null
+33: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(32,30): warning CS0649: Field 'PendulumExample.headTarget' is never assigned to, and will always have its default value null
+34: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(24,26): warning CS0649: Field 'FPSAiming.gunAim' is never assigned to, and will always have its default value null
+35: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(29,30): warning CS0649: Field 'PendulumExample.rightFootTarget' is never assigned to, and will always have its default value null
+36: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\UserControlInteractions.cs(13,38): warning CS0649: Field 'UserControlInteractions.interactionSystem' is never assigned to, and will always have its default value null
+37: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(16,56): warning CS0649: Field 'FirstPersonController.m_RunstepLenghten' is never assigned to, and will always have its default value 0
+38: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(21,30): warning CS0649: Field 'FPSAiming.gun' is never assigned to, and will always have its default value null
+39: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(18,40): warning CS0649: Field 'FirstPersonController.m_StickToGroundForce' is never assigned to, and will always have its default value 0
+40: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(27,46): warning CS0649: Field 'FirstPersonController.m_FootstepSounds' is never assigned to, and will always have its default value null
+41: Assets\Standard Assets\Utility\SmoothFollow.cs(19,17): warning CS0649: Field 'SmoothFollow.rotationDamping' is never assigned to, and will always have its default value 0
+42: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(22,30): warning CS0649: Field 'FPSAiming.gunTarget' is never assigned to, and will always have its default value null
+43: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\CharacterController3rdPerson.cs(12,37): warning CS0649: Field 'CharacterController3rdPerson.cam' is never assigned to, and will always have its default value null
+44: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\PendulumExample.cs(31,30): warning CS0649: Field 'PendulumExample.bodyTarget' is never assigned to, and will always have its default value null
+45: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(15,40): warning CS0649: Field 'FirstPersonController.m_RunSpeed' is never assigned to, and will always have its default value 0
+46: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(19,40): warning CS0649: Field 'FirstPersonController.m_GravityMultiplier' is never assigned to, and will always have its default value 0
+47: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Misc\SlowMo.cs(11,30): warning CS0649: Field 'SlowMo.keyCodes' is never assigned to, and will always have its default value null
+48: Assets\Plugins\RootMotion\Shared Demo Assets\Scripts\Character Controllers\CharacterThirdPerson.cs(56,30): warning CS0649: Field 'CharacterThirdPerson.wallRunLayers' is never assigned to, and will always have its default value
+49: Assets\Standard Assets\Utility\WaypointProgressTracker.cs(14,50): warning CS0649: Field 'WaypointProgressTracker.circuit' is never assigned to, and will always have its default value null
+50: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\InteractionSystemTestGUI.cs(16,44): warning CS0649: Field 'InteractionSystemTestGUI.effectors' is never assigned to, and will always have its default value null
+51: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(26,27): warning CS0649: Field 'FPSAiming.recoil' is never assigned to, and will always have its default value null
+52: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(29,44): warning CS0649: Field 'FirstPersonController.m_LandSound' is never assigned to, and will always have its default value null
+53: Assets\Plugins\RootMotion\FinalIK\_DEMOS\FBBIK\Scripts\FPSAiming.cs(23,36): warning CS0649: Field 'FPSAiming.ik' is never assigned to, and will always have its default value null
+54: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(21,39): warning CS0649: Field 'FirstPersonController.m_UseFovKick' is never assigned to, and will always have its default value false
+55: Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs(17,40): warning CS0649: Field 'FirstPersonController.m_JumpSpeed' is never assigned to, and will always have its default value 0
 
 - PDB to MDB conversion --------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-firstpass.dll
 Exit code: 0
-Elapsed time: 0.15 sec
+Elapsed time: 0.16 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                     Wednesday, March 08, 2017 3:08:40 PM                     *
+*                      Friday, March 10, 2017 8:19:10 AM                       *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.3.30
 Platform: Windows
@@ -430,9 +202,9 @@ Compiler: Microsoft C# 7.0
 - Compilation -----------------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-1e8906ed850b6024dbe513d5097375e6 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-ddb3cc6431895314abeb1107c7bb400a 
 Exit code: 0
-Elapsed time: 3.62 sec
+Elapsed time: 4.30 sec
 
 - Compiler output (0 lines):
 
@@ -442,52 +214,52 @@ Elapsed time: 3.62 sec
 2: Assets\Behavior Designer\Runtime\Composites\RandomSelector.cs(31,17): warning CS0618: 'Random.seed' is obsolete: 'Deprecated. Use InitState() function or Random.state property instead.'
 3: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetDuration.cs(34,33): warning CS0618: 'ParticleSystem.duration' is obsolete: 'duration property is deprecated. Use main.duration instead.'
 4: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartSpeed.cs(33,13): warning CS0618: 'ParticleSystem.startSpeed' is obsolete: 'startSpeed property is deprecated. Use main.startSpeed or main.startSpeedMultiplier instead.'
-5: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartSize.cs(33,13): warning CS0618: 'ParticleSystem.startSize' is obsolete: 'startSize property is deprecated. Use main.startSize or main.startSizeMultiplier instead.'
-6: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartRotation.cs(33,13): warning CS0618: 'ParticleSystem.startRotation' is obsolete: 'startRotation property is deprecated. Use main.startRotation or main.startRotationMultiplier instead.'
-7: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartLifetime.cs(33,13): warning CS0618: 'ParticleSystem.startLifetime' is obsolete: 'startLifetime property is deprecated. Use main.startLifetime or main.startLifetimeMultiplier instead.'
-8: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartDelay.cs(33,13): warning CS0618: 'ParticleSystem.startDelay' is obsolete: 'startDelay property is deprecated. Use main.startDelay or main.startDelayMultiplier instead.'
-9: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartColor.cs(33,13): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
-10: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetPlaybackSpeed.cs(33,13): warning CS0618: 'ParticleSystem.playbackSpeed' is obsolete: 'playbackSpeed property is deprecated. Use main.simulationSpeed instead.'
-11: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetMaxParticles.cs(33,13): warning CS0618: 'ParticleSystem.maxParticles' is obsolete: 'maxParticles property is deprecated. Use main.maxParticles instead.'
-12: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetLoop.cs(33,13): warning CS0618: 'ParticleSystem.loop' is obsolete: 'loop property is deprecated. Use main.loop instead.'
-13: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetGravityModifier.cs(34,33): warning CS0618: 'ParticleSystem.gravityModifier' is obsolete: 'gravityModifier property is deprecated. Use main.gravityModifier or main.gravityModifierMultiplier instead.'
-14: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetGravityModifier.cs(33,13): warning CS0618: 'ParticleSystem.gravityModifier' is obsolete: 'gravityModifier property is deprecated. Use main.gravityModifier or main.gravityModifierMultiplier instead.'
-15: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetLoop.cs(34,33): warning CS0618: 'ParticleSystem.loop' is obsolete: 'loop property is deprecated. Use main.loop instead.'
-16: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetMaxParticles.cs(34,33): warning CS0618: 'ParticleSystem.maxParticles' is obsolete: 'maxParticles property is deprecated. Use main.maxParticles instead.'
-17: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetPlaybackSpeed.cs(34,33): warning CS0618: 'ParticleSystem.playbackSpeed' is obsolete: 'playbackSpeed property is deprecated. Use main.simulationSpeed instead.'
-18: Assets\Resources\CommandTool\CmdCanvas.cs(17,27): warning CS0649: Field 'CmdCanvas.showContent' is never assigned to, and will always have its default value null
+5: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetGravityModifier.cs(34,33): warning CS0618: 'ParticleSystem.gravityModifier' is obsolete: 'gravityModifier property is deprecated. Use main.gravityModifier or main.gravityModifierMultiplier instead.'
+6: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetLoop.cs(34,33): warning CS0618: 'ParticleSystem.loop' is obsolete: 'loop property is deprecated. Use main.loop instead.'
+7: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartSize.cs(33,13): warning CS0618: 'ParticleSystem.startSize' is obsolete: 'startSize property is deprecated. Use main.startSize or main.startSizeMultiplier instead.'
+8: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartRotation.cs(33,13): warning CS0618: 'ParticleSystem.startRotation' is obsolete: 'startRotation property is deprecated. Use main.startRotation or main.startRotationMultiplier instead.'
+9: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartLifetime.cs(33,13): warning CS0618: 'ParticleSystem.startLifetime' is obsolete: 'startLifetime property is deprecated. Use main.startLifetime or main.startLifetimeMultiplier instead.'
+10: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetMaxParticles.cs(34,33): warning CS0618: 'ParticleSystem.maxParticles' is obsolete: 'maxParticles property is deprecated. Use main.maxParticles instead.'
+11: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartDelay.cs(33,13): warning CS0618: 'ParticleSystem.startDelay' is obsolete: 'startDelay property is deprecated. Use main.startDelay or main.startDelayMultiplier instead.'
+12: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\GetPlaybackSpeed.cs(34,33): warning CS0618: 'ParticleSystem.playbackSpeed' is obsolete: 'playbackSpeed property is deprecated. Use main.simulationSpeed instead.'
+13: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetStartColor.cs(33,13): warning CS0618: 'ParticleSystem.startColor' is obsolete: 'startColor property is deprecated. Use main.startColor instead.'
+14: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetPlaybackSpeed.cs(33,13): warning CS0618: 'ParticleSystem.playbackSpeed' is obsolete: 'playbackSpeed property is deprecated. Use main.simulationSpeed instead.'
+15: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetMaxParticles.cs(33,13): warning CS0618: 'ParticleSystem.maxParticles' is obsolete: 'maxParticles property is deprecated. Use main.maxParticles instead.'
+16: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetLoop.cs(33,13): warning CS0618: 'ParticleSystem.loop' is obsolete: 'loop property is deprecated. Use main.loop instead.'
+17: Assets\Behavior Designer\Runtime\Basic Tasks\ParticleSystem\SetGravityModifier.cs(33,13): warning CS0618: 'ParticleSystem.gravityModifier' is obsolete: 'gravityModifier property is deprecated. Use main.gravityModifier or main.gravityModifierMultiplier instead.'
+18: Assets\Resources\CommandTool\CommandTool.cs(18,24): warning CS0649: Field 'CommandTool.template' is never assigned to, and will always have its default value null
 19: Assets\Resources\CommandTool\CmdCanvas.cs(14,18): warning CS0649: Field 'CmdCanvas.cmdShowText' is never assigned to, and will always have its default value null
-20: Assets\Resources\CommandTool\CmdCanvas.cs(11,24): warning CS0649: Field 'CmdCanvas.cmdInputField' is never assigned to, and will always have its default value null
+20: Assets\NameLabel.cs(10,24): warning CS0649: Field 'NameLabel.template' is never assigned to, and will always have its default value null
 21: Assets\Setting.cs(10,24): warning CS0649: Field 'Setting.onoff' is never assigned to, and will always have its default value null
-22: Assets\NameLabel.cs(10,24): warning CS0649: Field 'NameLabel.template' is never assigned to, and will always have its default value null
-23: Assets\Resources\CommandTool\CmdCanvas.cs(8,20): warning CS0649: Field 'CmdCanvas.canvas' is never assigned to, and will always have its default value null
-24: Assets\Resources\CommandTool\CommandTool.cs(18,24): warning CS0649: Field 'CommandTool.template' is never assigned to, and will always have its default value null
-25: Assets\PoiGameplayFramework\Monster.cs(31,30): warning CS0649: Field 'Monster.agent' is never assigned to, and will always have its default value null
-26: Assets\Setting.cs(12,24): warning CS0649: Field 'Setting.nameInput' is never assigned to, and will always have its default value null
-27: Assets\HelpMsg.cs(10,18): warning CS0649: Field 'HelpMsg.msgText' is never assigned to, and will always have its default value null
-28: Assets\Resources\CommandTool\CmdCanvas.cs(20,23): warning CS0649: Field 'CmdCanvas.showBar' is never assigned to, and will always have its default value null
+22: Assets\Resources\CommandTool\CmdCanvas.cs(20,23): warning CS0649: Field 'CmdCanvas.showBar' is never assigned to, and will always have its default value null
+23: Assets\HelpMsg.cs(10,18): warning CS0649: Field 'HelpMsg.msgText' is never assigned to, and will always have its default value null
+24: Assets\Setting.cs(12,24): warning CS0649: Field 'Setting.nameInput' is never assigned to, and will always have its default value null
+25: Assets\Resources\CommandTool\CmdCanvas.cs(17,27): warning CS0649: Field 'CmdCanvas.showContent' is never assigned to, and will always have its default value null
+26: Assets\Resources\CommandTool\CmdCanvas.cs(8,20): warning CS0649: Field 'CmdCanvas.canvas' is never assigned to, and will always have its default value null
+27: Assets\Resources\CommandTool\CmdCanvas.cs(11,24): warning CS0649: Field 'CmdCanvas.cmdInputField' is never assigned to, and will always have its default value null
+28: Assets\PoiGameplayFramework\Monster.cs(31,30): warning CS0649: Field 'Monster.agent' is never assigned to, and will always have its default value null
 29: Assets\PoiGameplayFramework\Pawn Trans.cs(39,15): warning CS0414: The field 'Pawn.m_OrigGroundCheckDistance' is assigned but its value is never used
 30: Assets\Resources\CommandTool\CommandTool.cs(66,18): warning CS0414: The field 'CommandTool.isChange' is assigned but its value is never used
-31: Assets\PoiGameplayFramework\Pawn Trans.cs(25,15): warning CS0414: The field 'Pawn.m_RunCycleLegOffset' is assigned but its value is never used
-32: Assets\PoiGameplayFramework\Pawn Trans.cs(27,15): warning CS0414: The field 'Pawn.m_MoveSpeedMultiplier' is assigned but its value is never used
+31: Assets\PoiGameplayFramework\Pawn Trans.cs(19,15): warning CS0414: The field 'Pawn.m_StationaryTurnSpeed' is assigned but its value is never used
+32: Assets\PoiGameplayFramework\Pawn Trans.cs(17,15): warning CS0414: The field 'Pawn.m_MovingTurnSpeed' is assigned but its value is never used
 33: Assets\LockTargetUI.cs(16,19): warning CS0414: The field 'LockTargetUI.moveTime' is assigned but its value is never used
-34: Assets\PoiGameplayFramework\Pawn Trans.cs(23,15): warning CS0414: The field 'Pawn.m_GravityMultiplier' is assigned but its value is never used
-35: Assets\UI\MyCursor.cs(60,11): warning CS0414: The field 'MyCursor.cooldownTime4LockPawnUI' is assigned but its value is never used
-36: Assets\PoiGameplayFramework\Pawn Trans.cs(29,15): warning CS0414: The field 'Pawn.m_AnimSpeedMultiplier' is assigned but its value is never used
-37: Assets\PoiGameplayFramework\Pawn Trans.cs(17,15): warning CS0414: The field 'Pawn.m_MovingTurnSpeed' is assigned but its value is never used
-38: Assets\PoiGameplayFramework\Pawn Trans.cs(19,15): warning CS0414: The field 'Pawn.m_StationaryTurnSpeed' is assigned but its value is never used
-39: Assets\PoiGameplayFramework\Controller\CameraController.cs(26,23): warning CS0414: The field 'CameraController.SmoothTime' is assigned but its value is never used
+34: Assets\UI\MyCursor.cs(60,11): warning CS0414: The field 'MyCursor.cooldownTime4LockPawnUI' is assigned but its value is never used
+35: Assets\PoiGameplayFramework\Pawn Trans.cs(23,15): warning CS0414: The field 'Pawn.m_GravityMultiplier' is assigned but its value is never used
+36: Assets\PoiGameplayFramework\Pawn Trans.cs(27,15): warning CS0414: The field 'Pawn.m_MoveSpeedMultiplier' is assigned but its value is never used
+37: Assets\PoiGameplayFramework\Controller\CameraController.cs(26,23): warning CS0414: The field 'CameraController.SmoothTime' is assigned but its value is never used
+38: Assets\PoiGameplayFramework\Pawn Trans.cs(29,15): warning CS0414: The field 'Pawn.m_AnimSpeedMultiplier' is assigned but its value is never used
+39: Assets\PoiGameplayFramework\Pawn Trans.cs(25,15): warning CS0414: The field 'Pawn.m_RunCycleLegOffset' is assigned but its value is never used
 
 - PDB to MDB conversion --------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp.dll
 Exit code: 0
-Elapsed time: 0.15 sec
+Elapsed time: 0.14 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                     Wednesday, March 08, 2017 3:08:40 PM                     *
+*                      Friday, March 10, 2017 8:19:10 AM                       *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.3.30
 Platform: Windows
@@ -500,9 +272,9 @@ Compiler: Microsoft C# 7.0
 - Compilation -----------------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-881d58c994c372247b0bfd981edd44ef 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-c49cb598ab1c26241ab6c43c3ce4479a 
 Exit code: 0
-Elapsed time: 3.36 sec
+Elapsed time: 3.54 sec
 
 - Compiler output (0 lines):
 
@@ -513,11 +285,11 @@ Elapsed time: 3.36 sec
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-Editor-firstpass.dll
 Exit code: 0
-Elapsed time: 0.11 sec
+Elapsed time: 0.10 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                     Wednesday, March 08, 2017 3:08:45 PM                     *
+*                      Friday, March 10, 2017 8:19:15 AM                       *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.3.30
 Platform: Windows
@@ -530,9 +302,9 @@ Compiler: Microsoft C# 7.0
 - Compilation -----------------------------------------------
 
 Process: V:\GitHub\GameplayFramework\ValueTest\CSharp70Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-d82cfe01a6afd234a9d7d0bf147e698b 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\mscorlib.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Core.dll" -r:"D:\Program Files\Unity 5.5.1f1\Editor\Data\Mono\lib\mono\2.0\System.Xml.dll" @Temp/UnityTempFile-83d09ef849dd4934c967625bf7d2c815 
 Exit code: 0
-Elapsed time: 2.53 sec
+Elapsed time: 2.42 sec
 
 - Compiler output (0 lines):
 

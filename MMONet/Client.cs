@@ -9,7 +9,7 @@ using ProtoBuf;
 
 namespace MMONet
 {
-    public class MMOClient
+    public class Client
     {
         /// <summary>
         /// 描述消息包长度字节所占的字节数
@@ -23,12 +23,12 @@ namespace MMONet
         /// <summary>
         /// 最大暂存消息个数
         /// </summary>
-        public int MaxMsgCount { get; private set; } = 102400;
+        public int MaxMsgCount { get; private set; } = 1024;
 
         /// <summary>
         /// 接受数组偏移量
         /// </summary>
-        protected int offset = 0;
+        private int offset = 0;
         /// <summary>
         /// 接受缓冲区大小
         /// </summary>
@@ -42,7 +42,7 @@ namespace MMONet
         SocketAsyncEventArgs sendEventArgs = new SocketAsyncEventArgs();
         SocketAsyncEventArgs receiveEventArgs = new SocketAsyncEventArgs();
 
-        public MMOClient()
+        public Client()
         {
             Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             InitEventArgs();
@@ -61,7 +61,7 @@ namespace MMONet
             }
         }
 
-        public MMOClient(Socket socket)
+        public Client(Socket socket)
         {
             Socket = socket;
             InitEventArgs();
@@ -146,16 +146,12 @@ namespace MMONet
             }
         }
 
-        int sendCount;
-
         private void Send_Completed(object sender, SocketAsyncEventArgs e)
         {
             if (sendEventArgs.SocketError == SocketError.Success)
             {
                 lock (sendEventArgs)
                 {
-                    sendCount += sendList.Count;
-                    Console.WriteLine(sendCount);
                     sendList = waitList;
                     waitList = new List<ArraySegment<byte>>();
 
@@ -248,7 +244,7 @@ namespace MMONet
 
                 if (IsReceive)
                 {
-                    receiveEventArgs.SetBuffer(buffer, offset, ReceiveBufferSize - offset);
+                    receiveEventArgs.SetBuffer(newbuffer, offset, ReceiveBufferSize - offset);
                     Socket.ReceiveAsync(receiveEventArgs);
                 }
             }
@@ -308,8 +304,6 @@ namespace MMONet
             }
         }
 
-        int receiveCount;
-
         /// <summary>
         /// 默认的解析方法，处理粘包
         /// </summary>
@@ -321,7 +315,7 @@ namespace MMONet
             ///已经完整读取消息包的长度
             int tempoffset = 0;
 
-            lock (msgQueue)
+            lock (this)
             {
                 ///流长度至少要大于2（2个字节也就是一个消息包长度的描述）
                 while ((length - tempoffset) > MsgDesLength)
@@ -334,8 +328,7 @@ namespace MMONet
                         ///剩余流长度没有完整包含一个消息包
                         break;
                     }
-                    receiveCount++;
-                    Console.WriteLine("-----------------" + receiveCount);
+
                     if (msgQueue.Count >= MaxMsgCount && KeepMode == KeepMsgMode.New)
                     {
                         ///消息过多直接舍弃
@@ -352,6 +345,9 @@ namespace MMONet
                         MemoryStream msg = new MemoryStream(buffer, tempoffset + MsgDesLength + MsgIDLength, size, true, true);
 
                         msgQueue.Enqueue(new KeyValuePair<ushort, MemoryStream>(msg_id, msg));
+
+                        //OnResponse(msg_id, msg); //此处为测试代码
+                        //UpdateMessage(); //此处为测试代码
                     }
 
                     ///识别的消息包，移动流起始位置
@@ -445,6 +441,7 @@ namespace MMONet
         /// 已经读取到的消息
         /// </summary>
         protected Queue<KeyValuePair<ushort, MemoryStream>> msgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
+        protected Queue<KeyValuePair<ushort, MemoryStream>> msgQueue2 = new Queue<KeyValuePair<ushort, MemoryStream>>();
         protected Queue<KeyValuePair<ushort, MemoryStream>> dealMsgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
         private bool isInitEventArgs = false;
 
@@ -453,7 +450,6 @@ namespace MMONet
             throw new NotImplementedException();
         }
 
-        long total = 0;
         /// <summary>
         /// 处理接收到的消息队列
         /// </summary>
@@ -462,19 +458,22 @@ namespace MMONet
             lock (msgQueue)
             {
                 ///交换消息队列
+                dealMsgQueue = msgQueue;
+                msgQueue = msgQueue2;
                 //var temp = msgQueue;
                 //msgQueue = dealMsgQueue; //这种写法或导致Lock等待，原因待查
-                dealMsgQueue = msgQueue;
-                msgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
-                total += DropMsgCount;
+                //dealMsgQueue = msgQueue;
+                //msgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>(); //直接交互队列会丢失消息
                 DropMsgCount = 0;
             }
-            
+
             while (dealMsgQueue.Count > 0)
             {
                 var msg = dealMsgQueue.Dequeue();
                 OnResponse(msg.Key, msg.Value);
-            }            
+            }
+
+            msgQueue2 = dealMsgQueue;
         }
 
         protected virtual void OnResponse(ushort key, MemoryStream value)

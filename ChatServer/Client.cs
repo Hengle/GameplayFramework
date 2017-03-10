@@ -7,7 +7,7 @@ using ProtoBuf;
 
 namespace ChatServer
 {
-    public partial class Client : MMOClient
+    public partial class Client : MMONet.Client
     {
         public Client(Socket socket):base(socket)
         {

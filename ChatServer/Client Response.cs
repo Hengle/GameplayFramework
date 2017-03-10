@@ -19,12 +19,7 @@ namespace ChatServer
         {
             i++;
             ChatMsg msg = Serializer.Deserialize<ChatMsg>(value);
-            DateTime time = DateTime.Now;
-            Heart msg2 = new Heart();
-            msg2.Time = time.ToBinary();
-            Console.WriteLine(msg.CharacterID + "----" + msg.Context + "-----------" + i);
-
-            //BroadCast(msg);
+            Console.WriteLine(msg.CharacterID + "----" + msg.Context + "----收到消息个数-------" + i);
         }
     }
 }

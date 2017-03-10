@@ -20,7 +20,7 @@ namespace ChatServerProgram
             var t = new Thread(s.Run);
             t.Start();
 
-            MMONet.MMOClient client = new MMONet.MMOClient();
+            MMONet.Client client = new MMONet.Client();
             client.BeginConnect(IPAddress.Loopback, 40000, callback, client);
             while (true)
             {
@@ -39,21 +39,22 @@ namespace ChatServerProgram
         {
             try
             {
-                MMOClient cl = ar.AsyncState as MMOClient;
+                Client cl = ar.AsyncState as Client;
                 cl.EndConnect(ar);
-
-                //Stopwatch s = new Stopwatch();
-                //s.Start();
-
-                ChatMsg msg = new ChatMsg() { CharacterID = 1, Context = "test" };
+                List<ChatMsg> list = new List<ChatMsg>();
+                var msg = new ChatMsg();
                 for (int i = 0; i < 10000; i++)
                 {
                     msg = new ChatMsg();
-                    msg.CharacterID = i;
+                    msg.CharacterID = i + 1;
                     cl.Write(msg);
+                    Console.WriteLine("发送消息----------------------------------" + msg.CharacterID);
                 }
-                //s.Stop();
-                //Console.WriteLine("-----------" + s.ElapsedMilliseconds);
+
+                //foreach (var item in list)
+                //{
+                //    cl.Write(item);
+                //}
             }
             catch (Exception)
             {
