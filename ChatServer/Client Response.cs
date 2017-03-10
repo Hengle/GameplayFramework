@@ -12,8 +12,14 @@ namespace ChatServer
         protected override void OnResponse(ushort key, MemoryStream value)
         {
             if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
-            else if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
+            else if (key == ProtoID.GetID<Heart>()) OnHeart(value);
         }
+
+        private void OnHeart(MemoryStream value)
+        {
+            Write(1001,value);
+        }
+
         int i = 0;
         private void OnChatMsg(MemoryStream value)
         {

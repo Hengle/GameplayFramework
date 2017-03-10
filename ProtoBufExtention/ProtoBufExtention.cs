@@ -39,10 +39,10 @@ namespace ProtoBuf
     {
         public static ushort GetID<T>()
         {
-            Guid guid = typeof(T).GUID;
-            if (map.ContainsKey(guid))
+            string name = typeof(T).FullName;
+            if (map.ContainsKey(name))
             {
-                return map[guid];
+                return map[name];
             }
             return 0;
         }
@@ -94,13 +94,13 @@ namespace ProtoBuf
                         {
                             throw new ArgumentException(item.ToString() + "协议ID发生冲突");
                         }
-                        map.Add(item.GUID, attribute.ID);
+                        map.Add(item.FullName, attribute.ID);
                     }
                 }
 
             }
         }
 
-        static Dictionary<Guid, ushort> map = new Dictionary<Guid, ushort>();
+        static Dictionary<string, ushort> map = new Dictionary<string, ushort>();
     }
 }

@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public partial class GM : MonoBehaviour {
 
-    public static GM GMInstance;
+    public static GM Instance;
 
     //public static List<PlayerController> PlayerControllers { get; private set; }
     //    = new List<PlayerController>();
@@ -46,7 +46,7 @@ public partial class GM : MonoBehaviour {
         else
         {
             ///第一次创建GM赋值给Instance；
-            GMInstance = this;
+            Instance = this;
         }
     }
 
@@ -56,7 +56,7 @@ public partial class GM : MonoBehaviour {
     /// <returns></returns>
     private bool CheckInitFinish()
     {
-        if (GMInstance && GameObject.Find("GM"))
+        if (Instance && GameObject.Find("GM"))
         {
             return true;
         }
@@ -107,7 +107,7 @@ public partial class GM : MonoBehaviour {
     {
         InitUI();
 
-        InitNet();
+        //InitNet();
 
         ///初始化角色控制器
         InitPlayerController();
@@ -130,4 +130,25 @@ public partial class GM : MonoBehaviour {
     void Update () {
 		
 	}
+
+    private void FixedUpdate()
+    {
+        UpdateMesssage();
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (chatServer != null)
+        {
+            chatServer.Dispose();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        
+    }
+
+
+
 }

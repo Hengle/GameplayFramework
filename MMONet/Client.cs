@@ -9,7 +9,7 @@ using ProtoBuf;
 
 namespace MMONet
 {
-    public class Client
+    public class Client:IDisposable
     {
         /// <summary>
         /// 描述消息包长度字节所占的字节数
@@ -25,6 +25,7 @@ namespace MMONet
         /// </summary>
         public int MaxMsgCount { get; private set; } = 1024;
 
+        public bool IsConnected { get; private set; } = false;
         /// <summary>
         /// 接受数组偏移量
         /// </summary>
@@ -81,6 +82,7 @@ namespace MMONet
         public void EndConnect(IAsyncResult ar)
         {
             Socket.EndConnect(ar);
+            IsConnected = Socket.Connected;
         }
 
         #region Write
@@ -94,6 +96,16 @@ namespace MMONet
         {
             MemoryStream body = new MemoryStream();
             ProtoBuf.Serializer.Serialize(body, msg);
+            Write(msgID, body);
+        }
+
+        /// <summary>
+        /// 写入消息号和消息正文的序列化流，用于在不解析状态下转发。
+        /// </summary>
+        /// <param name="msgID"></param>
+        /// <param name="body">流一定不能是反序列化后的</param>
+        public void Write(ushort msgID, MemoryStream body)
+        {
             MemoryStream sendmsg = new MemoryStream(MsgDesLength + MsgIDLength);
             ushort length = (ushort)body.Length;
             sendmsg.Write(BitConverter.GetBytes(length), 0, MsgDesLength);
@@ -106,7 +118,6 @@ namespace MMONet
 
             Write(sendmsg);
         }
-
 
         public void Write(MemoryStream sendmsg)
         {
@@ -215,7 +226,8 @@ namespace MMONet
                 if (length <= 0)
                 {
                     ///ERROR
-                    Disconnect();
+                    DisConnect();
+                    return;
                 }
 
                 var buffer = receiveEventArgs.Buffer;
@@ -268,7 +280,8 @@ namespace MMONet
                 if (err == SocketError.SocketError || length <= 0)
                 {
                     ///ERROR
-                    Disconnect();
+                    DisConnect();
+                    return;
                 }
 
                 ///现有数据长度 = 为本次接收长度 + 上次数据剩余长度
@@ -445,10 +458,22 @@ namespace MMONet
         protected Queue<KeyValuePair<ushort, MemoryStream>> dealMsgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
         private bool isInitEventArgs = false;
 
-        private void Disconnect()
+        public virtual void DisConnect()
         {
-            throw new NotImplementedException();
+            if (IsReceive)
+            {
+                IsReceive = false;
+            }
+
+            if (IsConnected)
+            {
+                Socket.Disconnect(false);
+            }
+
+            OnDisConnect?.Invoke(this);
         }
+
+        public event Action<Client> OnDisConnect;
 
         /// <summary>
         /// 处理接收到的消息队列
@@ -479,6 +504,21 @@ namespace MMONet
         protected virtual void OnResponse(ushort key, MemoryStream value)
         {
 
+        }
+
+        public void Dispose()
+        {
+            if (IsReceive)
+            {
+                EndReceive();
+            }
+
+            if (IsConnected)
+            {
+                Socket.Disconnect(false);
+            }
+
+            (Socket as IDisposable).Dispose();
         }
         #endregion
     }
