@@ -19,6 +19,7 @@ public class UI
     public static HelpMsg HelpMsg { get; internal set; }
     public static Setting Setting { get; internal set; }
     public static bool UseUICursor { get; set; }
+    public static ChatPanel ChatPanel { get; internal set; }
 
     private UI() { }
     Dictionary<int, IUITarget> pawnDic = new Dictionary<int, IUITarget>();
@@ -62,8 +63,14 @@ public class UI
             UseUICursor = !Setting.IsShow;
         }
 
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ChatPanel.Show();
+        }
+
         ///显示任何非战斗UI，则使用系统鼠标
-        UseUICursor = !(CommandTool.IsShow || Setting.IsShow || HelpMsg.IsShow);
+        UseUICursor = !(CommandTool.IsShow || Setting.IsShow || HelpMsg.IsShow
+            || ChatPanel.IsShow);
 
         if (Cursor && Cursor.UseMycursor != UseUICursor)
         {
