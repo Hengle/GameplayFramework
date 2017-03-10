@@ -20,8 +20,8 @@ namespace ChatServerProgram
             var t = new Thread(s.Run);
             t.Start();
 
-            MMONet.Client client = new MMONet.Client();
-            client.BeginConnect(IPAddress.Loopback, 40000, callback, client);
+            //MMONet.Client client = new MMONet.Client();
+            //client.BeginConnect(IPAddress.Loopback, 40000, callback, client);
             while (true)
             {
                 var key = Console.ReadKey();
