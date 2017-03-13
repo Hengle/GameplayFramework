@@ -13,7 +13,7 @@ namespace ChatServer
     {
         public void Test()
         {
-            MMONet.Client client = new MMONet.Client();
+            MMONet.Client client = null;// new MMONet.Client();
 
             client.BeginConnect(IPAddress.Loopback, 40000, callback, client);
         }

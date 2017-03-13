@@ -9,7 +9,7 @@ using ProtoBuf;
 
 namespace MMONet
 {
-    public class Client:IDisposable
+    public abstract class Client:IDisposable
     {
         /// <summary>
         /// 描述消息包长度字节所占的字节数
@@ -181,14 +181,7 @@ namespace MMONet
         #endregion
 
         #region Read
-        /// <summary>
-        /// 结束数据模式
-        /// </summary>
-        protected enum ReceiveFuncMode
-        {
-            UseAsyncEventArgs,
-            BeginReceive,
-        }
+
 
         protected ReceiveFuncMode ReceiveMode { get; set; } = ReceiveFuncMode.UseAsyncEventArgs;
 
@@ -371,17 +364,6 @@ namespace MMONet
             return tempoffset;
         }
 
-        protected enum KeepMsgMode
-        {
-            /// <summary>
-            /// 保留最新收到的消息
-            /// </summary>
-            New,
-            /// <summary>
-            /// 保留之前收到的消息
-            /// </summary>
-            Old,
-        }
 
         /// <summary>
         /// 上个处理消息轮询期间因为接收到消息溢出而舍弃的消息数量
@@ -458,7 +440,7 @@ namespace MMONet
         protected Queue<KeyValuePair<ushort, MemoryStream>> dealMsgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
         private bool isInitEventArgs = false;
 
-        public virtual void DisConnect()
+        public virtual void DisConnect(DisConnectReason resason = DisConnectReason.Active)
         {
             if (IsReceive)
             {
@@ -470,10 +452,10 @@ namespace MMONet
                 Socket.Disconnect(false);
             }
 
-            OnDisConnect?.Invoke(this);
+            OnDisConnect?.Invoke(this,resason);
         }
 
-        public event Action<Client> OnDisConnect;
+        public event Action<Client, DisConnectReason> OnDisConnect;
 
         /// <summary>
         /// 处理接收到的消息队列
@@ -521,5 +503,41 @@ namespace MMONet
             (Socket as IDisposable).Dispose();
         }
         #endregion
+    }
+
+
+    public enum DisConnectReason
+    {
+        Error,
+        /// <summary>
+        /// 主动断开
+        /// </summary>
+        Active,
+        /// <summary>
+        /// 远端断开
+        /// </summary>
+        Remote,
+    }
+
+
+    public enum KeepMsgMode
+    {
+        /// <summary>
+        /// 保留最新收到的消息
+        /// </summary>
+        New,
+        /// <summary>
+        /// 保留之前收到的消息
+        /// </summary>
+        Old,
+    }
+
+    /// <summary>
+    /// 结束数据模式
+    /// </summary>
+    public enum ReceiveFuncMode
+    {
+        UseAsyncEventArgs,
+        BeginReceive,
     }
 }

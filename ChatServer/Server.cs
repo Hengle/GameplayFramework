@@ -41,7 +41,7 @@ namespace ChatServer
                     {
                         Client client = new Client(accepedSocket.Dequeue());
                         clientList.Add(client);
-                        client.OnDisConnect += (cl) =>
+                        client.OnDisConnect += (cl,res) =>
                         {
                             lock (clientList)
                             {
