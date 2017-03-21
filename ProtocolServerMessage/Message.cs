@@ -11,9 +11,24 @@ namespace ProtoBuf
     {
     }
 
-    [ProtoContract,ProtoID(200000)]
+    [ProtoContract,ProtoID(2001)]
     public class ServerLogin
     {
+        [ProtoMember(1)]
+        public ServerType Type;
+    }
 
+    [ProtoContract, ProtoID(2002)]
+    public class ChildServerBeginWork
+    {
+        [ProtoMember(1)]
+        public int Port;
+    }
+
+    public enum ServerType
+    {
+        GlobalServer = 0,
+        ChatServer = 1,
+        
     }
 }

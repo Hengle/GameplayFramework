@@ -24,13 +24,13 @@ namespace ChatServerProgram
             //client.BeginConnect(IPAddress.Loopback, 40000, callback, client);
             while (true)
             {
-                var key = Console.ReadKey();
-                if (key.Key == ConsoleKey.Escape)
-                {
-                    t.Abort();
-                    t.DisableComObjectEagerCleanup();
-                    break;
-                }
+                //var key = Console.ReadKey();
+                //if (key.Key == ConsoleKey.Escape)
+                //{
+                //    t.Abort();
+                //    t.DisableComObjectEagerCleanup();
+                //    break;
+                //}
                 Thread.Sleep(50);
             }
         }

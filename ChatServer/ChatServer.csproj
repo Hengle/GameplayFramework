@@ -48,7 +48,8 @@
     <Compile Include="Client Static.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientTempTest.cs" />
-    <Compile Include="Server.cs" />
+    <Compile Include="GlobalServerClient.cs" />
+    <Compile Include="ChatServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

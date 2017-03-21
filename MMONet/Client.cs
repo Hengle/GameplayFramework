@@ -255,7 +255,7 @@ namespace MMONet
             }
             else
             {
-                throw new Exception();
+                DisConnect(DisConnectReason.Error);
             }
         }
          
@@ -456,6 +456,11 @@ namespace MMONet
         }
 
         public event Action<Client, DisConnectReason> OnDisConnect;
+
+        public virtual void Update(double deltaTime)
+        {
+            UpdateMessage();
+        }
 
         /// <summary>
         /// 处理接收到的消息队列

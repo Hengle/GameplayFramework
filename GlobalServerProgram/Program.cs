@@ -22,6 +22,7 @@ namespace GlobalServerProgram
                 var key = Console.ReadKey();
                 if (key.Key == ConsoleKey.Escape)
                 {
+                    s.Stop();
                     t.Abort();
                     t.DisableComObjectEagerCleanup();
                     break;

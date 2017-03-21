@@ -12,11 +12,6 @@ namespace ChatServer
         public Client(Socket socket):base(socket)
         {
             BeginReceive();
-        }
-
-        internal void Update(double deltaTime)
-        {
-            UpdateMessage();
-        }
+        }  
     }
 }

@@ -9,25 +9,27 @@ using System.Net;
 using MMONet;
 using Poi;
 using ProtoBuf;
+using GlobalServer;
 
 namespace ChatServer
 {
     public class Server: MMONet.Server
     {
-        public int ListenPort { get; private set; } = 40000;
-        List<Client> clientList = new List<Client>();
+        internal GlobalServerClient GServer { get; private set; }
 
+        List<Client> clientList = new List<Client>();
 
         public void Run()
         {
             ProtoID.Init();
             ProtoID.Init("ProtocolServerMessage");
 
-            ///开始监听
-            IPEndPoint ipep = new IPEndPoint(IPAddress.Any, ListenPort);
-            TcpListener listener = new TcpListener(ipep);
-            listener.Start();
-            listener.BeginAcceptSocket(AcceptCallback, listener);
+            ///连接全局服务器
+            GlobalServerClient server = new GlobalServerClient(this);
+            server.BeginConnect(IPAddress.Loopback, Port.ChildServerLogin,
+                GlobalServerConnectCallback, server);
+
+
 
             var time = new UtilTime();
 
@@ -37,6 +39,11 @@ namespace ChatServer
                 //{
                     time.Update();
                     double delta = time.DeltaTime;
+
+                    if (GServer != null)
+                    {
+                        GServer.Update(delta);
+                    }
 
                     while (accepedSocket.Count > 0)
                     {
@@ -65,6 +72,36 @@ namespace ChatServer
                 //    throw;
                 //}  
             }
+        }
+
+        internal void BeginWork(int port)
+        {
+            ///开始监听
+            IPEndPoint ipep = new IPEndPoint(IPAddress.Any, port);
+            TcpListener listener = new TcpListener(ipep);
+            listener.Start();
+            listener.BeginAcceptSocket(AcceptCallback, listener);
+
+            Console.WriteLine($"开始监听:{port}端口");
+        }
+
+        private void GlobalServerConnectCallback(IAsyncResult ar)
+        {
+            GlobalServerClient server = ar.AsyncState as GlobalServerClient;
+            server.EndConnect(ar);
+            if (server.IsConnected)
+            {
+                GServer = server;
+                GServer.BeginReceive();
+
+                var msg = new ServerLogin();
+                msg.Type = ServerType.ChatServer;
+                GServer.Write(msg);
+            }
+            else
+            {
+
+            }    
         }
 
         private void AcceptCallback(IAsyncResult ar)
