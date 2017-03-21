@@ -21,6 +21,7 @@ namespace ChatServer
         public void Run()
         {
             ProtoID.Init();
+            ProtoID.Init("ProtocolServerMessage");
 
             ///开始监听
             IPEndPoint ipep = new IPEndPoint(IPAddress.Any, ListenPort);

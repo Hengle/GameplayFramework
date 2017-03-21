@@ -60,3 +60,6 @@ ValueTest/Assembly-CSharp.csproj
 ValueTest/ValueTest.userprefs
 *.vspx
 *.log
+ProtocolServerMessage/bin/
+GlobalServer/bin/
+GlobalServerProgram/bin/

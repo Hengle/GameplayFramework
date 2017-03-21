@@ -21,9 +21,9 @@ namespace ProtoBuf
         /// <summary>
         /// 报头类型ID所占字节长度
         /// </summary>
-        public const int Length = 2;
-        static List<ushort> already = new List<ushort>();
-        public ProtoIDAttribute(ushort id)
+        public const int Length = sizeof(int);
+        static List<int> already = new List<int>();
+        public ProtoIDAttribute(int id)
         {
             if (already.Contains(id))
             {
@@ -32,12 +32,12 @@ namespace ProtoBuf
             ID = id;
         }
 
-        public ushort ID { get; private set; }
+        public int ID { get; private set; }
     }
 
     public class ProtoID
     {
-        public static ushort GetID<T>()
+        public static int GetID<T>()
         {
             string name = typeof(T).FullName;
             if (map.ContainsKey(name))
@@ -71,6 +71,7 @@ namespace ProtoBuf
                 {
                     path = Path.ChangeExtension(path, dll);
                 }
+
                 MSGassembly = Assembly.LoadFrom(path);
             }
 
@@ -101,6 +102,6 @@ namespace ProtoBuf
             }
         }
 
-        static Dictionary<string, ushort> map = new Dictionary<string, ushort>();
+        static Dictionary<string, int> map = new Dictionary<string, int>();
     }
 }

@@ -92,7 +92,7 @@ namespace MMONet
             Write(msg, ProtoID.GetID<T>());
         }
 
-        public void Write<T>(T msg, ushort msgID)
+        public void Write<T>(T msg, int msgID)
         {
             MemoryStream body = new MemoryStream();
             ProtoBuf.Serializer.Serialize(body, msg);
@@ -104,7 +104,7 @@ namespace MMONet
         /// </summary>
         /// <param name="msgID"></param>
         /// <param name="body">流一定不能是反序列化后的</param>
-        public void Write(ushort msgID, MemoryStream body)
+        public void Write(int msgID, MemoryStream body)
         {
             MemoryStream sendmsg = new MemoryStream(MsgDesLength + MsgIDLength);
             ushort length = (ushort)body.Length;
@@ -345,12 +345,12 @@ namespace MMONet
                     if (msgQueue.Count < MaxMsgCount || KeepMode == KeepMsgMode.Old)
                     {
                         ///消息包格式依次为 消息包长度2 ，消息报类型2 ，消息正文，此处解析出消息类型
-                        ushort msg_id = BitConverter.ToUInt16(buffer, tempoffset + MsgDesLength);
+                        int msg_id = BitConverter.ToUInt16(buffer, tempoffset + MsgDesLength);
 
                         ///取得消息正文，起始偏移为tempoffset + 2 + 2；
                         MemoryStream msg = new MemoryStream(buffer, tempoffset + MsgDesLength + MsgIDLength, size, true, true);
 
-                        msgQueue.Enqueue(new KeyValuePair<ushort, MemoryStream>(msg_id, msg));
+                        msgQueue.Enqueue(new KeyValuePair<int, MemoryStream>(msg_id, msg));
 
                         //OnResponse(msg_id, msg); //此处为测试代码
                         //UpdateMessage(); //此处为测试代码
@@ -435,9 +435,9 @@ namespace MMONet
         /// <summary>
         /// 已经读取到的消息
         /// </summary>
-        protected Queue<KeyValuePair<ushort, MemoryStream>> msgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
-        protected Queue<KeyValuePair<ushort, MemoryStream>> msgQueue2 = new Queue<KeyValuePair<ushort, MemoryStream>>();
-        protected Queue<KeyValuePair<ushort, MemoryStream>> dealMsgQueue = new Queue<KeyValuePair<ushort, MemoryStream>>();
+        protected Queue<KeyValuePair<int, MemoryStream>> msgQueue = new Queue<KeyValuePair<int, MemoryStream>>();
+        protected Queue<KeyValuePair<int, MemoryStream>> msgQueue2 = new Queue<KeyValuePair<int, MemoryStream>>();
+        protected Queue<KeyValuePair<int, MemoryStream>> dealMsgQueue = new Queue<KeyValuePair<int, MemoryStream>>();
         private bool isInitEventArgs = false;
 
         public virtual void DisConnect(DisConnectReason resason = DisConnectReason.Active)
@@ -483,7 +483,7 @@ namespace MMONet
             msgQueue2 = dealMsgQueue;
         }
 
-        protected virtual void OnResponse(ushort key, MemoryStream value)
+        protected virtual void OnResponse(int key, MemoryStream value)
         {
 
         }

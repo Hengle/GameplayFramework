@@ -9,7 +9,7 @@ namespace ChatServer
 {
     public partial class Client
     {
-        protected override void OnResponse(ushort key, MemoryStream value)
+        protected override void OnResponse(int key, MemoryStream value)
         {
             if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
             else if (key == ProtoID.GetID<Heart>()) OnHeart(value);

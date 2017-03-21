@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C04D0CD-6F6C-4B63-8B23-BA8BB2CA8645}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChatServer</RootNamespace>
-    <AssemblyName>ChatServer</AssemblyName>
+    <ProjectGuid>{90E336C6-5923-4109-AE4D-02F89ADC8E54}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>GlobalServerProgram</RootNamespace>
+    <AssemblyName>GlobalServerProgram</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,25 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client Response.cs" />
-    <Compile Include="Client Static.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="ClientTempTest.cs" />
-    <Compile Include="Server.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EX\Extention\Poi\Poi.csproj">
-      <Project>{9fda4727-eb4e-4436-a0ba-91ac68fc2d83}</Project>
-      <Name>Poi</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChatServerProgram\ChatServerProgram.csproj">
+      <Project>{947de873-8cdf-454d-874a-d4b3045dd5f3}</Project>
+      <Name>ChatServerProgram</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChatServer\ChatServer.csproj">
+      <Project>{2c04d0cd-6f6c-4b63-8b23-ba8bb2ca8645}</Project>
+      <Name>ChatServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GlobalServer\GlobalServer.csproj">
+      <Project>{a1da0a1a-fb87-4a4c-8ddf-022cd1d9f42d}</Project>
+      <Name>GlobalServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\MMONet\MMONet.csproj">
-      <Project>{6a580a9f-cec9-4037-b39a-b750b307638f}</Project>
+      <Project>{6A580A9F-CEC9-4037-B39A-B750B307638F}</Project>
       <Name>MMONet</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProtoBufExtention\ProtoBufExtention.csproj">
-      <Project>{4c539aa9-77ab-4648-862b-5ba0a4986282}</Project>
-      <Name>ProtoBufExtention</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProtocolMessage\ProtocolMessage.csproj">
       <Project>{b3b7814b-3b96-4e9b-b317-e9fe1cb5b938}</Project>
@@ -73,15 +74,5 @@
       <Name>ProtocolServerMessage</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
