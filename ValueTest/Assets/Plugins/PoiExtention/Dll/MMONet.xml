@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MMONet</name>
+    </assembly>
+    <members>
+        <member name="T:MMONet.CustomRemote">
+            <summary>
+            通用性远端
+            </summary>
+        </member>
+        <member name="T:MMONet.CustomRemote`1">
+            <summary>
+            通用性远端
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:MMONet.Remote">
+            <summary>
+            用于MMO游戏的远端抽象，封装了数据收发，解析等方法
+            </summary>
+        </member>
+        <member name="F:MMONet.Remote.MsgDesLength">
+            <summary>
+            描述消息包长度字节所占的字节数
+            </summary>
+        </member>
+        <member name="F:MMONet.Remote.MsgIDLength">
+            <summary>
+            消息包类型ID 字节长度
+            </summary>
+        </member>
+        <member name="P:MMONet.Remote.MaxMsgCount">
+            <summary>
+            最大暂存消息个数
+            </summary>
+        </member>
+        <member name="F:MMONet.Remote.offset">
+            <summary>
+            接受数组偏移量
+            </summary>
+        </member>
+        <member name="P:MMONet.Remote.ReceiveBufferSize">
+            <summary>
+            接受缓冲区大小
+            </summary>
+        </member>
+        <member name="F:MMONet.Remote.sendEventArgs">
+            <summary>
+            发送使用的异步套接字操作
+            </summary>
+        </member>
+        <member name="P:MMONet.Remote.IsReceive">
+            <summary>
+            当前是否在接受数据
+            </summary>
+        </member>
+        <member name="M:MMONet.Remote.Write(System.Int32,System.IO.MemoryStream)">
+            <summary>
+            写入消息号和消息正文的序列化流，用于在不解析状态下转发。
+            </summary>
+            <param name="msgID"></param>
+            <param name="body">流一定不能是反序列化后的</param>
+        </member>
+        <member name="M:MMONet.Remote.Send">
+            <summary>
+            套接字开始发送数据
+            </summary>
+        </member>
+        <member name="M:MMONet.Remote.DefaultParse(System.Byte[],System.Int32)">
+            <summary>
+            默认的解析方法，处理粘包
+            </summary>
+            <param name="buffer">接收数据包（可能大于有效数据长度）</param>
+            <param name="length">有效数据长度</param>
+            <returns>返回已经读取的整包的总长度</returns>
+        </member>
+        <member name="P:MMONet.Remote.DropMsgCount">
+            <summary>
+            上个处理消息轮询期间因为接收到消息溢出而舍弃的消息数量
+            </summary>
+        </member>
+        <member name="P:MMONet.Remote.KeepMode">
+            <summary>
+            当接收到的消息大约消息缓冲池是如何保留消息
+            </summary>
+        </member>
+        <member name="F:MMONet.Remote.OnParse">
+            <summary>
+            数据解析方法
+            </summary>
+        </member>
+        <member name="F:MMONet.Remote.msgQueue">
+            <summary>
+            已经读取到的消息
+            </summary>
+        </member>
+        <member name="M:MMONet.Remote.UpdateMessage">
+            <summary>
+            处理接收到的消息队列
+            </summary>
+        </member>
+        <member name="F:MMONet.DisConnectReason.Active">
+            <summary>
+            主动断开
+            </summary>
+        </member>
+        <member name="F:MMONet.DisConnectReason.Remote">
+            <summary>
+            远端断开
+            </summary>
+        </member>
+        <member name="F:MMONet.KeepMsgMode.New">
+            <summary>
+            保留最新收到的消息
+            </summary>
+        </member>
+        <member name="F:MMONet.KeepMsgMode.Old">
+            <summary>
+            保留之前收到的消息
+            </summary>
+        </member>
+        <member name="T:MMONet.ReceiveFuncMode">
+            <summary>
+            结束数据模式
+            </summary>
+        </member>
+    </members>
+</doc>
