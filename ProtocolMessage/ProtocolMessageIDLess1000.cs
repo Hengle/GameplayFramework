@@ -56,6 +56,8 @@ namespace ProtoBuf
         public int InstanceID;
         [ProtoMember(3)]
         public string Note;
+        [ProtoMember(4)]
+        public ServerType Server;
     }
 
     public enum LoginResult

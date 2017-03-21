@@ -16,7 +16,7 @@ namespace ChatServer
     {
         internal GlobalServerClient GServer { get; private set; }
 
-        List<Client> clientList = new List<Client>();
+        public List<Client> UnknownClientList { get; private set; } = new List<Client>();
 
         public void Run()
         {
@@ -46,23 +46,30 @@ namespace ChatServer
 
                     while (accepedSocket.Count > 0)
                     {
-                        Client client = new Client(accepedSocket.Dequeue());
-                        clientList.Add(client);
+                        Client client = new Client(accepedSocket.Dequeue(),this);
+                        UnknownClientList.Add(client);
                         client.OnDisConnect += (cl,res) =>
                         {
-                            lock (clientList)
+                            lock (UnknownClientList)
                             {
-                                clientList.Remove(cl as Client);
+                                UnknownClientList.Remove(cl as Client);
                                 cl.Dispose();
                             }
                         };
                     }
-
-                    foreach (var item in clientList)
+                    
+                    for (int i = 0; i < UnknownClientList.Count; i++)
                     {
-                        item.Update(delta);
+                        UnknownClientList[i].Update(delta);
                     }
 
+                lock (Client.ClientDic)
+                {
+                    foreach (var item in Client.ClientDic)
+                    {
+                        item.Value.Update(delta);
+                    }
+                }
                     //Thread.Sleep(0);
                 //}
                 //catch (Exception)

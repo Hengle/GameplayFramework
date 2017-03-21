@@ -29,11 +29,12 @@ namespace GlobalServer
             MyProcess = Process.GetCurrentProcess();
             //MyProcess.EnableRaisingEvents = true;
             //MyProcess.Exited += MyProcess_Exited;
-            //AppDomain.CurrentDomain.ProcessExit += MyProcess_Exited;
+            //AppDomain.CurrentDomain.ProcessExit += new EventHandler(MyProcess_Exited);
+
+            InitWork();
 
             InitChildServer();
 
-            InitWork();
 
             var time = new UtilTime();
 
@@ -65,11 +66,14 @@ namespace GlobalServer
 
         private void InitWork()
         {
+
             ///开始监听客户端连接
             IPEndPoint ipep = new IPEndPoint(IPAddress.Any, Port.GlobalListen);
             TcpListener listener = new TcpListener(ipep);
             listener.Start();
             listener.BeginAcceptSocket(ClientAcceptCallback, listener);
+
+            Console.WriteLine($"开始监听客户端，监听端口：{Port.GlobalListen}");
         }
 
         private void ClientAcceptCallback(IAsyncResult ar)
@@ -87,7 +91,7 @@ namespace GlobalServer
 
         private void MyProcess_Exited(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Stop();
         }
 
         /// <summary>
@@ -95,12 +99,13 @@ namespace GlobalServer
         /// </summary>
         private void InitChildServer()
         {
+
             ///开始监听
             IPEndPoint ipep = new IPEndPoint(IPAddress.Loopback, Port.ChildServerLogin);
             TcpListener listener = new TcpListener(ipep);
             listener.Start();
             listener.BeginAcceptSocket(ChildServerAcceptCallback, listener);
-
+            Console.WriteLine($"初始化子服务器，监听端口：{Port.ChildServerLogin}");
 
 
             ProcessStartInfo chatInfo = new ProcessStartInfo();

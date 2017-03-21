@@ -43,7 +43,8 @@ namespace GlobalServer
             {
                 InstanceID = id,
                 Note = $"登陆服务器成功！",
-                Result = LoginResult.Success
+                Result = LoginResult.Success,
+                Server = ServerType.GlobalServer,
             };
 
             Console.WriteLine($"客户端{pks.account}登陆，分配临时ID：{id}。当前客户端数量：{clientDic.Count}。");

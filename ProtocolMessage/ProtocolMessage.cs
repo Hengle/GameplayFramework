@@ -24,11 +24,4 @@ namespace ProtoBuf
         public string Context { get; set; }
     }
 
-    [ProtoContract,ProtoID(1001)]
-    public class Test
-    {
-
-    }
-
-
 }
