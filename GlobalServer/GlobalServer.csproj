@@ -49,8 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChildServerClient.cs" />
+    <Compile Include="GameClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Server.cs" />
+    <Compile Include="GlobalServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

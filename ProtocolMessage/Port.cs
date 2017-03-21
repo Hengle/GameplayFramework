@@ -1,4 +1,4 @@
-﻿namespace GlobalServer
+﻿namespace ProtoBuf
 {
     public class Port
     {

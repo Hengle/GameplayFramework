@@ -24,11 +24,4 @@ namespace ProtoBuf
         [ProtoMember(1)]
         public int Port;
     }
-
-    public enum ServerType
-    {
-        GlobalServer = 0,
-        ChatServer = 1,
-        
-    }
 }

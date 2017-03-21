@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProtocolMessageIDLess10000.cs" />
+    <Compile Include="Port.cs" />
+    <Compile Include="ProtocolMessageIDLess1000.cs" />
     <Compile Include="ProtocolMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

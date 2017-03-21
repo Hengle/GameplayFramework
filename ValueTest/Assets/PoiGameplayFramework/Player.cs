@@ -11,6 +11,8 @@ namespace Poi
     /// </summary>
     public partial class Player : Character
     {
+        public static int InstanceID { get; internal set; }
+
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>

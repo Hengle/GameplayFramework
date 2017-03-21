@@ -19,7 +19,7 @@ namespace GlobalServer
         /// <summary>
         /// 成功链接但没有识别的Client
         /// </summary>
-        public List<ChildServerClient> UnknownClient { get; private set; } = new List<ChildServerClient>();
+        public List<MMONet.Client> UnknownClient { get; private set; } = new List<MMONet.Client>();
 
         public void Run()
         {
@@ -33,6 +33,8 @@ namespace GlobalServer
 
             InitChildServer();
 
+            InitWork();
+
             var time = new UtilTime();
 
             while (true)
@@ -45,11 +47,41 @@ namespace GlobalServer
                     UnknownClient[i]?.Update(delta);
                 }
 
-                if (ChatServer!=null)
+                if (ChatServer != null)
                 {
                     ChatServer.Update(delta);
                 }
 
+                ///轮询客户端
+                lock (GameClient.clientDic)
+                {
+                    foreach (var item in GameClient.clientDic)
+                    {
+                        item.Value.Update(delta);
+                    }
+                }
+            }
+        }
+
+        private void InitWork()
+        {
+            ///开始监听客户端连接
+            IPEndPoint ipep = new IPEndPoint(IPAddress.Any, Port.GlobalListen);
+            TcpListener listener = new TcpListener(ipep);
+            listener.Start();
+            listener.BeginAcceptSocket(ClientAcceptCallback, listener);
+        }
+
+        private void ClientAcceptCallback(IAsyncResult ar)
+        {
+            TcpListener ls = ar.AsyncState as TcpListener;
+            var socket = ls.EndAcceptSocket(ar);
+            ls.BeginAcceptSocket(ClientAcceptCallback, ls);
+            GameClient client = new GameClient(socket,this);
+            if (client.IsConnected)
+            {
+                UnknownClient.Add(client);
+                client.BeginReceive();
             }
         }
 

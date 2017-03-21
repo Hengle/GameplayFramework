@@ -9,7 +9,6 @@ using System.Net;
 using MMONet;
 using Poi;
 using ProtoBuf;
-using GlobalServer;
 
 namespace ChatServer
 {

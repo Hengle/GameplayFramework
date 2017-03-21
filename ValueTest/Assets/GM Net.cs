@@ -11,63 +11,35 @@ using System.IO;
 
 public partial class GM
 {
-    public ChatServer chatServer;
+    public GameServer Server;
 
     public void InitNet()
     {
         ProtoID.Init();
         ///连接服务器
-        chatServer = new ChatServer();
-        chatServer.BeginConnect(IPAddress.Loopback, 40000, callback, chatServer);    
+        Server = new GameServer();
+        Server.BeginConnect(IPAddress.Loopback, Port.GlobalListen, callback, Server);    
     }
 
-    public void UpdateMesssage()
+    public void UpdateMesssage(double delta)
     {
-         chatServer?.Update();
+         Server?.Update(delta);
     }
 
     private void callback(IAsyncResult ar)
     {
-        ChatServer cl = ar.AsyncState as ChatServer;
+        GameServer cl = ar.AsyncState as GameServer;
         cl.EndConnect(ar);
 
         cl.BeginReceive();
 
         if (cl.IsConnected)
         {
-            Heart msg = new Heart();
-            msg.Time = DateTime.Now.ToBinary();
+            QLogin msg = new QLogin() { account = "tEXT"/*SystemInfo.deviceUniqueIdentifier*/
+            };
+
             cl.Write(msg);
         }
     }
 
-    public class ChatServer : MMONet.Client
-    {
-        protected override void OnResponse(ushort key, MemoryStream value)
-        {
-            if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
-            else if (key == ProtoID.GetID<Heart>()) OnHeart(value);
-        }
-
-        private void OnHeart(MemoryStream value)
-        {
-            var msg = Serializer.Deserialize<Heart>(value);
-            TimeSpan delta = DateTime.Now - DateTime.FromBinary(msg.Time);
-            Debug.Log(delta.TotalMilliseconds);
-
-            Heart msg2 = new Heart();
-            msg2.Time = DateTime.Now.ToBinary();
-            GM.Instance.chatServer.Write(msg2);
-        }
-
-        private void OnChatMsg(MemoryStream value)
-        {
-
-        }
-
-        public void Update()
-        {
-            UpdateMessage();
-        }
-    }
 }

@@ -65,6 +65,7 @@ namespace MMONet
         public Client(Socket socket)
         {
             Socket = socket;
+            IsConnected = Socket.Connected;
             InitEventArgs();
         }
 

@@ -133,14 +133,14 @@ public partial class GM : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        UpdateMesssage();
+        UpdateMesssage(Time.fixedDeltaTime);
     }
 
     private void OnApplicationQuit()
     {
-        if (chatServer != null)
+        if (Server != null)
         {
-            chatServer.Dispose();
+            Server.Dispose();
         }
     }
 
