@@ -9,7 +9,10 @@ using ProtoBuf;
 
 namespace MMONet
 {
-    public abstract class Client:IDisposable
+    /// <summary>
+    /// 用于MMO游戏的远端抽象，封装了数据收发，解析等方法
+    /// </summary>
+    public abstract class Remote:IDisposable
     {
         /// <summary>
         /// 描述消息包长度字节所占的字节数
@@ -43,7 +46,7 @@ namespace MMONet
         SocketAsyncEventArgs sendEventArgs = new SocketAsyncEventArgs();
         SocketAsyncEventArgs receiveEventArgs = new SocketAsyncEventArgs();
 
-        public Client()
+        public Remote()
         {
             Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             InitEventArgs();
@@ -62,7 +65,7 @@ namespace MMONet
             }
         }
 
-        public Client(Socket socket)
+        public Remote(Socket socket)
         {
             Socket = socket;
             IsConnected = Socket.Connected;
@@ -456,7 +459,7 @@ namespace MMONet
             OnDisConnect?.Invoke(this,resason);
         }
 
-        public event Action<Client, DisConnectReason> OnDisConnect;
+        public event Action<Remote, DisConnectReason> OnDisConnect;
 
         public virtual void Update(double deltaTime)
         {
@@ -483,13 +486,13 @@ namespace MMONet
             while (dealMsgQueue.Count > 0)
             {
                 var msg = dealMsgQueue.Dequeue();
-                OnResponse(msg.Key, msg.Value);
+                Response(msg.Key, msg.Value);
             }
 
             msgQueue2 = dealMsgQueue;
         }
 
-        protected virtual void OnResponse(int key, MemoryStream value)
+        protected virtual void Response(int key, MemoryStream value)
         {
 
         }
@@ -501,7 +504,7 @@ namespace MMONet
                 EndReceive();
             }
 
-            if (IsConnected)
+            if (IsConnected && Socket.Connected)
             {
                 Socket.Disconnect(false);
             }

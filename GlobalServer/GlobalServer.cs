@@ -19,7 +19,7 @@ namespace GlobalServer
         /// <summary>
         /// 成功链接但没有识别的Client
         /// </summary>
-        public List<MMONet.Client> UnknownClient { get; private set; } = new List<MMONet.Client>();
+        public List<MMONet.Remote> UnknownClient { get; private set; } = new List<MMONet.Remote>();
 
         public void Run()
         {

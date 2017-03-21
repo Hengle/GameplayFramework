@@ -5,7 +5,7 @@ using ProtoBuf;
 
 namespace GlobalServer
 {
-    public class ChildServerClient : MMONet.Client
+    public class ChildServerClient : MMONet.Remote
     {
         private Server server;
 
@@ -18,9 +18,9 @@ namespace GlobalServer
             this.server = server;
         }
 
-        protected override void OnResponse(int key, MemoryStream value)
+        protected override void Response(int key, MemoryStream value)
         {
-            base.OnResponse(key, value);
+            base.Response(key, value);
             if (key == ProtoID.GetID<ServerLogin>()) OnServerLogin(value);
             //else if (key == ProtoID.GetID<Heart>()) OnHeart(value);
         }

@@ -7,7 +7,7 @@ using System.Net;
 
 namespace GlobalServer
 {
-    public class GameClient : MMONet.Client
+    public class GameClient : MMONet.Remote
     {
         public static Dictionary<int, GameClient> clientDic = new Dictionary<int, GameClient>();
 
@@ -22,7 +22,7 @@ namespace GlobalServer
             this.server = server;
         }
 
-        protected override void OnResponse(int key, MemoryStream value)
+        protected override void Response(int key, MemoryStream value)
         {
             if (key == ProtoID.GetID<QLogin>()) OnQLogin(value);
             

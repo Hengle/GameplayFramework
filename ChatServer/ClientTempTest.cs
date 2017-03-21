@@ -13,14 +13,14 @@ namespace ChatServer
     {
         public void Test()
         {
-            MMONet.Client client = null;// new MMONet.Client();
+            MMONet.Remote client = null;// new MMONet.Client();
 
             client.BeginConnect(IPAddress.Loopback, 40000, callback, client);
         }
 
         private void callback(IAsyncResult ar)
         {
-            MMONet.Client c = ar.AsyncState as MMONet.Client;
+            MMONet.Remote c = ar.AsyncState as MMONet.Remote;
             c.EndConnect(ar);
 
             

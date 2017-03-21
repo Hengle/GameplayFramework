@@ -39,7 +39,7 @@ namespace ChatServerProgram
         {
             try
             {
-                Client cl = ar.AsyncState as Client;
+                Remote cl = ar.AsyncState as Remote;
                 cl.EndConnect(ar);
                 List<ChatMsg> list = new List<ChatMsg>();
                 var msg = new ChatMsg();

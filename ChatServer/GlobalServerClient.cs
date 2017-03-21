@@ -4,7 +4,7 @@ using ProtoBuf;
 
 namespace ChatServer
 {
-    internal class GlobalServerClient:MMONet.Client
+    internal class GlobalServerClient:MMONet.Remote
     {
         private Server ChatServer;
 
@@ -13,9 +13,9 @@ namespace ChatServer
             this.ChatServer = server;
         }
 
-        protected override void OnResponse(int key, MemoryStream value)
+        protected override void Response(int key, MemoryStream value)
         {
-            base.OnResponse(key, value);
+            base.Response(key, value);
             if (key == ProtoID.GetID<ChildServerBeginWork>()) OnBeginWork(value);
             
         }
