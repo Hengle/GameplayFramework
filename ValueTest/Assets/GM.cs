@@ -70,34 +70,56 @@ public partial class GM : MonoBehaviour {
         ///游戏主入口
         Init();
 
-        this.Wait(LoadSceneAsync(1), () =>
+        ChangeScene(1);
+    }
+
+    private void ChangeScene(int sceneID, bool destoryPlayer = true)
+    {
+        if (destoryPlayer)
         {
-            GameObject go = CreatePlayer();
+            Destroy(PlayerController.Character);
+        }
+        else
+        {
+            DontDestroyOnLoad(PlayerController.Character);
+        }
 
-            var p = go.AddComponent<Player>();
-
-            Player.Instance = p;
-
-            PlayerInfo info = new PlayerInfo()
+        this.Wait(LoadSceneAsync(sceneID), () =>
+        {
+            if (destoryPlayer)
             {
-                Height = 1.6f,
-                JumpPower = 9f,
-                JumpMaxStep = 2,
-                Name = "初音未来",
-
-            };
-            info.Run.Max = 10;
-            info.AttackCooldown.Max = 0.3f;
-
-
-            p.Init(info);
-
-
-            ///朝向初始化
-            p.NextTurnToAngle = p.transform.eulerAngles.y;
-
-            PlayerController.Possess(p);
+                CreateTestPlayer();
+            }
         });
+    }
+
+    private void CreateTestPlayer()
+    {
+        GameObject go = CreatePlayer();
+
+        var p = go.AddComponent<Player>();
+
+        Player.Instance = p;
+
+        PlayerInfo info = new PlayerInfo()
+        {
+            Height = 1.6f,
+            JumpPower = 9f,
+            JumpMaxStep = 2,
+            Name = "初音未来",
+
+        };
+        info.Run.Max = 10;
+        info.AttackCooldown.Max = 0.3f;
+
+
+        p.Init(info);
+
+
+        ///朝向初始化
+        p.NextTurnToAngle = p.transform.eulerAngles.y;
+
+        PlayerController.Possess(p);
     }
 
     /// <summary>

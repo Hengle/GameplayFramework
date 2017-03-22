@@ -108,6 +108,11 @@ namespace GlobalServer
             Console.WriteLine($"初始化子服务器，监听端口：{Port.ChildServerLogin}");
 
 
+            var p = Process.GetProcessesByName("ChatServerProgram");
+            foreach (var item in p)
+            {
+                item.Kill();
+            }
             ProcessStartInfo chatInfo = new ProcessStartInfo();
             chatInfo.FileName = "ChatServerProgram.exe";
 #if DEBUG

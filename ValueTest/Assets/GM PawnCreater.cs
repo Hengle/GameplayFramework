@@ -15,10 +15,14 @@ public partial class GM
 
     private GameObject CreatePlayer()
     {
+        return CreatePlayer(GameObject.FindWithTag(nameof(PoiTag.PlayerStart))?.transform);
+    }
+
+    private GameObject CreatePlayer(Transform startpos)
+    {
         var go = CreatePawnGameObject();
-        var start = GameObject.Find($"{PoiTag.PlayerStart.ToString()}");
-        go.transform.Apply(start?.transform);
-        go.transform.ApplyRotationY(start?.transform);
+        go.transform.Apply(startpos);
+        go.transform.ApplyRotationY(startpos);
         return go;
     }
 }
