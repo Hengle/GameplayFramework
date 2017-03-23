@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Poi;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,4 +41,15 @@ public class Setting : MonoBehaviour {
             UI.NameLabel.Reset();
         }
     }
+
+    #region IP
+
+    public InputField IPInput;
+    public void Login()
+    {
+        IPAddress.TryParse(IPInput.text, out IPAddress ip);
+        GM.Login(ip);
+    }
+
+    #endregion
 }

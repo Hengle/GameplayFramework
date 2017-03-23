@@ -100,4 +100,14 @@ public class GameServer : Remote
 
         ChatServer?.Update(deltaTime);
     }
+
+    public override void Dispose()
+    {
+        if (ChatServer!=null)
+        {
+            ChatServer.Dispose();
+        }
+
+        base.Dispose();
+    }
 }

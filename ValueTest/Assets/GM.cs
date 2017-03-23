@@ -5,7 +5,7 @@ using UnityEngine;
 using static UnityEngine.SceneManagement.SceneManager;
 using Poi;
 using UnityEngine.SceneManagement;
-
+using System.Net;
 
 public partial class GM : MonoBehaviour {
 
@@ -129,7 +129,7 @@ public partial class GM : MonoBehaviour {
     {
         InitUI();
 
-        //InitNet();
+        InitNet();
 
         ///初始化角色控制器
         InitPlayerController();

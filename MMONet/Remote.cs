@@ -497,7 +497,7 @@ namespace MMONet
 
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             if (IsReceive)
             {

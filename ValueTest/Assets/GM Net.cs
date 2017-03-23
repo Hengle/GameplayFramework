@@ -13,12 +13,20 @@ public partial class GM
 {
     public GameServer Server;
 
+    public static void Login(IPAddress ip)
+    {
+        ///连接服务器
+        Instance.Server = new GameServer();
+        if (ip == null)
+        {
+            ip = IPAddress.Loopback;
+        }
+        Instance.Server.BeginConnect(ip, Port.GlobalListen, Instance.callback, Instance.Server);
+    }
+
     public void InitNet()
     {
-        ProtoID.Init();
-        ///连接服务器
-        Server = new GameServer();
-        Server.BeginConnect(IPAddress.Loopback, Port.GlobalListen, callback, Server);    
+        ProtoID.Init();       
     }
 
     public void UpdateMesssage(double delta)

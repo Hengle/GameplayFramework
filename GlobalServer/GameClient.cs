@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using ProtoBuf;
 using System.Collections.Generic;
 using System.Net;
+using MMONet;
 
 namespace GlobalServer
 {
@@ -12,6 +13,9 @@ namespace GlobalServer
         public static Dictionary<int, GameClient> clientDic = new Dictionary<int, GameClient>();
 
         private Server server;
+
+        public int InstanceID { get; private set; }
+        public string Account { get; private set; }
 
         public GameClient(Socket socket) : base(socket)
         {
@@ -31,23 +35,24 @@ namespace GlobalServer
         private void OnQLogin(MemoryStream value)
         {
             var pks = Serializer.Deserialize<QLogin>(value);
-            int id = Poi.ID.GetGlobalID();
+            InstanceID = Poi.ID.GetGlobalID();
+            Account = pks.account;
 
             lock (clientDic)
             {
-                clientDic.Add(id, this);
+                clientDic.Add(InstanceID, this);
                 server.UnknownClient.Remove(this);
             }
 
             var msg = new ALogin()
             {
-                InstanceID = id,
+                InstanceID = InstanceID,
                 Note = $"登陆服务器成功！",
                 Result = LoginResult.Success,
                 Server = ServerType.GlobalServer,
             };
 
-            Console.WriteLine($"客户端{pks.account}登陆，分配临时ID：{id}。当前客户端数量：{clientDic.Count}。");
+            Console.WriteLine($"客户端{pks.account}登陆，分配临时ID：{InstanceID}。当前客户端数量：{clientDic.Count}。");
 
             Write(msg);
 
@@ -68,6 +73,22 @@ namespace GlobalServer
             };
 
             Write(msg2);
+        }
+
+        public override void DisConnect(DisConnectReason resason = DisConnectReason.Active)
+        {
+            Remove(this);
+
+            base.DisConnect(resason);
+        }
+
+        public static void Remove(GameClient client)
+        {
+            lock (clientDic)
+            {
+                clientDic.Remove(client.InstanceID);
+                Console.WriteLine($"客户端{client.Account}退出，ID：{client.InstanceID}。当前客户端数量：{clientDic.Count}。");
+            }
         }
     }
 }

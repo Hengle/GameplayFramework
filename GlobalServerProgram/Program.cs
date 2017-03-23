@@ -11,6 +11,10 @@ namespace GlobalServerProgram
     {
         static void Main(string[] args)
         {
+            ConsoleKey exit = ConsoleKey.F8;
+            Console.WriteLine($"**********************************************");
+            Console.WriteLine($"    服务器已经启动，按{exit}键关闭所有服务器进程……");
+            Console.WriteLine($"**********************************************");
             GlobalServer.Server s = new GlobalServer.Server();
             var t = new Thread(s.Run);
             t.Start();
@@ -20,14 +24,14 @@ namespace GlobalServerProgram
             while (true)
             {
                 var key = Console.ReadKey();
-                if (key.Key == ConsoleKey.Escape)
+                if (key.Key == exit)
                 {
                     s.Stop();
                     t.Abort();
                     t.DisableComObjectEagerCleanup();
                     break;
                 }
-                Thread.Sleep(50);
+                Thread.Sleep(1);
             }
         }
     }
