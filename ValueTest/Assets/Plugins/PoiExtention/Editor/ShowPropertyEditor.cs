@@ -14,15 +14,26 @@ public abstract class ShowPropertyEditor<T>:Editor
 {
     protected static bool IsGetProp = false;
 
+    
+    private static List<PropertyInfo> propertyCollection = new List<PropertyInfo>();
+
+    bool isShowProperties = true;
+
     /// <summary>
     /// 需要显示在面板上的属性
     /// </summary>
-    protected static List<PropertyInfo> PropertyCollection { get; set; } = new List<PropertyInfo>();
+    protected static List<PropertyInfo> PropertyCollection
+    {
+        get
+        {
+            return propertyCollection;
+        }
+    }
 
     /// <summary>
     /// 是否显示属性/ShowProperties?
     /// </summary>
-    protected bool IsShowProperties { get; set; } = true;
+    protected bool IsShowProperties { get { return isShowProperties; }set { isShowProperties = value; } } 
 
     public override void OnInspectorGUI()
     {
@@ -55,7 +66,14 @@ public abstract class ShowPropertyEditor<T>:Editor
                 if (item.CanRead)
                 {
                     var res = item.GetValue(target, null);
-                    EditorGUILayout.LabelField($"{item.Name}: {res?.ToString()}");
+                    if (res == null)
+                    {
+                        EditorGUILayout.LabelField("{" + item.Name + "}: {null}");
+                    }
+                    else
+                    {
+                        EditorGUILayout.LabelField("{" + item.Name + "}: {" + res.ToString() + "}");
+                    }
                 }
             }
         }

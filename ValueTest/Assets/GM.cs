@@ -32,6 +32,7 @@ public partial class GM : MonoBehaviour {
     public static List<PawnController> Controllers => PawnController.Controllers;
 
     public static PlayerController PlayerController { get; private set; }
+    public static float Delay { get; internal set; }
 
 
 

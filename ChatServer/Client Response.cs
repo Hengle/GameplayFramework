@@ -43,7 +43,7 @@ namespace ChatServer
 
         private void OnHeart(MemoryStream value)
         {
-            Write(1001,value);
+            Write(100,value);
         }
 
         int i = 0;

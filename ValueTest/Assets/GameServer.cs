@@ -82,11 +82,9 @@ public class GameServer : Remote
     {
         var msg = Serializer.Deserialize<Heart>(value);
         TimeSpan delta = DateTime.Now - DateTime.FromBinary(msg.Time);
-        Debug.Log(delta.TotalMilliseconds);
 
-        Heart msg2 = new Heart();
-        msg2.Time = DateTime.Now.ToBinary();
-        GM.Instance.Server.Write(msg2);
+        GM.Delay =Mathf.Lerp(GM.Delay, (float)delta.TotalMilliseconds / 2,0.5f);
+        Debug.Log(GM.Delay);
     }
 
     private void OnChatMsg(MemoryStream value)
@@ -99,8 +97,25 @@ public class GameServer : Remote
         base.Update(deltaTime);
 
         ChatServer?.Update(deltaTime);
+
+        if (heartmsgCooldown <= 0)
+        {
+            var msg = new Heart()
+            {
+                Time = DateTime.Now.ToBinary(),
+            };
+
+            Write(msg);
+            heartmsgCooldown = 0.1;
+        }
+        else
+        {
+            heartmsgCooldown -= deltaTime;
+        }
+        
     }
 
+    double heartmsgCooldown = 0;
     public override void Dispose()
     {
         if (ChatServer!=null)

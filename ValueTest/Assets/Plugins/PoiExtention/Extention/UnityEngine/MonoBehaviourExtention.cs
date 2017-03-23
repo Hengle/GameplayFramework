@@ -32,7 +32,7 @@ namespace UnityEngine
         /// <summary>
         /// MonoBehaviour自身和继承的属性名字列表
         /// </summary>
-        public static List<string> PropertiesNames => new List<string>()
+        public static List<string> PropertiesNames = new List<string>()
         {
             "gameObject","tag","name","hideFlags","transform",
 
@@ -66,7 +66,11 @@ namespace UnityEngine
                 }
             }
 
-            callback?.Invoke();
+            if (callback != null)
+            {
+                callback.Invoke();
+            }
+
         }
 
         public static void Wait(this MonoBehaviour monoscript, float waitTime, Action Callback)
@@ -78,7 +82,10 @@ namespace UnityEngine
         {
             yield return new WaitForSeconds(waitTime);
 
-            callback?.Invoke();
+            if (callback != null)
+            {
+                callback.Invoke();
+            }
         }
     }
 }

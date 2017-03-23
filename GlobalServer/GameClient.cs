@@ -29,7 +29,12 @@ namespace GlobalServer
         protected override void Response(int key, MemoryStream value)
         {
             if (key == ProtoID.GetID<QLogin>()) OnQLogin(value);
-            
+            if (key == ProtoID.GetID<Heart>()) OnlyReturn(key,value);
+        }
+
+        private void OnlyReturn(int key,MemoryStream value)
+        {
+            Write(key, value);
         }
 
         private void OnQLogin(MemoryStream value)
