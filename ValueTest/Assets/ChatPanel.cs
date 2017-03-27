@@ -5,6 +5,7 @@ using TMPro;
 using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class ChatPanel : MonoBehaviour
 {
@@ -15,6 +16,14 @@ public class ChatPanel : MonoBehaviour
     public TMP_SpriteAsset Emoji;
     public TMP_SpriteAsset Emoji2X;
     public TMP_InputField Input;
+
+    private void Awake()
+    {
+        UI.ChatPanel = this;
+        OnSubmit = UI.ChatPanel_OnSubmit;
+    }
+
+
 
     public UnityEngine.UI.ScrollRect TextRect;
     void Start () {
@@ -67,6 +76,9 @@ public class ChatPanel : MonoBehaviour
         {
             return;
         }
+
+        ///插入名字==
+        input = OnSubmit?.Invoke(input);
 
         ShowInputMySelf(input);
 
@@ -157,4 +169,6 @@ public class ChatPanel : MonoBehaviour
     }
 
     Queue<GameObject> chatList = new Queue<GameObject>();
+
+    public event Func<string,string> OnSubmit;
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Poi;
 using UnityEngine;
+using TMPro;
 
 public class UI
 {
@@ -81,5 +82,26 @@ public class UI
         {
             Cursor.UseMyCursor(UseUICursor);
         } 
+    }
+
+    internal static void Init()
+    {
+        HelpMsg.Text.text = GM.Instance.HelpMsg;
+    }
+    static HexColor self = new HexColor("45FF0BFF");
+    public static string ChatPanel_OnSubmit(string obj)
+    {
+        obj = (Player.Instance?.DataInfo?.Name.SetTMPColor(self) +":") + obj;
+        
+        return obj;
+    }
+}
+
+public static class TMPStringEX
+{
+    public static string SetTMPColor(this string input, HexColor color)
+    {
+        string res = @"<#"+color.ToString()+">" + input + "</color>";
+        return res;
     }
 }

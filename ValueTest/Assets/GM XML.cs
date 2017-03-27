@@ -8,7 +8,8 @@ using UnityEngine;
 
 public partial class GM
 {
-    string helpMsg = "";
+    public string HelpMsg { get ;private set; }
+
     private IEnumerator LoadXML()
     {
         WWW www = new WWW(PathPrefix.WWWstreamingAssets + Application.streamingAssetsPath + "/Help.xml");
@@ -17,7 +18,7 @@ public partial class GM
         {
             var buffer = www.bytes.SkipBOMIfHave();
             XElement XE = XElement.Parse(Encoding.UTF8.GetString(buffer));
-            helpMsg = XE.Value;
+            HelpMsg = XE.Value;
         }
         else
         {

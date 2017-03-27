@@ -48,8 +48,18 @@ namespace UnityEngine
             this.g = g;
             this.b = b;
             this.a = a;
-            hexCode = Convert.ToString(r, 16) + Convert.ToString(g, 16) +
-                Convert.ToString(b, 16) + Convert.ToString(a, 16);
+
+            hexCode = Conver16(r) + Conver16(g) + Conver16(b) + Conver16(a);
+        }
+
+        private static string Conver16(byte r)
+        {
+            string res = Convert.ToString(r, 16);
+            if (res.Length == 1)
+            {
+                res = "0" + res;
+            }
+            return res;
         }
 
         public static HexColor Parse(string hexcode)
@@ -65,6 +75,11 @@ namespace UnityEngine
         public static implicit operator Color(HexColor c)
         {
             return c;
+        }
+
+        public static implicit operator HexColor(Color c)
+        {
+            return (Color32)c;
         }
 
         public static implicit operator HexColor(Color32 c)
