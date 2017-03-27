@@ -67,14 +67,14 @@ public class UI
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            ChatPanel.Show();
+            //ChatPanel.Show();
         }
 
         if (AutoUI)
         {
             ///显示任何非战斗UI，则使用系统鼠标
             UseUICursor = !(CommandTool.IsShow || Setting.IsShow || HelpMsg.IsShow
-                || ChatPanel.IsShow);
+                /*|| ChatPanel.IsShow*/);
         }  
 
         if (Cursor && Cursor.UseMycursor != UseUICursor)
