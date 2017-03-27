@@ -5,6 +5,7 @@ using ProtoBuf;
 using System.Collections.Generic;
 using System.Net;
 using MMONet;
+using Poi;
 
 namespace GlobalServer
 {
@@ -15,7 +16,7 @@ namespace GlobalServer
 
         public int InstanceID { get; private set; }
         public string Account { get; private set; }
-        public MemoryStream CharacterInfo { get; private set; }
+        public PlayerInfo CharacterInfo { get; private set; }
 
         public GameClient(Socket socket) : base(socket)
         {
@@ -29,12 +30,13 @@ namespace GlobalServer
         protected override void Response(int key, MemoryStream value)
         {
             if (key == ProtoID.GetID<QLogin>()) OnQLogin(value);
-            if (key == ProtoID.GetID<Heart>()) OnlyReturn(key,value);        
+            if (key == ProtoID.GetID<Heart>()) OnlyReturn(key,value);
+            if (key == ProtoID.GetID<PlayerInfo>()) OnSavaCharacter(value);
         }
 
         private void OnSavaCharacter(MemoryStream value)
         {
-            CharacterInfo = value;
+            CharacterInfo = Serializer.Deserialize<PlayerInfo>(value);
         }
 
         private void OnlyReturn(int key,MemoryStream value)

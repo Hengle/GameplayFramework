@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProtoBuf;
 
 namespace Poi
 {
+
     /// <summary>
     /// 角色信息
     /// </summary>
+    [ProtoContract,ProtoID(50001)]
+    [ProtoInclude(30, typeof(CharacterInfo))]
     public class PawnInfo:DataInfo
     {
         /// <summary>
@@ -55,7 +59,9 @@ namespace Poi
         public float TurnSpeed { get; set; } = 450;
 
         public Cooldown AttackCooldown { get; private set; } = new Cooldown(1);
+        [ProtoMember(1)]
         public int ID { get; set; }
+        [ProtoMember(2)]
         public string Name { get; set; }
     }
 }

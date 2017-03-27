@@ -62,6 +62,20 @@
             <param name="msgID"></param>
             <param name="body">流一定不能是反序列化后的</param>
         </member>
+        <member name="M:MMONet.Remote.CombineIDMsg(System.Int32,System.IO.MemoryStream)">
+            <summary>
+            拼合ID和消息正文
+            </summary>
+            <param name="msgID"></param>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MMONet.Remote.Write(System.IO.MemoryStream)">
+            <summary>
+            发送消息流
+            </summary>
+            <param name="sendmsg"></param>
+        </member>
         <member name="M:MMONet.Remote.Send">
             <summary>
             套接字开始发送数据

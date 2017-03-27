@@ -66,7 +66,7 @@ public partial class GM
 
     public void LoginPlayer()
     {
-        Server.Write((Poi.PawnInfo)Player.DataInfo);
+        Server.Write(Player.DataInfo);
     }
 
     public static void RecieveChat(ChatMsg pks)

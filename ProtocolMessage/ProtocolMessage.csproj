@@ -43,7 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataInfo\CharacterInfo.cs" />
+    <Compile Include="DataInfo\DataInfo.cs" />
+    <Compile Include="DataInfo\ItemInfo.cs" />
+    <Compile Include="DataInfo\MonsterInfo.cs" />
+    <Compile Include="DataInfo\NPCInfo.cs" />
+    <Compile Include="DataInfo\PawnInfo.cs" />
+    <Compile Include="DataInfo\PawnType.cs" />
+    <Compile Include="DataInfo\PlayerInfo.cs" />
     <Compile Include="Port.cs" />
+    <Compile Include="Property\BaseProperty.cs" />
+    <Compile Include="Property\Cooldown.cs" />
+    <Compile Include="Property\DataProperty.cs" />
+    <Compile Include="Property\HP.cs" />
+    <Compile Include="Property\IRangeProperty.cs" />
+    <Compile Include="Property\IRestoreProperty.cs" />
+    <Compile Include="Property\MP.cs" />
+    <Compile Include="Property\Speed.cs" />
+    <Compile Include="Property\ValueEnumType.cs" />
     <Compile Include="ProtocolMessageIDLess1000.cs" />
     <Compile Include="ProtocolMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
