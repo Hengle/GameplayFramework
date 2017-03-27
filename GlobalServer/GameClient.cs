@@ -11,11 +11,11 @@ namespace GlobalServer
     public class GameClient : MMONet.Remote
     {
         public static Dictionary<int, GameClient> clientDic = new Dictionary<int, GameClient>();
-
         private Server server;
 
         public int InstanceID { get; private set; }
         public string Account { get; private set; }
+        public MemoryStream CharacterInfo { get; private set; }
 
         public GameClient(Socket socket) : base(socket)
         {
@@ -29,7 +29,12 @@ namespace GlobalServer
         protected override void Response(int key, MemoryStream value)
         {
             if (key == ProtoID.GetID<QLogin>()) OnQLogin(value);
-            if (key == ProtoID.GetID<Heart>()) OnlyReturn(key,value);
+            if (key == ProtoID.GetID<Heart>()) OnlyReturn(key,value);        
+        }
+
+        private void OnSavaCharacter(MemoryStream value)
+        {
+            CharacterInfo = value;
         }
 
         private void OnlyReturn(int key,MemoryStream value)

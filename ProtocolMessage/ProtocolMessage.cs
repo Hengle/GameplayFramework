@@ -24,4 +24,18 @@ namespace ProtoBuf
         public string Context { get; set; }
     }
 
+    /// <summary>
+    /// 聊天消息
+    /// </summary>
+    [ProtoContract, ProtoID(2000)]
+    public class PawnInfo
+    {
+        /// <summary>
+        /// 角色实例ID
+        /// </summary>
+        [ProtoMember(1)]
+        public int CharacterID { get; set; }
+        [ProtoMember(2)]
+        public string Name { get; set; }
+    }
 }

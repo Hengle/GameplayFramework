@@ -110,6 +110,19 @@ namespace MMONet
         /// <param name="body">流一定不能是反序列化后的</param>
         public void Write(int msgID, MemoryStream body)
         {
+            MemoryStream sendmsg = CombineIDMsg(msgID, body);
+
+            Write(sendmsg);
+        }
+
+        /// <summary>
+        /// 拼合ID和消息正文
+        /// </summary>
+        /// <param name="msgID"></param>
+        /// <param name="body"></param>
+        /// <returns></returns>
+        public static MemoryStream CombineIDMsg(int msgID, MemoryStream body)
+        {
             MemoryStream sendmsg = new MemoryStream(MsgDesLength + MsgIDLength);
             ushort length = (ushort)body.Length;
             sendmsg.Write(BitConverter.GetBytes(length), 0, MsgDesLength);
@@ -119,10 +132,13 @@ namespace MMONet
 
             ///对齐流数据
             sendmsg.Seek(0, SeekOrigin.Begin);
-
-            Write(sendmsg);
+            return sendmsg;
         }
 
+        /// <summary>
+        /// 发送消息流
+        /// </summary>
+        /// <param name="sendmsg"></param>
         public void Write(MemoryStream sendmsg)
         {
             ArraySegment<byte> sendbytes = new ArraySegment<byte>(sendmsg.ToArray(), 0, (int)sendmsg.Length);

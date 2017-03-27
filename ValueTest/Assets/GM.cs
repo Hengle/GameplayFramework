@@ -6,6 +6,7 @@ using static UnityEngine.SceneManagement.SceneManager;
 using Poi;
 using UnityEngine.SceneManagement;
 using System.Net;
+using ProtoBuf;
 
 public partial class GM : MonoBehaviour {
 
@@ -137,6 +138,8 @@ public partial class GM : MonoBehaviour {
         ///初始化角色控制器
         InitPlayerController();
     }
+
+    
 
     private void InitPlayerController()
     {

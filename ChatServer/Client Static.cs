@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MMONet;
+using ProtoBuf;
 
 namespace ChatServer
 {
@@ -17,6 +19,19 @@ namespace ChatServer
         public static void BroadCast<T>(T msg)
         {
             throw new NotImplementedException();
+        }
+
+        public static void BroadCast(MemoryStream msg,IList<int> exceptClient = null)
+        {
+            ArraySegment<byte> sendbytes = new ArraySegment<byte>(msg.ToArray(), 0, (int)msg.Length);
+            foreach (var item in ClientDic)
+            {
+                if (exceptClient != null && exceptClient.Contains(item.Key))
+                {
+                    continue;
+                }
+                item.Value.Write(sendbytes);
+            }
         }
 
         public override void DisConnect(DisConnectReason resason = DisConnectReason.Active)

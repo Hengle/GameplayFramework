@@ -80,7 +80,7 @@ public class ChatPanel : MonoBehaviour
         ///插入名字==
         input = OnSubmit?.Invoke(input);
 
-        ShowInputMySelf(input);
+        ShowChat(input);
 
         if (autoClear)
         {
@@ -99,7 +99,7 @@ public class ChatPanel : MonoBehaviour
     /// 显示输入的文字
     /// </summary>
     /// <param name="input"></param>
-    private void ShowInputMySelf(string input)
+    public void ShowChat(string input)
     {
         TextMeshProUGUI newtext = Instantiate(textTemplate, TextRect.content.transform);
 

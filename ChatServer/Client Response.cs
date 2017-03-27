@@ -15,7 +15,7 @@ namespace ChatServer
 
         protected override void Response(int key, MemoryStream value)
         {
-            if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
+            if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(key,value);
             else if (key == ProtoID.GetID<Heart>()) OnHeart(value);
             else if (key == ProtoID.GetID<QLogin>()) OnQLogin(value);
         }
@@ -46,12 +46,10 @@ namespace ChatServer
             Write(100,value);
         }
 
-        int i = 0;
-        private void OnChatMsg(MemoryStream value)
+        private void OnChatMsg(int key,MemoryStream value)
         {
-            i++;
-            ChatMsg msg = Serializer.Deserialize<ChatMsg>(value);
-            Console.WriteLine(msg.CharacterID + "----" + msg.Context + "----收到消息个数-------" + i);
+            var msg = CombineIDMsg(key, value);
+            BroadCast(msg,new int[] { InstanceID });
         }
     }
 }

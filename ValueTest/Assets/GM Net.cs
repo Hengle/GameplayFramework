@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Net;
 using MMONet;
 using System.IO;
+using Poi;
 
 public partial class GM
 {
@@ -16,7 +17,7 @@ public partial class GM
     public static void Login(IPAddress ip)
     {
         ///连接服务器
-        Instance.Server = new GameServer();
+        Instance.Server = new GameServer(Instance);
         if (ip == null)
         {
             ip = IPAddress.Loopback;
@@ -50,4 +51,32 @@ public partial class GM
         }
     }
 
+    internal static void SendChat(string obj)
+    {
+        if (Instance.Server != null)
+        {
+            var msg = new ChatMsg()
+            {
+                CharacterID = Player.InstanceID,
+                Context = obj,
+            };
+            Instance.Server.ChatServer.Write(msg);
+        }
+    }
+
+    public void LoginPlayer()
+    {
+        Server.Write((Poi.PawnInfo)Player.DataInfo);
+    }
+
+    public static void RecieveChat(ChatMsg pks)
+    {
+        string name = GetName(pks.CharacterID);
+        UI.ShowChatMsg(name, pks.Context);
+    }
+
+    private static string GetName(int characterID)
+    {
+        return characterID.ToString();
+    }
 }

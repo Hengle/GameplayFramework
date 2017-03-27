@@ -65,6 +65,7 @@ public class GameServer : Remote
                 {
                     Player.InstanceID = pks.InstanceID;
                     PoiLog.Log(pks.Note);
+                    gM.LoginPlayer();
                 }
                 break;
             case ServerType.ChatServer:
@@ -84,12 +85,12 @@ public class GameServer : Remote
         TimeSpan delta = DateTime.Now - DateTime.FromBinary(msg.Time);
 
         GM.Delay =Mathf.Lerp(GM.Delay, (float)delta.TotalMilliseconds / 2,0.5f);
-        Debug.Log(GM.Delay);
     }
 
     private void OnChatMsg(MemoryStream value)
     {
-
+        var pks = Serializer.Deserialize<ChatMsg>(value);
+        GM.RecieveChat(pks);
     }
 
     public override void Update(double deltaTime)
@@ -116,6 +117,13 @@ public class GameServer : Remote
     }
 
     double heartmsgCooldown = 0;
+    private GM gM;
+
+    public GameServer(GM gM)
+    {
+        this.gM = gM;
+    }
+
     public override void Dispose()
     {
         if (ChatServer!=null)

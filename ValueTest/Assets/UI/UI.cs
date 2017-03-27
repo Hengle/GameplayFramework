@@ -59,6 +59,8 @@ public class UI
 
     public static event Action CameraLateUpdate;
 
+   
+
     public static void Update(float deltaTime)
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -91,9 +93,18 @@ public class UI
     static HexColor self = new HexColor("45FF0BFF");
     public static string ChatPanel_OnSubmit(string obj)
     {
-        obj = (Player.Instance?.DataInfo?.Name.SetTMPColor(self) +":") + obj;
+        GM.SendChat(obj);
+
+        obj = (Player.DataInfo?.Name.SetTMPColor(self) +":") + obj;
         
         return obj;
+    }
+
+    static HexColor other = new HexColor("2160DBFF");
+    internal static void ShowChatMsg(string name, string context)
+    {
+        var chat = name.SetTMPColor(other) + ":" + context;
+        ChatPanel.ShowChat(chat);
     }
 }
 
