@@ -47,6 +47,7 @@
     <Compile Include="CustomRemote.cs" />
     <Compile Include="PID.cs" />
     <Compile Include="Remote.cs" />
+    <Compile Include="Remote4Server.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

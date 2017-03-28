@@ -9,10 +9,6 @@ namespace ChatServer
 {
     public partial class Client
     {
-        public static Dictionary<int, Client> ClientDic { get; private set; }
-                                                    = new Dictionary<int, Client>();
-        public int InstanceID { get; private set; }
-
         protected override void Response(int key, MemoryStream value)
         {
             if (key == PID<ChatMsg>.Value) OnChatMsg(key,value);
@@ -47,8 +43,7 @@ namespace ChatServer
 
         private void OnChatMsg(int key,MemoryStream value)
         {
-            var msg = CombineIDMsg(key, value);
-            BroadCast(msg,new int[] { InstanceID });
+            BroadCast(key, value);
         }
     }
 }

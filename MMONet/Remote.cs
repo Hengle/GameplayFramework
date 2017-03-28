@@ -93,7 +93,7 @@ namespace MMONet
 
         public void Write<T>(T msg)
         {
-            Write(msg, PID<T>.Value);
+            Write(CreateMsgbyte(msg));
         }
 
         public void Write<T>(T msg, int msgID)
@@ -133,6 +133,40 @@ namespace MMONet
             ///对齐流数据
             sendmsg.Seek(0, SeekOrigin.Begin);
             return sendmsg;
+        }
+
+        /// <summary>
+        /// 讲消息序列化成流，加入报头
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static MemoryStream CreateMsgMemoryStream<T>(T msg)
+        {
+            MemoryStream body = new MemoryStream();
+            ProtoBuf.Serializer.Serialize(body, msg);
+            MemoryStream sendmsg = new MemoryStream(MsgDesLength + MsgIDLength);
+            ushort length = (ushort)body.Length;
+            sendmsg.Write(BitConverter.GetBytes(length), 0, MsgDesLength);
+            sendmsg.Write(BitConverter.GetBytes(PID<T>.Value), 0, MsgIDLength);
+
+            body.WriteTo(sendmsg);
+
+            ///对齐流数据
+            sendmsg.Seek(0, SeekOrigin.Begin);
+            return sendmsg;
+        }
+
+        /// <summary>
+        /// 讲消息序列化字节数组，加入报头
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static ArraySegment<byte> CreateMsgbyte<T>(T msg)
+        {
+            var sendmsg = CreateMsgMemoryStream(msg);
+            return new ArraySegment<byte>(sendmsg.ToArray(), 0, (int)sendmsg.Length); ;
         }
 
         /// <summary>

@@ -51,9 +51,9 @@ namespace GlobalServer
                 }
 
                 ///轮询客户端
-                lock (GameClient.clientDic)
+                lock (GameClient.ClientDic)
                 {
-                    foreach (var item in GameClient.clientDic)
+                    foreach (var item in GameClient.ClientDic)
                     {
                         item.Value.Update(delta);
                     }

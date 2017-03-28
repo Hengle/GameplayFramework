@@ -9,12 +9,9 @@ using Poi;
 
 namespace GlobalServer
 {
-    public class GameClient : MMONet.Remote
+    public class GameClient : Remote4Server
     {
-        public static Dictionary<int, GameClient> clientDic = new Dictionary<int, GameClient>();
         private Server server;
-
-        public int InstanceID { get; private set; }
         public string Account { get; private set; }
         public PlayerInfo CharacterInfo { get; private set; }
 
@@ -50,9 +47,9 @@ namespace GlobalServer
             InstanceID = Poi.ID.GetGlobalID();
             Account = pks.account;
 
-            lock (clientDic)
+            lock (ClientDic)
             {
-                clientDic.Add(InstanceID, this);
+                ClientDic.Add(InstanceID, this);
                 server.UnknownClient.Remove(this);
             }
 
@@ -64,7 +61,7 @@ namespace GlobalServer
                 Server = ServerType.GlobalServer,
             };
 
-            Console.WriteLine($"客户端{pks.account}登陆，分配临时ID：{InstanceID}。当前客户端数量：{clientDic.Count}。");
+            Console.WriteLine($"客户端{pks.account}登陆，分配临时ID：{InstanceID}。当前客户端数量：{ClientDic.Count}。");
 
             Write(msg);
 
@@ -96,10 +93,10 @@ namespace GlobalServer
 
         public static void Remove(GameClient client)
         {
-            lock (clientDic)
+            lock (ClientDic)
             {
-                clientDic.Remove(client.InstanceID);
-                Console.WriteLine($"客户端{client.Account}退出，ID：{client.InstanceID}。当前客户端数量：{clientDic.Count}。");
+                ClientDic.Remove(client.InstanceID);
+                Console.WriteLine($"客户端{client.Account}退出，ID：{client.InstanceID}。当前客户端数量：{ClientDic.Count}。");
             }
         }
     }

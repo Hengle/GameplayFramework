@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client Response.cs" />
-    <Compile Include="Client Static.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientTempTest.cs" />
     <Compile Include="GlobalServerClient.cs" />
