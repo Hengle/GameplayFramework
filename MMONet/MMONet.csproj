@@ -45,18 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRemote.cs" />
+    <Compile Include="PID.cs" />
     <Compile Include="Remote.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProtoBufExtention\ProtoBufExtention.csproj">
-      <Project>{4c539aa9-77ab-4648-862b-5ba0a4986282}</Project>
-      <Name>ProtoBufExtention</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

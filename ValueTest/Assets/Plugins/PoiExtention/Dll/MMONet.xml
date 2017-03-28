@@ -15,6 +15,11 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
+        <member name="F:MMONet.PID.Length">
+            <summary>
+            报头类型ID所占字节长度
+            </summary>
+        </member>
         <member name="T:MMONet.Remote">
             <summary>
             用于MMO游戏的远端抽象，封装了数据收发，解析等方法

@@ -61,10 +61,6 @@
       <Project>{6a580a9f-cec9-4037-b39a-b750b307638f}</Project>
       <Name>MMONet</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProtoBufExtention\ProtoBufExtention.csproj">
-      <Project>{4c539aa9-77ab-4648-862b-5ba0a4986282}</Project>
-      <Name>ProtoBufExtention</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ProtocolMessage\ProtocolMessage.csproj">
       <Project>{b3b7814b-3b96-4e9b-b317-e9fe1cb5b938}</Project>
       <Name>ProtocolMessage</Name>
