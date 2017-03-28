@@ -27,6 +27,9 @@ public class UI
 
     private UI() { }
     Dictionary<int, IUITarget> pawnDic = new Dictionary<int, IUITarget>();
+
+
+
     internal static void AddPawn(IUITarget pawn)
     {
         int id = pawn.ID;
@@ -105,6 +108,13 @@ public class UI
     {
         var chat = name.SetTMPColor(other) + ":" + context;
         ChatPanel.ShowChat(chat);
+    }
+    static HexColor systemMsgColor = new HexColor("FDF600FF");
+    internal static void ShowSystemMsg(Poi.CharacterInfo dataInfo)
+    {
+        string msg = @"玩家" + dataInfo.Name.SetTMPColor(other)+ "已下线";
+        msg = msg.SetTMPColor(systemMsgColor);
+        ChatPanel.ShowChat(msg,20);
     }
 }
 

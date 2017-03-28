@@ -34,6 +34,7 @@ public partial class GM : MonoBehaviour {
 
     public static PlayerController PlayerController { get; private set; }
     public static float Delay { get; internal set; }
+    public static LineMode Mode { get; internal set; }
 
 
 
@@ -110,8 +111,8 @@ public partial class GM : MonoBehaviour {
             Height = 1.6f,
             JumpPower = 9f,
             JumpMaxStep = 2,
-            Name = "初音未来",
-
+            Name = "初音未来" + new System.Random().Next(1000, 9999).ToString(),
+            ID = Player.InstanceID,
         };
         info.Run.Max = 10;
         info.AttackCooldown.Max = 0.3f;

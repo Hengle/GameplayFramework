@@ -88,4 +88,17 @@ namespace ProtoBuf
         [ProtoMember(2)]
         public int Port;
     }
+
+    [ProtoContract(Name = "106")]
+    public class Quit
+    {
+        [ProtoMember(1)]
+        public LoginResult Result;
+        [ProtoMember(2)]
+        public int InstanceID;
+        [ProtoMember(3)]
+        public string Note;
+        [ProtoMember(4)]
+        public ServerType Server;
+    }
 }

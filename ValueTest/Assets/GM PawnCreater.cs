@@ -13,7 +13,7 @@ public partial class GM
         return GameObject.Instantiate(GameMode.DefaultPawn);
     }
 
-    private GameObject CreatePlayer()
+    public GameObject CreatePlayer()
     {
         return CreatePlayer(GameObject.FindWithTag(nameof(PoiTag.PlayerStart))?.transform);
     }

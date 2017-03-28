@@ -91,16 +91,14 @@ namespace MMONet
 
         #region Write
 
+        /// <summary>
+        /// 发送消息
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="msg"></param>
         public void Write<T>(T msg)
         {
             Write(CreateMsgbyte(msg));
-        }
-
-        public void Write<T>(T msg, int msgID)
-        {
-            MemoryStream body = new MemoryStream();
-            ProtoBuf.Serializer.Serialize(body, msg);
-            Write(msgID, body);
         }
 
         /// <summary>
@@ -116,7 +114,7 @@ namespace MMONet
         }
 
         /// <summary>
-        /// 拼合ID和消息正文
+        /// 拼合ID和消息正文序列化流
         /// </summary>
         /// <param name="msgID"></param>
         /// <param name="body"></param>
@@ -158,7 +156,7 @@ namespace MMONet
         }
 
         /// <summary>
-        /// 讲消息序列化字节数组，加入报头
+        /// 将消息序列化字节数组，加入报头
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="msg"></param>
@@ -170,7 +168,7 @@ namespace MMONet
         }
 
         /// <summary>
-        /// 发送消息流
+        /// 发送加入报头的消息流
         /// </summary>
         /// <param name="sendmsg"></param>
         public void Write(MemoryStream sendmsg)
@@ -179,6 +177,10 @@ namespace MMONet
             Write(sendbytes);
         }
 
+        /// <summary>
+        /// 发送加入报头的消息字节数组
+        /// </summary>
+        /// <param name="sendmsg"></param>
         public void Write(ArraySegment<byte> sendbytes)
         {
             lock (sendEventArgs)

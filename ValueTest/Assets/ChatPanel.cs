@@ -99,7 +99,7 @@ public class ChatPanel : MonoBehaviour
     /// 显示输入的文字
     /// </summary>
     /// <param name="input"></param>
-    public void ShowChat(string input)
+    public void ShowChat(string input,int? fontSize = null)
     {
         TextMeshProUGUI newtext = Instantiate(textTemplate, TextRect.content.transform);
 
@@ -114,8 +114,8 @@ public class ChatPanel : MonoBehaviour
         newtext.text = input;
 
         newtext.gameObject.SetActive(true);
-
-        ReSizeFontSize(newtext, newtext.fontSize);
+        
+        ReSizeFontSize(newtext, fontSize??newtext.fontSize);
         
         ///解决verticalScrollbar设定值无法为0的问题
         StartCoroutine(SetVerticalScrollbarValue(0));

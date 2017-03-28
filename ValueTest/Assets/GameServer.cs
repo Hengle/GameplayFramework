@@ -17,6 +17,20 @@ public class GameServer : Remote
         else if (key == PID<Heart>.Value) OnHeart(value);
         else if (key == PID<ALogin>.Value) OnALogin(value);
         else if (key == PID<AChildServerAddress>.Value) OnAChildServerAddress(value);
+        else if (key == PID<PlayerInfo>.Value) OnPlayerInfo(value);
+        else if (key == PID<Quit>.Value) OnCharacterQuit(value);
+    }
+
+    private void OnCharacterQuit(MemoryStream value)
+    {
+        var pks = Serializer.Deserialize<Quit>(value);
+        Character.Quit(pks);
+    }
+
+    private void OnPlayerInfo(MemoryStream value)
+    {
+        var pks = Serializer.Deserialize<PlayerInfo>(value);
+        Character.Create(pks);
     }
 
     private void OnAChildServerAddress(MemoryStream value)
@@ -132,5 +146,14 @@ public class GameServer : Remote
         }
 
         base.Dispose();
+    }
+
+    public override void DisConnect(DisConnectReason resason = DisConnectReason.Active)
+    {
+        if (ChatServer != null)
+        {
+            ChatServer.DisConnect(resason);
+        }
+        base.DisConnect(resason);
     }
 }

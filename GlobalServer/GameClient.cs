@@ -34,6 +34,16 @@ namespace GlobalServer
         private void OnSavaCharacter(MemoryStream value)
         {
             CharacterInfo = Serializer.Deserialize<PlayerInfo>(value);
+            BroadCast(CharacterInfo);
+
+            foreach (var item in ClientDic)
+            {
+                GameClient c = item.Value as GameClient;
+                if (item.Key != InstanceID)
+                {
+                    Write(c.CharacterInfo);
+                }
+            }
         }
 
         private void OnlyReturn(int key,MemoryStream value)
@@ -86,6 +96,12 @@ namespace GlobalServer
 
         public override void DisConnect(DisConnectReason resason = DisConnectReason.Active)
         {
+            var msg = new Quit()
+            {
+                InstanceID = InstanceID,
+            };
+            BroadCast(msg);
+
             Remove(this);
 
             base.DisConnect(resason);

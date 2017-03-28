@@ -36,7 +36,7 @@ namespace Poi
 
         private void InitInstanceID()
         {
-            if (DataInfo)
+            if (DataInfo && DataInfo.ID == 0)
             {
                 DataInfo.ID = Poi.ID.GetGlobalID();
             }

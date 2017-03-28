@@ -16,6 +16,10 @@ public partial class GM
 
     public static void Login(IPAddress ip)
     {
+        if (Instance.Server != null && Instance.Server.IsConnected)
+        {
+            return;
+        }
         ///连接服务器
         Instance.Server = new GameServer(Instance);
         if (ip == null)
@@ -23,6 +27,19 @@ public partial class GM
             ip = IPAddress.Loopback;
         }
         Instance.Server.BeginConnect(ip, Port.GlobalListen, Instance.callback, Instance.Server);
+    }
+
+    public static void Logout()
+    {
+        if (Instance.Server != null)
+        {
+            Instance.Server.DisConnect(DisConnectReason.Active);
+            Instance.Server.Dispose();
+            Instance.Server = null;
+        }
+
+        Delay = 0;
+        Character.ChangeMode(LineMode.Offline);
     }
 
     public void InitNet()
@@ -77,6 +94,10 @@ public partial class GM
 
     private static string GetName(int characterID)
     {
+        if (Character.Dic.ContainsKey(characterID))
+        {
+            return Character.Dic[characterID].Name;
+        }
         return characterID.ToString();
     }
 }

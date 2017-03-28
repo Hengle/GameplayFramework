@@ -21,8 +21,8 @@ namespace MMONet
         /// <summary>
         /// 向所有客户端广播消息
         /// </summary>
-        /// <param name="msgbody"></param>
-        /// <param name="containsSelf"></param>
+        /// <param name="msgbody">消息实例</param>
+        /// <param name="containsSelf">广播中是否包含自身</param>
         public void BroadCast<T>(T msg, bool containsSelf = false)
         {
             if (containsSelf)
@@ -37,9 +37,11 @@ namespace MMONet
 
         /// <summary>
         /// 向所有客户端广播消息
+        /// <para>用于接到消息流，在为解析状态下直接广播</para>
         /// </summary>
-        /// <param name="msgbody"></param>
-        /// <param name="containsSelf"></param>
+        /// <param name="key">消息ID</param>
+        /// <param name="msgbody">消息实例序列化流</param>
+        /// <param name="containsSelf">广播中是否包含自身</param>
         public void BroadCast(int key, MemoryStream msgbody, bool containsSelf = false)
         {
             if (containsSelf)
@@ -53,10 +55,12 @@ namespace MMONet
         }
 
         /// <summary>
-        /// 向所有客户端广播消息
+        /// 向客户端广播消息
+        /// <para>用于接到消息流，在为解析状态下直接广播</para>
         /// </summary>
-        /// <param name="msgbody"></param>
-        /// <param name="exceptClient"></param>
+        /// <param name="key">消息ID</param>
+        /// <param name="msgbody">消息实例序列化流</param>
+        /// <param name="exceptClient">排除的指定客户端</param>
         public static void BroadCast(int key, MemoryStream msgbody, IList<int> exceptClient)
         {
             var msg = CombineIDMsg(key, msgbody);

@@ -51,5 +51,9 @@ public class Setting : MonoBehaviour {
         GM.Login(ip);
     }
 
+    public void Logout()
+    {
+        GM.Logout();
+    }
     #endregion
 }

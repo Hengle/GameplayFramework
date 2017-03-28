@@ -37,7 +37,9 @@ namespace Poi
         /// <summary>
         /// 身高
         /// </summary>
+        [ProtoMember(3)]
         public float Height { get; set; }
+        [ProtoMember(4)]
         public float JumpPower { get; set; }
         /// <summary>
         /// 跳跃段数
@@ -46,6 +48,7 @@ namespace Poi
         /// <summary>
         /// 允许最大跳跃段数
         /// </summary>
+        [ProtoMember(5)]
         public int JumpMaxStep { get; set; } = 1;
 
         /// <summary>
