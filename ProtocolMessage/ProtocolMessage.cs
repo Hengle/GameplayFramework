@@ -9,7 +9,7 @@ namespace ProtoBuf
     /// <summary>
     /// 聊天消息
     /// </summary>
-    [ProtoContract, ProtoID(1000)]
+    [ProtoContract( Name = "1000")]
     public class ChatMsg
     {
         /// <summary>
@@ -27,7 +27,7 @@ namespace ProtoBuf
     /// <summary>
     /// 聊天消息
     /// </summary>
-    [ProtoContract, ProtoID(2000)]
+    [ProtoContract(Name = "2000")]
     public class PawnInfo
     {
         /// <summary>

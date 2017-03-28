@@ -10,7 +10,7 @@ namespace Poi
     /// <summary>
     /// 数据信息，内存模型
     /// </summary>
-    [ProtoContract,ProtoID(50000)]
+    [ProtoContract(Name = "50000")]
     [ProtoInclude(30, typeof(PawnInfo))]
     public class DataInfo
     {

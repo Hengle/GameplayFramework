@@ -7,18 +7,14 @@ using ProtoBuf;
 
 namespace ProtoBuf
 {
-    public class Message
-    {
-    }
-
-    [ProtoContract,ProtoID(2001)]
+    [ProtoContract(Name = "901")]
     public class ServerLogin
     {
         [ProtoMember(1)]
         public ServerType Type;
     }
 
-    [ProtoContract, ProtoID(2002)]
+    [ProtoContract(Name = "902")]
     public class ChildServerBeginWork
     {
         [ProtoMember(1)]

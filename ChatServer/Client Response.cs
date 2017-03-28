@@ -15,9 +15,8 @@ namespace ChatServer
 
         protected override void Response(int key, MemoryStream value)
         {
-            if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(key,value);
-            else if (key == ProtoID.GetID<Heart>()) OnHeart(value);
-            else if (key == ProtoID.GetID<QLogin>()) OnQLogin(value);
+            if (key == PID<ChatMsg>.Value) OnChatMsg(key,value);
+            else if (key == PID<QLogin>.Value) OnQLogin(value);
         }
 
         private void OnQLogin(MemoryStream value)

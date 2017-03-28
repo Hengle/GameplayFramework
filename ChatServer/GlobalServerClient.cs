@@ -16,7 +16,7 @@ namespace ChatServer
         protected override void Response(int key, MemoryStream value)
         {
             base.Response(key, value);
-            if (key == ProtoID.GetID<ChildServerBeginWork>()) OnBeginWork(value);
+            if (key == PID<ChildServerBeginWork>.Value) OnBeginWork(value);
             
         }
 

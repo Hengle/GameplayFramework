@@ -10,7 +10,7 @@ namespace Poi
     /// <summary>
     /// 角色信息
     /// </summary>
-    [ProtoContract,ProtoID(50001)]
+    [ProtoContract(Name = "50001")]
     [ProtoInclude(30, typeof(CharacterInfo))]
     public class PawnInfo:DataInfo
     {

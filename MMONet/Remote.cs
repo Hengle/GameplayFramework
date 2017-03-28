@@ -21,7 +21,7 @@ namespace MMONet
         /// <summary>
         /// 消息包类型ID 字节长度
         /// </summary>
-        public const int MsgIDLength = ProtoIDAttribute.Length;
+        public const int MsgIDLength = PID.Length;
 
         /// <summary>
         /// 最大暂存消息个数
@@ -93,7 +93,7 @@ namespace MMONet
 
         public void Write<T>(T msg)
         {
-            Write(msg, ProtoID.GetID<T>());
+            Write(msg, PID<T>.Value);
         }
 
         public void Write<T>(T msg, int msgID)

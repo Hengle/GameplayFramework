@@ -27,7 +27,7 @@ public partial class GM
 
     public void InitNet()
     {
-        ProtoID.Init();       
+           
     }
 
     public void UpdateMesssage(double delta)

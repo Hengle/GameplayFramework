@@ -29,9 +29,9 @@ namespace GlobalServer
 
         protected override void Response(int key, MemoryStream value)
         {
-            if (key == ProtoID.GetID<QLogin>()) OnQLogin(value);
-            if (key == ProtoID.GetID<Heart>()) OnlyReturn(key,value);
-            if (key == ProtoID.GetID<PlayerInfo>()) OnSavaCharacter(value);
+            if (key == PID<QLogin>.Value) OnQLogin(value);
+            if (key == PID<Heart>.Value) OnlyReturn(key,value);
+            if (key == PID<PlayerInfo>.Value) OnSavaCharacter(value);
         }
 
         private void OnSavaCharacter(MemoryStream value)

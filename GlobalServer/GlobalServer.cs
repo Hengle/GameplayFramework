@@ -23,9 +23,6 @@ namespace GlobalServer
 
         public void Run()
         {
-            ProtoID.Init();
-            ProtoID.Init("ProtocolServerMessage");
-
             MyProcess = Process.GetCurrentProcess();
             //MyProcess.EnableRaisingEvents = true;
             //MyProcess.Exited += MyProcess_Exited;

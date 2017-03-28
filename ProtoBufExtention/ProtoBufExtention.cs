@@ -8,14 +8,11 @@ using System.IO;
 
 namespace ProtoBuf
 {
-    public class ProtoBufExtention
-    {
-    }
-
     /// <summary>
     /// 用于解析报头的编号值，项目中所有ID必须唯一
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
+    [Obsolete("Use PID instead", true)]
     public class ProtoIDAttribute : Attribute
     {
         /// <summary>
@@ -35,6 +32,7 @@ namespace ProtoBuf
         public int ID { get; private set; }
     }
 
+    [Obsolete("Use PID instead", true)]
     public class ProtoID
     {
         public static int GetID<T>()

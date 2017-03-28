@@ -21,7 +21,7 @@ namespace GlobalServer
         protected override void Response(int key, MemoryStream value)
         {
             base.Response(key, value);
-            if (key == ProtoID.GetID<ServerLogin>()) OnServerLogin(value);
+            if (key == PID<ServerLogin>.Value) OnServerLogin(value);
             //else if (key == ProtoID.GetID<Heart>()) OnHeart(value);
         }
 

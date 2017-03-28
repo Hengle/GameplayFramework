@@ -6,7 +6,7 @@ using ProtoBuf;
 
 namespace Poi
 {
-    [ProtoContract,ProtoID(50003)]
+    [ProtoContract(Name = "50003")]
     public class PlayerInfo:CharacterInfo
     {
         public override PawnType PawnType

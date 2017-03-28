@@ -13,10 +13,10 @@ public class GameServer : Remote
 
     protected override void Response(int key, MemoryStream value)
     {
-        if (key == ProtoID.GetID<ChatMsg>()) OnChatMsg(value);
-        else if (key == ProtoID.GetID<Heart>()) OnHeart(value);
-        else if (key == ProtoID.GetID<ALogin>()) OnALogin(value);
-        else if (key == ProtoID.GetID<AChildServerAddress>()) OnAChildServerAddress(value);
+        if (key == PID<ChatMsg>.Value) OnChatMsg(value);
+        else if (key == PID<Heart>.Value) OnHeart(value);
+        else if (key == PID<ALogin>.Value) OnALogin(value);
+        else if (key == PID<AChildServerAddress>.Value) OnAChildServerAddress(value);
     }
 
     private void OnAChildServerAddress(MemoryStream value)

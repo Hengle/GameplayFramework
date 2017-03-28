@@ -20,9 +20,6 @@ namespace ChatServer
 
         public void Run()
         {
-            ProtoID.Init();
-            ProtoID.Init("ProtocolServerMessage");
-
             ///连接全局服务器
             GlobalServerClient server = new GlobalServerClient(this);
             server.BeginConnect(IPAddress.Loopback, Port.ChildServerLogin,
