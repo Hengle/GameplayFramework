@@ -61,6 +61,11 @@ public class Setting : MonoBehaviour {
         GM.Login(ip);
     }
 
+    public void LoginLoopback()
+    {
+        GM.Login(IPAddress.Loopback);
+    }
+
     public void Logout()
     {
         GM.Logout();

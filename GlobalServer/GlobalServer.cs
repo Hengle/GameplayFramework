@@ -35,7 +35,6 @@ namespace GlobalServer
                         LineMode = value.ToEnum<LineMode>();
                         CurrentIP = IPAddressExtention.GetIP(LineMode == LineMode.LAN);
                         PDebug.Log(CurrentIP);
-                        Console.WriteLine(CurrentIP.ToString());
                     }
                 }
             }
@@ -107,6 +106,8 @@ namespace GlobalServer
             {
                 UnknownClient.Add(client);
                 client.BeginReceive();
+
+                PDebug.Log("新客户端link");
             }
         }
 
