@@ -9,6 +9,7 @@ using System.Net;
 using MMONet;
 using System.IO;
 using Poi;
+using System.Collections;
 
 public partial class GM
 {
@@ -27,6 +28,29 @@ public partial class GM
             ip = IPAddress.Loopback;
         }
         Instance.Server.BeginConnect(ip, Port.GlobalListen, Instance.callback, Instance.Server);
+
+        //Instance.SendLoginMsg();
+    }
+
+    public void SendLoginMsg()
+    {
+        Instance.StartCoroutine(SendLoginMsg2());
+    }
+
+    private static IEnumerator SendLoginMsg2()
+    {
+        while (Instance.Server == null || !Instance.Server.IsConnected)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSecondsRealtime(1);
+        QLogin msg = new QLogin()
+        {
+            account = "tEXT"/*SystemInfo.deviceUniqueIdentifier*/
+        };
+
+        Instance.Server.Write(msg);
     }
 
     public static void Logout()
@@ -61,10 +85,7 @@ public partial class GM
 
         if (cl.IsConnected)
         {
-            QLogin msg = new QLogin() { account = "tEXT"/*SystemInfo.deviceUniqueIdentifier*/
-            };
-
-            cl.Write(msg);
+            
         }
     }
 

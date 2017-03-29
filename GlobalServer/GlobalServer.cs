@@ -33,15 +33,19 @@ namespace GlobalServer
                     {
                         string value = item.Split('=')[1];
                         LineMode = value.ToEnum<LineMode>();
-                        CurrentIP = IPAddressExtention.GetIP(LineMode == LineMode.LAN);
-                        PDebug.Log(CurrentIP);
+                        
                     }
                 }
             }
             catch (Exception)
             {
 
-            }   
+            }
+            finally
+            {
+                CurrentIP = IPAddressExtention.GetIP(LineMode == LineMode.LAN);
+                PDebug.Log(CurrentIP);
+            } 
         }
 
         public void Run()
