@@ -47,7 +47,17 @@ public class Setting : MonoBehaviour {
     public InputField IPInput;
     public void Login()
     {
-        IPAddress.TryParse(IPInput.text, out IPAddress ip);
+        if (!IPAddress.TryParse(IPInput.text, out IPAddress ip))
+        {
+            var list = Dns.GetHostAddresses("www.mikumikufight.top");
+            try
+            {
+                ip = list[0];
+            }
+            catch (System.Exception)
+            {
+            }
+        }
         GM.Login(ip);
     }
 

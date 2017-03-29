@@ -15,11 +15,35 @@ namespace GlobalServer
     {
         public Process ChatServerProcess { get; private set; }
         public Process MyProcess { get; private set; }
+        public LineMode LineMode { get; private set; } = LineMode.Online;
         internal ChildServerClient ChatServer { get; set; }
         /// <summary>
         /// 成功链接但没有识别的Client
         /// </summary>
         public List<MMONet.Remote> UnknownClient { get; private set; } = new List<MMONet.Remote>();
+        public IPAddress CurrentIP { get; private set; } = null;
+
+        public void Init(string[] args)
+        {
+            try
+            {
+                foreach (var item in args)
+                {
+                    if (item.StartsWith("--LineMode"))
+                    {
+                        string value = item.Split('=')[1];
+                        LineMode = value.ToEnum<LineMode>();
+                        CurrentIP = IPAddressExtention.GetIP(LineMode == LineMode.LAN);
+                        PDebug.Log(CurrentIP);
+                        Console.WriteLine(CurrentIP.ToString());
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }   
+        }
 
         public void Run()
         {

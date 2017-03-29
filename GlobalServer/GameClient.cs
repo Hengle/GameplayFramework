@@ -83,15 +83,14 @@ namespace GlobalServer
         /// </summary>
         private void SendChildServerAddresss()
         {
-            var msg2 = new AChildServerAddress();
-            IPEndPoint ep = new IPEndPoint(IPAddress.Loopback, Port.ChatServerListen);
-            msg2.Address[ServerType.ChatServer] = new IP()
+            var msg = new AChildServerAddress();
+            msg.Address[ServerType.ChatServer] = new IP()
             {
-                IPString = IPAddress.Loopback.ToString(),
+                IPString = (server.CurrentIP ?? IPAddress.Loopback).ToString(),
                 Port = Port.ChatServerListen
             };
 
-            Write(msg2);
+            Write(msg);
         }
 
         public override void DisConnect(DisConnectReason resason = DisConnectReason.Active)

@@ -16,6 +16,7 @@ namespace GlobalServerProgram
             Console.WriteLine($"    服务器已经启动，按{exit}键关闭所有服务器进程……");
             Console.WriteLine($"**********************************************");
             GlobalServer.Server s = new GlobalServer.Server();
+            s.Init(args);
             var t = new Thread(s.Run);
             t.Start();
 
