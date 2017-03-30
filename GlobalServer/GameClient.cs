@@ -14,6 +14,7 @@ namespace GlobalServer
         private Server server;
         public string Account { get; private set; }
         public PlayerInfo CharacterInfo { get; private set; }
+        public Trans Trans { get; internal set; }
 
         public GameClient(Socket socket) : base(socket)
         {
@@ -29,12 +30,22 @@ namespace GlobalServer
             if (key == PID<QLogin>.Value) OnQLogin(value);
             if (key == PID<Heart>.Value) OnlyReturn(key,value);
             if (key == PID<PlayerInfo>.Value) OnSavaCharacter(value);
+            if (key == PID<TransSync>.Value) OnTransSync(value);
+        }
+
+        private void OnTransSync(MemoryStream value)
+        {
+            var transync = Serializer.Deserialize<TransSync>(value);
+            if (transync.instanceID == InstanceID)
+            {
+                Trans = transync.trans;
+            }
         }
 
         private void OnSavaCharacter(MemoryStream value)
         {
             CharacterInfo = Serializer.Deserialize<PlayerInfo>(value);
-            BroadCast(CharacterInfo);
+            BroadCastExceptSelf(CharacterInfo);
 
             foreach (var item in ClientDic)
             {
@@ -99,7 +110,7 @@ namespace GlobalServer
             {
                 InstanceID = InstanceID,
             };
-            BroadCast(msg);
+            BroadCastExceptSelf(msg);
 
             Remove(this);
 

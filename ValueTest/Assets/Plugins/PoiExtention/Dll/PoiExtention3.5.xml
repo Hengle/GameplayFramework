@@ -180,6 +180,14 @@
             <param name="address"></param>
             <returns></returns>
         </member>
+        <member name="M:System.Net.IPAddressExtention.GetIP(System.Boolean)">
+            <summary>
+            取得IP
+            <para>true取得局域网IP，flase取得外网IP，默认值为flase</para>
+            </summary>
+            <param name="IsLAN">true取得局域网IP，flase取得外网IP，默认值为flase</param>
+            <returns></returns>
+        </member>
         <member name="T:System.StringExtention">
             <summary>
             string扩展

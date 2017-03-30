@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net.Sockets;
 using MMONet;
+using Poi;
 using ProtoBuf;
 
 namespace GlobalServer
@@ -45,6 +46,13 @@ namespace GlobalServer
                 default:
                     break;
             }
+        }
+
+        public override void DisConnect(DisConnectReason resason = DisConnectReason.Active)
+        {
+            base.DisConnect(resason);
+
+            PDebug.Log("子服务器断开");
         }
     }
 }

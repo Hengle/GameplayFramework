@@ -205,13 +205,20 @@ namespace MMONet
             if (!IsConnected) return;
             
             sendEventArgs.BufferList = sendList;
-
-            if (!Socket.SendAsync(sendEventArgs))
+            if (Socket.Connected && Socket.Poll(1000,SelectMode.SelectWrite))
             {
-                if (sendEventArgs.SocketError == SocketError.Success)
+                ///连接和可写检查
+                if (!Socket.SendAsync(sendEventArgs))
                 {
-                    Send_Completed(Socket, sendEventArgs);
+                    if (sendEventArgs.SocketError == SocketError.Success)
+                    {
+                        Send_Completed(Socket, sendEventArgs);
+                    }
                 }
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -249,20 +256,32 @@ namespace MMONet
             offset = 0;
             byte[] buffer = new byte[ReceiveBufferSize];
 
-            if (ReceiveMode == ReceiveFuncMode.UseAsyncEventArgs)
+            BeginReceive(buffer);
+        }
+
+        private void BeginReceive(byte[] buffer)
+        {
+            if (IsReceive && Socket.Connected)
             {
-                receiveEventArgs.SetBuffer(buffer, offset, ReceiveBufferSize - offset);
-                if (!Socket.ReceiveAsync(receiveEventArgs))
-                {
-                    ReceiveEventArgs_Completed(Socket, receiveEventArgs);
-                }
+                //if (Socket.Poll(1000, SelectMode.SelectRead))
+                //{ 
+                    ///此处不能检查，无法通过
+                    if (ReceiveMode == ReceiveFuncMode.UseAsyncEventArgs)
+                    {
+                        receiveEventArgs.SetBuffer(buffer, offset, ReceiveBufferSize - offset);
+                        if (!Socket.ReceiveAsync(receiveEventArgs))
+                        {
+                            ReceiveEventArgs_Completed(Socket, receiveEventArgs);
+                        }
+                    }
+                    else
+                    {
+                        Socket.BeginReceive(buffer, offset, ReceiveBufferSize - offset,
+                            SocketFlags.None, ReceiveCallback, buffer);
+                    }
+                //}      
             }
-            else
-            {
-                Socket.BeginReceive(buffer, offset, ReceiveBufferSize - offset,
-                    SocketFlags.None, ReceiveCallback, buffer);
-            }
-        } 
+        }
 
         public void EndReceive()
         {
@@ -305,11 +324,8 @@ namespace MMONet
                     Array.Copy(buffer, readLength, newbuffer, 0, offset);
                 }
 
-                if (IsReceive)
-                {
-                    receiveEventArgs.SetBuffer(newbuffer, offset, ReceiveBufferSize - offset);
-                    Socket.ReceiveAsync(receiveEventArgs);
-                }
+                BeginReceive(newbuffer);
+                
             }
             else
             {
@@ -356,11 +372,9 @@ namespace MMONet
                 {
                     Array.Copy(buffer, readLength, newbuffer, 0, offset);
                 }
-                if (IsReceive)
-                {
-                    Socket.BeginReceive(newbuffer, offset, ReceiveBufferSize - offset,
-                        SocketFlags.None, ReceiveCallback, newbuffer);
-                }
+                
+                BeginReceive(newbuffer);
+                
             }
             catch (Exception)
             {
@@ -505,10 +519,22 @@ namespace MMONet
                 IsReceive = false;
             }
 
-            if (IsConnected)
+            try
             {
-                Socket.Disconnect(false);
+                if (IsConnected && Socket.Connected)
+                {
+                    Socket.Shutdown(SocketShutdown.Both);
+                    Socket.Disconnect(false);
+                    Socket.Close();
+                }
             }
+            catch (Exception e)
+            {
+#if LogMsg
+                Console.WriteLine(e);
+#endif
+            }
+            
 
             OnDisConnect?.Invoke(this,resason);
         }

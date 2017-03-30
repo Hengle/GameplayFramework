@@ -19,39 +19,30 @@ namespace MMONet
         }
 
         /// <summary>
-        /// 向所有客户端广播消息
+        /// 向所有客户端广播消息,不包含自身
         /// </summary>
         /// <param name="msgbody">消息实例</param>
-        /// <param name="containsSelf">广播中是否包含自身</param>
-        public void BroadCast<T>(T msg, bool containsSelf = false)
+        public void BroadCastExceptSelf<T>(T msg)
         {
-            if (containsSelf)
-            {
-                BroadCast(CreateMsgbyte(msg), null);
-            }
-            else
-            {
-                BroadCast(CreateMsgbyte(msg), new int[] { InstanceID });
-            }
+             BroadCast(CreateMsgbyte(msg), new int[] { InstanceID });
         }
 
         /// <summary>
-        /// 向所有客户端广播消息
+        /// 向所有客户端广播消息,不包含自身
         /// <para>用于接到消息流，在为解析状态下直接广播</para>
         /// </summary>
         /// <param name="key">消息ID</param>
         /// <param name="msgbody">消息实例序列化流</param>
-        /// <param name="containsSelf">广播中是否包含自身</param>
-        public void BroadCast(int key, MemoryStream msgbody, bool containsSelf = false)
+        public void BroadCastExceptSelf(int key, MemoryStream msgbody)
         {
-            if (containsSelf)
-            {
-                BroadCast(key, msgbody, null);
-            }
-            else
-            {
-                BroadCast(key, msgbody, new int[] { InstanceID });
-            }
+             BroadCast(key, msgbody, new int[] { InstanceID });
+        }
+
+
+
+        public static void BroadCast<T>(T msg)
+        {
+            BroadCast(CreateMsgbyte(msg), null);
         }
 
         /// <summary>

@@ -167,10 +167,7 @@ public partial class GM : MonoBehaviour {
 
     private void OnApplicationQuit()
     {
-        if (Server != null)
-        {
-            Server.Dispose();
-        }
+        Logout();
     }
 
     private void OnDestroy()

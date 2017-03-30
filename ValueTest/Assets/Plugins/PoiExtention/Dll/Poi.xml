@@ -201,6 +201,31 @@
             贪婪模式
             </summary>
         </member>
+        <member name="T:Poi.LineMode">
+            <summary>
+            联机模式
+            </summary>
+        </member>
+        <member name="F:Poi.LineMode.Single">
+            <summary>
+            单机模式
+            </summary>
+        </member>
+        <member name="F:Poi.LineMode.Online">
+            <summary>
+            在线
+            </summary>
+        </member>
+        <member name="F:Poi.LineMode.Offline">
+            <summary>
+            离线
+            </summary>
+        </member>
+        <member name="F:Poi.LineMode.LAN">
+            <summary>
+            局域网
+            </summary>
+        </member>
         <member name="T:Poi.HostException">
             <summary>
             宿主异常

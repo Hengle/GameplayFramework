@@ -91,7 +91,10 @@ namespace GlobalServer
                             trans = client.Trans
                         });
                     }
-                    GameClient.BroadCast(msg);
+                    if (msg.transList.Count > 0 && GameClient.ClientDic.Count > 0)
+                    {
+                        GameClient.BroadCast(msg);
+                    }
                 }
             }
         }
