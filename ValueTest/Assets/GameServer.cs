@@ -19,6 +19,19 @@ public class GameServer : Remote
         else if (key == PID<AChildServerAddress>.Value) OnAChildServerAddress(value);
         else if (key == PID<PlayerInfo>.Value) OnPlayerInfo(value);
         else if (key == PID<Quit>.Value) OnCharacterQuit(value);
+        else if (key == PID<TransList>.Value) OnTransList(value);
+    }
+
+    private void OnTransList(MemoryStream value)
+    {
+        var pks = Serializer.Deserialize<TransList>(value);
+        foreach (var item in pks.transList)
+        {
+            if (Character.Dic.ContainsKey(item.instanceID))
+            {
+                Character.Dic[item.instanceID].Move(item.trans);
+            }
+        }
     }
 
     private void OnCharacterQuit(MemoryStream value)
@@ -115,13 +128,16 @@ public class GameServer : Remote
 
         if (heartmsgCooldown <= 0)
         {
-            var msg = new Heart()
+            if (IsConnected)
             {
-                Time = DateTime.Now.ToBinary(),
-            };
+                var msg = new Heart()
+                {
+                    Time = DateTime.Now.ToBinary(),
+                };
 
-            Write(msg);
-            heartmsgCooldown = 0.1;
+                Write(msg);
+                heartmsgCooldown = 0.1;
+            } 
         }
         else
         {

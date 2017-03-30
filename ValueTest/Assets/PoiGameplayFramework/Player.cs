@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using ProtoBuf;
+using System.Collections;
 
 namespace Poi
 {
@@ -44,6 +46,46 @@ namespace Poi
         internal static void SetName(string name)
         {
             DataInfo.Name = name;
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            StartCoroutine(SyncTrans());
+        }
+
+        private IEnumerator SyncTrans()
+        {
+            while (true)
+            {
+                yield return new WaitForSecondsRealtime(0.1f);
+                if (GM.Instance.Server != null && GM.Instance.Server.IsConnected)
+                {
+                    var msg = new TransSync()
+                    {
+                        instanceID = DataInfo.ID,
+                        trans = transform.ToTrans()
+                    };
+                    GM.Instance.Server.Write(msg);
+                }
+            }
+        }
+    }
+
+    public static class TransEX
+    {
+        public static Trans ToTrans(this Transform trans)
+        {
+            return new Trans()
+            {
+                x = trans.position.x,
+                y = trans.position.y,
+                z = trans.position.z,
+                qx = trans.rotation.x,
+                qy = trans.rotation.y,
+                qz = trans.rotation.z,
+                qw = trans.rotation.w,
+            };
         }
     }
 }

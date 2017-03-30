@@ -202,6 +202,8 @@ namespace MMONet
         /// </summary>
         private void Send()
         {
+            if (!IsConnected) return;
+            
             sendEventArgs.BufferList = sendList;
 
             if (!Socket.SendAsync(sendEventArgs))
@@ -230,7 +232,7 @@ namespace MMONet
             }
             else
             {
-                throw new Exception();
+                DisConnect(DisConnectReason.Error);
             }
         }
 

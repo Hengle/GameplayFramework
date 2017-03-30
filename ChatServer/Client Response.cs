@@ -22,7 +22,7 @@ namespace ChatServer
             {
                 ClientDic.Add(pks.TEMPID, this);
                 InstanceID = pks.TEMPID;
-                server.UnknownClientList.Remove(this);
+                server.UnknownClientList.RemoveInForeach(this);
 
                 var msg = new ALogin()
                 {
@@ -43,7 +43,7 @@ namespace ChatServer
 
         private void OnChatMsg(int key,MemoryStream value)
         {
-            BroadCast(key, value);
+            BroadCastExceptSelf(key, value);
         }
     }
 }

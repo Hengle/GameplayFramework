@@ -80,10 +80,18 @@ namespace GlobalServer
                 ///轮询客户端
                 lock (GameClient.ClientDic)
                 {
+                    TransList msg = new TransList();
                     foreach (var item in GameClient.ClientDic)
                     {
-                        item.Value.Update(delta);
+                        GameClient client = item.Value as GameClient;
+                        client.Update(delta);
+                        msg.transList.Add(new TransSync()
+                        {
+                            instanceID = client.InstanceID,
+                            trans = client.Trans
+                        });
                     }
+                    GameClient.BroadCast(msg);
                 }
             }
         }
