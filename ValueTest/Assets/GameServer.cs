@@ -136,7 +136,7 @@ public class GameServer : Remote
                 };
 
                 Write(msg);
-                heartmsgCooldown = 0.1;
+                heartmsgCooldown = 0.5f;
             } 
         }
         else

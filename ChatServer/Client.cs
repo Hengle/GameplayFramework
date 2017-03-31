@@ -23,8 +23,8 @@ namespace ChatServer
 
         public override void DisConnect(DisConnectReason resason = DisConnectReason.Active)
         {
-            Remove(this);
-            Console.WriteLine($"客户端{InstanceID}退出。当前客户端数量：{ClientDic.Count}。");
+            RemoveRemote(this);
+
             base.DisConnect(resason);
         }
     }

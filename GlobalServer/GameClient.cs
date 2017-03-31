@@ -70,7 +70,7 @@ namespace GlobalServer
 
             lock (ClientDic)
             {
-                ClientDic.Add(InstanceID, this);
+                AddRemote(this);
                 server.UnknownClient.Remove(this);
             }
 
@@ -81,8 +81,6 @@ namespace GlobalServer
                 Result = LoginResult.Success,
                 Server = ServerType.GlobalServer,
             };
-
-            Console.WriteLine($"客户端{pks.account}登陆，分配临时ID：{InstanceID}。当前客户端数量：{ClientDic.Count}。");
 
             Write(msg);
 
@@ -112,18 +110,8 @@ namespace GlobalServer
             };
             BroadCastExceptSelf(msg);
 
-            Remove(this);
-
+            RemoveRemote(this);
             base.DisConnect(resason);
-        }
-
-        public static void Remove(GameClient client)
-        {
-            lock (ClientDic)
-            {
-                ClientDic.Remove(client.InstanceID);
-                Console.WriteLine($"客户端{client.Account}退出，ID：{client.InstanceID}。当前客户端数量：{ClientDic.Count}。");
-            }
         }
     }
 }

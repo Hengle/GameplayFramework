@@ -13,6 +13,7 @@ namespace MMONet
         public static Dictionary<int, Remote4Server> ClientDic { get; protected set; }
                                                     = new Dictionary<int, Remote4Server>();
         public int InstanceID { get; protected set; }
+        public static Queue<KeyValuePair<AddRemove, Remote4Server>> AddRemoveList { get => addRemoveList;private set => addRemoveList = value; }
 
         public Remote4Server(Socket socket) : base(socket)
         {
@@ -61,22 +62,34 @@ namespace MMONet
 
         protected static void BroadCast(ArraySegment<byte> sendbytes, IList<int> exceptClient)
         {
-            foreach (var item in ClientDic)
-            {
-                if (exceptClient != null && exceptClient.Contains(item.Key))
-                {
-                    continue;
-                }
-                item.Value.Write(sendbytes);
-            }
-        }
-
-        public static bool Remove(Remote4Server client)
-        {
             lock (ClientDic)
             {
-                return ClientDic.Remove(client.InstanceID);
-            }
+                foreach (var item in ClientDic)
+                {
+                    if (exceptClient != null && exceptClient.Contains(item.Key))
+                    {
+                        continue;
+                    }
+                    item.Value.Write(sendbytes);
+                }
+            }  
+        }
+
+        static Queue<KeyValuePair<AddRemove, Remote4Server>> addRemoveList = new Queue<KeyValuePair<AddRemove, Remote4Server>>();
+        public static void RemoveRemote(Remote4Server client)
+        {
+            AddRemoveList.Enqueue(new KeyValuePair<AddRemove, Remote4Server>( AddRemove.Remove,client));
+        }
+
+        public static void AddRemote(Remote4Server client)
+        {
+            AddRemoveList.Enqueue(new KeyValuePair<AddRemove, Remote4Server>(AddRemove.Add, client));
+        }
+
+        public enum AddRemove
+        {
+            Add,
+            Remove,
         }
     }
 }

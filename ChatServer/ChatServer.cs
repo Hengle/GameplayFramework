@@ -31,34 +31,33 @@ namespace ChatServer
 
             while (true)
             {
-                //try
-                //{
-                    time.Update();
-                    double delta = time.DeltaTime;
 
-                    if (GServer != null)
-                    {
-                        GServer.Update(delta);
-                    }
+                time.Update();
+                double delta = time.DeltaTime;
 
-                    while (accepedSocket.Count > 0)
+                if (GServer != null)
+                {
+                    GServer.Update(delta);
+                }
+
+                while (accepedSocket.Count > 0)
+                {
+                    Client client = new Client(accepedSocket.Dequeue(), this);
+                    UnknownClientList.Add(client);
+                    client.OnDisConnect += (cl, res) =>
                     {
-                        Client client = new Client(accepedSocket.Dequeue(),this);
-                        UnknownClientList.Add(client);
-                        client.OnDisConnect += (cl,res) =>
+                        lock (UnknownClientList)
                         {
-                            lock (UnknownClientList)
-                            {
-                                UnknownClientList.Remove(cl as Client);
-                                cl.Dispose();
-                            }
-                        };
-                    }
-                    
-                    for (int i = 0; i < UnknownClientList.Count; i++)
-                    {
-                        UnknownClientList[i].Update(delta);
-                    }
+                            UnknownClientList.Remove(cl as Client);
+                            cl.Dispose();
+                        }
+                    };
+                }
+
+                for (int i = 0; i < UnknownClientList.Count; i++)
+                {
+                    UnknownClientList[i].Update(delta);
+                }
 
                 lock (Client.ClientDic)
                 {
@@ -66,14 +65,28 @@ namespace ChatServer
                     {
                         item.Value.Update(delta);
                     }
-                }
-                    //Thread.Sleep(0);
-                //}
-                //catch (Exception)
-                //{
 
-                //    throw;
-                //}  
+                    lock (Client.AddRemoveList)
+                    {
+                        while (Client.AddRemoveList.Count > 0)
+                        {
+                            var item = Client.AddRemoveList.Dequeue();
+                            Client client = item.Value as Client;
+                            if (item.Key == MMONet.Remote4Server.AddRemove.Add)
+                            {
+                                Client.ClientDic.Add(client.InstanceID, client);
+                                Console.WriteLine($"客户端{client.InstanceID}登陆。当前客户端数量：{Client.ClientDic.Count}。");
+                            }
+                            else
+                            {
+                                Client.ClientDic.Remove(item.Value.InstanceID);
+                                Console.WriteLine($"客户端{client.InstanceID}退出。当前客户端数量：{Client.ClientDic.Count}。");
+                            }
+                        }
+                    }
+                }
+                Thread.Sleep(20);
+
             }
         }
 

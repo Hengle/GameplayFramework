@@ -205,7 +205,7 @@ namespace MMONet
             if (!IsConnected) return;
             
             sendEventArgs.BufferList = sendList;
-            if (Socket.Connected && Socket.Poll(1000,SelectMode.SelectWrite))
+            if (Socket.Connected /*&& Socket.Poll(1000,SelectMode.SelectWrite)*/)
             {
                 ///连接和可写检查
                 if (!Socket.SendAsync(sendEventArgs))
@@ -218,7 +218,7 @@ namespace MMONet
             }
             else
             {
-                return;
+                DisConnect(DisConnectReason.Error);
             }
         }
 
@@ -296,7 +296,7 @@ namespace MMONet
                 if (length <= 0)
                 {
                     ///ERROR
-                    DisConnect();
+                    DisConnect(DisConnectReason.Remote);
                     return;
                 }
 
@@ -347,7 +347,7 @@ namespace MMONet
                 if (err == SocketError.SocketError || length <= 0)
                 {
                     ///ERROR
-                    DisConnect();
+                    DisConnect( DisConnectReason.Remote);
                     return;
                 }
 
@@ -512,7 +512,7 @@ namespace MMONet
         protected Queue<KeyValuePair<int, MemoryStream>> dealMsgQueue = new Queue<KeyValuePair<int, MemoryStream>>();
         private bool isInitEventArgs = false;
 
-        public virtual void DisConnect(DisConnectReason resason = DisConnectReason.Active)
+        public virtual void DisConnect(DisConnectReason reason = DisConnectReason.Active)
         {
             if (IsReceive)
             {
@@ -534,9 +534,10 @@ namespace MMONet
                 Console.WriteLine(e);
 #endif
             }
-            
 
-            OnDisConnect?.Invoke(this,resason);
+            IsConnected = false;
+
+            OnDisConnect?.Invoke(this, reason);
         }
 
         public event Action<Remote, DisConnectReason> OnDisConnect;
@@ -579,17 +580,22 @@ namespace MMONet
 
         public virtual void Dispose()
         {
-            if (IsReceive)
+            try
             {
-                EndReceive();
+                if (IsConnected || Socket.Connected)
+                {
+                    DisConnect(DisConnectReason.Active);
+                }
             }
-
-            if (IsConnected && Socket.Connected)
+            catch (Exception e)
             {
-                Socket.Disconnect(false);
+#if LogMsg
+                Console.WriteLine(e);
+#endif
             }
-
+            
             (Socket as IDisposable).Dispose();
+
         }
         #endregion
     }

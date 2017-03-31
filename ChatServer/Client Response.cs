@@ -20,7 +20,7 @@ namespace ChatServer
             var pks = Serializer.Deserialize<QLogin>(value);
             lock (ClientDic)
             {
-                ClientDic.Add(pks.TEMPID, this);
+                AddRemote(this);
                 InstanceID = pks.TEMPID;
                 server.UnknownClientList.RemoveInForeach(this);
 
@@ -32,7 +32,7 @@ namespace ChatServer
 
                 Write(msg);
 
-                Console.WriteLine($"客户端{InstanceID}登陆。当前客户端数量：{ClientDic.Count}。");
+                
             }
         }
 

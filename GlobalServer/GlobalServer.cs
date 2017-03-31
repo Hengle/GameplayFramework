@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Poi;
 using ProtoBuf;
@@ -95,7 +96,30 @@ namespace GlobalServer
                     {
                         GameClient.BroadCast(msg);
                     }
+
+                    lock (GameClient.AddRemoveList)
+                    {
+                        while (GameClient.AddRemoveList.Count > 0)
+                        {
+                            var item = GameClient.AddRemoveList.Dequeue();
+                            GameClient client = item.Value as GameClient;
+                            if (item.Key == MMONet.Remote4Server.AddRemove.Add)
+                            {
+                                GameClient.ClientDic.Add(client.InstanceID, client);
+                                Console.WriteLine($"客户端{client.Account}登陆，分配临时ID：{client.InstanceID}。" +
+                                    $"当前客户端数量：{GameClient.ClientDic.Count}。");
+                            }
+                            else
+                            {
+                                GameClient.ClientDic.Remove(item.Value.InstanceID);
+                                Console.WriteLine($"客户端{client.Account}退出，ID：{client.InstanceID}。" +
+                                    $"当前客户端数量：{GameClient.ClientDic.Count}。");
+                            }
+                        }
+                    }
                 }
+
+                Thread.Sleep(20);
             }
         }
 
