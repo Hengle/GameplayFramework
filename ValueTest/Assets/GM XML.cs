@@ -5,10 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using UnityEngine;
+using Mono.Data.Sqlite;
 
 public partial class GM
 {
     public string HelpMsg { get ;private set; }
+    public SQLiteHelper DB { get; private set; }
+    public static Dictionary<string, ModelTemplate> ModelDic => modelDic;
 
     private IEnumerator LoadXML()
     {
@@ -24,5 +27,30 @@ public partial class GM
         {
             Debug.Log(www.error);
         }
+    }
+    static Dictionary<string, ModelTemplate> modelDic = new Dictionary<string, ModelTemplate>();
+    private IEnumerator LoadDB()
+    {
+        var path = $"data source=" + Application.streamingAssetsPath + "/MikuMikuFight.db3";
+        DB = new SQLiteHelper(path);
+        yield return null;
+        var reader = DB.ReadFullTable("ModelList");
+        while (reader.Read())
+        {
+            ModelTemplate model = new ModelTemplate();
+            model.ID = reader.GetInt32(0);
+            model.Name = reader.GetString(1);
+            if (reader.IsDBNull(2))
+            {
+                model.Path = $"Character/{model.Name}/{model.Name}";
+            }
+            else
+            {
+                model.Path = reader.GetString(2);
+            }
+
+            ModelDic.Add(model.Name, model);
+        }
+
     }
 }

@@ -5,12 +5,15 @@ using UnityEngine;
 using static UnityEngine.SceneManagement.SceneManager;
 using Poi;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public partial class GM
 {
-    private GameObject CreatePawnGameObject()
+    private GameObject CreatePawnGameObject(string name = null)
     {
-        return GameObject.Instantiate(GameMode.DefaultPawn);
+        name = name ?? ModelDic.First().Key;
+        var go = Resources.Load<GameObject>(ModelDic[name].Path);
+        return GameObject.Instantiate(go);
     }
 
     public GameObject CreatePlayer()

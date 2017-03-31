@@ -70,6 +70,7 @@ public partial class GM : MonoBehaviour {
     IEnumerator Start ()
     {
         yield return StartCoroutine(LoadXML());
+        yield return StartCoroutine(LoadDB());
         ///等待一帧防止一些组件没有初始化（不是必须）
         yield return new WaitForEndOfFrame();
         ///游戏主入口
@@ -168,6 +169,7 @@ public partial class GM : MonoBehaviour {
     private void OnApplicationQuit()
     {
         Logout();
+        DB?.CloseConnection();
     }
 
     private void OnDestroy()
