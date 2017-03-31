@@ -44,6 +44,11 @@ public class UI
 
     }
 
+    internal static void ChangeName(int instanceID, string name, bool useChangeShow)
+    {
+        NameLabel?.ChangeName(instanceID, name, useChangeShow);
+    }
+
     internal static void RemovePawn(IUITarget pawn)
     {
         int id = pawn.ID;

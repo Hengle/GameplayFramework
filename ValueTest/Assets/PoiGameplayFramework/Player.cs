@@ -46,6 +46,15 @@ namespace Poi
         internal static void SetName(string name)
         {
             DataInfo.Name = name;
+            if (GM.LineMode == LineMode.Online)
+            {
+                var msg = new NameChange()
+                {
+                    instanceID = InstanceID,
+                    Name = name,
+                };
+                GM.WriteToServer(msg);
+            }
         }
 
         protected override void Start()

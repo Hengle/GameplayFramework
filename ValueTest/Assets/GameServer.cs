@@ -20,6 +20,24 @@ public class GameServer : Remote
         else if (key == PID<PlayerInfo>.Value) OnPlayerInfo(value);
         else if (key == PID<Quit>.Value) OnCharacterQuit(value);
         else if (key == PID<TransList>.Value) OnTransList(value);
+        else if (key == PID<NameChange>.Value) OnNameChange(value);
+    }
+
+    private void OnNameChange(MemoryStream value)
+    {
+        var pks = Serializer.Deserialize<NameChange>(value);
+        var ch = GetCharacter(pks.instanceID);
+        if (ch && pks.instanceID != Player.InstanceID)
+        {
+            ch.DataInfo.Name = pks.Name;
+            UI.ChangeName(pks.instanceID, pks.Name, true);
+        }
+    }
+
+    private Character GetCharacter(int id)
+    {
+        Character.Dic.TryGetValue(id, out Character res);
+        return res;
     }
 
     private void OnTransList(MemoryStream value)

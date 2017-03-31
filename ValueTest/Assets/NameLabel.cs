@@ -69,6 +69,28 @@ public class NameLabel : MonoBehaviour
         DictionaryExtention.Exchange(ref UIDic, ref newDic);
     }
 
+    internal void ChangeName(int instanceID, string name, bool useChangeShow)
+    {
+        if (UIDic.ContainsKey(instanceID))
+        {
+            if (useChangeShow)
+            {
+                UIDic[instanceID].StartCoroutine(ChangeName(UIDic[instanceID],name));
+            }
+            else
+            {
+                UIDic[instanceID].text = name;
+            }
+        }
+    }
+
+    private IEnumerator ChangeName(Text label,string name)
+    {
+        label.text += "=>" + name;
+        yield return new WaitForSecondsRealtime(3);
+        label.text = name;
+    }
+
     /// <summary>
     /// 确认UI存在
     /// </summary>

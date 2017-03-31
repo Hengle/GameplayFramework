@@ -15,6 +15,8 @@ public partial class GM
 {
     public GameServer Server;
 
+    public static LineMode LineMode { get; private set; } = LineMode.Single;
+
     public static void Login(IPAddress ip)
     {
         if (Instance.Server != null && Instance.Server.IsConnected)
@@ -27,7 +29,10 @@ public partial class GM
         {
             ip = IPAddress.Loopback;
         }
+
         Instance.Server.BeginConnect(ip, Port.GlobalListen, Instance.callback, Instance.Server);
+
+        LineMode = LineMode.Offline;
     }
 
     public static void Logout()
@@ -40,6 +45,7 @@ public partial class GM
         }
 
         Delay = 0;
+        GM.LineMode = LineMode.Offline;
         Character.ChangeMode(LineMode.Offline);
     }
 
@@ -62,6 +68,7 @@ public partial class GM
 
         if (cl.IsConnected)
         {
+            LineMode = LineMode.Online;
             QLogin msg = new QLogin()
             {
                 account = "tEXT"/*SystemInfo.deviceUniqueIdentifier*/
@@ -87,6 +94,14 @@ public partial class GM
     public void LoginPlayer()
     {
         Server.Write(Player.DataInfo);
+    }
+
+    internal static void WriteToServer<T>(T msg)
+    {
+        if (Instance.Server != null && Instance.Server.IsConnected)
+        {
+            Instance.Server.Write(msg);
+        }
     }
 
     public static void RecieveChat(ChatMsg pks)

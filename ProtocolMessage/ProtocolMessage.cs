@@ -58,4 +58,13 @@ namespace ProtoBuf
         [ProtoMember(1)]
         public List<TransSync> transList = new List<TransSync>();
     }
+
+    [ProtoContract(Name = "1004")]
+    public class NameChange
+    {
+        [ProtoMember(1)]
+        public int instanceID;
+        [ProtoMember(2)]
+        public string Name;
+    }
 }

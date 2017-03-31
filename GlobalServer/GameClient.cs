@@ -31,6 +31,14 @@ namespace GlobalServer
             if (key == PID<Heart>.Value) OnlyReturn(key,value);
             if (key == PID<PlayerInfo>.Value) OnSavaCharacter(value);
             if (key == PID<TransSync>.Value) OnTransSync(value);
+            if (key == PID<NameChange>.Value) OnNameChange(key, value);
+        }
+
+        private void OnNameChange(int key, MemoryStream value)
+        {
+            var pks = Serializer.Deserialize<NameChange>(value);
+            CharacterInfo.Name = pks.Name;
+            BroadCastExceptSelf(pks);
         }
 
         private void OnTransSync(MemoryStream value)
