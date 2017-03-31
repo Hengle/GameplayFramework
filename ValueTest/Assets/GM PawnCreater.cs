@@ -23,7 +23,8 @@ public partial class GM
 
     private GameObject CreatePlayer(Transform startpos)
     {
-        var go = CreatePawnGameObject();
+        string name = "Archer";
+        var go = CreatePawnGameObject(name);
         go.transform.Apply(startpos);
         go.transform.ApplyRotationY(startpos);
         return go;

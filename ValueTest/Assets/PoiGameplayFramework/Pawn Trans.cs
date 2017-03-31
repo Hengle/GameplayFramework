@@ -60,6 +60,23 @@ namespace Poi
 
             ///保持创建时默认旋转
             NextTurnToAngle = transform.eulerAngles.y;
+
+            ///初始模型中心点
+            Chest = Animator.GetBoneTransform(HumanBodyBones.Chest);
+            if (!Chest)
+            {
+                GameObject go = new GameObject("Chest");
+                go.transform.SetParent(transform);
+                go.transform.ResetLocal();
+
+                if (DataInfo)
+                {
+                    go.transform.localPosition = new Vector3(0, DataInfo.Height / 2, 0);
+                }
+                Chest = go.transform;
+            }
+
+            Head = Animator.GetBoneTransform(HumanBodyBones.Head);
         }
 
 
@@ -105,6 +122,7 @@ namespace Poi
         /// <summary>
         /// 在当前状态持续的时间
         /// </summary>
-        public float DurationTimeInCurrentState { get; protected set; } = 0;      
+        public float DurationTimeInCurrentState { get; protected set; } = 0;
+        public Transform Head { get; protected set; }
     }
 }

@@ -30,6 +30,27 @@ namespace UnityEngine
         }
 
         /// <summary>
+        /// 取得一个组件，如果没有就添加这个组件
+        /// </summary>
+        /// <typeparam name="T">目标组件</typeparam>
+        /// <param name="monoBehaviour"></param>
+        /// <param name="isNewAdd">返回是不是新添加的</param>
+        /// <returns>目标组件</returns>
+        public static T GetComponentIfNullAdd<T>(this Behaviour monoBehaviour,out bool isNewAdd)
+            where T : Component
+        {
+            isNewAdd = false;
+            var com = monoBehaviour.GetComponent<T>();
+            if (com == null)
+            {
+                com = monoBehaviour.gameObject.AddComponent<T>();
+                isNewAdd = true;
+            }
+
+            return com;
+        }
+
+        /// <summary>
         /// MonoBehaviour自身和继承的属性名字列表
         /// </summary>
         public static List<string> PropertiesNames = new List<string>()

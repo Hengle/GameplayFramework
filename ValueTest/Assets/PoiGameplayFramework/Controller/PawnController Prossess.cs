@@ -56,7 +56,7 @@ namespace Poi
             if (IsFollowPawn)
             {
                 ///控制器跟随
-                transform.SetParent(pawn.EyeCamaraPos);
+                transform.SetParent(pawn.Head);
 
                 transform.ResetLocal();
                 

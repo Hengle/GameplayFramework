@@ -29,9 +29,23 @@ namespace Poi
 
         public void Init()
         {
+            InitComponent();
+
             InitInstanceID();
 
             InitTransform();
+        }
+
+        private void InitComponent()
+        {
+            Animator = GetComponent<Animator>();
+            Rigidbody = this.GetComponentIfNullAdd<Rigidbody>(out bool isnewRig);
+            m_Capsule = GetComponent<CapsuleCollider>();
+
+            if (isnewRig)
+            {
+                Rigidbody.freezeRotation = true;
+            }
         }
 
         private void InitInstanceID()
@@ -82,25 +96,7 @@ namespace Poi
 
         protected virtual void Start()
         {
-            Animator = GetComponent<Animator>();
-            Rigidbody = this.GetComponentIfNullAdd<Rigidbody>();
-            m_Capsule = GetComponent<CapsuleCollider>();
-
-
-            ///初始模型中心点
-            Chest = Animator.GetBoneTransform(HumanBodyBones.Chest);
-            if (!Chest)
-            {
-                GameObject go = new GameObject("Chest");
-                go.transform.SetParent(transform);
-                go.transform.ResetLocal();
-
-                if (DataInfo)
-                {
-                    go.transform.localPosition = new Vector3(0, DataInfo.Height / 2, 0);
-                }
-                Chest = go.transform;
-            }
+            
         }
 
         protected virtual void Update()
