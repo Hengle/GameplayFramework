@@ -3,142 +3,269 @@ guid: 237a2ace0fe23084c9cdd0d1311ed775
 timeCreated: 1467888323
 licenseType: Pro
 PluginImporter:
-  serializedVersion: 1
+  serializedVersion: 2
   iconMap: {}
   executionOrder:
     MMD4MecanimBulletPhysics: 10001
   isPreloaded: 0
+  isOverridable: 0
   platformData:
-    Android:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-    Any:
-      enabled: 0
-      settings: {}
-    BlackBerry:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Editor:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-        DefaultValueInitialized: true
-        OS: AnyOS
-    GLESEmu:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Linux:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Linux64:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    LinuxUniversal:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    N3DS:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    OSXIntel:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-    OSXIntel64:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-    OSXUniversal:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-    PS3:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    PS4:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    PSM:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    PSP2:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    SamsungTV:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-        STV_MODEL: STANDARD_13
-    Tizen:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    WP8:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Web:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    WebGL:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    WebStreamed:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    WiiU:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Win:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-    Win64:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-    WindowsStoreApps:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-        DontProcess: False
-        PlaceholderPath: 
-        SDK: AnySDK
-        ScriptingBackend: AnyScriptingBackend
-    Xbox360:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    XboxOne:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    iOS:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-        CompileFlags: 
-        FrameworkDependencies: 
-    tvOS:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-        CompileFlags: 
-        FrameworkDependencies: 
+    data:
+      first:
+        '': BlackBerry
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        '': Editor
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+          OS: AnyOS
+    data:
+      first:
+        '': GLESEmu
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        '': PS3
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        '': Switch
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        '': WP8
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        '': Xbox360
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Android: Android
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Any: 
+      second:
+        enabled: 0
+        settings: {}
+    data:
+      first:
+        Editor: Editor
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+          DefaultValueInitialized: true
+          OS: AnyOS
+    data:
+      first:
+        Facebook: WebGL
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Facebook: Win
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Facebook: Win64
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Nintendo 3DS: N3DS
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        PS4: PS4
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        PSM: PSM
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        PSP2: PSP2
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Samsung TV: SamsungTV
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+          STV_MODEL: STANDARD_13
+    data:
+      first:
+        Standalone: Linux
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Standalone: Linux64
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Standalone: LinuxUniversal
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Standalone: OSXIntel
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Standalone: OSXIntel64
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Standalone: OSXUniversal
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Standalone: Win
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Standalone: Win64
+      second:
+        enabled: 1
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Tizen: Tizen
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Web: Web
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Web: WebStreamed
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        WebGL: WebGL
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        WiiU: WiiU
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        Windows Store Apps: WindowsStoreApps
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+          DontProcess: False
+          PlaceholderPath: 
+          SDK: AnySDK
+          ScriptingBackend: AnyScriptingBackend
+    data:
+      first:
+        XboxOne: XboxOne
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+    data:
+      first:
+        iPhone: iOS
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+          CompileFlags: 
+          FrameworkDependencies: 
+    data:
+      first:
+        tvOS: tvOS
+      second:
+        enabled: 0
+        settings:
+          CPU: AnyCPU
+          CompileFlags: 
+          FrameworkDependencies: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 

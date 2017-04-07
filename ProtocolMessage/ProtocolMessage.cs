@@ -67,4 +67,13 @@ namespace ProtoBuf
         [ProtoMember(2)]
         public string Name;
     }
+
+    [ProtoContract(Name = "1005")]
+    public class ModelChange
+    {
+        [ProtoMember(1)]
+        public int instanceID;
+        [ProtoMember(2)]
+        public string ModelName;
+    }
 }

@@ -56,6 +56,14 @@ namespace Poi
             Instance = p;
 
             GM.PlayerController.Possess(p);
+
+            var msg = new ModelChange()
+            {
+                instanceID = InstanceID,
+                ModelName = DataInfo.ModelName,
+            };
+
+            GM.WriteToServer(msg);
         }
 
         /// <summary>

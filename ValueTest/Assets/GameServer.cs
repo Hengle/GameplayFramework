@@ -21,6 +21,27 @@ public class GameServer : Remote
         else if (key == PID<Quit>.Value) OnCharacterQuit(value);
         else if (key == PID<TransList>.Value) OnTransList(value);
         else if (key == PID<NameChange>.Value) OnNameChange(value);
+        else if (key == PID<ModelChange>.Value) OnModelChange(value);
+    }
+
+    private void OnModelChange(MemoryStream value)
+    {
+        var pks = Serializer.Deserialize<ModelChange>(value);
+        var ch = GetCharacter(pks.instanceID);
+        if (ch && pks.instanceID != Player.InstanceID)
+        {
+            Vector3 pos = ch.transform.position;
+            Quaternion rotation = ch.transform.rotation;
+
+            Poi.CharacterInfo info = ch.DataInfo;
+            info.ModelName = pks.ModelName;
+            Character.Dic.Remove(pks.instanceID);
+            GameObject.Destroy(ch.gameObject);
+
+            var character = Character.CreateCharacter(info);
+            character.transform.position = pos;
+            character.transform.rotation = rotation;
+        }
     }
 
     private void OnNameChange(MemoryStream value)
