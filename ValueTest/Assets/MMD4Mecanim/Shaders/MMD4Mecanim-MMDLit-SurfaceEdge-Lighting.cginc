@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Not for redistribution without the author's express written permission
 #ifndef MMDLIT_SURFACEEDGE_LIGHTING_INCLUDED
 #define MMDLIT_SURFACEEDGE_LIGHTING_INCLUDED
@@ -32,11 +34,11 @@ inline float4 MMDLit_GetEdgeVertex(float4 vertex, float3 normal)
 inline float4 MMDLit_TransformEdgeVertex(float4 vertex)
 {
 #if 0
-	vertex = mul(UNITY_MATRIX_MVP, vertex);
+	vertex = UnityObjectToClipPos(vertex);
 	vertex.z += MMDLIT_EDGE_ZOFST * vertex.w;
 	return vertex;
 #else
-	return mul(UNITY_MATRIX_MVP, vertex);
+	return UnityObjectToClipPos(vertex);
 #endif
 }
 

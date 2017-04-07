@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Not for redistribution without the author's express written permission
 #include "HLSLSupport.cginc"
 #include "UnityShaderVariables.cginc"
@@ -35,7 +37,7 @@ float4 _MainTex_ST;
 v2f_surf vert_surf(appdata_full v)
 {
 	v2f_surf o;
-	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+	o.pos = UnityObjectToClipPos(v.vertex);
 	o.pack0.xy = v.texcoord.xy;
 	float3 worldN = mul((float3x3)_UNITY_OBJECT_TO_WORLD, SCALED_NORMAL);
 	o.normal = worldN;

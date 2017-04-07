@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Not for redistribution without the author's express written permission
 half4 _EdgeColor;
 float _EdgeSize;
@@ -23,9 +25,9 @@ inline float4 MMDLit_GetEdgeVertex(float4 vertex, float3 normal)
 inline float4 MMDLit_TransformEdgeVertex(float4 vertex)
 {
 #if 1
-	return mul(UNITY_MATRIX_MVP, vertex);
+	return UnityObjectToClipPos(vertex);
 #else
-	vertex = mul(UNITY_MATRIX_MVP, vertex);
+	vertex = UnityObjectToClipPos(vertex);
 	vertex.z += _EdgeZOffset * vertex.w;
 	return vertex;
 #endif
