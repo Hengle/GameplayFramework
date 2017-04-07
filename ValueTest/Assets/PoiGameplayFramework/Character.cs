@@ -17,13 +17,14 @@ namespace Poi
         /// </summary>
         public new CharacterInfo DataInfo => dataInfo as CharacterInfo;
 
-        public static void Create(CharacterInfo info)
+        public static Character CreateCharacter(CharacterInfo info)
         {
-            var go = GM.Instance.CreatePlayer();
+            var go = GM.CreatePawnGameObject(info.ModelName);
             var character = go.AddComponent<Character>();
             character.Init(info);
 
             Dic[info.ID] = character;
+            return character;
         }
 
         public static bool Quit(Quit pks)

@@ -39,7 +39,7 @@ namespace Poi
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>
-        public static new PlayerInfo DataInfo => Instance.dataInfo as PlayerInfo;
+        public static new PlayerInfo DataInfo => Instance?.dataInfo as PlayerInfo;
 
         public static Player Instance { get; set; }
 
@@ -78,6 +78,19 @@ namespace Poi
                     GM.Instance.Server.Write(msg);
                 }
             }
+        }
+
+        public static Player CreatePlayer(PlayerInfo info)
+        {
+            GameObject go = GM.CreatePawnGameObject(info.ModelName, GameObject.FindWithTag(nameof(PoiTag.PlayerStart))?.transform);
+
+            var p = go.AddComponent<Player>();
+
+            p.Init(info);
+
+            ///朝向初始化
+            p.NextTurnToAngle = p.transform.eulerAngles.y;
+            return p;
         }
     }
 

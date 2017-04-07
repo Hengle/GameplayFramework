@@ -83,12 +83,6 @@ public partial class GM : MonoBehaviour {
 
     private void CreateTestPlayer()
     {
-        GameObject go = CreatePlayer();
-
-        var p = go.AddComponent<Player>();
-
-        Player.Instance = p;
-
         PlayerInfo info = new PlayerInfo()
         {
             Height = 1.6f,
@@ -96,19 +90,23 @@ public partial class GM : MonoBehaviour {
             JumpMaxStep = 2,
             Name = "初音未来" + new System.Random().Next(1000, 9999).ToString(),
             ID = Player.InstanceID,
+            ModelName = "Archer",
         };
         info.Run.Max = 10;
         info.AttackCooldown.Max = 0.3f;
 
+        Player p = Player.CreatePlayer(info);
 
-        p.Init(info);
-
-
-        ///朝向初始化
-        p.NextTurnToAngle = p.transform.eulerAngles.y;
+        Player.Instance = p;
 
         PlayerController.Possess(p);
     }
+
+    internal static GameObject CreatePawnGameObject(object modelName, Transform transform)
+    {
+        throw new NotImplementedException();
+    }
+
 
     /// <summary>
     /// 初始化游戏

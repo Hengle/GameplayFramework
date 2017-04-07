@@ -34,6 +34,10 @@ namespace Poi
             }
         }
 
+        [ProtoMember(1)]
+        public int ID { get; set; }
+        [ProtoMember(2)]
+        public string Name { get; set; }
         /// <summary>
         /// 身高
         /// </summary>
@@ -50,7 +54,8 @@ namespace Poi
         /// </summary>
         [ProtoMember(5)]
         public int JumpMaxStep { get; set; } = 1;
-
+        [ProtoMember(6)]
+        public string ModelName { get; set; }
         /// <summary>
         /// 当前人物是否在地面
         /// </summary>
@@ -62,9 +67,6 @@ namespace Poi
         public float TurnSpeed { get; set; } = 450;
 
         public Cooldown AttackCooldown { get; private set; } = new Cooldown(1);
-        [ProtoMember(1)]
-        public int ID { get; set; }
-        [ProtoMember(2)]
-        public string Name { get; set; }
+        
     }
 }

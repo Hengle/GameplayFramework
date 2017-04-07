@@ -61,7 +61,7 @@ public class GameServer : Remote
     private void OnPlayerInfo(MemoryStream value)
     {
         var pks = Serializer.Deserialize<PlayerInfo>(value);
-        Character.Create(pks);
+        Character.CreateCharacter(pks);
     }
 
     private void OnAChildServerAddress(MemoryStream value)
