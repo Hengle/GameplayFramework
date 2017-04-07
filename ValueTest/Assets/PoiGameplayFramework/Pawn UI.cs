@@ -39,6 +39,7 @@ namespace Poi
         {
             Vector3 viewPos;
             bool res = Camera.main.IsAPointInACamera(Chest.position, out viewPos);
+            IsInCamera = res;
             ViewPos = viewPos;
             ScreenPosition = Camera.main.ViewportToScreenPoint(viewPos);
 
@@ -48,9 +49,8 @@ namespace Poi
             ///求在屏幕住和游标的距离
             magnitudeToMouse = ((Vector2)ScreenPosition - (Vector2)Input.mousePosition).magnitude;
 
-            if (res != IsInCamera)
+            if (UI.PawnDic.ContainsKey(ID) != IsInCamera)
             {
-                IsInCamera = !IsInCamera;
                 if (IsInCamera)
                 {
                     UI.AddPawn(this);

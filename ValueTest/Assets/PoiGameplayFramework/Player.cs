@@ -29,6 +29,9 @@ namespace Poi
             }
             set
             {
+                ///防止名字UI重复
+                UI.RemovePawn(Instance);
+
                 tempinstanceID = value;
                 if (DataInfo != null)
                 {
