@@ -5,6 +5,8 @@ using System.Text;
 using Poi;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using static GM;
 
 public class UI
 {
@@ -97,6 +99,14 @@ public class UI
     internal static void Init()
     {
         HelpMsg.Text.text = GM.Instance.HelpMsg;
+
+        List<Dropdown.OptionData> result = new List<Dropdown.OptionData>();
+        foreach (var value in ModelDic)
+        {
+            result.Add(new Dropdown.OptionData(value.Value.Name));
+        }
+
+        Setting.selectModel.options = result;
     }
     static HexColor self = new HexColor("45FF0BFF");
     public static string ChatPanel_OnSubmit(string obj)

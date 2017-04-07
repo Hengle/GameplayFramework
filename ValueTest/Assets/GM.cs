@@ -7,6 +7,7 @@ using Poi;
 using UnityEngine.SceneManagement;
 using System.Net;
 using ProtoBuf;
+using System.Linq;
 
 public partial class GM : MonoBehaviour {
 
@@ -90,7 +91,7 @@ public partial class GM : MonoBehaviour {
             JumpMaxStep = 2,
             Name = "初音未来" + new System.Random().Next(1000, 9999).ToString(),
             ID = Player.InstanceID,
-            ModelName = "Archer",
+            ModelName = ModelDic.FirstOrDefault().Value.Name,
         };
         info.Run.Max = 10;
         info.AttackCooldown.Max = 0.3f;

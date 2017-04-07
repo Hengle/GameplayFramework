@@ -36,6 +36,28 @@ namespace Poi
                 }
             }
         }
+
+        public static void ChangeModel(string name)
+        {
+            DataInfo.ModelName = name;
+
+            Vector3 pos = Instance?.transform.position??Vector3.zero;
+            Quaternion rotation = Instance?.transform.rotation ?? Quaternion.identity;
+
+            Destroy(Instance?.gameObject);
+            var p = CreatePlayer(DataInfo);
+
+            p.transform.position = pos;
+            p.transform.rotation = rotation;
+
+            ///朝向初始化
+            p.NextTurnToAngle = p.transform.eulerAngles.y;
+
+            Instance = p;
+
+            GM.PlayerController.Possess(p);
+        }
+
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>

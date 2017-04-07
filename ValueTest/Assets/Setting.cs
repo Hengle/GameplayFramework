@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using Poi;
@@ -11,6 +12,8 @@ public class Setting : MonoBehaviour {
     private GameObject onoff;
     [SerializeField]
     private InputField nameInput;
+    [SerializeField]
+    public Dropdown selectModel;
 
     public bool IsShow { get; set; }
 
@@ -22,11 +25,17 @@ public class Setting : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        selectModel.onValueChanged.AddListener(OnSelectModel);
+    }
+
+    private void OnSelectModel(int arg0)
+    {
+        var name = selectModel.options[arg0].text;
+        Player.ChangeModel(name);
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (IsShow != onoff.activeSelf)
         {
             onoff.SetActive(IsShow);
