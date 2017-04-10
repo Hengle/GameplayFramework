@@ -115,7 +115,7 @@ namespace Poi
 
         public static Player CreatePlayer(PlayerInfo info)
         {
-            GameObject go = GM.CreatePawnGameObject(info.ModelName, GameObject.FindWithTag(nameof(PoiTag.PlayerStart))?.transform);
+            GameObject go = GM.CreatePawnGameObject(info, GameObject.FindWithTag(nameof(PoiTag.PlayerStart))?.transform);
 
             var p = go.AddComponent<Player>();
 

@@ -23,6 +23,7 @@ namespace GlobalServer
         /// </summary>
         public List<MMONet.Remote> UnknownClient { get; private set; } = new List<MMONet.Remote>();
         public IPAddress CurrentIP { get; private set; } = null;
+        public UtilTime Time { get; private set; }
 
         public void Init(string[] args)
         {
@@ -61,12 +62,12 @@ namespace GlobalServer
             InitChildServer();
 
 
-            var time = new UtilTime();
+            Time = new UtilTime();
 
             while (true)
             {
-                time.Update();
-                double delta = time.DeltaTime;
+                Time.Update();
+                double delta = Time.DeltaTime;
 
                 for (int i = 0; i < UnknownClient.Count; i++)
                 {

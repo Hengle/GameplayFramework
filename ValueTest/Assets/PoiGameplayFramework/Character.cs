@@ -19,7 +19,7 @@ namespace Poi
 
         public static Character CreateCharacter(CharacterInfo info)
         {
-            var go = GM.CreatePawnGameObject(info.ModelName);
+            var go = GM.CreatePawnGameObject(info);
             var character = go.AddComponent<Character>();
             character.Init(info);
 

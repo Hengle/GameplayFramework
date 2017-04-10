@@ -1,5 +1,7 @@
-﻿
+﻿using System.Linq;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using MMONet;
@@ -10,11 +12,19 @@ using UnityEngine;
 public class GameServer : Remote
 {
     public CustomRemote ChatServer { get; private set; }
+    public float StartLineTime { get; internal set; }
+    public float OnlineTime => Time.realtimeSinceStartup - StartLineTime;
+
+    /// <summary>
+    /// 与服务器的时间差
+    /// </summary>
+    public double TimeDelta { get; private set; }
 
     protected override void Response(int key, MemoryStream value)
     {
         if (key == PID<ChatMsg>.Value) OnChatMsg(value);
         else if (key == PID<Heart>.Value) OnHeart(value);
+        else if (key == PID<HeartEX>.Value) OnHeartEX(value);
         else if (key == PID<ALogin>.Value) OnALogin(value);
         else if (key == PID<AChildServerAddress>.Value) OnAChildServerAddress(value);
         else if (key == PID<PlayerInfo>.Value) OnPlayerInfo(value);
@@ -23,6 +33,7 @@ public class GameServer : Remote
         else if (key == PID<NameChange>.Value) OnNameChange(value);
         else if (key == PID<ModelChange>.Value) OnModelChange(value);
     }
+
 
     private void OnModelChange(MemoryStream value)
     {
@@ -132,6 +143,9 @@ public class GameServer : Remote
                     Player.InstanceID = pks.InstanceID;
                     PoiLog.Log(pks.Note);
                     gM.LoginPlayer();
+                    StartLineTime = Time.realtimeSinceStartup;
+
+                    GM.Instance.StartCoroutine(SyncServerTime());
                 }
                 break;
             case ServerType.ChatServer:
@@ -145,12 +159,42 @@ public class GameServer : Remote
         }
     }
 
+    public IEnumerator SyncServerTime()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            var msg = new HeartEX()
+            {
+                Time = DateTime.Now.ToBinary(),
+            };
+            Write(msg);
+            yield return new WaitForSecondsRealtime(0.05f);
+        }
+        yield return new WaitForSecondsRealtime(0.05f);
+        TimeDelta = timedeltaList.Average();
+        timedeltaList.Clear();
+        Debug.Log($"校准服务器时间:{GM.ServerTime}");
+    }
+
     private void OnHeart(MemoryStream value)
     {
         var msg = Serializer.Deserialize<Heart>(value);
         TimeSpan delta = DateTime.Now - DateTime.FromBinary(msg.Time);
 
         GM.Delay =Mathf.Lerp(GM.Delay, (float)delta.TotalMilliseconds / 2,0.5f);
+    }
+
+    List<double> timedeltaList = new List<double>();
+    private void OnHeartEX(MemoryStream value)
+    {
+        var msg = Serializer.Deserialize<HeartEX>(value);
+        TimeSpan delta = DateTime.Now - DateTime.FromBinary(msg.Time);
+        double delay = delta.TotalMilliseconds / 2;
+
+        msg.ServerTime += delay;
+
+        var temptimeDelta = msg.ServerTime - DateTime.Now.TimeOfDay.TotalMilliseconds;
+        timedeltaList.Add(temptimeDelta);
     }
 
     private void OnChatMsg(MemoryStream value)
@@ -175,7 +219,14 @@ public class GameServer : Remote
                 };
 
                 Write(msg);
-                heartmsgCooldown = 0.5f;
+                if (OnlineTime < 10)
+                {
+                    heartmsgCooldown = 0.2f;
+                }
+                else
+                {
+                    heartmsgCooldown = 0.5f;
+                }
             } 
         }
         else
@@ -187,6 +238,7 @@ public class GameServer : Remote
 
     double heartmsgCooldown = 0;
     private GM gM;
+    
 
     public GameServer(GM gM)
     {

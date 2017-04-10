@@ -29,10 +29,24 @@ namespace GlobalServer
         {
             if (key == PID<QLogin>.Value) OnQLogin(value);
             if (key == PID<Heart>.Value) OnlyReturn(key,value);
+            if (key == PID<HeartEX>.Value) OnHeartEx(key, value);
             if (key == PID<PlayerInfo>.Value) OnSavaCharacter(value);
             if (key == PID<TransSync>.Value) OnTransSync(value);
             if (key == PID<NameChange>.Value) OnNameChange(key, value);
             if (key == PID<ModelChange>.Value) OnModelChange(key, value);
+        }
+
+        private void OnHeartEx(int key, MemoryStream value)
+        {
+            var pks = Serializer.Deserialize<Heart>(value);
+            var msg = new HeartEX()
+            {
+                CharacterID = pks.CharacterID,
+                ServerTime = server.Time.TotalMilliseconds,
+                Time = pks.Time,
+            };
+            Console.WriteLine(msg.ServerTime);
+            Write(msg);
         }
 
         private void OnModelChange(int key, MemoryStream value)

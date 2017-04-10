@@ -17,23 +17,6 @@ namespace ProtoBuf
     }
 
 
-    /// <summary>
-    /// 聊天消息
-    /// </summary>
-    [ProtoContract(Name = "100")]
-    public class Heart
-    {
-        /// <summary>
-        /// 角色实例ID
-        /// </summary>
-        [ProtoMember(1)]
-        public int CharacterID { get; set; }
-        /// <summary>
-        /// 聊天内容
-        /// </summary>
-        [ProtoMember(2)]
-        public long Time { get; set; }
-    }
 
 
     [ProtoContract(Name = "101")]
@@ -100,5 +83,48 @@ namespace ProtoBuf
         public string Note;
         [ProtoMember(4)]
         public ServerType Server;
+    }
+
+    /// <summary>
+    /// 聊天消息
+    /// </summary>
+    [ProtoContract(Name = "110")]
+    public class Heart
+    {
+        /// <summary>
+        /// 角色实例ID
+        /// </summary>
+        [ProtoMember(1)]
+        public int CharacterID { get; set; }
+        /// <summary>
+        /// 聊天内容
+        /// </summary>
+        [ProtoMember(2)]
+        public long Time { get; set; }
+    }
+
+
+
+    /// <summary>
+    /// 聊天消息
+    /// </summary>
+    [ProtoContract(Name = "111")]
+    public class HeartEX
+    {
+        /// <summary>
+        /// 角色实例ID
+        /// </summary>
+        [ProtoMember(1)]
+        public int CharacterID { get; set; }
+        /// <summary>
+        /// 聊天内容
+        /// </summary>
+        [ProtoMember(2)]
+        public long Time { get; set; }
+        /// <summary>
+        /// 聊天内容
+        /// </summary>
+        [ProtoMember(3)]
+        public double ServerTime { get; set; }
     }
 }

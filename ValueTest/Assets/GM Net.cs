@@ -64,16 +64,16 @@ public partial class GM
         GameServer cl = ar.AsyncState as GameServer;
         cl.EndConnect(ar);
 
-        cl.BeginReceive();
-
         if (cl.IsConnected)
         {
+            cl.BeginReceive();
+
             LineMode = LineMode.Online;
+
             QLogin msg = new QLogin()
             {
                 account = "tEXT"/*SystemInfo.deviceUniqueIdentifier*/
             };
-
             Instance.Server.Write(msg);
         }
     }

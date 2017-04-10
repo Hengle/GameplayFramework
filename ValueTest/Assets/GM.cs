@@ -18,8 +18,10 @@ public partial class GM : MonoBehaviour {
     public static PlayerController PlayerController { get; private set; }
     public static float Delay { get; internal set; }
     public static LineMode Mode { get; internal set; }
-
-
+    /// <summary>
+    /// 不准确的服务器时间
+    /// </summary>
+    public static double ServerTime => Instance.Server.TimeDelta + DateTime.Now.TimeOfDay.TotalMilliseconds;
 
     // 加载脚本实例时调用 Awake
     private void Awake()

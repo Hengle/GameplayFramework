@@ -18,4 +18,13 @@ public partial class GM
         go.transform.ApplyRotationY(startpos);
         return go;
     }
+
+    public static GameObject CreatePawnGameObject(PawnInfo info, Transform startpos = null)
+    {
+        var name = info?.ModelName?? ModelDic.First().Key;
+        var go = CreatePawnGameObject(name, startpos);
+
+        go.name = $"{info.Name}--{go.name}";
+        return go;
+    }
 }
