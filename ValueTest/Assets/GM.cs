@@ -68,11 +68,11 @@ public partial class GM : MonoBehaviour {
     {
         if (destoryPlayer)
         {
-            Destroy(PlayerController.Character);
+            Destroy(PlayerController.Pawn);
         }
         else
         {
-            DontDestroyOnLoad(PlayerController.Character);
+            DontDestroyOnLoad(PlayerController.Pawn);
         }
 
         this.Wait(LoadSceneAsync(sceneID), () =>
@@ -96,7 +96,7 @@ public partial class GM : MonoBehaviour {
             ModelName = ModelDic.FirstOrDefault().Value.Name,
         };
         info.Run.Max = 10;
-        info.AttackCooldown.Max = 0.3f;
+        info.ATKCD.MaxCD = 0.3f;
 
         Player p = Player.CreatePlayer(info);
 
@@ -104,12 +104,6 @@ public partial class GM : MonoBehaviour {
 
         PlayerController.Possess(p);
     }
-
-    internal static GameObject CreatePawnGameObject(object modelName, Transform transform)
-    {
-        throw new NotImplementedException();
-    }
-
 
     /// <summary>
     /// 初始化游戏
@@ -133,8 +127,6 @@ public partial class GM : MonoBehaviour {
         pc.gameObject.AddComponent<DontDestroyOnLoad>();
 
         pc.Init();
-
-        pc.IsFollowPawn = true;
 
         PlayerController = pc;
     }

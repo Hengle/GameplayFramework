@@ -17,7 +17,7 @@ namespace Poi
     /// </summary>
     public partial class PawnController
     {
-        public bool IsFollowPawn { get; set; }
+        public bool IsFollowPawn { get; set; } = true;
 
         /// <summary>
         ///控制模式
@@ -25,8 +25,8 @@ namespace Poi
         public ControlMode Mode { get; set; }
 
 
-        protected Pawn pawn;
-        protected Pawn oldPawn;
+        private Pawn pawn;
+        private Pawn oldPawn;
 
         public Pawn Pawn => pawn;
         public Pawn OldPawn => oldPawn;

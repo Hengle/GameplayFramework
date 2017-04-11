@@ -11,6 +11,7 @@ namespace Poi
     /// </summary>
     public partial class Pawn : MonoBehaviour
     {
+        public int InstanceID => DataInfo?.ID??0;
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>
@@ -60,8 +61,8 @@ namespace Poi
         public PawnController Controller { get { return controller; } set { controller = value; } }
         public AIController AIController { get { return controller as AIController; } set { controller = value; } }
         public PlayerController PlayerController { get { return controller as PlayerController; } set { controller = value; } }
+        public NetPawnController NetPawnController { get { return controller as NetPawnController; } set { controller = value; } }
 
-        
         /// <summary>
         /// 角色信息（数据模型）
         /// </summary>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProtoBuf;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -27,12 +28,12 @@ namespace Poi
 
         public CameraController CamCtrl { get; protected set; }
 
-        Stack<InputCommand> cmd = new Stack<InputCommand>();
+        Stack<InputCMD> CMD = new Stack<InputCMD>();
 
         /// <summary>
         /// 延迟fixedtime数
         /// </summary>
-        public int DelayFixedtime = 0;
+        public int DelayFixedtime = 5;
 
         protected override void Start()
         {
@@ -72,62 +73,106 @@ namespace Poi
             }
             UpdateTarget(Time.deltaTime);
 
-            ///取得输入命令
-            InputCommand next = new InputCommand();
-            next.Horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            next.Vertical = CrossPlatformInputManager.GetAxis("Vertical");
-
-            next.Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-
-            next.MouseX = CrossPlatformInputManager.GetAxis("Mouse X");
-            next.MouseY = CrossPlatformInputManager.GetAxis("Mouse Y");
-            next.Mouse1 = Input.GetMouseButton(1);
-            next.mouseScrollDelta = Input.mouseScrollDelta;
-            next.Mouse0 = Input.GetMouseButton(0);
-
             #region 相机控制是即时的
 
-            var mousePos = new Vector2(next.MouseX, next.MouseY);
+            var mousePos = new Vector2(CrossPlatformInputManager.GetAxis("Mouse X"),
+                CrossPlatformInputManager.GetAxis("Mouse Y"));
 
-            if (next.Mouse1)
+            if (Input.GetMouseButton(1))
             {
                 CamCtrl?.Turn(mousePos);
             }
 
-            CamCtrl?.ScaleDistance(next.mouseScrollDelta);
+            CamCtrl?.ScaleDistance(Input.mouseScrollDelta);
 
             #endregion
 
-            InputCommand tempcmd = null;
+            bool needSendCMD = false;
+            InputCMD cmd0 = new InputCMD();
+            cmd0.Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            needSendCMD |= cmd0.Jump;
+
+            cmd0.IsAttact = Input.GetMouseButton(0);
+            if (Pawn?.DataInfo.ATKCD.Check(Time.deltaTime)??false)
+            {
+                ///攻击冷却完毕，如果攻击则重置冷却时间
+                if (cmd0.IsAttact)
+                {
+                    Pawn.DataInfo.ATKCD.ReCD();
+                }
+            }
+            else
+            {
+                ///攻击冷却中，过滤掉工具操作
+                cmd0.IsAttact = false;
+            }
+            needSendCMD |= cmd0.IsAttact;
+
+            #region 解析所转向的角度和加速度
+
+            ///解析所转向的角度
+            Vector2 arrow = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"),
+                CrossPlatformInputManager.GetAxis("Vertical"));
+            if (arrow != Vector2.zero)
+            {
+                float angle = Vector2.Angle(Vector2.up, arrow);
+
+                ///angle只有正直
+                if (arrow.x < 0)
+                {
+                    ///当逆时针旋转时，将角度转换为顺时针
+                    angle = 360 - angle;
+                }
+
+                float cur = CamCtrl.GetCurrentForward();
+
+                angle += cur;
+
+                cmd0.NextAngle = angle;
+
+                needSendCMD = true;
+            }
+
+            ///计算加速度
+            if (arrow != Vector2.zero)
+            {
+                cmd0.Acceleration = arrow.magnitude;
+
+                needSendCMD = true;
+            }
+            else
+            {
+                cmd0.Acceleration = -1f;
+            }
+
+            #endregion
+
+            if (needSendCMD)
+            {
+                GM.WriteToServer(cmd0);
+            }
+
+            InputCMD tempcmd = null;
 
             ///应用模拟延迟
             if (DelayFixedtime == 0)
             {
-                tempcmd = next;
+                tempcmd = cmd0;
             }
             else
             {
-                cmd.Push(next);
-                if (cmd.Count > DelayFixedtime)
+                CMD.Push(cmd0);
+                if (CMD.Count > DelayFixedtime)
                 {
-                    tempcmd = cmd.Pop();
+                    tempcmd = CMD.Pop();
                 }
             }
 
-            if (tempcmd)
+            if (tempcmd != null)
             {
-                if (Pawn == null)
-                {
-
-                }
-                else
-                {
-                    ///解析操作
-                    ParseInputCommand(tempcmd);
-                }
+                ///解析操作
+                ParseInputCommand(tempcmd);      
             }
-
-
         }
 
         /// <summary>
@@ -156,57 +201,7 @@ namespace Poi
             Target = tempTarget;
         }
 
-        /// <summary>
-        /// 将输入命令解析为对Pawn命令（AI中使用行为树或状态机解析）
-        /// </summary>
-        /// <param name="next">输入的命令</param>
-        /// <returns></returns>
-        private void ParseInputCommand(InputCommand next)
-        {
-            if (next.Jump)
-            {
-                Pawn.Jump();
-            }
-
-
-            ///解析所转向的角度
-            Vector2 arrow = new Vector2(next.Horizontal, next.Vertical);
-            if (arrow != Vector2.zero)
-            {
-                float angle = Vector2.Angle(Vector2.up, arrow);
-
-                ///angle只有正直
-                if (arrow.x < 0)
-                {
-                    ///当逆时针旋转时，将角度转换为顺时针
-                    angle = 360 - angle;
-                }
-
-                float cur = CamCtrl.GetCurrentForward();
-
-                angle += cur;
-
-                Pawn.NextTurnToAngle = angle;
-            }
-
-            ///计算移动
-            if (arrow != Vector2.zero)
-            {
-                Pawn.Acceleration = arrow.magnitude;
-            }
-            else
-            {
-                Pawn.Acceleration = -1f;
-            }
-
-            if (next.Mouse0)
-            {
-                if (Pawn.AttackCooldown <= 0f)
-                {
-                    Pawn.Attack();
-                }
-            }
-        }
+        
 
         void SetCursorLock(bool value)
         {

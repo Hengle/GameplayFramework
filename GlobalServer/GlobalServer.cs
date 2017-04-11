@@ -82,20 +82,60 @@ namespace GlobalServer
                 ///轮询客户端
                 lock (GameClient.ClientDic)
                 {
-                    TransList msg = new TransList();
+                    ///同一时间间隔中位置只有一个，而收到的指令可能有多个
+
+                    ///此处在客户端增多是需要做分包处理Todo
+
+                    ///同步位置
+                    TransList msg = new TransList()
+                    {
+                        ServerTime = Time.TotalMilliseconds,
+                    };
+
+                    ///同步操作指令
+                    CMDList cmdMsg = new CMDList()
+                    {
+                        ServerTime = Time.TotalMilliseconds,
+                    };
+
                     foreach (var item in GameClient.ClientDic)
                     {
                         GameClient client = item.Value as GameClient;
                         client.Update(delta);
-                        msg.transList.Add(new TransSync()
+     
+                        if (client.SyncTransCD.Check(delta,true))
                         {
-                            instanceID = client.InstanceID,
-                            trans = client.Trans
-                        });
+                            msg.transList.Add(new TransSync()
+                            {
+                                instanceID = client.InstanceID,
+                                trans = client.Trans
+                            });
+                        }
+
+                        ///客户端同步操作命令
+                        if (client.CmdList.Count > 0)
+                        {
+                            cmdMsg.transList.Add(new PerPawnCMDList()
+                            {
+                                instanceID = client.InstanceID,
+                                transList = new List<InputCMD>(client.CmdList),
+                            });
+                            client.CmdList.Clear();
+                        }    
                     }
-                    if (msg.transList.Count > 0 && GameClient.ClientDic.Count > 0)
+
+                    ///存在客户端
+                    if (GameClient.ClientDic.Count > 0)
                     {
-                        GameClient.BroadCast(msg);
+                        if (msg.transList.Count > 0)
+                        {
+                            GameClient.BroadCast(msg);
+                        }
+
+                        if (cmdMsg.transList.Count > 0)
+                        {
+                            GameClient.BroadCast(cmdMsg);
+                        }
                     }
 
                     lock (GameClient.AddRemoveList)

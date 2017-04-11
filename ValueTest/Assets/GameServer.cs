@@ -30,6 +30,7 @@ public class GameServer : Remote
         else if (key == PID<PlayerInfo>.Value) OnPlayerInfo(value);
         else if (key == PID<Quit>.Value) OnCharacterQuit(value);
         else if (key == PID<TransList>.Value) OnTransList(value);
+        else if (key == PID<CMDList>.Value) OnCMDList(value);
         else if (key == PID<NameChange>.Value) OnNameChange(value);
         else if (key == PID<ModelChange>.Value) OnModelChange(value);
     }
@@ -79,9 +80,24 @@ public class GameServer : Remote
         {
             if (Character.Dic.ContainsKey(item.instanceID))
             {
-                Character.Dic[item.instanceID].Move(item.trans);
+                Character.Dic[item.instanceID].NetPawnController.SetTrans(pks.ServerTime,item.trans);
             }
         }
+    }
+
+
+    private void OnCMDList(MemoryStream value)
+    {
+        var pks = Serializer.Deserialize<CMDList>(value);
+        foreach (var item in pks.transList)
+        {
+            if (Character.Dic.ContainsKey(item.instanceID))
+            {
+                Character.Dic[item.instanceID].NetPawnController.SetCMD(item.transList);
+            }
+        }
+
+        Debug.Log(1);
     }
 
     private void OnCharacterQuit(MemoryStream value)
@@ -93,7 +109,9 @@ public class GameServer : Remote
     private void OnPlayerInfo(MemoryStream value)
     {
         var pks = Serializer.Deserialize<PlayerInfo>(value);
-        Character.CreateCharacter(pks);
+        NetPawnController ctrl = PawnController.CreateController<NetPawnController>();
+        var ch = Character.CreateCharacter(pks);
+        ctrl.Possess(ch);
     }
 
     private void OnAChildServerAddress(MemoryStream value)

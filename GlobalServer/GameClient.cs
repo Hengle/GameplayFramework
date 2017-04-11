@@ -15,6 +15,8 @@ namespace GlobalServer
         public string Account { get; private set; }
         public PlayerInfo CharacterInfo { get; private set; }
         public Trans Trans { get; internal set; }
+        public List<InputCMD> CmdList { get => cmdList; set => cmdList = value; }
+        public CoolDown SyncTransCD = new CoolDown(200);
 
         public GameClient(Socket socket) : base(socket)
         {
@@ -32,9 +34,12 @@ namespace GlobalServer
             if (key == PID<HeartEX>.Value) OnHeartEx(key, value);
             if (key == PID<PlayerInfo>.Value) OnSavaCharacter(value);
             if (key == PID<TransSync>.Value) OnTransSync(value);
+            if (key == PID<InputCMD>.Value) OnInputCMD(value);
             if (key == PID<NameChange>.Value) OnNameChange(key, value);
             if (key == PID<ModelChange>.Value) OnModelChange(key, value);
         }
+
+        
 
         private void OnHeartEx(int key, MemoryStream value)
         {
@@ -45,7 +50,6 @@ namespace GlobalServer
                 ServerTime = server.Time.TotalMilliseconds,
                 Time = pks.Time,
             };
-            Console.WriteLine(msg.ServerTime);
             Write(msg);
         }
 
@@ -70,6 +74,14 @@ namespace GlobalServer
             {
                 Trans = transync.trans;
             }
+        }
+
+        List<InputCMD> cmdList = new List<InputCMD>();
+        private void OnInputCMD(MemoryStream value)
+        {
+            var cmd = Serializer.Deserialize<InputCMD>(value);
+            cmd.ServerTime = server.Time.TotalMilliseconds;
+            CmdList.Add(cmd);
         }
 
         private void OnSavaCharacter(MemoryStream value)

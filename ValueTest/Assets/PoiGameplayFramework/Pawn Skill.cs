@@ -19,8 +19,6 @@ namespace Poi
 
         #region CastSkill
 
-        public float AttackCooldown => DataInfo.AttackCooldown.Current;
-
         internal void Attack()
         {
             var startpos = transform.localToWorldMatrix.MultiplyPoint3x4(
@@ -37,8 +35,6 @@ namespace Poi
             proj.IsTracking = false;
             proj.Target = Controller.Target;
             proj.Speed = 0.3f;
-
-            DataInfo.AttackCooldown.EnterCooling();
         }
 
         /// <summary>

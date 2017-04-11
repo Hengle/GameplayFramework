@@ -14,7 +14,7 @@ namespace Poi
     public partial class Player : Character
     {
         private static int tempinstanceID = 0;
-        public static int InstanceID
+        public static new int InstanceID
         {
             get
             {

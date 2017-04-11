@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProtoBuf;
 
 namespace Poi
 {
     public class CharacterControllor:PawnController
     {
-        public Character Character => pawn as Character; 
+        public new Character Pawn => base.Pawn as Character;
+
     }
 }

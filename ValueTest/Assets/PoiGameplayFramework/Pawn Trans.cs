@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProtoBuf;
 using UnityEngine;
 
 namespace Poi
@@ -124,5 +125,16 @@ namespace Poi
         /// </summary>
         public float DurationTimeInCurrentState { get; protected set; } = 0;
         public Transform Head { get; protected set; }
+
+        public virtual void Move(Trans trans)
+        {
+            transform.position = new Vector3(trans.x, transform.position.y, trans.z);
+            transform.rotation = new Quaternion(trans.qx, trans.qy, trans.qz, trans.qw);
+        }
+
+        public virtual void Move(double serverTime, Trans trans)
+        {
+            Move(trans);
+        }
     }
 }

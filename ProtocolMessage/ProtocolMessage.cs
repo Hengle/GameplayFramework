@@ -57,6 +57,8 @@ namespace ProtoBuf
     {
         [ProtoMember(1)]
         public List<TransSync> transList = new List<TransSync>();
+        [ProtoMember(2)]
+        public double ServerTime;
     }
 
     [ProtoContract(Name = "1004")]
@@ -75,5 +77,52 @@ namespace ProtoBuf
         public int instanceID;
         [ProtoMember(2)]
         public string ModelName;
+    }
+
+    [ProtoContract(Name = "1006")]
+    public class InputCMD
+    {
+        /// <summary>
+        /// 跳跃命令
+        /// </summary>
+        [ProtoMember(3)]
+        public bool Jump;
+        /// <summary>
+        /// 转向
+        /// </summary>
+        [ProtoMember(4)]
+        public float? NextAngle;
+        /// <summary>
+        /// 加速度
+        /// </summary>
+        [ProtoMember(5)]
+        public float Acceleration;
+        /// <summary>
+        /// 当前速度
+        /// </summary>
+        [ProtoMember(6)]
+        public float curSpeed;
+        [ProtoMember(7)]
+        public bool IsAttact;
+        [ProtoMember(8)]
+        public double ServerTime;
+    }
+
+    [ProtoContract(Name = "1007")]
+    public class PerPawnCMDList
+    {
+        [ProtoMember(1)]
+        public int instanceID;
+        [ProtoMember(2/*,DataFormat = DataFormat.Default*/)]
+        public List<InputCMD> transList = new List<InputCMD>();
+    }
+
+    [ProtoContract(Name = "1008")]
+    public class CMDList
+    {
+        [ProtoMember(1)]
+        public List<PerPawnCMDList> transList = new List<PerPawnCMDList>();
+        [ProtoMember(2)]
+        public double ServerTime;
     }
 }
