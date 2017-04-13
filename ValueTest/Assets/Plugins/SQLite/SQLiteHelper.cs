@@ -6,24 +6,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 
-namespace Mono.Data.Sqlite
+namespace Devart.Data.SQLite
 {
     public partial class SQLiteHelper
     {
         /// <summary>
         /// 数据库连接定义
         /// </summary>
-        private SqliteConnection dbConnection;
+        private SQLiteConnection dbConnection;
 
         /// <summary>
         /// SQL命令定义
         /// </summary>
-        private SqliteCommand dbCommand;
+        private SQLiteCommand dbCommand;
 
         /// <summary>
         /// 数据读取定义
         /// </summary>
-        private SqliteDataReader dataReader;
+        private SQLiteDataReader dataReader;
 
         /// <summary>
         /// 构造函数    
@@ -34,7 +34,7 @@ namespace Mono.Data.Sqlite
             try
             {
                 //构造数据库连接
-                dbConnection = new SqliteConnection(connectionString);
+                dbConnection = new SQLiteConnection(connectionString);
                 //打开数据库
                 dbConnection.Open();
             }
@@ -49,7 +49,7 @@ namespace Mono.Data.Sqlite
         /// </summary>
         /// <returns>The query.</returns>
         /// <param name="queryString">SQL命令字符串</param>
-        public SqliteDataReader ExecuteQuery(string queryString)
+        public SQLiteDataReader ExecuteQuery(string queryString)
         {
             dbCommand = dbConnection.CreateCommand();
             dbCommand.CommandText = queryString;
@@ -89,7 +89,7 @@ namespace Mono.Data.Sqlite
         /// </summary>
         /// <returns>The full table.</returns>
         /// <param name="tableName">数据表名称</param>
-        public SqliteDataReader ReadFullTable(string tableName)
+        public SQLiteDataReader ReadFullTable(string tableName)
         {
             string queryString = "SELECT * FROM " + tableName;
             return ExecuteQuery(queryString);
@@ -101,14 +101,14 @@ namespace Mono.Data.Sqlite
         /// <returns>The values.</returns>
         /// <param name="tableName">数据表名称</param>
         /// <param name="values">插入的数值</param>
-        public SqliteDataReader InsertValues(string tableName, string[] values)
+        public SQLiteDataReader InsertValues(string tableName, string[] values)
         {
             //获取数据表中字段数目
             int fieldCount = ReadFullTable(tableName).FieldCount;
             //当插入的数据长度不等于字段数目时引发异常
             if (values.Length != fieldCount)
             {
-                throw new SqliteException("values.Length!=fieldCount");
+                throw new ArgumentException("values.Length!=fieldCount");
             }
 
             string queryString = "INSERT INTO " + tableName + " VALUES (" + values[0];
@@ -129,12 +129,12 @@ namespace Mono.Data.Sqlite
         /// <param name="colValues">字段名对应的数据</param>
         /// <param name="key">关键字</param>
         /// <param name="value">关键字对应的值</param>
-        public SqliteDataReader UpdateValues(string tableName, string[] colNames, string[] colValues, string key, string operation, string value)
+        public SQLiteDataReader UpdateValues(string tableName, string[] colNames, string[] colValues, string key, string operation, string value)
         {
             //当字段名称和字段数值不对应时引发异常
             if (colNames.Length != colValues.Length)
             {
-                throw new SqliteException("colNames.Length!=colValues.Length");
+                throw new ArgumentException("colNames.Length!=colValues.Length");
             }
 
             string queryString = "UPDATE " + tableName + " SET " + colNames[0] + "=" + colValues[0];
@@ -153,12 +153,12 @@ namespace Mono.Data.Sqlite
         /// <param name="tableName">数据表名称</param>
         /// <param name="colNames">字段名</param>
         /// <param name="colValues">字段名对应的数据</param>
-        public SqliteDataReader DeleteValuesOR(string tableName, string[] colNames, string[] operations, string[] colValues)
+        public SQLiteDataReader DeleteValuesOR(string tableName, string[] colNames, string[] operations, string[] colValues)
         {
             //当字段名称和字段数值不对应时引发异常
             if (colNames.Length != colValues.Length || operations.Length != colNames.Length || operations.Length != colValues.Length)
             {
-                throw new SqliteException("colNames.Length!=colValues.Length || operations.Length!=colNames.Length || operations.Length!=colValues.Length");
+                throw new ArgumentException("colNames.Length!=colValues.Length || operations.Length!=colNames.Length || operations.Length!=colValues.Length");
             }
 
             string queryString = "DELETE FROM " + tableName + " WHERE " + colNames[0] + operations[0] + colValues[0];
@@ -176,12 +176,12 @@ namespace Mono.Data.Sqlite
         /// <param name="tableName">数据表名称</param>
         /// <param name="colNames">字段名</param>
         /// <param name="colValues">字段名对应的数据</param>
-        public SqliteDataReader DeleteValuesAND(string tableName, string[] colNames, string[] operations, string[] colValues)
+        public SQLiteDataReader DeleteValuesAND(string tableName, string[] colNames, string[] operations, string[] colValues)
         {
             //当字段名称和字段数值不对应时引发异常
             if (colNames.Length != colValues.Length || operations.Length != colNames.Length || operations.Length != colValues.Length)
             {
-                throw new SqliteException("colNames.Length!=colValues.Length || operations.Length!=colNames.Length || operations.Length!=colValues.Length");
+                throw new ArgumentException("colNames.Length!=colValues.Length || operations.Length!=colNames.Length || operations.Length!=colValues.Length");
             }
 
             string queryString = "DELETE FROM " + tableName + " WHERE " + colNames[0] + operations[0] + colValues[0];
@@ -199,7 +199,7 @@ namespace Mono.Data.Sqlite
         /// <param name="tableName">数据表名</param>
         /// <param name="colNames">字段名</param>
         /// <param name="colTypes">字段名类型</param>
-        public SqliteDataReader CreateTable(string tableName, string[] colNames, string[] colTypes)
+        public SQLiteDataReader CreateTable(string tableName, string[] colNames, string[] colTypes)
         {
             string queryString = "CREATE TABLE " + tableName + "( " + colNames[0] + " " + colTypes[0];
             for (int i = 1; i < colNames.Length; i++)
@@ -219,7 +219,7 @@ namespace Mono.Data.Sqlite
         /// <param name="colNames">Col names.</param>
         /// <param name="operations">Operations.</param>
         /// <param name="colValues">Col values.</param>
-        public SqliteDataReader ReadTable(string tableName, string[] items, string[] colNames, string[] operations, string[] colValues)
+        public SQLiteDataReader ReadTable(string tableName, string[] items, string[] colNames, string[] operations, string[] colValues)
         {
             string queryString = "SELECT " + items[0];
             for (int i = 1; i < items.Length; i++)
@@ -243,7 +243,7 @@ namespace Mono.Data.Sqlite
         {
             try
             {
-                using (var conn = new SqliteConnection(@"data source=" + p_strSQLiteFullPathTarget))
+                using (var conn = new SQLiteConnection(@"data source=" + p_strSQLiteFullPathTarget))
                 {
                     conn.Open();
 
@@ -252,7 +252,7 @@ namespace Mono.Data.Sqlite
                     {
                         var strSqlCreateTable = GetSQLiteCreateTableIfNotExists(dtTable);
 
-                        using (var cmd = new SqliteCommand(strSqlCreateTable, conn))
+                        using (var cmd = new SQLiteCommand(strSqlCreateTable, conn))
                         {
                             cmd.ExecuteNonQuery();
                         }
@@ -274,11 +274,11 @@ namespace Mono.Data.Sqlite
             }
             catch (Exception ex)
             {
-                //Logger.Log.Error(ex);
+                UnityEngine.Debug.LogError(ex);
             }
         }
 
-        private static void FillSQLiteSingleTableFromDataTable(DataTable p_dtTableSource, SqliteConnection p_connectionToTarget, SqliteTransaction p_transaction)
+        private static void FillSQLiteSingleTableFromDataTable(DataTable p_dtTableSource, SQLiteConnection p_connectionToTarget, SQLiteTransaction p_transaction)
         {
             #region Manualy create INSERT command - not in use since SQLiteCommandBuilder is creating the INSERT command
 
@@ -323,19 +323,20 @@ namespace Mono.Data.Sqlite
             {
                 dbCommand.Transaction = p_transaction;
                 dbCommand.CommandText = "SELECT * FROM [" + p_dtTableSource.TableName + "]";
-                using (var sqliteAdapterToTarget = new SqliteDataAdapter(dbCommand))
+                using (var sqliteAdapterToTarget = new SQLiteDataAdapter(dbCommand))
                 {
                     // Need this line (without it Update line would fail)
                     //https://www.devart.com/dotconnect/sqlite/docs/Devart.Data.SQLite~Devart.Data.SQLite.SQLiteCommandBuilder.html
-                    using (new SqliteCommandBuilder(sqliteAdapterToTarget))
+                    using (new SQLiteCommandBuilder(sqliteAdapterToTarget))
                     {
                         Stopwatch sw = new Stopwatch();
                         sw.Start();
 
                         int intTotalRowsUpdatedFromSource = sqliteAdapterToTarget.Update(p_dtTableSource);
                         sw.Stop();
-                        throw new Exception($"Finished update table - <TableName = {p_dtTableSource.TableName}> <TotalRowsUpdated = {intTotalRowsUpdatedFromSource}>" +
-                            $" <ElapsedTime = {sw.Elapsed}>");
+                        
+                        throw new Exception(String.Format("Finished update table - <TableName = {0}> <TotalRowsUpdated = {1}>" +
+                            " <ElapsedTime = {2}>", p_dtTableSource.TableName, intTotalRowsUpdatedFromSource, sw.Elapsed));
                     }
                 }
             }
@@ -356,7 +357,7 @@ namespace Mono.Data.Sqlite
             {
                 if (p_dataSetTarget == null)
                 {
-                    throw new Exception("Parameter " + nameof(p_dataSetTarget) + " should not be null");
+                    throw new Exception("Parameter p_dataSetTarget should not be null");
                 }
 
                 if (!File.Exists(p_strDBFullPathSource))
@@ -365,13 +366,13 @@ namespace Mono.Data.Sqlite
                     return false;
                 }
 
-                using (var con = new SqliteConnection(@"data source=" + p_strDBFullPathSource))
+                using (var con = new SQLiteConnection(@"data source=" + p_strDBFullPathSource))
                 {
                     con.Open();
 
                     foreach (DataTable dataTable in p_dataSetTarget.Tables)
                     {
-                        using (var adapter = new SqliteDataAdapter("SELECT * FROM " + dataTable.TableName, con))
+                        using (var adapter = new SQLiteDataAdapter("SELECT * FROM " + dataTable.TableName, con))
                         {
                             adapter.FillLoadOption = LoadOption.Upsert;
                             adapter.Fill(dataTable);
@@ -398,7 +399,7 @@ namespace Mono.Data.Sqlite
             }
 
             // connection will create new file if needed
-            using (var conn = new SqliteConnection(@"data source=" + p_strDBFullPathTarget))
+            using (var conn = new SQLiteConnection(@"data source=" + p_strDBFullPathTarget))
             {
                 conn.Open();
 
@@ -410,7 +411,7 @@ namespace Mono.Data.Sqlite
                 {
                     // create table if not exists
                     var strSqlCreateTable = GetSQLiteCreateTableIfNotExists(dataTableSource);
-                    using (var cmdCreateTable = new SqliteCommand(strSqlCreateTable, conn))
+                    using (var cmdCreateTable = new SQLiteCommand(strSqlCreateTable, conn))
                     {
                         cmdCreateTable.ExecuteNonQuery();
                     }
@@ -460,7 +461,7 @@ namespace Mono.Data.Sqlite
                     }
                     else
                     {
-                        strSqlCreateTable += $" NVARCHAR({p_dtTableSource.Columns[intColToGetDef].MaxLength}) ";
+                        strSqlCreateTable += string.Format(" NVARCHAR({0}) ", p_dtTableSource.Columns[intColToGetDef].MaxLength);
                     }
                 }
                 else
