@@ -85,7 +85,7 @@ public partial class GM : MonoBehaviour {
 
     private void CreateTestPlayer()
     {
-        PlayerInfo info = SelectInfo("初音未来");
+        PlayerInfo info = CreateInfo(Model.初音未来);
 
         Player p = Player.CreatePlayer(info);
 
@@ -94,7 +94,18 @@ public partial class GM : MonoBehaviour {
         PlayerController.Possess(p);
     }
 
-    public PlayerInfo SelectInfo(string name)
+    public enum Model
+    {
+        初音未来,
+        女弓箭手,
+    }
+
+    public PlayerInfo CreateInfo(Model model)
+    {
+        return CreateInfo(model.ToString());
+    }
+
+    public PlayerInfo CreateInfo(string name)
     {
         var data = from i in DataSet.DataInfoTemplate
                    from j in DataSet.CharacterTemplate

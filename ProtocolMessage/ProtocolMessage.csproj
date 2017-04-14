@@ -38,6 +38,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\DebugLAN\ProtocolMessage.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
@@ -58,11 +59,10 @@
     <Compile Include="DataInfo\MonsterInfo.cs" />
     <Compile Include="DataInfo\NPCInfo.cs" />
     <Compile Include="DataInfo\PawnInfo.cs" />
-    <Compile Include="DataInfo\PawnType.cs" />
     <Compile Include="DataInfo\PlayerInfo.cs" />
     <Compile Include="Port.cs" />
     <Compile Include="Property\BaseProperty.cs" />
-    <Compile Include="Property\Cooldown.cs" />
+    <Compile Include="Property\CoolDown.cs" />
     <Compile Include="Property\DataProperty.cs" />
     <Compile Include="Property\HP.cs" />
     <Compile Include="Property\IRangeProperty.cs" />
@@ -70,7 +70,7 @@
     <Compile Include="Property\MP.cs" />
     <Compile Include="Property\Speed.cs" />
     <Compile Include="Property\ValueEnumType.cs" />
-    <Compile Include="ProtocolMessageIDLess1000.cs" />
+    <Compile Include="ProtocolMessageID10000000.cs" />
     <Compile Include="ProtocolMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

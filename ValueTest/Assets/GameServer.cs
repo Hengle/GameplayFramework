@@ -28,13 +28,13 @@ public class GameServer : Remote
         else if (key == PID<ALogin>.Value) OnALogin(value);
         else if (key == PID<AChildServerAddress>.Value) OnAChildServerAddress(value);
         else if (key == PID<PlayerInfo>.Value) OnPlayerInfo(value);
+        else if (key == PID<CharacterOnline>.Value) OnCharacterOnline(value);
         else if (key == PID<Quit>.Value) OnCharacterQuit(value);
         else if (key == PID<TransList>.Value) OnTransList(value);
         else if (key == PID<CMDList>.Value) OnCMDList(value);
         else if (key == PID<NameChange>.Value) OnNameChange(value);
         else if (key == PID<ModelChange>.Value) OnModelChange(value);
     }
-
 
     private void OnModelChange(MemoryStream value)
     {
@@ -110,7 +110,18 @@ public class GameServer : Remote
     {
         var pks = Serializer.Deserialize<PlayerInfo>(value);
         NetPawnController ctrl = PawnController.CreateController<NetPawnController>();
+        
         var ch = Character.CreateCharacter(pks);
+        ctrl.Possess(ch);
+    }
+
+    private void OnCharacterOnline(MemoryStream value)
+    {
+        var pks = Serializer.Deserialize<CharacterOnline>(value);
+        NetPawnController ctrl = PawnController.CreateController<NetPawnController>();
+
+        var ch = Character.CreateCharacter(pks.info);
+        ch.transform.Apply(pks.StartPos);
         ctrl.Possess(ch);
     }
 
@@ -160,6 +171,7 @@ public class GameServer : Remote
                 {
                     Player.InstanceID = pks.InstanceID;
                     PoiLog.Log(pks.Note);
+
                     gM.LoginPlayer();
                     StartLineTime = Time.realtimeSinceStartup;
 

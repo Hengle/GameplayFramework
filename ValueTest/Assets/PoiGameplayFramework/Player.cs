@@ -103,14 +103,19 @@ namespace Poi
                 yield return new WaitForSecondsRealtime(0.1f);
                 if (GM.Instance.Server != null && GM.Instance.Server.IsConnected)
                 {
-                    var msg = new TransSync()
-                    {
-                        instanceID = DataInfo.ID,
-                        trans = transform.ToTrans()
-                    };
-                    GM.Instance.Server.Write(msg);
+                    SendTrans();
                 }
             }
+        }
+
+        public void SendTrans()
+        {
+            var msg = new TransSync()
+            {
+                instanceID = DataInfo.ID,
+                trans = transform.ToTrans()
+            };
+            GM.Instance.Server.Write(msg);
         }
 
         public static Player CreatePlayer(PlayerInfo info)
@@ -157,6 +162,12 @@ namespace Poi
                 qz = trans.rotation.z,
                 qw = trans.rotation.w,
             };
+        }
+
+        public static void Apply(this Transform trans,Trans t,bool applyY = true)
+        {
+            trans.position = new Vector3(t.x, applyY ? t.y : trans.position.y, t.z);
+            trans.rotation = new Quaternion(t.qx, t.qy, t.qz, t.qw);
         }
     }
 }

@@ -417,7 +417,7 @@ namespace MMONet
                     if (msgQueue.Count < MaxMsgCount || KeepMode == KeepMsgMode.Old)
                     {
                         ///消息包格式依次为 消息包长度2 ，消息报类型2 ，消息正文，此处解析出消息类型
-                        int msg_id = BitConverter.ToUInt16(buffer, tempoffset + MsgDesLength);
+                        int msg_id = BitConverter.ToInt32(buffer, tempoffset + MsgDesLength);
 
                         ///取得消息正文，起始偏移为tempoffset + 2 + 2；
                         MemoryStream msg = new MemoryStream(buffer, tempoffset + MsgDesLength + MsgIDLength, size, true, true);

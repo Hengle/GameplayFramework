@@ -120,10 +120,10 @@ namespace Poi
 
         private void FixedUpdateCooldown()
         {
-            if (DataInfo.AttackCooldown.Current >= 0)
-            {
-                DataInfo.AttackCooldown.Current -= Time.fixedDeltaTime;
-            }
+            //if (DataInfo.AttackCooldown.Current >= 0)
+            //{
+            //    DataInfo.AttackCooldown.Current -= Time.fixedDeltaTime;
+            //}
         }
 
         // 当 MonoBehaviour 将被销毁时调用此函数

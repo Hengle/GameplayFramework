@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Poi
 {
-    public class MonsterInfo:PawnInfo
+    public partial class MonsterInfo:PawnInfo
     {
         public override PawnType PawnType
         {

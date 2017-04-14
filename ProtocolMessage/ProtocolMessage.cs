@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ProtoBuf;
+using Poi;
 
 namespace ProtoBuf
 {
     /// <summary>
     /// 聊天消息
     /// </summary>
-    [ProtoContract( Name = "1000")]
+    [ProtoContract( Name = "11000000")]
     public class ChatMsg
     {
         /// <summary>
@@ -24,7 +25,7 @@ namespace ProtoBuf
         public string Context { get; set; }
     }
 
-    [ProtoContract(Name = "1001")]
+    [ProtoContract(Name = "11000010")]
     public class Trans
     {
         [ProtoMember(2)]
@@ -43,7 +44,7 @@ namespace ProtoBuf
         public float qw;    
     }
 
-    [ProtoContract(Name = "1002")]
+    [ProtoContract(Name = "11000020")]
     public class TransSync
     {
         [ProtoMember(1)]
@@ -52,7 +53,7 @@ namespace ProtoBuf
         public Trans trans;
     }
 
-    [ProtoContract(Name = "1003")]
+    [ProtoContract(Name = "11000030")]
     public class TransList
     {
         [ProtoMember(1)]
@@ -61,7 +62,7 @@ namespace ProtoBuf
         public double ServerTime;
     }
 
-    [ProtoContract(Name = "1004")]
+    [ProtoContract(Name = "11000040")]
     public class NameChange
     {
         [ProtoMember(1)]
@@ -70,7 +71,7 @@ namespace ProtoBuf
         public string Name;
     }
 
-    [ProtoContract(Name = "1005")]
+    [ProtoContract(Name = "11000050")]
     public class ModelChange
     {
         [ProtoMember(1)]
@@ -79,7 +80,7 @@ namespace ProtoBuf
         public string ModelName;
     }
 
-    [ProtoContract(Name = "1006")]
+    [ProtoContract(Name = "11000060")]
     public class InputCMD
     {
         /// <summary>
@@ -108,7 +109,7 @@ namespace ProtoBuf
         public double ServerTime;
     }
 
-    [ProtoContract(Name = "1007")]
+    [ProtoContract(Name = "11000070")]
     public class PerPawnCMDList
     {
         [ProtoMember(1)]
@@ -117,12 +118,21 @@ namespace ProtoBuf
         public List<InputCMD> transList = new List<InputCMD>();
     }
 
-    [ProtoContract(Name = "1008")]
+    [ProtoContract(Name = "11000080")]
     public class CMDList
     {
         [ProtoMember(1)]
         public List<PerPawnCMDList> transList = new List<PerPawnCMDList>();
         [ProtoMember(2)]
         public double ServerTime;
+    }
+
+    [ProtoContract(Name = "11000090")]
+    public class CharacterOnline
+    {
+        [ProtoMember(1)]
+        public CharacterInfo info;
+        [ProtoMember(2)]
+        public Trans StartPos;
     }
 }

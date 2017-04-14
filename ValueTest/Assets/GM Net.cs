@@ -93,6 +93,7 @@ public partial class GM
 
     public void LoginPlayer()
     {
+        Player.Instance.SendTrans();
         Server.Write(Player.DataInfo);
     }
 

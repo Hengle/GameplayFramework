@@ -1,17 +1,22 @@
 ﻿using System;
+using ProtoBuf;
 
 namespace Poi
 {
-    public abstract class MaxDataProperty : DataProperty, IMaxLimit<float,float>,IRestoreProperty
+    [ProtoContract(Name = "12200010")]
+    [ProtoInclude(100, typeof(RangeDataProperty))]
+    public abstract class MaxDataProperty : DataProperty, IMaxLimit<float, float>, IRestoreProperty
     {
         /// <summary>
         /// 许可的最大值
         /// </summary>
+        [ProtoMember(1)]
         public float Max { get; set; }
-        
+
         /// <summary>
         /// 当前值
         /// </summary>
+        [ProtoMember(2)]
         public float Current { get; set; }
 
 
@@ -53,11 +58,20 @@ namespace Poi
         #endregion
     }
 
+    [ProtoContract(Name = "12200020")]
+    [ProtoInclude(200,typeof(SpeedBase))]
     public abstract class RangeDataProperty : MaxDataProperty, IRangeProperty<float, float>
     {
         /// <summary>
         /// 许可的最小值
         /// </summary>
+        [ProtoMember(1)]
         public float Min { get; set; }
     }
+
+    [ProtoContract(Name = "12200030")]
+    public partial class SpeedBase { }
+
+    [ProtoContract(Name = "12200040")]
+    public partial struct CoolDown { }
 }

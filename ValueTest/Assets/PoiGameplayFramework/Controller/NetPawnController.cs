@@ -17,6 +17,12 @@ namespace Poi
 
         internal void SetTrans(double serverTime, Trans trans)
         {
+            var isNextDay = lastTransTime > 86390000 && serverTime < 10000;
+            if (lastTransTime > serverTime && !isNextDay)
+            {
+                ///滞后的消息
+                return;
+            }
             lastTransTime = serverTime;
             this.LastTrans = trans;
         }

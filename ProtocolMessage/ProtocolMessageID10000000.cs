@@ -19,7 +19,7 @@ namespace ProtoBuf
 
 
 
-    [ProtoContract(Name = "101")]
+    [ProtoContract(Name = "10000001")]
     public class QLogin
     {
         [ProtoMember(1)]
@@ -30,7 +30,7 @@ namespace ProtoBuf
         public string Note;
     }
 
-    [ProtoContract(Name = "102")]
+    [ProtoContract(Name = "10000002")]
     public class ALogin
     {
         [ProtoMember(1)]
@@ -49,13 +49,13 @@ namespace ProtoBuf
         Error = 1,
     }
 
-    [ProtoContract(Name = "103")]
+    [ProtoContract(Name = "10000003")]
     public class QChildServerAddress
     {
         
     }
 
-    [ProtoContract(Name = "104")]
+    [ProtoContract(Name = "10000004")]
     public class AChildServerAddress
     {
         [ProtoMember(1)]
@@ -63,7 +63,7 @@ namespace ProtoBuf
             = new Dictionary<ServerType, IP>();
     }
 
-    [ProtoContract(Name = "105")]
+    [ProtoContract(Name = "10000005")]
     public class IP
     {
         [ProtoMember(1)]
@@ -72,7 +72,7 @@ namespace ProtoBuf
         public int Port;
     }
 
-    [ProtoContract(Name = "106")]
+    [ProtoContract(Name = "10000006")]
     public class Quit
     {
         [ProtoMember(1)]
@@ -88,7 +88,7 @@ namespace ProtoBuf
     /// <summary>
     /// 聊天消息
     /// </summary>
-    [ProtoContract(Name = "110")]
+    [ProtoContract(Name = "10000010")]
     public class Heart
     {
         /// <summary>
@@ -108,7 +108,7 @@ namespace ProtoBuf
     /// <summary>
     /// 聊天消息
     /// </summary>
-    [ProtoContract(Name = "111")]
+    [ProtoContract(Name = "10000011")]
     public class HeartEX
     {
         /// <summary>

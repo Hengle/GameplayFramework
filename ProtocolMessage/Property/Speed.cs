@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProtoBuf;
 
 namespace Poi
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class SpeedBase : RangeDataProperty
+    
+    public partial class SpeedBase : RangeDataProperty
     {
         public SpeedBase(PropertyType type)
         {
@@ -18,6 +17,7 @@ namespace Poi
         /// <summary>
         /// 启动速率
         /// </summary>
+        [ProtoMember(1)]
         public float StartScale { get; set; } = 0.3f;
     }
 }

@@ -87,14 +87,24 @@ namespace GlobalServer
         private void OnSavaCharacter(MemoryStream value)
         {
             CharacterInfo = Serializer.Deserialize<PlayerInfo>(value);
-            BroadCastExceptSelf(CharacterInfo);
+            var msg = new CharacterOnline()
+            {
+                info = CharacterInfo,
+                StartPos = Trans,
+            };
+            BroadCastExceptSelf(msg);
 
             foreach (var item in ClientDic)
             {
                 GameClient c = item.Value as GameClient;
                 if (item.Key != InstanceID)
                 {
-                    Write(c.CharacterInfo);
+                    var msg2 = new CharacterOnline()
+                    {
+                        info = c.CharacterInfo,
+                        StartPos = c.Trans,
+                    };
+                    Write(msg2);
                 }
             }
         }

@@ -10,29 +10,12 @@ namespace Poi
     /// <summary>
     /// 角色信息
     /// </summary>
-    [ProtoContract(Name = "50001")]
-    [ProtoInclude(30, typeof(CharacterInfo))]
-    public class PawnInfo:DataInfo
+    public partial class PawnInfo:DataInfo
     {
         /// <summary>
         /// 角色类型
         /// </summary>
         public virtual PawnType PawnType => PawnType.Pawn;
-
-        public HP HP { get; private set; } = new HP() { Max = 1,Current = 1};
-        public MP MP { get; private set; } = new MP();
-        public SpeedBase Walk { get; private set; } = new SpeedBase(PropertyType.WalkSpeed);
-        public SpeedBase Run { get; private set; } = new SpeedBase(PropertyType.RunSpeed);
-
-        public bool IsDead => HP.Current <= 0;
-        
-        public IList<IRestoreProperty> RestoreProperties
-        {
-            get
-            {
-                return null;
-            }
-        }
 
         [ProtoMember(1)]
         public int ID { get; set; }
@@ -56,6 +39,7 @@ namespace Poi
         public int JumpMaxStep { get; set; } = 1;
         [ProtoMember(6)]
         public string ModelName { get; set; }
+
         /// <summary>
         /// 当前人物是否在地面
         /// </summary>
@@ -64,9 +48,27 @@ namespace Poi
         /// <summary>
         /// 转动速度
         /// </summary>
+        [ProtoMember(8)]
         public float TurnSpeed { get; set; } = 450;
-
-        public Cooldown AttackCooldown { get; private set; } = new Cooldown(1);
+        [ProtoMember(7)]
         public CoolDown ATKCD = new CoolDown(1);
+
+        public HP HP { get; private set; } = new HP() { Max = 1,Current = 1};
+        public MP MP { get; private set; } = new MP();
+        public SpeedBase Walk { get; private set; } = new SpeedBase(PropertyType.WalkSpeed);
+        [ProtoMember(9)]
+        public SpeedBase Run { get; private set; } = new SpeedBase(PropertyType.RunSpeed);
+
+        public bool IsDead => HP.Current <= 0;
+        
+        public IList<IRestoreProperty> RestoreProperties
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        
     }
 }
