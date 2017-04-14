@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using Assets.DB;
+using Assets.DB.MikuDataTableAdapters;
 using Devart.Data.SQLite;
 using UnityEngine;
 
@@ -11,6 +13,7 @@ public partial class GM
 {
     public string HelpMsg { get ;private set; }
     public SQLiteHelper DB { get; private set; }
+    public MikuData DataSet { get; private set; } = new MikuData();
     public static Dictionary<string, ModelTemplate> ModelDic => modelDic;
 
     private IEnumerator LoadXML()
@@ -52,5 +55,15 @@ public partial class GM
             ModelDic.Add(model.Name, model);
         }
 
+        CharacterTemplateTableAdapter ap = new CharacterTemplateTableAdapter();
+        ap.Connection = DB.DbConnection;
+        ap.Fill(DataSet.CharacterTemplate);
+        DataInfoTemplateTableAdapter ap2 = new DataInfoTemplateTableAdapter();
+        ap2.Connection = DB.DbConnection;
+        ap2.Fill(DataSet.DataInfoTemplate);
+
+        ModelListTableAdapter ap3 = new ModelListTableAdapter();
+        ap3.Connection = DB.DbConnection;
+        ap3.Fill(DataSet.ModelList);
     }
 }

@@ -86,23 +86,43 @@ public partial class GM : MonoBehaviour {
 
     private void CreateTestPlayer()
     {
-        PlayerInfo info = new PlayerInfo()
-        {
-            Height = 1.6f,
-            JumpPower = 9f,
-            JumpMaxStep = 2,
-            Name = "初音未来" + new System.Random().Next(1000, 9999).ToString(),
-            ID = Player.InstanceID,
-            ModelName = ModelDic.FirstOrDefault().Value.Name,
-        };
-        info.Run.Max = 10;
-        info.ATKCD.MaxCD = 0.3f;
+        PlayerInfo info = SelectInfo("初音未来");
 
         Player p = Player.CreatePlayer(info);
 
         Player.Instance = p;
 
         PlayerController.Possess(p);
+    }
+
+    public PlayerInfo SelectInfo(string name)
+    {
+        var data = from i in DataSet.DataInfoTemplate
+                   from j in DataSet.CharacterTemplate
+                   where j.FriendlyName == name
+                   where i.FriendlyName == j.DataInfo
+                   select new { Data = i, Name = j.FriendlyName };
+        var res = data.FirstOrDefault();
+
+        if (res == null)
+        {
+            return null;
+        }
+        else
+        {
+            PlayerInfo info = new PlayerInfo()
+            {
+                Height = 1.6f,
+                JumpPower = 9f,
+                JumpMaxStep = 2,
+                Name = res.Name + new System.Random().Next(1000, 9999).ToString(),
+                ID = Player.InstanceID,
+                ModelName = ModelDic.FirstOrDefault().Value.Name,
+            };
+            info.Run.Max = res.Data.RunMaxSpeed;
+            info.ATKCD.MaxCD = 0.3f;
+            return info;
+        }
     }
 
     /// <summary>

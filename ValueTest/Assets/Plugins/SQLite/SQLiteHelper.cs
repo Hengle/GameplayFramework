@@ -25,6 +25,12 @@ namespace Devart.Data.SQLite
         /// </summary>
         private SQLiteDataReader dataReader;
 
+        public SQLiteConnection DbConnection
+        {
+            get { return dbConnection; }
+            private set { dbConnection = value; }
+        }
+
         /// <summary>
         /// 构造函数    
         /// </summary>
@@ -34,9 +40,9 @@ namespace Devart.Data.SQLite
             try
             {
                 //构造数据库连接
-                dbConnection = new SQLiteConnection(connectionString);
+                DbConnection = new SQLiteConnection(connectionString);
                 //打开数据库
-                dbConnection.Open();
+                DbConnection.Open();
             }
             catch (Exception e)
             {
@@ -51,7 +57,7 @@ namespace Devart.Data.SQLite
         /// <param name="queryString">SQL命令字符串</param>
         public SQLiteDataReader ExecuteQuery(string queryString)
         {
-            dbCommand = dbConnection.CreateCommand();
+            dbCommand = DbConnection.CreateCommand();
             dbCommand.CommandText = queryString;
             dataReader = dbCommand.ExecuteReader();
             return dataReader;
@@ -77,11 +83,11 @@ namespace Devart.Data.SQLite
             dataReader = null;
 
             //销毁Connection
-            if (dbConnection != null)
+            if (DbConnection != null)
             {
-                dbConnection.Close();
+                DbConnection.Close();
             }
-            dbConnection = null;
+            DbConnection = null;
         }
 
         /// <summary>
