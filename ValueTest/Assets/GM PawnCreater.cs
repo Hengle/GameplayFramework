@@ -9,10 +9,10 @@ using System.Linq;
 
 public partial class GM
 {
-    public static GameObject CreatePawnGameObject(string name = null, Transform startpos = null)
+    public static GameObject CreatePawnGameObject(string name, Transform startpos = null)
     {
-        name = name ?? ModelDic.First().Key;
-        var ori = Resources.Load<GameObject>(ModelDic[name].Path);
+        if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
+        var ori = Resources.Load<GameObject>(GetModelPath(name));
         var go = GameObject.Instantiate(ori);
         go.transform.Apply(startpos);
         go.transform.ApplyRotationY(startpos);
@@ -21,8 +21,7 @@ public partial class GM
 
     public static GameObject CreatePawnGameObject(PawnInfo info, Transform startpos = null)
     {
-        var name = info?.ModelName?? ModelDic.First().Key;
-        var go = CreatePawnGameObject(name, startpos);
+        var go = CreatePawnGameObject(info.ModelName, startpos);
 
         go.name = $"{info.Name}--{go.name}";
         return go;

@@ -16,6 +16,7 @@ public partial class GM
     public MikuData DataSet { get; private set; } = new MikuData();
     public static Dictionary<string, ModelTemplate> ModelDic => modelDic;
 
+    [Obsolete("不再使用XML做配置",true)]
     private IEnumerator LoadXML()
     {
         WWW www = new WWW(PathPrefix.WWWstreamingAssets + Application.streamingAssetsPath + "/Help.xml");
@@ -65,5 +66,23 @@ public partial class GM
         ModelListTableAdapter ap3 = new ModelListTableAdapter();
         ap3.Connection = DB.DbConnection;
         ap3.Fill(DataSet.ModelList);
+
+        TooltipTableAdapter tool = new TooltipTableAdapter();
+        tool.Connection = DB.DbConnection;
+        tool.Fill(DataSet.Tooltip);
+
+        HelpMsg = DataSet.Tooltip.FindByName("Help").Message;
+
+    }
+
+    public static string GetModelPath(string modelName)
+    {
+        string path = "";
+        path = Instance.DataSet.ModelList.FindByName(modelName)?.Path;
+        if (string.IsNullOrEmpty(path))
+        {
+            path = $"Character/{modelName}/{modelName}";
+        }
+        return path;
     }
 }

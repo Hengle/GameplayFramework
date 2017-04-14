@@ -10,7 +10,7 @@ using ProtoBuf;
 using System.Linq;
 
 public partial class GM : MonoBehaviour {
-
+    
     public static GM Instance;
 
     public static List<PawnController> Controllers => PawnController.Controllers;
@@ -54,7 +54,6 @@ public partial class GM : MonoBehaviour {
     // Use this for initialization
     IEnumerator Start ()
     {
-        yield return StartCoroutine(LoadXML());
         yield return StartCoroutine(LoadDB());
         ///等待一帧防止一些组件没有初始化（不是必须）
         yield return new WaitForEndOfFrame();
@@ -99,9 +98,11 @@ public partial class GM : MonoBehaviour {
     {
         var data = from i in DataSet.DataInfoTemplate
                    from j in DataSet.CharacterTemplate
+                   from k in DataSet.ModelList
                    where j.FriendlyName == name
                    where i.FriendlyName == j.DataInfo
-                   select new { Data = i, Name = j.FriendlyName };
+                   where k.Name == j.Model
+                   select new { Data = i, Name = j.FriendlyName,Model = k };
         var res = data.FirstOrDefault();
 
         if (res == null)
@@ -112,15 +113,15 @@ public partial class GM : MonoBehaviour {
         {
             PlayerInfo info = new PlayerInfo()
             {
-                Height = 1.6f,
-                JumpPower = 9f,
-                JumpMaxStep = 2,
+                Height = res.Data.Height,
+                JumpPower = res.Data.JumpPower,
+                JumpMaxStep = res.Data.JumpMaxStep,
                 Name = res.Name + new System.Random().Next(1000, 9999).ToString(),
                 ID = Player.InstanceID,
-                ModelName = ModelDic.FirstOrDefault().Value.Name,
+                ModelName = res.Model.Name,
             };
             info.Run.Max = res.Data.RunMaxSpeed;
-            info.ATKCD.MaxCD = 0.3f;
+            info.ATKCD.MaxCD = res.Data.ATKMaxCD;
             return info;
         }
     }
