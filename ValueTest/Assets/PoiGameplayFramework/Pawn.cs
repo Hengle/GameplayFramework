@@ -97,7 +97,8 @@ namespace Poi
 
         protected virtual void Start()
         {
-            
+            ///保持创建时默认旋转
+            NextTurnToAngle = transform.eulerAngles.y;
         }
 
         protected virtual void Update()

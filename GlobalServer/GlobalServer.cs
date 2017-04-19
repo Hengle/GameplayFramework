@@ -61,14 +61,15 @@ namespace GlobalServer
 
             InitChildServer();
 
-
+            const int MaxDelta = 1000 / 60;
             Time = new UtilTime();
-
+            Stopwatch balancetime = new Stopwatch();
             while (true)
             {
+                balancetime.Restart();
                 Time.Update();
                 double delta = Time.DeltaTime;
-
+                
                 for (int i = 0; i < UnknownClient.Count; i++)
                 {
                     UnknownClient[i]?.Update(delta);
@@ -160,7 +161,12 @@ namespace GlobalServer
                     }
                 }
 
-                Thread.Sleep(20);
+                balancetime.Stop();
+                int sleeptime = MaxDelta - (int)balancetime.ElapsedMilliseconds;
+                if (sleeptime > 0)
+                {
+                    Thread.Sleep(sleeptime);
+                }
             }
         }
 

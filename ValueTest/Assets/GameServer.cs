@@ -96,8 +96,6 @@ public class GameServer : Remote
                 Character.Dic[item.instanceID].NetPawnController.SetCMD(item.transList);
             }
         }
-
-        Debug.Log(1);
     }
 
     private void OnCharacterQuit(MemoryStream value)
@@ -211,7 +209,7 @@ public class GameServer : Remote
         var msg = Serializer.Deserialize<Heart>(value);
         TimeSpan delta = DateTime.Now - DateTime.FromBinary(msg.Time);
 
-        GM.Delay =Mathf.Lerp(GM.Delay, (float)delta.TotalMilliseconds / 2,0.5f);
+        GM.Delay =Mathf.Lerp(GM.Delay, (float)delta.TotalMilliseconds,0.5f);
     }
 
     List<double> timedeltaList = new List<double>();

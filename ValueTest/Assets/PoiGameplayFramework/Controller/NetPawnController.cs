@@ -58,7 +58,7 @@ namespace Poi
                 }
             }
 
-            cmd.Acceleration = lastcmd.Acceleration;
+            cmd.Acceleration = lastcmd.Acceleration == 0?-1: lastcmd.Acceleration;
             cmd.NextAngle = lastcmd.NextAngle;
 
             ParseInputCommand(cmd);

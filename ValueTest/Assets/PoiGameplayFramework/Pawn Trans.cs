@@ -59,9 +59,6 @@ namespace Poi
             //    go.transform.localPosition = new Vector3(0, DataInfo.Height * 2 / 3, 0);
             //}
 
-            ///保持创建时默认旋转
-            NextTurnToAngle = transform.eulerAngles.y;
-
             ///初始模型中心点
             Chest = Animator.GetBoneTransform(HumanBodyBones.Chest);
             if (!Chest)
